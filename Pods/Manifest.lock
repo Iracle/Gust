@@ -1,0 +1,20 @@
+PODS:
+  - AHKActionSheet (0.5)
+  - OTMWebView (0.0.4):
+    - OTMWebView/Core (= 0.0.4)
+    - OTMWebView/ProgressBar (= 0.0.4)
+  - OTMWebView/Core (0.0.4)
+  - OTMWebView/ProgressBar (0.0.4)
+  - PureLayout (2.0.5)
+
+DEPENDENCIES:
+  - AHKActionSheet
+  - OTMWebView
+  - PureLayout
+
+SPEC CHECKSUMS:
+  AHKActionSheet: f332463c7dba624b49cd4a37a59608e1da0032da
+  OTMWebView: 17974ca40317da190908d673ca78ece202fd1ad3
+  PureLayout: 63a3257320223e8edddcd3afb407445f85a6bf74
+
+COCOAPODS: 0.35.0

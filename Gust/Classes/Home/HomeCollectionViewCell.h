@@ -1,0 +1,19 @@
+//
+//  HomeCollectionViewCell.h
+//  Gust
+//
+//  Created by Iracle on 15/3/6.
+//  Copyright (c) 2015年 Iralce. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface HomeCollectionViewCell : UICollectionViewCell
+
+@property (nonatomic, strong) UILabel *pageNameLabel;
+@property (nonatomic, strong) NSString *pageUrlString;
+@property (nonatomic, strong) UIImageView *pageImageView;
+
+- (void)configCollectionViewCell:(NSDictionary *)dic;
+
+@end
