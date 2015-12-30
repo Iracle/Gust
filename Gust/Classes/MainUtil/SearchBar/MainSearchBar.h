@@ -10,4 +10,7 @@
 
 @interface MainSearchBar : UITextField
 
+- (void)showSearchIcon;
+- (void)hiddenSearchIcon;
+
 @end

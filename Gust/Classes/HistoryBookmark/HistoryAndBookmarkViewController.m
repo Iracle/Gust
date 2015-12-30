@@ -75,7 +75,6 @@
     self.isBookmark = YES;
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.segment];
-    [self.view setNeedsUpdateConstraints];
     
     self.bookmarkArray = [NSArray arrayWithArray:[HisAndBooModel getDataWithType:@"Bookmark"]];
     self.currentDataArray = [NSMutableArray arrayWithArray:self.bookmarkArray];

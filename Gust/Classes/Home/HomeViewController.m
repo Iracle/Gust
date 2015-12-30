@@ -31,6 +31,9 @@
 //privacy password view
 #import "PrivacyPasswordView.h"
 
+#import "GustRefreshHeader.h"
+
+
 @interface HomeViewController () <MainTouchViewDelegate, VLDContextSheetDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate,UIViewControllerPreviewingDelegate, PrivacyPasswordViewDelegate>
 
 @property (nonatomic, assign) BOOL didSetupConstraints;
@@ -57,6 +60,9 @@
 @property (nonatomic, copy) NSString *urlString;
 //privacy password view
 @property (nonatomic, weak) PrivacyPasswordView *privacyView;
+
+//pull back
+@property (nonatomic, strong) GustRefreshHeader *refreshHeader;
 
 @end
 
@@ -363,6 +369,7 @@
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    [self.view endEditing:YES];
     if (textField.text.length == 0) {
         return NO;
     }
@@ -394,7 +401,6 @@
     } else {
         [self loadWebWithUrlString:returnString];
     }
-
     return YES;
 }
 - (void)loadWebWithUrlString:(NSString *)urlString
@@ -427,8 +433,9 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    textField.leftView.hidden = YES;
+    [self.searchBar hiddenSearchIcon];
     _isInputingState = YES;
+    
     if (!_inputHistorisTableView) {
         
         [self loadInputHistorisTableView];
@@ -439,20 +446,35 @@
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-     textField.leftView.hidden = NO;
+    [self.searchBar showSearchIcon];
+
     return YES;
 }
 
 - (void)loadInputHistorisTableView {
+    
     _inputHistorisTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 700, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 70)];
     _inputHistorisTableView.delegate = self;
     _inputHistorisTableView.dataSource = self;
     _inputHistorisTableView.alpha = 0.0;
-    [self.view addSubview:_inputHistorisTableView];
+    _inputHistorisTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _inputHistorisTableView.separatorColor = [UIColor clearColor];
+    [self.view insertSubview:_inputHistorisTableView belowSubview:self.searchBar];
     
+    _refreshHeader = [[GustRefreshHeader alloc] init];
+    _refreshHeader.scrollView = _inputHistorisTableView;
+    [_refreshHeader addHeadView];
+    _refreshHeader.pullBackOffset = 0.8;
+    _refreshHeader.beginRefreshingBlock = ^(){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+        });
+    };
+
     [UIView animateWithDuration:0.3 animations:^{
+        self.view.backgroundColor = [UIColor whiteColor];
         _inputHistorisTableView.alpha = 1.0;
-        _inputHistorisTableView.frame = CGRectMake(0, 70, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 70);
+        _inputHistorisTableView.frame = CGRectMake(0, 85, SCREEN_WIDTH, SCREEN_HEIGHT - 85);
     }];
 }
 
@@ -470,8 +492,8 @@
 {
 
     [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:0.6 initialSpringVelocity:0.0 options:0 animations:^{
+        self.searchBar.transform = CGAffineTransformMakeTranslation(0, -40);
     } completion:^(BOOL finished) {
-        
     }];
     
 }

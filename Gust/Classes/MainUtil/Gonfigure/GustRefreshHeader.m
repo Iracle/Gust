@@ -21,6 +21,7 @@
 @implementation GustRefreshHeader
 
 - (void)addHeadView{
+    self.pullBackOffset = 1.5;
     
     _isRefresh=NO;
     _lastPosition=0;
@@ -55,7 +56,7 @@
         int currentPostion = _scrollView.contentOffset.y;
         if (!_isRefresh) {
             [UIView animateWithDuration:0.3 animations:^{
-                if (currentPostion < - 85 * 1.5) {
+                if (currentPostion < - 85 * _pullBackOffset) {
                     
                     _headerLabel.text = @"松开可以返回上一页";
                     

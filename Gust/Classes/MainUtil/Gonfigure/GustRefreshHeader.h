@@ -20,10 +20,12 @@ typedef void (^BeginRefreshingBlock)(void);
 
 @property UIScrollView *scrollView;
 @property (nonatomic, copy) BeginRefreshingBlock beginRefreshingBlock;
+@property (nonatomic) CGFloat pullBackOffset;
 @property (nonatomic, assign) id<GustRefreshDelegate> delegate;
 -(void)addHeadView;
 -(void)endRefreshing;
 -(void)beginRefreshing;
+
 
 
 @end

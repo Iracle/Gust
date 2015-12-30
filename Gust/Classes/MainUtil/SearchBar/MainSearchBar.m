@@ -42,18 +42,6 @@
     self.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.returnKeyType = UIReturnKeyGo;
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 8.5, 28, 28)];
-    imageView.userInteractionEnabled = NO;
-    imageView.image = IMAGENAMED(@"search");
-    
-    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 55, 45)];
-    paddingView.userInteractionEnabled = NO;
-    [paddingView addSubview:imageView];
-
-    self.leftView = paddingView;
-    self.leftViewMode = UITextFieldViewModeAlways;
-
-    
     UIImageView *micPic = [[UIImageView alloc] initWithFrame:CGRectMake(12.5, 8.5, 28, 28)];
     micPic.image = IMAGENAMED(@"mic");
     micPic.userInteractionEnabled = YES;
@@ -65,6 +53,28 @@
     UITapGestureRecognizer *tapMicGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapMic:)];
     [micInputView addGestureRecognizer:tapMicGes];
     
+    [self showSearchIcon];
+    
+}
+
+- (void)showSearchIcon {
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 8.5, 28, 28)];
+    imageView.userInteractionEnabled = NO;
+    imageView.image = IMAGENAMED(@"search");
+    
+    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 55, 45)];
+    paddingView.userInteractionEnabled = NO;
+    [paddingView addSubview:imageView];
+    
+    self.leftView = paddingView;
+    self.leftViewMode = UITextFieldViewModeAlways;
+}
+
+- (void)hiddenSearchIcon {
+    
+    UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, CGRectGetHeight(self.bounds))];
+    leftView.backgroundColor = [UIColor clearColor];
+    self.leftView = leftView;
 }
 
 - (void)tapMic:(UIGestureRecognizer *)ges {
