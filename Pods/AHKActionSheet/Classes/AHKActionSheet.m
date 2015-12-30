@@ -87,8 +87,8 @@ static const CGFloat kCancelButtonShadowHeightRatio = 0.333f;
     self = [super init];
 
     if (self) {
-        title = [title copy];
-        _cancelButtonTitle = @"取消";
+        _title = [title copy];
+        _cancelButtonTitle = @"Cancel";
     }
 
     return self;
@@ -168,9 +168,8 @@ static const CGFloat kCancelButtonShadowHeightRatio = 0.333f;
 {
     AHKActionSheetItem *item = self.items[(NSUInteger)indexPath.row];
     
-    NSString *indexPathRow = [[NSNumber numberWithInteger:indexPath.row] stringValue];
     if (item.type != AHKActionSheetButtonTypeDisabled) {
-        [self dismissAnimated:YES duration:self.animationDuration completion:item.handler withIndexPathRow:indexPathRow];
+        [self dismissAnimated:YES duration:self.animationDuration completion:item.handler];
     }
 }
 
@@ -203,9 +202,9 @@ static const CGFloat kCancelButtonShadowHeightRatio = 0.333f;
     if (viewWasFlickedDown) {
         // use a shorter duration for a flick down animation
         static const NSTimeInterval duration = 0.2f;
-        [self dismissAnimated:YES duration:duration completion:self.cancelHandler withIndexPathRow:nil];
+        [self dismissAnimated:YES duration:duration completion:self.cancelHandler];
     } else if (shouldSlideDown) {
-        [self dismissAnimated:YES duration:self.animationDuration completion:self.cancelHandler withIndexPathRow:nil];
+        [self dismissAnimated:YES duration:self.animationDuration completion:self.cancelHandler];
     }
 }
 
@@ -224,7 +223,7 @@ static const CGFloat kCancelButtonShadowHeightRatio = 0.333f;
 
 - (void)cancelButtonTapped:(id)sender
 {
-    [self dismissAnimated:YES duration:self.animationDuration completion:self.cancelHandler withIndexPathRow:nil];
+    [self dismissAnimated:YES duration:self.animationDuration completion:self.cancelHandler];
 }
 
 #pragma mark - Public
@@ -314,7 +313,7 @@ static const CGFloat kCancelButtonShadowHeightRatio = 0.333f;
 
 - (void)dismissAnimated:(BOOL)animated
 {
-    [self dismissAnimated:animated duration:self.animationDuration completion:self.cancelHandler withIndexPathRow:nil];
+    [self dismissAnimated:animated duration:self.animationDuration completion:self.cancelHandler];
 }
 
 #pragma mark - Private
@@ -325,7 +324,7 @@ static const CGFloat kCancelButtonShadowHeightRatio = 0.333f;
     return !!self.window;
 }
 
-- (void)dismissAnimated:(BOOL)animated duration:(NSTimeInterval)duration completion:(AHKActionSheetHandler)completionHandler withIndexPathRow:(NSString *)row
+- (void)dismissAnimated:(BOOL)animated duration:(NSTimeInterval)duration completion:(AHKActionSheetHandler)completionHandler
 {
     if (![self isVisible]) {
         return;
@@ -347,7 +346,7 @@ static const CGFloat kCancelButtonShadowHeightRatio = 0.333f;
         [self.previousKeyWindow makeKeyAndVisible];
 
         if (completionHandler) {
-            completionHandler(self, row);
+            completionHandler(self);
         }
     };
 

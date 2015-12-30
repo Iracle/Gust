@@ -9,7 +9,6 @@
 #import "GustWebViewController.h"
 #import <OTMWebView/OTMWebView.h>
 #import <OTMWebView/OTMWebViewProgressBar.h>
-#import "PureLayout.h"
 #import "GustConfigure.h"
 #import "MainSearchBar.h"
 #import "VLDContextSheet.h"
@@ -81,7 +80,7 @@
 - (OTMWebView *)webView
 {
     if (!_webView) {
-        _webView = [OTMWebView newAutoLayoutView];
+        _webView = [[OTMWebView alloc] initWithFrame:self.view.bounds];
         _webView.translatesAutoresizingMaskIntoConstraints = NO;
         _webView.delegate = self;
         _webView.scalesPageToFit = YES;
@@ -104,7 +103,6 @@
 - (MainSearchBar *)searchBar
 {
     if (!_searchBar) {
-        _searchBar = [MainSearchBar newAutoLayoutView];
         _searchBar.delegate = self;
     }
     return _searchBar;
@@ -129,7 +127,6 @@
 - (UIButton *)cancelButton
 {
     if (!_cancelButton) {
-        _cancelButton = [UIButton newAutoLayoutView];
         [_cancelButton setTitle:@"取消" forState:UIControlStateNormal];
         _cancelButton.titleLabel.font = [UIFont systemFontOfSize:15];
         _cancelButton.backgroundColor = [UIColor clearColor];
@@ -182,39 +179,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chooseDefautSeachEngin:) name:NotificationChangeDefautSearchEngin object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openWebPageInNewTab:) name:@"NotificationOpenPageInNewTab" object:nil];
     
-}
-
-- (void)updateViewConstraints
-{
-    if (!self.didSetupConstraints) {
-        
-        [self.webView autoPinEdgeToSuperviewEdge:ALEdgeTop];
-        [self.webView autoPinEdgeToSuperviewEdge:ALEdgeLeft];
-        [self.webView autoPinEdgeToSuperviewEdge:ALEdgeRight];
-        [self.webView autoPinEdgeToSuperviewEdge:ALEdgeBottom];
-        
-        [self.searchBar autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:10.0];
-        self.searchBarWidthConstraint = [self.searchBar autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:10.0];
-        [self.searchBar autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:4.5];
-        [self.searchBar autoSetDimension:ALDimensionHeight toSize:SearchBarHeight];
-
-        [self.cancelButton autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:10.0];
-        [self.cancelButton autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:4.5];
-        [self.cancelButton autoSetDimensionsToSize:CGSizeMake(40.0, 35.0)];
-        self.didSetupConstraints = YES;
-        
-    }
-    
-    if (_isInputingState) {
-        
-        self.searchBarWidthConstraint.constant = -50.0;
-        _cancelButton.alpha = 1.0;
-        
-    } else {
-        self.searchBarWidthConstraint.constant = -10.0;
-        _cancelButton.alpha = 0.0;
-    }
-    [super updateViewConstraints];
 }
 
 #pragma mark - UITextFieldDelegate

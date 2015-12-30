@@ -9,7 +9,6 @@
 #import "MoreViewController.h"
 #import "QRCodeReaderViewController.h"
 #import "QRCodeReader.h"
-#import "PureLayout.h"
 #import  "GustRefreshHeader.h"
 #import "GustWebViewController.h"
 #import "TopSitesManageViewController.h"
@@ -41,7 +40,7 @@
 - (UITableView *)tableView
 {
     if (!_tableView) {
-        _tableView = [UITableView newAutoLayoutView];
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
         _tableView.rowHeight = 70.0;
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -77,21 +76,6 @@
     };
 
 }
-
-- (void)updateViewConstraints
-{
-    if (!self.didSetupConstraints) {
-        
-        [self.tableView autoPinEdgeToSuperviewEdge:ALEdgeTop];
-        [self.tableView autoPinEdgeToSuperviewEdge:ALEdgeLeft];
-        [self.tableView autoPinEdgeToSuperviewEdge:ALEdgeRight];
-        [self.tableView autoPinEdgeToSuperviewEdge:ALEdgeBottom];
-        
-        self.didSetupConstraints = YES;
-    }
-    [super updateViewConstraints];
-}
-
 
 #pragma mark UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

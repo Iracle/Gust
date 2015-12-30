@@ -44,7 +44,7 @@
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 8.5, 28, 28)];
     imageView.userInteractionEnabled = NO;
-    imageView.image = [UIImage imageNamed:@"search"];
+    imageView.image = IMAGENAMED(@"search");
     
     UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 55, 45)];
     paddingView.userInteractionEnabled = NO;
@@ -55,7 +55,7 @@
 
     
     UIImageView *micPic = [[UIImageView alloc] initWithFrame:CGRectMake(12.5, 8.5, 28, 28)];
-    micPic.image = [UIImage imageNamed:@"mic"];
+    micPic.image = IMAGENAMED(@"mic");
     micPic.userInteractionEnabled = YES;
     micInputView  = [[UIView alloc] initWithFrame:CGRectMake(200, 0, 50, 45)];
     [micInputView addSubview:micPic];

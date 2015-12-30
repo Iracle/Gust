@@ -7,7 +7,6 @@
 //
 
 #import "HomeViewController.h"
-#import "PureLayout.h"
 #import "GustConfigure.h"
 #import "MainTouchView.h"
 #import "VLDContextSheet.h"
@@ -42,13 +41,6 @@
 @property (strong, nonatomic) UICollectionView *homeCollectionView;
 @property (nonatomic, strong) NSMutableArray *savedArray;
 @property (nonatomic, strong) NSMutableArray *topSitesSortArray;
-
-//search bar animation constraint
-@property (nonatomic, strong) NSLayoutConstraint *searchBarTopConstraint;
-@property (nonatomic, strong) NSLayoutConstraint *searchBarWidthConstraint;
-//input history tableView animation constraint
-@property (nonatomic, strong) NSLayoutConstraint *inputHistoriTopConstraint;
-
 
 @property (nonatomic, assign) BOOL isInputingState;
 @property (nonatomic, assign) BOOL didSetupMainTouchViewConstraints;
@@ -89,7 +81,9 @@
 - (MainSearchBar *)searchBar
 {
     if (!_searchBar) {
-        _searchBar = [MainSearchBar newAutoLayoutView];
+        _searchBar = [[MainSearchBar alloc] init];
+        _searchBar.bounds = CGRectMake(0, 0, SCREEN_WIDTH - 20, SearchBarHeight);
+        _searchBar.center = CGPointMake(CGRectGetMidX(self.view.bounds), 102.5);
         _searchBar.delegate = self;
     }
     return _searchBar;
@@ -98,7 +92,6 @@
 - (UIButton *)cancelButton
 {
     if (!_cancelButton) {
-        _cancelButton = [UIButton newAutoLayoutView];
         [_cancelButton setTitle:@"取消" forState:UIControlStateNormal];
         _cancelButton.titleLabel.font = [UIFont systemFontOfSize:15];
         _cancelButton.backgroundColor = [UIColor clearColor];
@@ -152,7 +145,6 @@
     self.contextSheet = [[VLDContextSheet alloc] initWithItem:@"书签/历史" item:@"隐私模式" item:@"设置"];
     self.contextSheet.delegate = self;
     
-    [self.view addSubview:self.cancelButton];
     [self.view addSubview:self.touchView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTopSitesDate:) name:NotificationUpdateTopSites object:nil];
@@ -163,33 +155,6 @@
     [self.view setNeedsUpdateConstraints];
     [self setupTopSitsData];
     
-}
-
-- (void)updateViewConstraints
-{
-    if (!self.didSetupConstraints) {
-        [self.searchBar autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:10.0];
-        self.searchBarWidthConstraint = [self.searchBar autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:10.0];
-        self.searchBarTopConstraint = [self.searchBar autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:80.0];
-        [self.searchBar autoSetDimension:ALDimensionHeight toSize:SearchBarHeight];
-        
-        [self.cancelButton autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:10.0];
-        [self.cancelButton autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:30.0];
-        [self.cancelButton autoSetDimensionsToSize:CGSizeMake(40.0, 35.0)];
-        self.didSetupConstraints = YES;
-    }
-
-    if (_isInputingState) {
-        self.searchBarWidthConstraint.constant = -50.0;
-        self.searchBarTopConstraint.constant = 30.0;
-        _cancelButton.alpha = 1.0;
-
-    } else {
-        self.searchBarWidthConstraint.constant = -10.0;
-        self.searchBarTopConstraint.constant = 80.0;
-        _cancelButton.alpha = 0.0;
-    }
-    [super updateViewConstraints];
 }
 
 - (void)setupTopSitsData
@@ -462,6 +427,7 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    textField.leftView.hidden = YES;
     _isInputingState = YES;
     if (!_inputHistorisTableView) {
         
@@ -469,6 +435,11 @@
     }
     [self loadInputHistoryData];
     [self setupSearchBarAnimation];
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+     textField.leftView.hidden = NO;
     return YES;
 }
 
@@ -497,21 +468,10 @@
 
 - (void)setupSearchBarAnimation
 {
-    [self.view setNeedsUpdateConstraints];
-    if (_isInputingState) {
-        _cancelButton.hidden = NO;
-        if (_cancelButton.alpha == HomePageCancelButtonAlpha) {
-            _cancelButton.alpha = 0.0;
-        }
-    }
+
     [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:0.6 initialSpringVelocity:0.0 options:0 animations:^{
-        [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
-        if (!_isInputingState) {
-            _cancelButton.hidden = YES;
-            [_inputHistorisTableView removeFromSuperview];
-            _inputHistorisTableView = nil;
-        }
+        
     }];
     
 }
@@ -565,18 +525,6 @@
     HomeCollectionViewCell *cell = (HomeCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     [self loadWebWithUrlString:cell.pageUrlString];
     
-}
-
-- (void)cancelButtonTaped:(UIButton *)sender
-{
-    [self.searchBar resignFirstResponder];
-    _searchBar.text = nil;
-    _isInputingState = NO;
-    [self setupSearchBarAnimation];
-    [UIView animateWithDuration:0.3 animations:^{
-        _inputHistorisTableView.alpha = 10.0;
-        _inputHistorisTableView.frame = CGRectMake(0, 700, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 70);
-    }];
 }
 
 #pragma mark --UITableViewDelegate

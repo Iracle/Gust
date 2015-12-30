@@ -1,5 +1,0 @@
-#include "Pods-AHKActionSheet.xcconfig"
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/AHKActionSheet" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AHKActionSheet" "${PODS_ROOT}/Headers/Public/OTMWebView" "${PODS_ROOT}/Headers/Public/PureLayout"
-OTHER_LDFLAGS = ${PODS_AHKACTIONSHEET_OTHER_LDFLAGS} -ObjC
-PODS_ROOT = ${SRCROOT}

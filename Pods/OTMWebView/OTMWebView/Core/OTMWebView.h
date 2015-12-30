@@ -67,7 +67,6 @@ extern NSString *const OTMWebViewElementDocumentURL;
 /**
  *  The title of the web view's document.
  */
-
 @property (readonly, copy, nonatomic) NSString *documentTitle;
 
 ///-----------------------------
@@ -131,7 +130,6 @@ extern NSString *const OTMWebViewElementDocumentURL;
  *  @param webView The web view of the document with the title change.
  *  @param title   The new title of the web view.
  */
-
 - (void)webView:(OTMWebView *)webView documentTitleDidChange:(NSString *)title;
 
 ///------------------------

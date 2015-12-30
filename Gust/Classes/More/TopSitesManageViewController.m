@@ -7,7 +7,6 @@
 //
 
 #import "TopSitesManageViewController.h"
-#import "PureLayout.h"
 #import "TopSites.h"
 #import "CoreDataManager.h"
 #import "GustConfigure.h"
@@ -37,7 +36,7 @@
 
 - (UITableView *)topSitesManageTableView {
     if (!_topSitesManageTableView) {
-        _topSitesManageTableView = [UITableView newAutoLayoutView];
+        _topSitesManageTableView = [[UITableView alloc] initWithFrame:self.view.bounds];
         _topSitesManageTableView.delegate = self;
         _topSitesManageTableView.dataSource = self;
         _topSitesManageTableView.rowHeight = 70.0;
@@ -53,21 +52,6 @@
     [self.view addSubview:self.topSitesManageTableView];
     [self setupTopSitesManageTableViewData];
     [self.view setNeedsUpdateConstraints];
-}
-
-- (void)updateViewConstraints {
-    
-    if (!_didSetupConstraints) {
-        
-        [self.topSitesManageTableView autoPinEdgeToSuperviewEdge:ALEdgeTop];
-        [self.topSitesManageTableView autoPinEdgeToSuperviewEdge:ALEdgeLeft];
-        [self.topSitesManageTableView autoPinEdgeToSuperviewEdge:ALEdgeRight];
-        [self.topSitesManageTableView autoPinEdgeToSuperviewEdge:ALEdgeBottom];
-        
-        _didSetupConstraints = YES;
-    }
-    [super updateViewConstraints];
-    
 }
 
 - (void)setupTopSitesManageTableViewData {

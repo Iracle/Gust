@@ -5,16 +5,13 @@ PODS:
     - OTMWebView/ProgressBar (= 0.0.4)
   - OTMWebView/Core (0.0.4)
   - OTMWebView/ProgressBar (0.0.4)
-  - PureLayout (2.0.5)
 
 DEPENDENCIES:
   - AHKActionSheet
   - OTMWebView
-  - PureLayout
 
 SPEC CHECKSUMS:
-  AHKActionSheet: f332463c7dba624b49cd4a37a59608e1da0032da
-  OTMWebView: 17974ca40317da190908d673ca78ece202fd1ad3
-  PureLayout: 63a3257320223e8edddcd3afb407445f85a6bf74
+  AHKActionSheet: 897341c618094e497c93f9d0c66fa69f71218063
+  OTMWebView: 5c8921441cfea5b6494c249f608cdd5e40f617b6
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.39.0

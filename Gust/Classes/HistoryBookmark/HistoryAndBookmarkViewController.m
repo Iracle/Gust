@@ -9,7 +9,6 @@
 #import "HistoryAndBookmarkViewController.h"
 #import "MGSwipeTableCell.h"
 #import "MGSwipeButton.h"
-#import "PureLayout.h"
 #import "HisAndBooModel.h"
 #import "History.h"
 #import "Bookmark.h"
@@ -46,7 +45,8 @@
 - (UITableView *)tableView
 {
     if (!_tableView) {
-        _tableView = [UITableView newAutoLayoutView];
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+        _tableView.contentInset = UIEdgeInsetsMake(0, 0, 45.0, 0);
         _tableView.rowHeight = 70.0;
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -58,8 +58,9 @@
 - (UISegmentedControl *)segment
 {
     if (!_segment) {
-        _segment = [UISegmentedControl newAutoLayoutView];
         _segment = [[UISegmentedControl alloc] initWithItems:@[@"书签", @"历史"]];
+        _segment.bounds = CGRectMake(0, 0, SCREEN_WIDTH - 70, 35);
+        _segment.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMaxY(self.view.bounds) - 22.5);
         [_segment addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
         _segment.selectedSegmentIndex = 0;
         _segment.tintColor = [UIColor colorWithRed:0.827 green:0.986 blue:1.000 alpha:1.000];
@@ -95,26 +96,6 @@
         });
     };
 }
-
-- (void)updateViewConstraints
-{
-    if (!self.didSetupConstraints) {
-        
-        [self.tableView autoPinEdgeToSuperviewEdge:ALEdgeTop];
-        [self.tableView autoPinEdgeToSuperviewEdge:ALEdgeLeft];
-        [self.tableView autoPinEdgeToSuperviewEdge:ALEdgeRight];
-        [self.tableView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:45.0];
-        
-        [self.segment autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:35.0];
-        [self.segment autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:35.0];
-        [self.segment autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:5];
-        [self.segment autoSetDimension:ALDimensionHeight toSize:35.0];
-
-        self.didSetupConstraints = YES;
-    }
-    [super updateViewConstraints];
-}
-
 
 - (void)segmentAction:(UISegmentedControl *)segment
 {

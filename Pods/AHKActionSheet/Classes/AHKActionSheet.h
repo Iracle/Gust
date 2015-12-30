@@ -15,7 +15,7 @@ typedef NS_ENUM(NSInteger, AHKActionSheetButtonType) {
 };
 
 @class AHKActionSheet;
-typedef void(^AHKActionSheetHandler)(AHKActionSheet *actionSheet, NSString *row);
+typedef void(^AHKActionSheetHandler)(AHKActionSheet *actionSheet);
 
 
 /// A block-based alternative to the `UIAlertView`.
