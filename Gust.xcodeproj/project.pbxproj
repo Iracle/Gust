@@ -65,6 +65,8 @@
 		18EEDF261AA5FD6000033447 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18EEDF251AA5FD6000033447 /* Images.xcassets */; };
 		5292A0994F307A26F7EFB673 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A79D13067030A3AE28A30F /* libPods.a */; };
 		93552ED61BEA00FE004B0380 /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93552ED51BEA00FE004B0380 /* CustomNavigationController.m */; };
+		93AD6DAA1C33CDFA00BC7067 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93AD6DA91C33CDFA00BC7067 /* search@2x.png */; };
+		93AD6DAC1C33CE0200BC7067 /* mic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93AD6DAB1C33CE0200BC7067 /* mic@2x.png */; };
 		93CE191B1BEB51E400DECA3E /* SetPrivacyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CE19191BEB51E400DECA3E /* SetPrivacyPasswordViewController.m */; };
 		93CE19941BEC81FB00DECA3E /* CHKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CE19931BEC81FB00DECA3E /* CHKeychain.m */; };
 		93CE199B1BEC9B2F00DECA3E /* MyScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CE199A1BEC9B2F00DECA3E /* MyScrollView.m */; };
@@ -199,6 +201,8 @@
 		91A9A21B571F77B5BC370D44 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		93552ED41BEA00FE004B0380 /* CustomNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationController.h; sourceTree = "<group>"; };
 		93552ED51BEA00FE004B0380 /* CustomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationController.m; sourceTree = "<group>"; };
+		93AD6DA91C33CDFA00BC7067 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
+		93AD6DAB1C33CE0200BC7067 /* mic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mic@2x.png"; sourceTree = "<group>"; };
 		93CE19181BEB51E400DECA3E /* SetPrivacyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPrivacyPasswordViewController.h; sourceTree = "<group>"; };
 		93CE19191BEB51E400DECA3E /* SetPrivacyPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetPrivacyPasswordViewController.m; sourceTree = "<group>"; };
 		93CE19921BEC81FB00DECA3E /* CHKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHKeychain.h; sourceTree = "<group>"; };
@@ -506,6 +510,7 @@
 				18EEDF1A1AA5FD6000033447 /* AppDelegate.m */,
 				1874362D1AA6F90800297383 /* External */,
 				187436271AA6F7E600297383 /* Classes */,
+				93AD6D9E1C33B61300BC7067 /* Resource */,
 				18EEDF251AA5FD6000033447 /* Images.xcassets */,
 				18A9C7531AFA679300436555 /* Launch Screen.xib */,
 				18EEDF151AA5FD6000033447 /* Supporting Files */,
@@ -540,6 +545,15 @@
 				81A79D13067030A3AE28A30F /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		93AD6D9E1C33B61300BC7067 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				93AD6DA91C33CDFA00BC7067 /* search@2x.png */,
+				93AD6DAB1C33CE0200BC7067 /* mic@2x.png */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		93CE19981BEC9B2F00DECA3E /* View */ = {
@@ -668,6 +682,8 @@
 				93CE19AA1BEC9B9100DECA3E /* PrivacyPassword.xib in Resources */,
 				93CE19A51BEC9B4A00DECA3E /* SetPrivacyPasswordViewController.xib in Resources */,
 				18EEDF261AA5FD6000033447 /* Images.xcassets in Resources */,
+				93AD6DAA1C33CDFA00BC7067 /* search@2x.png in Resources */,
+				93AD6DAC1C33CE0200BC7067 /* mic@2x.png in Resources */,
 				18A9C7541AFA679300436555 /* Launch Screen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
