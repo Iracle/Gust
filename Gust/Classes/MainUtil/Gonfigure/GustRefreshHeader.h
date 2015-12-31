@@ -16,7 +16,7 @@ typedef void (^BeginRefreshingBlock)(void);
 - (void)dismissToPreviousViewController;
 
 @end
-@interface GustRefreshHeader : NSObject
+@interface GustRefreshHeader : UIView
 
 @property UIScrollView *scrollView;
 @property (nonatomic, copy) BeginRefreshingBlock beginRefreshingBlock;

@@ -92,11 +92,8 @@
     
     _isRefresh=NO;
     dispatch_async(dispatch_get_main_queue(), ^{
-        
-        [UIView animateWithDuration:0.3 animations:^{
             _scrollView.contentInset=UIEdgeInsetsMake(0, 0, 0, 0);
             _headerLabel.text=@"下拉可以返回上一页";
-        }];
     });
 }
 

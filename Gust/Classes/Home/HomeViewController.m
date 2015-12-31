@@ -48,7 +48,6 @@
 @property (nonatomic, assign) BOOL isInputingState;
 @property (nonatomic, assign) BOOL didSetupMainTouchViewConstraints;
 
-@property (nonatomic, strong) UIButton *cancelButton;
 @property (nonatomic, strong) UITableView *inputHistorisTableView;
 //save input record array
 @property (nonatomic, strong) NSMutableArray *inputRecordArray;
@@ -95,20 +94,6 @@
     return _searchBar;
 }
 
-- (UIButton *)cancelButton
-{
-    if (!_cancelButton) {
-        [_cancelButton setTitle:@"取消" forState:UIControlStateNormal];
-        _cancelButton.titleLabel.font = [UIFont systemFontOfSize:15];
-        _cancelButton.backgroundColor = [UIColor clearColor];
-        [_cancelButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        [_cancelButton addTarget:self action:@selector(cancelButtonTaped:) forControlEvents:UIControlEventTouchUpInside];
-        _cancelButton.alpha = HomePageCancelButtonAlpha;
-        _cancelButton.hidden = YES;
-    }
-    return _cancelButton;
-}
-
 - (PrivacyPasswordView *)privacyView {
     if (!_privacyView) {
         _privacyView = [[[NSBundle mainBundle] loadNibNamed:@"PrivacyPassword" owner:nil options:nil] lastObject];
@@ -117,6 +102,30 @@
     }
     return _privacyView;
     
+}
+
+- (UITableView *)inputHistorisTableView {
+    if (!_inputHistorisTableView) {
+        _inputHistorisTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 700, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 70)];
+        _inputHistorisTableView.delegate = self;
+        _inputHistorisTableView.dataSource = self;
+        _inputHistorisTableView.alpha = 0.0;
+        _inputHistorisTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _inputHistorisTableView.separatorColor = [UIColor clearColor];
+        
+        _refreshHeader = [[GustRefreshHeader alloc] init];
+        _refreshHeader.scrollView = _inputHistorisTableView;
+        [_refreshHeader addHeadView];
+        _refreshHeader.pullBackOffset = 0.8;
+        __weak typeof(self) weakSelf = self;
+        _refreshHeader.beginRefreshingBlock = ^(){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf hiddeInputHistorisTableView];
+                [weakSelf setupSearchBarAnimation:NO];
+            });
+        };
+    }
+    return _inputHistorisTableView;
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -182,7 +191,6 @@
                 } else {
                     
                     tempPageName = pageName;
-                    
                 }
             }
             
@@ -406,10 +414,7 @@
 - (void)loadWebWithUrlString:(NSString *)urlString
 {
     //down hidden hisTable
-    [UIView animateWithDuration:0.3 animations:^{
-        _inputHistorisTableView.alpha = 10.0;
-        _inputHistorisTableView.frame = CGRectMake(0, 700, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 70);
-    }];
+    [self hiddeInputHistorisTableView];
     
     GustWebViewController *gustWebVC = [[GustWebViewController alloc] init];
     gustWebVC.webURL = urlString;
@@ -427,7 +432,7 @@
     //clean searchBar state
     self.searchBar.text = nil;
     _isInputingState = NO;
-    [self setupSearchBarAnimation];
+    [self setupSearchBarAnimation:NO];
     
 }
 
@@ -436,12 +441,11 @@
     [self.searchBar hiddenSearchIcon];
     _isInputingState = YES;
     
-    if (!_inputHistorisTableView) {
-        
-        [self loadInputHistorisTableView];
-    }
+    [self.view insertSubview:self.inputHistorisTableView belowSubview:self.searchBar];
+    [self showInputHistorisTableView];
+    
     [self loadInputHistoryData];
-    [self setupSearchBarAnimation];
+    [self setupSearchBarAnimation:YES];
     return YES;
 }
 
@@ -449,33 +453,6 @@
     [self.searchBar showSearchIcon];
 
     return YES;
-}
-
-- (void)loadInputHistorisTableView {
-    
-    _inputHistorisTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 700, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 70)];
-    _inputHistorisTableView.delegate = self;
-    _inputHistorisTableView.dataSource = self;
-    _inputHistorisTableView.alpha = 0.0;
-    _inputHistorisTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _inputHistorisTableView.separatorColor = [UIColor clearColor];
-    [self.view insertSubview:_inputHistorisTableView belowSubview:self.searchBar];
-    
-    _refreshHeader = [[GustRefreshHeader alloc] init];
-    _refreshHeader.scrollView = _inputHistorisTableView;
-    [_refreshHeader addHeadView];
-    _refreshHeader.pullBackOffset = 0.8;
-    _refreshHeader.beginRefreshingBlock = ^(){
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-        });
-    };
-
-    [UIView animateWithDuration:0.3 animations:^{
-        self.view.backgroundColor = [UIColor whiteColor];
-        _inputHistorisTableView.alpha = 1.0;
-        _inputHistorisTableView.frame = CGRectMake(0, 85, SCREEN_WIDTH, SCREEN_HEIGHT - 85);
-    }];
 }
 
 - (void)searchBarTextChanged:(NSNotification *)notification {
@@ -488,16 +465,38 @@
     [self.inputHistorisTableView reloadData];
 }
 
-- (void)setupSearchBarAnimation
+#pragma mark -- Search Bar History Animation
+- (void)setupSearchBarAnimation:(BOOL)isShow
 {
-
     [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:0.6 initialSpringVelocity:0.0 options:0 animations:^{
-        self.searchBar.transform = CGAffineTransformMakeTranslation(0, -40);
+        if (isShow) {
+            self.searchBar.transform = CGAffineTransformMakeTranslation(0, -40);
+        } else {
+            self.searchBar.transform = CGAffineTransformIdentity;
+        }
     } completion:^(BOOL finished) {
     }];
     
 }
 
+- (void)hiddeInputHistorisTableView {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.view.backgroundColor = HOME_COLOR;
+        _inputHistorisTableView.alpha = 0.0;
+        _inputHistorisTableView.frame = CGRectMake(0, 700, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 70);
+    } completion:^(BOOL finished) {
+         [_refreshHeader endRefreshing];
+
+    }];
+}
+
+- (void)showInputHistorisTableView {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.view.backgroundColor = [UIColor whiteColor];
+        _inputHistorisTableView.alpha = 1.0;
+        _inputHistorisTableView.frame = CGRectMake(0, 85, SCREEN_WIDTH, SCREEN_HEIGHT - 85);
+    }];
+}
 - (void)loadInputHistoryData
 {
     NSArray *resultsArray = [CoreDataManager searchObjectWithEntityName:[InputRecord entityName] predicateString:nil];
