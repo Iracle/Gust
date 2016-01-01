@@ -23,11 +23,10 @@
 
 - (void)initMainTouchView
 {
-    self.backgroundColor = [UIColor colorWithWhite: 0.5 alpha: 0.4];
-    self.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.layer.borderWidth = 2;
+    self.backgroundColor = [UIColor whiteColor];
+    self.layer.borderColor = [UIColor colorWithRed:0.965 green:0.965 blue:0.965 alpha:1.0].CGColor;
+    self.layer.borderWidth = 0.5;
     self.layer.cornerRadius = MainTouchViewRadius / 2;
-    
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget: self
                                                                                 action: @selector(handleSingleTap:)];
     [singleTap setNumberOfTapsRequired:1];
@@ -38,16 +37,19 @@
     [doubleTap setNumberOfTapsRequired:2];
     [doubleTap setNumberOfTouchesRequired:1];
     [singleTap requireGestureRecognizerToFail:doubleTap];
-
     
-    UIGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget: self
-                                                                                           action: @selector(handleLongPressed:)];
+    
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget: self
+                                                                                action: @selector(handleLongPressed:)];
+    longPress.minimumPressDuration = 0.1;
+    
+    
     
     UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
     UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
     UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
     UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
-
+    
     [swipeLeft setNumberOfTouchesRequired:1];
     [swipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
     [swipeRight setNumberOfTouchesRequired:1];
@@ -64,9 +66,18 @@
     [self addGestureRecognizer:swipeDown];
     [self addGestureRecognizer:swipeLeft];
     [self addGestureRecognizer:swipeRight];
+}
 
-    
-    
+- (void)addAllGesture {
+    for (UIGestureRecognizer *recognizer in self.gestureRecognizers) {
+        recognizer.enabled = YES;
+    }
+ }
+
+- (void)removeAllGesture {
+    for (UIGestureRecognizer *recognizer in self.gestureRecognizers) {
+        recognizer.enabled = NO;
+    }
 }
 
 - (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer
@@ -131,5 +142,24 @@
     }
 }
 
-
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -65,6 +65,7 @@
 		18EEDF261AA5FD6000033447 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18EEDF251AA5FD6000033447 /* Images.xcassets */; };
 		5292A0994F307A26F7EFB673 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A79D13067030A3AE28A30F /* libPods.a */; };
 		93552ED61BEA00FE004B0380 /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93552ED51BEA00FE004B0380 /* CustomNavigationController.m */; };
+		93A2C5571C3513420022C11D /* GustCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A2C5561C3513420022C11D /* GustCollectionView.m */; };
 		93AD6DAA1C33CDFA00BC7067 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93AD6DA91C33CDFA00BC7067 /* search@2x.png */; };
 		93AD6DAC1C33CE0200BC7067 /* mic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93AD6DAB1C33CE0200BC7067 /* mic@2x.png */; };
 		93CE191B1BEB51E400DECA3E /* SetPrivacyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CE19191BEB51E400DECA3E /* SetPrivacyPasswordViewController.m */; };
@@ -75,6 +76,7 @@
 		93CE19A51BEC9B4A00DECA3E /* SetPrivacyPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93CE19A41BEC9B4A00DECA3E /* SetPrivacyPasswordViewController.xib */; };
 		93CE19A81BEC9B6D00DECA3E /* PrivacyPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CE19A71BEC9B6D00DECA3E /* PrivacyPasswordView.m */; };
 		93CE19AA1BEC9B9100DECA3E /* PrivacyPassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93CE19A91BEC9B9100DECA3E /* PrivacyPassword.xib */; };
+		93F50C7C1C36A6650028EF1F /* MainTouchBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F50C7B1C36A6650028EF1F /* MainTouchBaseView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -201,6 +203,8 @@
 		91A9A21B571F77B5BC370D44 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		93552ED41BEA00FE004B0380 /* CustomNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationController.h; sourceTree = "<group>"; };
 		93552ED51BEA00FE004B0380 /* CustomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationController.m; sourceTree = "<group>"; };
+		93A2C5551C3513420022C11D /* GustCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GustCollectionView.h; sourceTree = "<group>"; };
+		93A2C5561C3513420022C11D /* GustCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GustCollectionView.m; sourceTree = "<group>"; };
 		93AD6DA91C33CDFA00BC7067 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
 		93AD6DAB1C33CE0200BC7067 /* mic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mic@2x.png"; sourceTree = "<group>"; };
 		93CE19181BEB51E400DECA3E /* SetPrivacyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPrivacyPasswordViewController.h; sourceTree = "<group>"; };
@@ -217,6 +221,8 @@
 		93CE19A61BEC9B6D00DECA3E /* PrivacyPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivacyPasswordView.h; sourceTree = "<group>"; };
 		93CE19A71BEC9B6D00DECA3E /* PrivacyPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivacyPasswordView.m; sourceTree = "<group>"; };
 		93CE19A91BEC9B9100DECA3E /* PrivacyPassword.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrivacyPassword.xib; sourceTree = "<group>"; };
+		93F50C7A1C36A6650028EF1F /* MainTouchBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTouchBaseView.h; sourceTree = "<group>"; };
+		93F50C7B1C36A6650028EF1F /* MainTouchBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTouchBaseView.m; sourceTree = "<group>"; };
 		E099BCDEE40684383A57D605 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -246,6 +252,7 @@
 		182823071AD05D1900267C41 /* MainUtil */ = {
 			isa = PBXGroup;
 			children = (
+				93A2C5541C3513240022C11D /* Common */,
 				186D36701AD6D57200B03018 /* AlertView */,
 				182823081AD05D1900267C41 /* Data */,
 				182823111AD05D1900267C41 /* Gonfigure */,
@@ -291,6 +298,8 @@
 			children = (
 				182823161AD05D1900267C41 /* MainTouchView.h */,
 				182823171AD05D1900267C41 /* MainTouchView.m */,
+				93F50C7A1C36A6650028EF1F /* MainTouchBaseView.h */,
+				93F50C7B1C36A6650028EF1F /* MainTouchBaseView.m */,
 			);
 			path = MainTouchView;
 			sourceTree = "<group>";
@@ -545,6 +554,15 @@
 				81A79D13067030A3AE28A30F /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		93A2C5541C3513240022C11D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				93A2C5551C3513420022C11D /* GustCollectionView.h */,
+				93A2C5561C3513420022C11D /* GustCollectionView.m */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		93AD6D9E1C33B61300BC7067 /* Resource */ = {
@@ -802,6 +820,7 @@
 				1828231F1AD05D1900267C41 /* CoreDataManager.m in Sources */,
 				1898DDE51AC4361600C89513 /* QRCodeReader.m in Sources */,
 				18A445371AEA406C004649C0 /* UIImage+GIF.m in Sources */,
+				93A2C5571C3513420022C11D /* GustCollectionView.m in Sources */,
 				182823201AD05D1900267C41 /* Gust.xcdatamodeld in Sources */,
 				18A445331AEA406C004649C0 /* SDWebImageDownloaderOperation.m in Sources */,
 				1828231E1AD05D1900267C41 /* Bookmark.m in Sources */,
@@ -833,6 +852,7 @@
 				93CE19A81BEC9B6D00DECA3E /* PrivacyPasswordView.m in Sources */,
 				18A445351AEA406C004649C0 /* SDWebImagePrefetcher.m in Sources */,
 				18A87A421AA83B0C00724A74 /* GustWebViewController.m in Sources */,
+				93F50C7C1C36A6650028EF1F /* MainTouchBaseView.m in Sources */,
 				18A19C6C1AE3EDDA002345AF /* TopSitesManageViewController.m in Sources */,
 				18A4452D1AEA406C004649C0 /* MKAnnotationView+WebCache.m in Sources */,
 				182823211AD05D1900267C41 /* History.m in Sources */,

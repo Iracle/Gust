@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @class MainTouchView;
+
 @protocol MainTouchViewDelegate <NSObject>
 @optional
 
 - (void)SingleTapMainTouchView:(MainTouchView *)touchView withGesture:(UIGestureRecognizer *)gestureRecognizer;
+
 - (void)DoubleTapMainTouchView:(MainTouchView *)touchView withGesture:(UIGestureRecognizer *)gestureRecognizer;
 
 - (void)LongPressMainTouchView:(MainTouchView *)touchView withGesture:(UIGestureRecognizer *)gestureRecognizer;
@@ -31,4 +34,25 @@
 
 @property (nonatomic,assign) id<MainTouchViewDelegate> delegate;
 
+
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

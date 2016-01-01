@@ -8,7 +8,7 @@
 
 #import "HomeViewController.h"
 #import "GustConfigure.h"
-#import "MainTouchView.h"
+#import "MainTouchBaseView.h"
 #import "VLDContextSheet.h"
 #import "VLDContextSheetItem.h"
 #import "MainSearchBar.h"
@@ -32,16 +32,17 @@
 #import "PrivacyPasswordView.h"
 
 #import "GustRefreshHeader.h"
+#import "GustCollectionView.h"
 
 
 @interface HomeViewController () <MainTouchViewDelegate, VLDContextSheetDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate,UIViewControllerPreviewingDelegate, PrivacyPasswordViewDelegate>
 
 @property (nonatomic, assign) BOOL didSetupConstraints;
-@property (nonatomic, strong) MainTouchView *touchView;
+@property (nonatomic, strong) MainTouchBaseView *touchView;
 @property (nonatomic, strong) MainSearchBar *searchBar;
 @property (strong, nonatomic) VLDContextSheet *contextSheet;
 @property (nonatomic, strong) ZFModalTransitionAnimator *animator;
-@property (strong, nonatomic) UICollectionView *homeCollectionView;
+@property (strong, nonatomic) GustCollectionView *homeCollectionView;
 @property (nonatomic, strong) NSMutableArray *savedArray;
 @property (nonatomic, strong) NSMutableArray *topSitesSortArray;
 
@@ -63,6 +64,7 @@
 //pull back
 @property (nonatomic, strong) GustRefreshHeader *refreshHeader;
 
+
 @end
 
 @implementation HomeViewController
@@ -71,14 +73,12 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-#pragma -- getter
-- (MainTouchView *)touchView
+#pragma mark -- getter
+- (MainTouchBaseView *)touchView
 {
     if (!_touchView) {
-        _touchView = [[MainTouchView alloc] init];
-        _touchView.bounds = CGRectMake(0, 0, MainTouchViewRadius, MainTouchViewRadius);
-        _touchView.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMaxY(self.view.bounds) - MainTouchViewRadius);
-        _touchView.delegate = self;
+        _touchView = [[MainTouchBaseView alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - MainTouchViewRadius / 2, CGRectGetMaxY(self.view.bounds) - MainTouchViewRadius * 1.5, MainTouchViewRadius, MainTouchViewRadius)];
+        _touchView.mainTouchView.delegate = self;
     }
     return _touchView;
 }
@@ -122,10 +122,30 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakSelf hiddeInputHistorisTableView];
                 [weakSelf setupSearchBarAnimation:NO];
+                weakSelf.searchBar.text = nil;
             });
         };
     }
     return _inputHistorisTableView;
+}
+
+- (GustCollectionView *)homeCollectionView {
+    if (!_homeCollectionView) {
+        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+        layout.itemSize = CGSizeMake(CollectionViewCellSize,CollectionViewCellSize);
+        layout.minimumInteritemSpacing = 10;
+        layout.minimumLineSpacing = 15;
+        layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
+        
+        _homeCollectionView = [[GustCollectionView alloc] initWithFrame:CGRectMake(0, 180, self.view.bounds.size.width, self.view.bounds.size.height - 180) collectionViewLayout:layout];
+        _homeCollectionView .backgroundColor = [UIColor clearColor];
+        [_homeCollectionView  registerClass:[HomeCollectionViewCell class] forCellWithReuseIdentifier:@"HOMECELL"];
+        _homeCollectionView .delegate = self;
+        _homeCollectionView.dataSource = self;
+        _homeCollectionView.contentInset = UIEdgeInsetsMake(-20, 0, 0, 0);
+    }
+    return _homeCollectionView;
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -137,39 +157,37 @@
     [self performSelector:@selector(checkoutNetWorkState) withObject:self afterDelay:2];
 }
 
+- (void)addContextSheet:(UIGestureRecognizer *)sender {
+     NSLog(@"%@",sender);
+    [self.contextSheet startWithGestureRecognizer: sender
+                                               inView: self.view];
+    self.touchView.hidden = YES;
+    
+}
+- (void)removeContextSheet {
+    self.touchView.hidden = NO;
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = HOME_COLOR;
     [self getCurrentSearchEnginSave];
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    layout.itemSize = CGSizeMake(CollectionViewCellSize,CollectionViewCellSize);
-    layout.minimumInteritemSpacing = 10;
-    layout.minimumLineSpacing = 15;
-    layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
 
-    self.homeCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 180, self.view.bounds.size.width, self.view.bounds.size.height - 180) collectionViewLayout:layout];
-    self.homeCollectionView .backgroundColor = [UIColor clearColor];
-    [self.homeCollectionView  registerClass:[HomeCollectionViewCell class] forCellWithReuseIdentifier:@"HOMECELL"];
-    self.homeCollectionView .delegate = self;
-    _homeCollectionView.dataSource = self;
-    _homeCollectionView.contentInset = UIEdgeInsetsMake(-20, 0, 0, 0);
     [self.view addSubview:self.homeCollectionView];
-    
     [self.view addSubview:self.searchBar];
+    [self.view addSubview:self.touchView];
+    
     self.contextSheet = [[VLDContextSheet alloc] initWithItem:@"书签/历史" item:@"隐私模式" item:@"设置"];
     self.contextSheet.delegate = self;
-    
-    [self.view addSubview:self.touchView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTopSitesDate:) name:NotificationUpdateTopSites object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchBarTextChanged:) name:@"UITextFieldTextDidChangeNotification" object:_searchBar];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updataMainTouchViewLocation:) name:NotificationUpdateMainTouchViewLocation object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chooseDefautSeachEngin:) name:NotificationChangeDefautSearchEngin object:nil];
     
-    [self.view setNeedsUpdateConstraints];
     [self setupTopSitsData];
-    
+
 }
 
 - (void)setupTopSitsData
@@ -345,7 +363,7 @@
 - (void)LongPressMainTouchView:(MainTouchView *)touchView withGesture:(UIGestureRecognizer *)gestureRecognizer
 {
     if(gestureRecognizer.state == UIGestureRecognizerStateBegan) {
-        
+         NSLog(@"%@",gestureRecognizer);
         [self.contextSheet startWithGestureRecognizer: gestureRecognizer
                                                inView: self.view];
         self.touchView.hidden = YES;
@@ -482,7 +500,7 @@
 - (void)hiddeInputHistorisTableView {
     [UIView animateWithDuration:0.3 animations:^{
         self.view.backgroundColor = HOME_COLOR;
-        _inputHistorisTableView.alpha = 0.0;
+        _inputHistorisTableView.alpha = 0.3;
         _inputHistorisTableView.frame = CGRectMake(0, 700, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 70);
     } completion:^(BOOL finished) {
          [_refreshHeader endRefreshing];

@@ -30,7 +30,7 @@
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 
 //custom define
-static const CGFloat MainTouchViewRadius = 50.0;
+static const CGFloat MainTouchViewRadius = 57.5;
 static const CGFloat SearchBarHeight = 45;
 
 #define CollectionViewCellSize (self.view.bounds.size.width - 60) / 3
