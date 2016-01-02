@@ -135,7 +135,7 @@
         HorizontalCollectionViewLayout *layout = [[HorizontalCollectionViewLayout alloc] init];
         layout.itemSize = CGSizeMake(CollectionViewCellSize_WIDTH,CollectionViewCellSize_HIGHT);
         
-        _homeCollectionView = [[GustCollectionView alloc] initWithFrame:CGRectMake(0, 170, self.view.bounds.size.width, self.view.bounds.size.height - 250) collectionViewLayout:layout];
+        _homeCollectionView = [[GustCollectionView alloc] initWithFrame:CGRectMake(0, 170, self.view.bounds.size.width, CollectionViewCellSize_HIGHT * 3 - 1) collectionViewLayout:layout];
         _homeCollectionView .backgroundColor = [UIColor clearColor];
         _homeCollectionView.pagingEnabled = YES;
         _homeCollectionView.showsHorizontalScrollIndicator = NO;
@@ -689,7 +689,8 @@
         GustWebViewController *gustwebVC = [[GustWebViewController alloc] init];
         gustwebVC.touchView.hidden = YES;
         gustwebVC.webURL = homeCell.pageUrlString;
-        previewingContext.sourceRect = [self.view convertRect:homeCell.frame fromView:self.homeCollectionView];
+        CGRect rect = CGRectMake(homeCell.frame.origin.x + 10, homeCell.frame.origin.y + 10, CollectionContentView_WIDTH, CollectionContentView_WIDTH);
+        previewingContext.sourceRect = [self.view convertRect:rect fromView:self.homeCollectionView];
         CustomNavigationController *nav = [[CustomNavigationController alloc] initWithRootViewController:gustwebVC];
         self.threeDTouchNav = nav;
         self.urlString = homeCell.pageUrlString;

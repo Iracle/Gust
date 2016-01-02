@@ -34,8 +34,8 @@ static const CGFloat MainTouchViewRadius = 57.5;
 static const CGFloat SearchBarHeight = 45;
 
 #define CollectionViewCellSize_WIDTH SCREEN_WIDTH / 3
-#define CollectionViewCellSize_HIGHT SCREEN_WIDTH / 3 + 15
-#define CollectionContentView_WIDTH (SCREEN_WIDTH - 60) / 3
+#define CollectionViewCellSize_HIGHT SCREEN_WIDTH / 3
+#define CollectionContentView_WIDTH (SCREEN_WIDTH - 70) / 3
 #define EntityNameBookmark @"Bookmark"
 #define EntityNameHistory @"History"
 
@@ -84,7 +84,7 @@ const static float HomePageCancelButtonAlpha = 0.9999999;
 //color
 #define HOME_COLOR [UIColor colorWithRed:251/255.0 green:252/255.0 blue:253/255.0 alpha:1.0]
 #define HOME_COLLECTIONCELL_COLOR [UIColor colorWithRed:109/255.0 green:109/255.0 blue:109/255.0 alpha:1.0]
-#define HOME_COLLECTIONCELL_SHADOW_COLOR [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1.0]
+#define HOME_COLLECTIONCELL_SHADOW_COLOR [UIColor colorWithRed:188.0/255.0 green:188.0/255.0 blue:188.0/255.0 alpha:0.2]
 
 
 #define SEARCH_BAR_SHADOW_COLOR [UIColor colorWithRed:188.0/255.0 green:188.0/255.0 blue:188.0/255.0 alpha:0.3]

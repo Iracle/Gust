@@ -24,7 +24,7 @@
         _cellContentView.backgroundColor = [UIColor whiteColor];
         _cellContentView.layer.shadowColor = HOME_COLLECTIONCELL_SHADOW_COLOR.CGColor;
         _cellContentView.layer.shadowOffset = CGSizeMake(0, 1);
-        _cellContentView.layer.shadowOpacity = 0.3;
+        _cellContentView.layer.shadowOpacity = 0.8;
         _cellContentView.layer.cornerRadius = 3;
         [self.contentView addSubview:_cellContentView];
         
