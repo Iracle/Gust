@@ -74,17 +74,17 @@ static CGRect VLDOrientedScreenBounds() {
         _rangeAngle = M_PI / 1.6;
         
         VLDContextSheetItem *item1 = [[VLDContextSheetItem alloc] initWithTitle: itemOne
-                                                                          image: [UIImage imageNamed: @"gift"]
-                                                               highlightedImage: [UIImage imageNamed: @"gift_highlighted"]];
+                                                                          image: [UIImage imageNamed: @"bookhistory"]
+                                                               highlightedImage: [UIImage imageNamed: @"bookhistory_h"]];
         
         
         VLDContextSheetItem *item2 = [[VLDContextSheetItem alloc] initWithTitle: itemTwo
-                                                                          image: [UIImage imageNamed: @"add"]
-                                                               highlightedImage: [UIImage imageNamed: @"add_highlighted"]];
+                                                                          image: [UIImage imageNamed: @"securityMode"]
+                                                               highlightedImage: [UIImage imageNamed: @"securityMode_h"]];
         
         VLDContextSheetItem *item3 = [[VLDContextSheetItem alloc] initWithTitle: itemThree
-                                                                          image: [UIImage imageNamed: @"share"]
-                                                               highlightedImage: [UIImage imageNamed: @"share_highlighted"]];
+                                                                          image: [UIImage imageNamed: @"mainTouchSetting"]
+                                                               highlightedImage: [UIImage imageNamed: @"mainTouchSetting_h"]];
         
         
         _items = @[ item1, item2, item3 ];

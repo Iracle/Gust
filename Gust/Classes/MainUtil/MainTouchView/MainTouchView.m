@@ -23,9 +23,10 @@
 
 - (void)initMainTouchView
 {
-    self.backgroundColor = [UIColor whiteColor];
-    self.layer.borderColor = [UIColor colorWithRed:0.965 green:0.965 blue:0.965 alpha:1.0].CGColor;
-    self.layer.borderWidth = 0.5;
+//    self.layer.borderColor = [UIColor colorWithRed:0.0179 green:0.0179 blue:0.0179 alpha:1.0].CGColor;
+//    self.layer.borderWidth = 1;
+    
+    self.layer.contents = (__bridge id _Nullable)([UIImage imageNamed:@"mainTouchHome"].CGImage);
     self.layer.cornerRadius = MainTouchViewRadius / 2;
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget: self
                                                                                 action: @selector(handleSingleTap:)];

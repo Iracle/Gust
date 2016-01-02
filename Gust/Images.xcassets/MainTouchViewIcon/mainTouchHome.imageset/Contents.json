@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "mainTouchHome.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "gift_button@2x.png"
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",

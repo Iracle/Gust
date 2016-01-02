@@ -16,20 +16,25 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
-        self.layer.shadowColor = HOME_COLLECTIONCELL_SHADOW_COLOR.CGColor;
-        self.layer.shadowOffset = CGSizeMake(0, 1);
-        self.layer.shadowOpacity = 0.3;
-        self.layer.cornerRadius = 3;
+        self.backgroundColor = [UIColor clearColor];
+
+        _cellContentView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, CollectionContentView_WIDTH, CollectionContentView_WIDTH)];
+//        _cellContentView.bounds = CGRectMake(0, 0, CollectionContentView_WIDTH, CollectionContentView_WIDTH);
+//        _cellContentView.center = CGPointMake(frame.origin.x, frame.origin.y);
+        _cellContentView.backgroundColor = [UIColor whiteColor];
+        _cellContentView.layer.shadowColor = HOME_COLLECTIONCELL_SHADOW_COLOR.CGColor;
+        _cellContentView.layer.shadowOffset = CGSizeMake(0, 1);
+        _cellContentView.layer.shadowOpacity = 0.3;
+        _cellContentView.layer.cornerRadius = 3;
+        [self.contentView addSubview:_cellContentView];
         
-        _pageNameLabel = [[UILabel alloc] init];
-        _pageNameLabel.center = CGPointMake(self.contentView.center.x, self.contentView.center.y);
-        _pageNameLabel.bounds = CGRectMake(0, 0, CGRectGetWidth(self.contentView.bounds) * 0.8, CGRectGetHeight(self.contentView.bounds));
+        _pageNameLabel = [[UILabel alloc] initWithFrame:_cellContentView.bounds];
+        _pageNameLabel.backgroundColor = [UIColor clearColor];
         _pageNameLabel.textAlignment = NSTextAlignmentCenter;
         _pageNameLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
         _pageNameLabel.font = [UIFont systemFontOfSize:14];
         _pageNameLabel.textColor = HOME_COLLECTIONCELL_COLOR;
-        [self.contentView addSubview:_pageNameLabel];
+        [_cellContentView addSubview:_pageNameLabel];
         
     }
     return self;
@@ -37,11 +42,6 @@
 
 - (void)configCollectionViewCell:(NSDictionary *)dic
 {
-    [_pageImageView sd_setImageWithURL:[NSURL URLWithString:dic[ImageUrl]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        _pageImageView.layer.contentsGravity = kCAGravityCenter;
-        _pageImageView.layer.contentsScale = [UIScreen mainScreen].scale * 0.3;
-        _pageImageView.clipsToBounds = YES;
-    }];
     _pageUrlString = dic[PageUrl];
     _pageNameLabel.text = dic[PageName];
                     

@@ -33,6 +33,7 @@
 
 #import "GustRefreshHeader.h"
 #import "GustCollectionView.h"
+#import "HorizontalCollectionViewLayout.h"
 
 
 @interface HomeViewController () <MainTouchViewDelegate, VLDContextSheetDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate,UIViewControllerPreviewingDelegate, PrivacyPasswordViewDelegate>
@@ -131,19 +132,17 @@
 
 - (GustCollectionView *)homeCollectionView {
     if (!_homeCollectionView) {
-        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        layout.itemSize = CGSizeMake(CollectionViewCellSize,CollectionViewCellSize);
-        layout.minimumInteritemSpacing = 10;
-        layout.minimumLineSpacing = 15;
-        layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
+        HorizontalCollectionViewLayout *layout = [[HorizontalCollectionViewLayout alloc] init];
+        layout.itemSize = CGSizeMake(CollectionViewCellSize_WIDTH,CollectionViewCellSize_HIGHT);
         
-        _homeCollectionView = [[GustCollectionView alloc] initWithFrame:CGRectMake(0, 180, self.view.bounds.size.width, self.view.bounds.size.height - 180) collectionViewLayout:layout];
+        _homeCollectionView = [[GustCollectionView alloc] initWithFrame:CGRectMake(0, 170, self.view.bounds.size.width, self.view.bounds.size.height - 250) collectionViewLayout:layout];
         _homeCollectionView .backgroundColor = [UIColor clearColor];
+        _homeCollectionView.pagingEnabled = YES;
+        _homeCollectionView.showsHorizontalScrollIndicator = NO;
         [_homeCollectionView  registerClass:[HomeCollectionViewCell class] forCellWithReuseIdentifier:@"HOMECELL"];
         _homeCollectionView .delegate = self;
         _homeCollectionView.dataSource = self;
-        _homeCollectionView.contentInset = UIEdgeInsetsMake(-20, 0, 0, 0);
+        _homeCollectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     }
     return _homeCollectionView;
 }
@@ -171,6 +170,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = HOME_COLOR;
     [self getCurrentSearchEnginSave];
 
@@ -534,14 +534,8 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return _topSitesSortArray.count;
     
-    if (_topSitesSortArray.count < 7) {
-        
-        return _topSitesSortArray.count;
-    } else {
-        
-        return 6;
-    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {

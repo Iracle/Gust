@@ -38,9 +38,19 @@ static const NSInteger VLDTextPadding = 5;
 
 - (void) createSubviews {
     _imageView = [[UIImageView alloc] init];
+    _imageView.layer.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.2].CGColor;
+    _imageView.layer.shadowOffset = CGSizeMake(0, 4.5);
+    _imageView.layer.shadowOpacity = 0.8;
+    _imageView.layer.shadowRadius = 5;
+    
     [self addSubview: _imageView];
     
     _highlightedImageView = [[UIImageView alloc] init];
+    _highlightedImageView.layer.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.2].CGColor;
+    _highlightedImageView.layer.shadowOffset = CGSizeMake(0, 4.5);
+    _highlightedImageView.layer.shadowOpacity = 0.8;
+    _highlightedImageView.layer.shadowRadius = 5;
+
     _highlightedImageView.alpha = 0.0;
     [self addSubview: _highlightedImageView];
     

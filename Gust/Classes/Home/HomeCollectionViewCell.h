@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) UILabel *pageNameLabel;
 @property (nonatomic, strong) NSString *pageUrlString;
-@property (nonatomic, strong) UIImageView *pageImageView;
+@property (nonatomic, strong) UIView *cellContentView;
 
 - (void)configCollectionViewCell:(NSDictionary *)dic;
 
