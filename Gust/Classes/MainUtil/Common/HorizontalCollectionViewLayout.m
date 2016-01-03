@@ -101,7 +101,6 @@
     
     attr.frame = frame;
     
-     NSLog(@"%f",frame.origin.x);
     return attr;
 }
 

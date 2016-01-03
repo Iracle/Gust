@@ -36,6 +36,7 @@ static const CGFloat SearchBarHeight = 45;
 #define CollectionViewCellSize_WIDTH SCREEN_WIDTH / 3
 #define CollectionViewCellSize_HIGHT SCREEN_WIDTH / 3
 #define CollectionContentView_WIDTH (SCREEN_WIDTH - 70) / 3
+#define CollectionCell_OFFSET (CollectionViewCellSize_WIDTH - CollectionContentView_WIDTH) / 2
 #define EntityNameBookmark @"Bookmark"
 #define EntityNameHistory @"History"
 

@@ -88,7 +88,7 @@
 {
     if (!_searchBar) {
         _searchBar = [[MainSearchBar alloc] init];
-        _searchBar.bounds = CGRectMake(0, 0, SCREEN_WIDTH - 20, SearchBarHeight);
+        _searchBar.bounds = CGRectMake(0, 0, SCREEN_WIDTH - CollectionCell_OFFSET * 2, SearchBarHeight);
         _searchBar.center = CGPointMake(CGRectGetMidX(self.view.bounds), 102.5);
         _searchBar.delegate = self;
     }
@@ -107,7 +107,7 @@
 
 - (UITableView *)inputHistorisTableView {
     if (!_inputHistorisTableView) {
-        _inputHistorisTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 700, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 70)];
+        _inputHistorisTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 70)];
         _inputHistorisTableView.delegate = self;
         _inputHistorisTableView.dataSource = self;
         _inputHistorisTableView.alpha = 0.0;
@@ -157,7 +157,6 @@
 }
 
 - (void)addContextSheet:(UIGestureRecognizer *)sender {
-     NSLog(@"%@",sender);
     [self.contextSheet startWithGestureRecognizer: sender
                                                inView: self.view];
     self.touchView.hidden = YES;
@@ -363,7 +362,6 @@
 - (void)LongPressMainTouchView:(MainTouchView *)touchView withGesture:(UIGestureRecognizer *)gestureRecognizer
 {
     if(gestureRecognizer.state == UIGestureRecognizerStateBegan) {
-         NSLog(@"%@",gestureRecognizer);
         [self.contextSheet startWithGestureRecognizer: gestureRecognizer
                                                inView: self.view];
         self.touchView.hidden = YES;
@@ -501,7 +499,7 @@
     [UIView animateWithDuration:0.3 animations:^{
         self.view.backgroundColor = HOME_COLOR;
         _inputHistorisTableView.alpha = 0.3;
-        _inputHistorisTableView.frame = CGRectMake(0, 700, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 70);
+        _inputHistorisTableView.frame = CGRectMake(0, SCREEN_HEIGHT, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 70);
     } completion:^(BOOL finished) {
          [_refreshHeader endRefreshing];
 
@@ -689,7 +687,7 @@
         GustWebViewController *gustwebVC = [[GustWebViewController alloc] init];
         gustwebVC.touchView.hidden = YES;
         gustwebVC.webURL = homeCell.pageUrlString;
-        CGRect rect = CGRectMake(homeCell.frame.origin.x + 10, homeCell.frame.origin.y + 10, CollectionContentView_WIDTH, CollectionContentView_WIDTH);
+        CGRect rect = CGRectMake(homeCell.frame.origin.x + CollectionCell_OFFSET, homeCell.frame.origin.y + CollectionCell_OFFSET, CollectionContentView_WIDTH, CollectionContentView_WIDTH);
         previewingContext.sourceRect = [self.view convertRect:rect fromView:self.homeCollectionView];
         CustomNavigationController *nav = [[CustomNavigationController alloc] initWithRootViewController:gustwebVC];
         self.threeDTouchNav = nav;
