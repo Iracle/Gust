@@ -1,5 +1,6 @@
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios,'7.0'
 link_with 'Gust', 'GustTests'
-pod 'OTMWebView'
-pod 'AHKActionSheet'
+pod 'ZHAHKActionSheet', :git => 'https://github.com/Iracle/ZHAHKActionSheet.git'
+pod 'ZHOTMWebView', :git => 'https://github.com/Iracle/ZHOTMWebView.git'
+pod 'pop'

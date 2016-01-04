@@ -1,17 +1,34 @@
 PODS:
-  - AHKActionSheet (0.5)
-  - OTMWebView (0.0.4):
-    - OTMWebView/Core (= 0.0.4)
-    - OTMWebView/ProgressBar (= 0.0.4)
-  - OTMWebView/Core (0.0.4)
-  - OTMWebView/ProgressBar (0.0.4)
+  - pop (1.0.8)
+  - ZHAHKActionSheet (0.5.3)
+  - ZHOTMWebView (0.0.4):
+    - ZHOTMWebView/Core (= 0.0.4)
+    - ZHOTMWebView/ProgressBar (= 0.0.4)
+  - ZHOTMWebView/Core (0.0.4)
+  - ZHOTMWebView/ProgressBar (0.0.4)
 
 DEPENDENCIES:
-  - AHKActionSheet
-  - OTMWebView
+  - pop
+  - ZHAHKActionSheet (from `https://github.com/Iracle/ZHAHKActionSheet.git`)
+  - ZHOTMWebView (from `https://github.com/Iracle/ZHOTMWebView.git`)
+
+EXTERNAL SOURCES:
+  ZHAHKActionSheet:
+    :git: https://github.com/Iracle/ZHAHKActionSheet.git
+  ZHOTMWebView:
+    :git: https://github.com/Iracle/ZHOTMWebView.git
+
+CHECKOUT OPTIONS:
+  ZHAHKActionSheet:
+    :commit: 95ce97b1c123eedf1ca70a9829a9a78ada3a6db8
+    :git: https://github.com/Iracle/ZHAHKActionSheet.git
+  ZHOTMWebView:
+    :commit: 92d768a242ddf379d45383b74770cc9e0d57768f
+    :git: https://github.com/Iracle/ZHOTMWebView.git
 
 SPEC CHECKSUMS:
-  AHKActionSheet: 897341c618094e497c93f9d0c66fa69f71218063
-  OTMWebView: 5c8921441cfea5b6494c249f608cdd5e40f617b6
+  pop: bb773ae2c791ca2629de13b347e7a8b450fa6a57
+  ZHAHKActionSheet: 2d6b73a39624b2a488b6e609407876cbb1b39b92
+  ZHOTMWebView: be2e740889f387dccfd5554404a5034e9e01c06a
 
 COCOAPODS: 0.39.0

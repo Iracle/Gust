@@ -58,12 +58,12 @@ install_resource()
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "OTMWebView/OTMWebView/Core/Resources/OTMWebView+ContextMenu.js"
-  install_resource "OTMWebView/OTMWebView/Core/Resources/OTMWebView.js"
+  install_resource "ZHOTMWebView/OTMWebView/Core/Resources/OTMWebView+ContextMenu.js"
+  install_resource "ZHOTMWebView/OTMWebView/Core/Resources/OTMWebView.js"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "OTMWebView/OTMWebView/Core/Resources/OTMWebView+ContextMenu.js"
-  install_resource "OTMWebView/OTMWebView/Core/Resources/OTMWebView.js"
+  install_resource "ZHOTMWebView/OTMWebView/Core/Resources/OTMWebView+ContextMenu.js"
+  install_resource "ZHOTMWebView/OTMWebView/Core/Resources/OTMWebView.js"
 fi
 
 mkdir -p "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

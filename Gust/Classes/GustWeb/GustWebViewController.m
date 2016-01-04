@@ -7,8 +7,8 @@
 //
 
 #import "GustWebViewController.h"
-#import <OTMWebView/OTMWebView.h>
-#import <OTMWebView/OTMWebViewProgressBar.h>
+#import "OTMWebView.h"
+#import "OTMWebViewProgressBar.h"
 #import "GustConfigure.h"
 #import "MainSearchBar.h"
 #import "VLDContextSheet.h"

@@ -7,128 +7,262 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01255D4342271147A9DB3198AF6FD564 /* UIWindow+AHKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E04DCB76F83AB94C0CE1314B2450A207 /* UIWindow+AHKAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		075A12818D529694506F82BD9BFFF497 /* OTMWebViewURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 13695E20FC01EF9510A12D15ABDF75D2 /* OTMWebViewURLProtocol.m */; };
-		2181E956A6BE0DB16AD4E2EDBB5D8189 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91413329813FA6FE5A78842159E69621 /* Foundation.framework */; };
-		2D580116DA3EE3980C8F1D74F2EADBD2 /* OTMWebViewContextMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = B93D3F42B61D40DE24C78B0D903A6C7B /* OTMWebViewContextMenuItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3287F4E2CA5C2038EA5035CE55C2A1BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91413329813FA6FE5A78842159E69621 /* Foundation.framework */; };
-		3563240743BFFE215539CCE205D0086C /* OTMWebViewProgressTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 404EA3774D9B7CB4344DEDB79BDD14D8 /* OTMWebViewProgressTracker.m */; };
-		36B544DF7ABD724C18C3ECD5A1D6003C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91413329813FA6FE5A78842159E69621 /* Foundation.framework */; };
-		3C4B26FEB4C3E43A2D40CD585279DC59 /* OTMWebViewProgressBar.h in Headers */ = {isa = PBXBuildFile; fileRef = A9DA8FA27EFF8A8AB758EE9B75313171 /* OTMWebViewProgressBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4861990C025F4E059C9B31CF2EE69EBE /* OTMWebView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 40740E9A2D00F3B4BD97072A1FA30652 /* OTMWebView-dummy.m */; };
-		4FA56F54E2F1F307F4E5DF418C0759FD /* OTMWebViewProgressBarLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = E81635F984F161AC8B1BED96D90F4ECD /* OTMWebViewProgressBarLayer.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		69E4D0437A1329C0ECEDE856FB0CE1E3 /* AHKActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB5B412922DBACF76D58C75CC73659B /* AHKActionSheet.m */; };
-		76804C68DF31863E9905DC44BC634E38 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 272643F56613CA0D336AE3DBF19DC404 /* Pods-dummy.m */; };
-		7B994F860A2689DDC24B86BB2D6B15F1 /* UIWindow+AHKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF8348B44EA602BA4860FB5FCAE9BB1 /* UIWindow+AHKAdditions.m */; };
-		A848EC7C9E18BBAB40FB5F666104518C /* OTMWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EAA6D884E69F04CE0FE41F34EDAC28 /* OTMWebView.m */; };
-		ADF83FB9FD796C7EAADE9CB3CD3E326F /* OTMWebViewURLProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = E9E90DFA7997911C405E21BA9C211256 /* OTMWebViewURLProtocol.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		B369D634C8656A985FE03CC9EAE92AC6 /* OTMWebViewProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8A0F3008B1EA7BDB02645E192DCD3B /* OTMWebViewProgressBar.m */; };
-		BD124ECEAE6DB0ABF77ACDAFD75AB377 /* AHKActionSheet-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A8F76F0A9DF68AD8AA3D97BE579C2D5 /* AHKActionSheet-dummy.m */; };
-		C007CB2B9C61E12B279DE643E1E2036D /* OTMWebViewProgressTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 9484AA4D0F75F55812E8F1C9BF36C8CB /* OTMWebViewProgressTracker.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		C5AB454361B8B677E4D7EB02975BF0BC /* UIImage+AHKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AA37A4276258353951F95DE60E044B4B /* UIImage+AHKAdditions.m */; };
-		C70271FCCE1DD84410AAD6C7FBDCC08B /* OTMWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = DDC385E0FB2C4383EB3959BD93749826 /* OTMWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C83576821E9D0C720D1700E59781E1FC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9DE615671731BF3AEFB3CB1F984FA8F /* UIKit.framework */; };
-		D2D5F52B0B213AC99FF3631C0194C481 /* AHKActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B66316BF507B9008DC946D71F6C366 /* AHKActionSheetViewController.m */; };
-		DF7A82BFC2441F21BE348080008A8FFB /* AHKActionSheetViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F7630FE627F27B280D4C33B8F2472B1 /* AHKActionSheetViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E198F2D77F43012C32FD4787895D16BD /* AHKActionSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B8014E70A0B3269F26A5C2805364AD6 /* AHKActionSheet.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E5863AB04763A4D31E46798F2BFF8AFB /* OTMWebViewContextMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DB80FC7994953C84C69FB12EE2AEFFF9 /* OTMWebViewContextMenuItem.m */; };
-		E6483EF33E7186CBFC6DEA2272D4CFC8 /* UIImage+AHKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B4E167BD4830A2AECAAAAE84522EDD49 /* UIImage+AHKAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E7E252D8E0C7F0030C963A69D9B0F45E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E642B1A057ADA2ABEF90BE2417F349C1 /* QuartzCore.framework */; };
-		EEE2F36B04E6B4ECF5272BC81C4E048C /* OTMWebViewProgressBarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E54033F148FBF936D70180D6CB9CBC75 /* OTMWebViewProgressBarLayer.m */; };
+		00976D9CE707D30804271EFA53588787 /* POPAnimatorPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 02A98D74652DF377F49C7996376E18B1 /* POPAnimatorPrivate.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		047D031BAB25381FEC68AECB03E6FE25 /* POPAnimationTracer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 86367141AD68B5E3272F57F9769DD519 /* POPAnimationTracer.mm */; };
+		162851CD822E14C9C6681AD4E7BE6CF8 /* ZHAHKActionSheet-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D64118330A98F97FB5669EFA425B097C /* ZHAHKActionSheet-dummy.m */; };
+		168FBDA734E6C3750BB1D31A3F8AA252 /* POPAnimationPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B0C73747E84B3A5E8D57468E329F4BC /* POPAnimationPrivate.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		1C5E6FBBC38E9F425B4C6C1628FE2945 /* POPAnimationExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D924274FE901F193A8341F0F7F07526 /* POPAnimationExtras.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2055C31079D9D34EE74C294E988B2270 /* POPDecayAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 95C9DE4323EC0656AAE5C3C51822526D /* POPDecayAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		215E9117A5E63741DF18CFFE612ABE48 /* POPAnimationRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = 2826CCBF8AD5B4825E2E48271727445F /* POPAnimationRuntime.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		217CF45AFB9F78841F4481254B2A2944 /* POPGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = E80854A29AE1C288B2CA12F4CC298566 /* POPGeometry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		225CA7FA9FC7EF9185BA19544CFC16F9 /* POPCGUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 249D6F53F6F1C6833B2C9DD14FC9F611 /* POPCGUtils.mm */; };
+		23604B7596B647E5466D0DF55AD4D090 /* POPSpringAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E9C376372F465AD3D54F997674DB41A /* POPSpringAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		24DCB872F9FCB39DF53022162961F0C6 /* POPBasicAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 557A81D7618DC2088E197BCE63AC5D2E /* POPBasicAnimation.mm */; };
+		2639FC3118AD9799AF31456DCC8C1432 /* UIImage+AHKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = ABD30576E81C057FA45DEE8AEA6E204D /* UIImage+AHKAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2A0B754190E1FB40F29AE5B072EBE556 /* TransformationMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = A3E475C2BF83560B6311266855DF2F50 /* TransformationMatrix.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		2AFD8C688885CDC825BB1637FCC01AD2 /* POPCustomAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 6043CE8DC8E1FF9CCD1EFD4FE5760D78 /* POPCustomAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E939F264B2E6E52D5CD052E86C3C741 /* POPDecayAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = EA5E36176D1DB3D431CF3EA6E8C1AE1F /* POPDecayAnimation.mm */; };
+		34013A870FC365D1A10542FFA3F3E25F /* AHKActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD84C7163E9E93F91C322E3846EA312C /* AHKActionSheetViewController.m */; };
+		3804CE3F180342BA9DC28B18A9771B89 /* UnitBezier.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EF0DABD5FA7371AF1FD2AE14DEFBF30 /* UnitBezier.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		3DB2AE40945B498B0CEE27EEE6AEE70E /* POPSpringSolver.h in Headers */ = {isa = PBXBuildFile; fileRef = 73F76D29B9520857D491D9B1A83A8DDB /* POPSpringSolver.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		422DA61556198D205A50EE476CC4EFC5 /* AHKActionSheetViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 516CB85085904A4BE9803A37FA456876 /* AHKActionSheetViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45D7B9652F5AED4C3FB59CE77911210E /* POPSpringAnimationInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 319B8330C497D391CE84B9D10274A127 /* POPSpringAnimationInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		496EEBCC59F6CC5C9448BBF97EA79367 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9DE615671731BF3AEFB3CB1F984FA8F /* UIKit.framework */; };
+		4FDD76F783AE4771D47CE9B46C819BB0 /* POPAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0FA83571ACDA20F6B1A09B35188C291E /* POPAnimation.mm */; };
+		50FDD0A75D34BB97CECD0505F52E7485 /* ZHOTMWebView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C5DF2699A9CB3906465F967E21D7BE /* ZHOTMWebView-dummy.m */; };
+		560F853C9F9E94724DAA6F3BE7C2D04F /* POPDecayAnimationInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = A1CC50DA39DEE3D9F038C438A4BB4F67 /* POPDecayAnimationInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		5822860B3F96A670AA98619507C717E6 /* TransformationMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8911F859687E8B2988B6E9118C8EA159 /* TransformationMatrix.cpp */; };
+		6148C2EF55C71E831351B4377E5FB9DC /* OTMWebViewURLProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F12016E5488A7B5D5C493EF88782E53 /* OTMWebViewURLProtocol.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		61AEAF6D2CD048DA75CFA46E76F2507D /* FloatConversion.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F199727070264C64889999FCAB7B4E5 /* FloatConversion.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		62CE0CFE43A523C68B09BA7436B44846 /* POPMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 8336E6770DFCDE124420EB3E054F2C71 /* POPMath.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		66976D2792385AC1DFDD7EF27D02F667 /* OTMWebViewProgressBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 6795AAD441056707D208DFABC9C4EBEC /* OTMWebViewProgressBar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		686C3C03016905B8E44C9744823F2AF8 /* POPAnimationExtras.mm in Sources */ = {isa = PBXBuildFile; fileRef = 543A028D5D940A11C9487CB664DD4F20 /* POPAnimationExtras.mm */; };
+		713E5839FB7F895825230FE8F4B9C7CE /* POPAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 282E2F2FDA796A2FBEF0072C8243569A /* POPAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		73F06EE03E67000B399B6B69080C3FA4 /* POPAnimationTracer.h in Headers */ = {isa = PBXBuildFile; fileRef = D6ABA186E595B856F0882160843C230D /* POPAnimationTracer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		74D7D7941A52E246626B639E0FCB8344 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91413329813FA6FE5A78842159E69621 /* Foundation.framework */; };
+		781ABFE8A04B0D9CD98BE1004470231B /* POPPropertyAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B82CB7353F64503D680F868E7824C /* POPPropertyAnimation.mm */; };
+		7FE89B91ADAD6B1B7BA124290367D525 /* OTMWebViewContextMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 82BD7F3243C39B9AA52400C06E538B46 /* OTMWebViewContextMenuItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		824794DE045CB0EA1D77E69135AB8258 /* POPAnimator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 088F61BDAA2A2BC67828D77C90170835 /* POPAnimator.mm */; };
+		8595BB36BC055F8576E7F0DA45605B4E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91413329813FA6FE5A78842159E69621 /* Foundation.framework */; };
+		8E0B100E5B54E5AD494E2F9500D0A06C /* AHKActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8319E99ECF5970B15CD08D6C460DF3 /* AHKActionSheet.m */; };
+		90426B81D62AF4960F8F53BDA3F0EA48 /* POPLayerExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 2482B92621A5F8478D84C0F659B37925 /* POPLayerExtras.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		93AEBDD435C89327908161C73A4DF54D /* POPVector.h in Headers */ = {isa = PBXBuildFile; fileRef = A2FE24606F6E1EBD965C805C5D034646 /* POPVector.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		963B20DEE07F1E7A7A422B3E29B5D7E4 /* POPSpringAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2DA2E1DF4A7811B45DF80B20D04D38CA /* POPSpringAnimation.mm */; };
+		975842F53F044083C76BE1940E1C2356 /* POPVector.mm in Sources */ = {isa = PBXBuildFile; fileRef = A5762CF62DF6D5BD8A8A4200114B571D /* POPVector.mm */; };
+		99779C220E5D28A2E63B2785AA044311 /* UIImage+AHKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1F58BFE887A046E02AD8D3F21B1F30 /* UIImage+AHKAdditions.m */; };
+		997A65DD222C46EF19D9FE3330B35AF1 /* OTMWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = FEECF0B2EAF5B5DA1BD4350C82798897 /* OTMWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9F6FC4D1429E79835D51B08D002F7B44 /* POPAnimationEvent.mm in Sources */ = {isa = PBXBuildFile; fileRef = 24A4A76FE8A49480C27594039D2339C3 /* POPAnimationEvent.mm */; };
+		9F947E05A789D1E30E5969D432BBE523 /* UIWindow+AHKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = EDAD797203B6B54F028EBC3F2434D654 /* UIWindow+AHKAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2358B5810B7D5080559D267183893EC /* OTMWebViewProgressTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1229F89AADF8BDBCE04D481A0BABB9CE /* OTMWebViewProgressTracker.m */; };
+		A6AC2ECD9FC0DAB476F9AD774C962C67 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91413329813FA6FE5A78842159E69621 /* Foundation.framework */; };
+		AEA3F4C82BCD679D37D14A44066A0F12 /* POPDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = BB1CA732EE28F89F3788A9832E071CBD /* POPDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B0634C75F9606E24FFA59C2F3F789219 /* POPBasicAnimationInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 561046D67BCCD84D35CB3B225B93327A /* POPBasicAnimationInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		B0707C97502A8B0C5DCB7E9002B6AED4 /* POPCustomAnimation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 241313B0F82C1436112D6844CF11FE9E /* POPCustomAnimation.mm */; };
+		B1E0C93F5AE0ED0EFB5888434F34810C /* OTMWebViewProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F915BC9C34F2D54547948EA21427D7EB /* OTMWebViewProgressBar.m */; };
+		B2953E469FB1F36DDA75BA849F98E261 /* POPMath.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9A4DD9B4B5747DEDC0FA0C02F3302243 /* POPMath.mm */; };
+		BC6029D47D805B6D191FF88FC31974F7 /* pop-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFAA470123AA3B7D81E1F5A0F612939 /* pop-dummy.m */; };
+		BD21234F46FB27232C8F7DC1101E8735 /* POPAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = 11A177AB1CFC2B2A6FCDC382D4D6A4E0 /* POPAnimator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BD37F4E8915107F37869FD3655EF917F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E642B1A057ADA2ABEF90BE2417F349C1 /* QuartzCore.framework */; };
+		C0D1F24F01E2DF212DF9A38C49B9C28A /* POPBasicAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3276C31CAB08502C6F79BBA71A16F3DA /* POPBasicAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3D91D14C0F2C0F63094C9011D339909 /* POPAnimationTracerInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 829D9E061E1BA933335B677C6040AD2F /* POPAnimationTracerInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C8C0EA56CB142770F8CB56ED6B2DDDEF /* POPAnimatableProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = ACEAA54DD726207FBFFE9D145B7805EB /* POPAnimatableProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA9CF80B5E9BDAF23CE6BBF646EB9F23 /* POPPropertyAnimationInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D53649124224DEC57814C5DFD5BB18C /* POPPropertyAnimationInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		CC3664B389AC7DD70A026AE5A1AFC5FF /* OTMWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15794655CA80C637AF53A086E450E1FD /* OTMWebView.m */; };
+		CE5C086EDD5B97FEB6756F034DC7BF91 /* POPAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A9BA109A962461405EB2731FDB1238B /* POPAction.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		CE630B17DD02AE92A338E7C0AB4D8552 /* POPLayerExtras.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D661D9FC9D9F9934BDC7197EFCFF9B7 /* POPLayerExtras.mm */; };
+		CEADC74AE4E32DBC60A6FD4ED47BF163 /* UIWindow+AHKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FD79B28F5BA171B1C17D4DB6F364837E /* UIWindow+AHKAdditions.m */; };
+		D1A0765B11856B051F31D4982B5A6926 /* POPAnimationEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F9310AF99B631378DA30718FDADD798 /* POPAnimationEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D1A992B4BB530BFA4ED7677A0A471F20 /* AHKActionSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C51B596775175951405164D77620F9 /* AHKActionSheet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D2D5651E194CA07C4F5A97C27B6115A1 /* POPAnimationInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 881B00726BB6C5E75910FC1BB2F68B36 /* POPAnimationInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		D376C0295F63407B866D5B14035A5000 /* OTMWebViewProgressBarLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 73930BA8E3D6ED73AF59BB5C1E188504 /* OTMWebViewProgressBarLayer.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		DC2A9E90BC1D1F0EBD0A7226CCB7AB9A /* POPGeometry.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5A30035A90D1E45120CD8E71D1FD02E0 /* POPGeometry.mm */; };
+		DE0E1446DE9664CBB2E5C026E3962119 /* POPAnimationRuntime.mm in Sources */ = {isa = PBXBuildFile; fileRef = CAA53267D841AFE2D76D3B402CDAD363 /* POPAnimationRuntime.mm */; };
+		E2BA9152AA9CCEBCD55969A7EF8407E5 /* OTMWebViewContextMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EDFDC087996594C3524E6ADC42410E /* OTMWebViewContextMenuItem.m */; };
+		E2E90BF29D8F2F9540FF6F11DEDEBEE3 /* POP.h in Headers */ = {isa = PBXBuildFile; fileRef = A8DBB963C80DDA3A39A8105D30A54580 /* POP.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E4D624891E926C75A8BBA5204F01F7CC /* OTMWebViewURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7AD398D1C9DF309F04F0B11D039867 /* OTMWebViewURLProtocol.m */; };
+		E67357DEB94E8E36867AC1EE77BBCA7F /* POPCGUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = F583CAE7434C218B8AFFF347383AAF5F /* POPCGUtils.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		E895664CB54CAF4ED4B6ED36A9DCA673 /* POPAnimatableProperty.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0ABE41DD9FD26CA4E3D1A0AD845487F0 /* POPAnimatableProperty.mm */; };
+		E9C798846090231C0DDF94D4AF1DF2C6 /* POPAnimationEventInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = BC8C5F794D1D6A3CA42597BFFD5E2B1F /* POPAnimationEventInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		EC2EE72D51D1ABE3632547AE31F4191D /* OTMWebViewProgressBarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3C20E5350650E146C16242CBB8E443 /* OTMWebViewProgressBarLayer.m */; };
+		EFF638E0CAB8D0AB89D78A46E220E55F /* OTMWebViewProgressTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 07C11D6BFD863068677CD43F03574E2F /* OTMWebViewProgressTracker.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		F9B448A53153C8E0B3687264580ACA58 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 272643F56613CA0D336AE3DBF19DC404 /* Pods-dummy.m */; };
+		FE8CFD9DA867EE36DBC19086A5604DB5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91413329813FA6FE5A78842159E69621 /* Foundation.framework */; };
+		FEC6E64934DA7AAB61DF342F44D159C1 /* POPPropertyAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = CEA0F8556D844F37FAE900A9D3648B34 /* POPPropertyAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		258A676F485E41545186C65CBCFE2476 /* PBXContainerItemProxy */ = {
+		96A5C1A4B8E64811973EA0082154E9ED /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 388CF4FF9767275661FC3BCBB44A3458;
-			remoteInfo = AHKActionSheet;
+			remoteGlobalIDString = EFF9AAC98C39CCC42B1E7839396A8832;
+			remoteInfo = pop;
 		};
-		AD4412BBB218A68F7F32F35B36EEBD11 /* PBXContainerItemProxy */ = {
+		C67B03337DD9C3C59D4EB43077C7D2C9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 148C4124300AB1E86458988CA56BB4C2;
-			remoteInfo = OTMWebView;
+			remoteGlobalIDString = 7570F35C5E31833E0478E2CBA2CD58EF;
+			remoteInfo = ZHOTMWebView;
+		};
+		FF12F4B4E8DE818CFEB84BD18FE08417 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C256D47FE6583DE22F4B8724CF967EEB;
+			remoteInfo = ZHAHKActionSheet;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0BB5B412922DBACF76D58C75CC73659B /* AHKActionSheet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AHKActionSheet.m; path = Classes/AHKActionSheet.m; sourceTree = "<group>"; };
-		0E537BFEB33F09145EE4F36195AB3629 /* AHKActionSheet.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AHKActionSheet.xcconfig; sourceTree = "<group>"; };
-		0F7630FE627F27B280D4C33B8F2472B1 /* AHKActionSheetViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AHKActionSheetViewController.h; path = Classes/AHKActionSheetViewController.h; sourceTree = "<group>"; };
+		02A98D74652DF377F49C7996376E18B1 /* POPAnimatorPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimatorPrivate.h; path = pop/POPAnimatorPrivate.h; sourceTree = "<group>"; };
+		07C11D6BFD863068677CD43F03574E2F /* OTMWebViewProgressTracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OTMWebViewProgressTracker.h; path = OTMWebView/Core/OTMWebViewProgressTracker.h; sourceTree = "<group>"; };
+		088F61BDAA2A2BC67828D77C90170835 /* POPAnimator.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimator.mm; path = pop/POPAnimator.mm; sourceTree = "<group>"; };
+		0ABE41DD9FD26CA4E3D1A0AD845487F0 /* POPAnimatableProperty.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimatableProperty.mm; path = pop/POPAnimatableProperty.mm; sourceTree = "<group>"; };
+		0D53649124224DEC57814C5DFD5BB18C /* POPPropertyAnimationInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPPropertyAnimationInternal.h; path = pop/POPPropertyAnimationInternal.h; sourceTree = "<group>"; };
+		0F66034C5AF7DD7949D88099E0802A69 /* ZHAHKActionSheet.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZHAHKActionSheet.xcconfig; sourceTree = "<group>"; };
+		0FA83571ACDA20F6B1A09B35188C291E /* POPAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimation.mm; path = pop/POPAnimation.mm; sourceTree = "<group>"; };
 		10834806BD7B412BC24F347361FA2C8E /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
-		13695E20FC01EF9510A12D15ABDF75D2 /* OTMWebViewURLProtocol.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OTMWebViewURLProtocol.m; path = OTMWebView/Core/OTMWebViewURLProtocol.m; sourceTree = "<group>"; };
+		11A177AB1CFC2B2A6FCDC382D4D6A4E0 /* POPAnimator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimator.h; path = pop/POPAnimator.h; sourceTree = "<group>"; };
+		1229F89AADF8BDBCE04D481A0BABB9CE /* OTMWebViewProgressTracker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OTMWebViewProgressTracker.m; path = OTMWebView/Core/OTMWebViewProgressTracker.m; sourceTree = "<group>"; };
+		15794655CA80C637AF53A086E450E1FD /* OTMWebView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OTMWebView.m; path = OTMWebView/Core/OTMWebView.m; sourceTree = "<group>"; };
+		1D661D9FC9D9F9934BDC7197EFCFF9B7 /* POPLayerExtras.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPLayerExtras.mm; path = pop/POPLayerExtras.mm; sourceTree = "<group>"; };
+		1E9C376372F465AD3D54F997674DB41A /* POPSpringAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPSpringAnimation.h; path = pop/POPSpringAnimation.h; sourceTree = "<group>"; };
+		241313B0F82C1436112D6844CF11FE9E /* POPCustomAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPCustomAnimation.mm; path = pop/POPCustomAnimation.mm; sourceTree = "<group>"; };
+		2482B92621A5F8478D84C0F659B37925 /* POPLayerExtras.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPLayerExtras.h; path = pop/POPLayerExtras.h; sourceTree = "<group>"; };
+		249D6F53F6F1C6833B2C9DD14FC9F611 /* POPCGUtils.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPCGUtils.mm; path = pop/POPCGUtils.mm; sourceTree = "<group>"; };
+		24A4A76FE8A49480C27594039D2339C3 /* POPAnimationEvent.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimationEvent.mm; path = pop/POPAnimationEvent.mm; sourceTree = "<group>"; };
 		272643F56613CA0D336AE3DBF19DC404 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		2A8F76F0A9DF68AD8AA3D97BE579C2D5 /* AHKActionSheet-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AHKActionSheet-dummy.m"; sourceTree = "<group>"; };
-		2B8014E70A0B3269F26A5C2805364AD6 /* AHKActionSheet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AHKActionSheet.h; path = Classes/AHKActionSheet.h; sourceTree = "<group>"; };
+		2826CCBF8AD5B4825E2E48271727445F /* POPAnimationRuntime.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationRuntime.h; path = pop/POPAnimationRuntime.h; sourceTree = "<group>"; };
+		282E2F2FDA796A2FBEF0072C8243569A /* POPAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimation.h; path = pop/POPAnimation.h; sourceTree = "<group>"; };
+		2B0C73747E84B3A5E8D57468E329F4BC /* POPAnimationPrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationPrivate.h; path = pop/POPAnimationPrivate.h; sourceTree = "<group>"; };
+		2C5B82CB7353F64503D680F868E7824C /* POPPropertyAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPPropertyAnimation.mm; path = pop/POPPropertyAnimation.mm; sourceTree = "<group>"; };
+		2D6CA6BE156CB3421E291E0DF0555039 /* OTMWebView+ContextMenu.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = "OTMWebView+ContextMenu.js"; path = "OTMWebView/Core/Resources/OTMWebView+ContextMenu.js"; sourceTree = "<group>"; };
+		2DA2E1DF4A7811B45DF80B20D04D38CA /* POPSpringAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPSpringAnimation.mm; path = pop/POPSpringAnimation.mm; sourceTree = "<group>"; };
+		2E8319E99ECF5970B15CD08D6C460DF3 /* AHKActionSheet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AHKActionSheet.m; path = Classes/AHKActionSheet.m; sourceTree = "<group>"; };
+		2F9310AF99B631378DA30718FDADD798 /* POPAnimationEvent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationEvent.h; path = pop/POPAnimationEvent.h; sourceTree = "<group>"; };
+		319B8330C497D391CE84B9D10274A127 /* POPSpringAnimationInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPSpringAnimationInternal.h; path = pop/POPSpringAnimationInternal.h; sourceTree = "<group>"; };
+		3276C31CAB08502C6F79BBA71A16F3DA /* POPBasicAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPBasicAnimation.h; path = pop/POPBasicAnimation.h; sourceTree = "<group>"; };
 		37DB56D75062CC75FCB0966E1C6E8A8E /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		404EA3774D9B7CB4344DEDB79BDD14D8 /* OTMWebViewProgressTracker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OTMWebViewProgressTracker.m; path = OTMWebView/Core/OTMWebViewProgressTracker.m; sourceTree = "<group>"; };
-		40740E9A2D00F3B4BD97072A1FA30652 /* OTMWebView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "OTMWebView-dummy.m"; sourceTree = "<group>"; };
+		3D8908CA246E425633F4EFB13DDE3E2D /* pop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = pop.xcconfig; sourceTree = "<group>"; };
+		4A9BA109A962461405EB2731FDB1238B /* POPAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAction.h; path = pop/POPAction.h; sourceTree = "<group>"; };
+		4D30834F314F38CF4952DE5A8B782753 /* ZHOTMWebView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZHOTMWebView.xcconfig; sourceTree = "<group>"; };
+		4D924274FE901F193A8341F0F7F07526 /* POPAnimationExtras.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationExtras.h; path = pop/POPAnimationExtras.h; sourceTree = "<group>"; };
 		4E762F23EC34ED4A6FF3312D84E33A40 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
-		58EAA6D884E69F04CE0FE41F34EDAC28 /* OTMWebView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OTMWebView.m; path = OTMWebView/Core/OTMWebView.m; sourceTree = "<group>"; };
+		4EF0DABD5FA7371AF1FD2AE14DEFBF30 /* UnitBezier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UnitBezier.h; path = pop/WebCore/UnitBezier.h; sourceTree = "<group>"; };
+		500AFDE553070CB753061A77F3514F7A /* libpop.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libpop.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		516CB85085904A4BE9803A37FA456876 /* AHKActionSheetViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AHKActionSheetViewController.h; path = Classes/AHKActionSheetViewController.h; sourceTree = "<group>"; };
+		53C5DF2699A9CB3906465F967E21D7BE /* ZHOTMWebView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ZHOTMWebView-dummy.m"; sourceTree = "<group>"; };
+		543A028D5D940A11C9487CB664DD4F20 /* POPAnimationExtras.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimationExtras.mm; path = pop/POPAnimationExtras.mm; sourceTree = "<group>"; };
+		557A81D7618DC2088E197BCE63AC5D2E /* POPBasicAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPBasicAnimation.mm; path = pop/POPBasicAnimation.mm; sourceTree = "<group>"; };
+		561046D67BCCD84D35CB3B225B93327A /* POPBasicAnimationInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPBasicAnimationInternal.h; path = pop/POPBasicAnimationInternal.h; sourceTree = "<group>"; };
+		58397FDDE9E0033C85FDFAE1558D4EA7 /* libZHAHKActionSheet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZHAHKActionSheet.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A30035A90D1E45120CD8E71D1FD02E0 /* POPGeometry.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPGeometry.mm; path = pop/POPGeometry.mm; sourceTree = "<group>"; };
+		5F12016E5488A7B5D5C493EF88782E53 /* OTMWebViewURLProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OTMWebViewURLProtocol.h; path = OTMWebView/Core/OTMWebViewURLProtocol.h; sourceTree = "<group>"; };
+		6043CE8DC8E1FF9CCD1EFD4FE5760D78 /* POPCustomAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPCustomAnimation.h; path = pop/POPCustomAnimation.h; sourceTree = "<group>"; };
+		6795AAD441056707D208DFABC9C4EBEC /* OTMWebViewProgressBar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OTMWebViewProgressBar.h; path = OTMWebView/ProgressBar/OTMWebViewProgressBar.h; sourceTree = "<group>"; };
 		6911BECA35E7518D864239B7E898EEF3 /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
-		7A3FAA9A1A32500579365CC8E59327D0 /* OTMWebView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = OTMWebView.xcconfig; sourceTree = "<group>"; };
-		85F7C11A2DC7EB0657C5B602403BBCC5 /* OTMWebView.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = OTMWebView.js; path = OTMWebView/Core/Resources/OTMWebView.js; sourceTree = "<group>"; };
-		8AF8348B44EA602BA4860FB5FCAE9BB1 /* UIWindow+AHKAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIWindow+AHKAdditions.m"; path = "Classes/UIWindow+AHKAdditions.m"; sourceTree = "<group>"; };
-		8D1C5CDD5487D0D5A2E52385C2C411A5 /* OTMWebView+ContextMenu.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = "OTMWebView+ContextMenu.js"; path = "OTMWebView/Core/Resources/OTMWebView+ContextMenu.js"; sourceTree = "<group>"; };
+		6D29BB95E7C0326A6FAF667B367C9C59 /* ZHOTMWebView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZHOTMWebView-prefix.pch"; sourceTree = "<group>"; };
+		73930BA8E3D6ED73AF59BB5C1E188504 /* OTMWebViewProgressBarLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OTMWebViewProgressBarLayer.h; path = OTMWebView/ProgressBar/OTMWebViewProgressBarLayer.h; sourceTree = "<group>"; };
+		73F76D29B9520857D491D9B1A83A8DDB /* POPSpringSolver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPSpringSolver.h; path = pop/POPSpringSolver.h; sourceTree = "<group>"; };
+		829D9E061E1BA933335B677C6040AD2F /* POPAnimationTracerInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationTracerInternal.h; path = pop/POPAnimationTracerInternal.h; sourceTree = "<group>"; };
+		82BD7F3243C39B9AA52400C06E538B46 /* OTMWebViewContextMenuItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OTMWebViewContextMenuItem.h; path = OTMWebView/Core/OTMWebViewContextMenuItem.h; sourceTree = "<group>"; };
+		8336E6770DFCDE124420EB3E054F2C71 /* POPMath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPMath.h; path = pop/POPMath.h; sourceTree = "<group>"; };
+		85330186373939EABDBDCD10E09637D0 /* libZHOTMWebView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZHOTMWebView.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		86367141AD68B5E3272F57F9769DD519 /* POPAnimationTracer.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimationTracer.mm; path = pop/POPAnimationTracer.mm; sourceTree = "<group>"; };
+		881B00726BB6C5E75910FC1BB2F68B36 /* POPAnimationInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationInternal.h; path = pop/POPAnimationInternal.h; sourceTree = "<group>"; };
+		8911F859687E8B2988B6E9118C8EA159 /* TransformationMatrix.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = TransformationMatrix.cpp; path = pop/WebCore/TransformationMatrix.cpp; sourceTree = "<group>"; };
+		8AFAA470123AA3B7D81E1F5A0F612939 /* pop-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "pop-dummy.m"; sourceTree = "<group>"; };
+		8F199727070264C64889999FCAB7B4E5 /* FloatConversion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FloatConversion.h; path = pop/WebCore/FloatConversion.h; sourceTree = "<group>"; };
+		8FE742A4981F7335A29D55CBE22C32A0 /* pop-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "pop-prefix.pch"; sourceTree = "<group>"; };
 		91413329813FA6FE5A78842159E69621 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		9337D57E0591800D78DA56352828AF34 /* libOTMWebView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOTMWebView.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		9484AA4D0F75F55812E8F1C9BF36C8CB /* OTMWebViewProgressTracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OTMWebViewProgressTracker.h; path = OTMWebView/Core/OTMWebViewProgressTracker.h; sourceTree = "<group>"; };
+		95C9DE4323EC0656AAE5C3C51822526D /* POPDecayAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPDecayAnimation.h; path = pop/POPDecayAnimation.h; sourceTree = "<group>"; };
+		97C51B596775175951405164D77620F9 /* AHKActionSheet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AHKActionSheet.h; path = Classes/AHKActionSheet.h; sourceTree = "<group>"; };
 		98C98CDFB3F20F2925F6CD1F141BB14F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
+		9A4DD9B4B5747DEDC0FA0C02F3302243 /* POPMath.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPMath.mm; path = pop/POPMath.mm; sourceTree = "<group>"; };
+		9B42292F0B94A7DE37C66692C3DCA1C5 /* OTMWebView.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = OTMWebView.js; path = OTMWebView/Core/Resources/OTMWebView.js; sourceTree = "<group>"; };
 		A1A36D34413696BE466E2CA0AFF194DA /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
-		A9DA8FA27EFF8A8AB758EE9B75313171 /* OTMWebViewProgressBar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OTMWebViewProgressBar.h; path = OTMWebView/ProgressBar/OTMWebViewProgressBar.h; sourceTree = "<group>"; };
-		AA37A4276258353951F95DE60E044B4B /* UIImage+AHKAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+AHKAdditions.m"; path = "Classes/UIImage+AHKAdditions.m"; sourceTree = "<group>"; };
-		B4E167BD4830A2AECAAAAE84522EDD49 /* UIImage+AHKAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+AHKAdditions.h"; path = "Classes/UIImage+AHKAdditions.h"; sourceTree = "<group>"; };
-		B93D3F42B61D40DE24C78B0D903A6C7B /* OTMWebViewContextMenuItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OTMWebViewContextMenuItem.h; path = OTMWebView/Core/OTMWebViewContextMenuItem.h; sourceTree = "<group>"; };
+		A1CC50DA39DEE3D9F038C438A4BB4F67 /* POPDecayAnimationInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPDecayAnimationInternal.h; path = pop/POPDecayAnimationInternal.h; sourceTree = "<group>"; };
+		A2FE24606F6E1EBD965C805C5D034646 /* POPVector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPVector.h; path = pop/POPVector.h; sourceTree = "<group>"; };
+		A3E475C2BF83560B6311266855DF2F50 /* TransformationMatrix.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TransformationMatrix.h; path = pop/WebCore/TransformationMatrix.h; sourceTree = "<group>"; };
+		A5762CF62DF6D5BD8A8A4200114B571D /* POPVector.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPVector.mm; path = pop/POPVector.mm; sourceTree = "<group>"; };
+		A7EDFDC087996594C3524E6ADC42410E /* OTMWebViewContextMenuItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OTMWebViewContextMenuItem.m; path = OTMWebView/Core/OTMWebViewContextMenuItem.m; sourceTree = "<group>"; };
+		A8DBB963C80DDA3A39A8105D30A54580 /* POP.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POP.h; path = pop/POP.h; sourceTree = "<group>"; };
+		ABD30576E81C057FA45DEE8AEA6E204D /* UIImage+AHKAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+AHKAdditions.h"; path = "Classes/UIImage+AHKAdditions.h"; sourceTree = "<group>"; };
+		ACEAA54DD726207FBFFE9D145B7805EB /* POPAnimatableProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimatableProperty.h; path = pop/POPAnimatableProperty.h; sourceTree = "<group>"; };
+		AF3C20E5350650E146C16242CBB8E443 /* OTMWebViewProgressBarLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OTMWebViewProgressBarLayer.m; path = OTMWebView/ProgressBar/OTMWebViewProgressBarLayer.m; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		BB8A0F3008B1EA7BDB02645E192DCD3B /* OTMWebViewProgressBar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OTMWebViewProgressBar.m; path = OTMWebView/ProgressBar/OTMWebViewProgressBar.m; sourceTree = "<group>"; };
-		C3B66316BF507B9008DC946D71F6C366 /* AHKActionSheetViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AHKActionSheetViewController.m; path = Classes/AHKActionSheetViewController.m; sourceTree = "<group>"; };
-		C9AB75F1FBCC05D2D3F4F583BCDFC14D /* AHKActionSheet-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AHKActionSheet-prefix.pch"; sourceTree = "<group>"; };
+		BB1CA732EE28F89F3788A9832E071CBD /* POPDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPDefines.h; path = pop/POPDefines.h; sourceTree = "<group>"; };
+		BC1F58BFE887A046E02AD8D3F21B1F30 /* UIImage+AHKAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+AHKAdditions.m"; path = "Classes/UIImage+AHKAdditions.m"; sourceTree = "<group>"; };
+		BC8C5F794D1D6A3CA42597BFFD5E2B1F /* POPAnimationEventInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationEventInternal.h; path = pop/POPAnimationEventInternal.h; sourceTree = "<group>"; };
+		CAA53267D841AFE2D76D3B402CDAD363 /* POPAnimationRuntime.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPAnimationRuntime.mm; path = pop/POPAnimationRuntime.mm; sourceTree = "<group>"; };
+		CEA0F8556D844F37FAE900A9D3648B34 /* POPPropertyAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPPropertyAnimation.h; path = pop/POPPropertyAnimation.h; sourceTree = "<group>"; };
+		D64118330A98F97FB5669EFA425B097C /* ZHAHKActionSheet-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ZHAHKActionSheet-dummy.m"; sourceTree = "<group>"; };
+		D6ABA186E595B856F0882160843C230D /* POPAnimationTracer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPAnimationTracer.h; path = pop/POPAnimationTracer.h; sourceTree = "<group>"; };
 		D9DE615671731BF3AEFB3CB1F984FA8F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		DB80FC7994953C84C69FB12EE2AEFFF9 /* OTMWebViewContextMenuItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OTMWebViewContextMenuItem.m; path = OTMWebView/Core/OTMWebViewContextMenuItem.m; sourceTree = "<group>"; };
-		DC64858A2F461019F7ED9C50101150F4 /* OTMWebView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "OTMWebView-prefix.pch"; sourceTree = "<group>"; };
-		DDC385E0FB2C4383EB3959BD93749826 /* OTMWebView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OTMWebView.h; path = OTMWebView/Core/OTMWebView.h; sourceTree = "<group>"; };
-		E04DCB76F83AB94C0CE1314B2450A207 /* UIWindow+AHKAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIWindow+AHKAdditions.h"; path = "Classes/UIWindow+AHKAdditions.h"; sourceTree = "<group>"; };
-		E28756A55C512C6F8642A7F18C1CCC30 /* libAHKActionSheet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAHKActionSheet.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		E54033F148FBF936D70180D6CB9CBC75 /* OTMWebViewProgressBarLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OTMWebViewProgressBarLayer.m; path = OTMWebView/ProgressBar/OTMWebViewProgressBarLayer.m; sourceTree = "<group>"; };
+		DD84C7163E9E93F91C322E3846EA312C /* AHKActionSheetViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AHKActionSheetViewController.m; path = Classes/AHKActionSheetViewController.m; sourceTree = "<group>"; };
 		E642B1A057ADA2ABEF90BE2417F349C1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		E81635F984F161AC8B1BED96D90F4ECD /* OTMWebViewProgressBarLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OTMWebViewProgressBarLayer.h; path = OTMWebView/ProgressBar/OTMWebViewProgressBarLayer.h; sourceTree = "<group>"; };
-		E9E90DFA7997911C405E21BA9C211256 /* OTMWebViewURLProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OTMWebViewURLProtocol.h; path = OTMWebView/Core/OTMWebViewURLProtocol.h; sourceTree = "<group>"; };
-		F5F5F4CBDBC5C028DC4D9C911424300D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E80854A29AE1C288B2CA12F4CC298566 /* POPGeometry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPGeometry.h; path = pop/POPGeometry.h; sourceTree = "<group>"; };
+		EA5E36176D1DB3D431CF3EA6E8C1AE1F /* POPDecayAnimation.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = POPDecayAnimation.mm; path = pop/POPDecayAnimation.mm; sourceTree = "<group>"; };
+		EDAD797203B6B54F028EBC3F2434D654 /* UIWindow+AHKAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIWindow+AHKAdditions.h"; path = "Classes/UIWindow+AHKAdditions.h"; sourceTree = "<group>"; };
+		EF7AD398D1C9DF309F04F0B11D039867 /* OTMWebViewURLProtocol.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OTMWebViewURLProtocol.m; path = OTMWebView/Core/OTMWebViewURLProtocol.m; sourceTree = "<group>"; };
+		F03453BA4A51EE6A9EC543E9748DCD3F /* ZHAHKActionSheet-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZHAHKActionSheet-prefix.pch"; sourceTree = "<group>"; };
+		F0D16A8C1ABCC437CEB52F6365996AE5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F583CAE7434C218B8AFFF347383AAF5F /* POPCGUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = POPCGUtils.h; path = pop/POPCGUtils.h; sourceTree = "<group>"; };
+		F915BC9C34F2D54547948EA21427D7EB /* OTMWebViewProgressBar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OTMWebViewProgressBar.m; path = OTMWebView/ProgressBar/OTMWebViewProgressBar.m; sourceTree = "<group>"; };
+		FD79B28F5BA171B1C17D4DB6F364837E /* UIWindow+AHKAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIWindow+AHKAdditions.m"; path = "Classes/UIWindow+AHKAdditions.m"; sourceTree = "<group>"; };
+		FEECF0B2EAF5B5DA1BD4350C82798897 /* OTMWebView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OTMWebView.h; path = OTMWebView/Core/OTMWebView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C009C215CCB7EAD51AA647D2E66C2BBE /* Frameworks */ = {
+		32A32D73C2993F175C93BE2D55213DC8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36B544DF7ABD724C18C3ECD5A1D6003C /* Foundation.framework in Frameworks */,
-				C83576821E9D0C720D1700E59781E1FC /* UIKit.framework in Frameworks */,
+				8595BB36BC055F8576E7F0DA45605B4E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C666A742285C019B955CDCA3DD4177E9 /* Frameworks */ = {
+		3E34BF0B2D95FA782038EFB59D7471D6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2181E956A6BE0DB16AD4E2EDBB5D8189 /* Foundation.framework in Frameworks */,
+				74D7D7941A52E246626B639E0FCB8344 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FC89AE41D2F2C353905D71C0B861624A /* Frameworks */ = {
+		54F997F512B040CAE2252C0DC8E6E0D7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3287F4E2CA5C2038EA5035CE55C2A1BC /* Foundation.framework in Frameworks */,
-				E7E252D8E0C7F0030C963A69D9B0F45E /* QuartzCore.framework in Frameworks */,
+				FE8CFD9DA867EE36DBC19086A5604DB5 /* Foundation.framework in Frameworks */,
+				BD37F4E8915107F37869FD3655EF917F /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBAA0FFAE6678358A171628730B0EB17 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6AC2ECD9FC0DAB476F9AD774C962C67 /* Foundation.framework in Frameworks */,
+				496EEBCC59F6CC5C9448BBF97EA79367 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02C90C15104EFBFD5219FBC2A7760C9A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4D30834F314F38CF4952DE5A8B782753 /* ZHOTMWebView.xcconfig */,
+				53C5DF2699A9CB3906465F967E21D7BE /* ZHOTMWebView-dummy.m */,
+				6D29BB95E7C0326A6FAF667B367C9C59 /* ZHOTMWebView-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ZHOTMWebView";
+			sourceTree = "<group>";
+		};
 		037C0CA694176A3C0915F62C9D20B3E6 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,43 +279,112 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		217C349ECA7F76765719A7CBDCD803E7 /* OTMWebView */ = {
+		2DB7E89711F3BA45D8CD8C271FEDA069 /* pop */ = {
 			isa = PBXGroup;
 			children = (
-				C2358111EAFFE1D5364EAEE987B12BB8 /* Core */,
-				89EFD22E9C01F0E9981DAEBDECE4B9B7 /* ProgressBar */,
-				9907A85705EEC3384FD3D880828BF236 /* Support Files */,
+				8F199727070264C64889999FCAB7B4E5 /* FloatConversion.h */,
+				A8DBB963C80DDA3A39A8105D30A54580 /* POP.h */,
+				4A9BA109A962461405EB2731FDB1238B /* POPAction.h */,
+				ACEAA54DD726207FBFFE9D145B7805EB /* POPAnimatableProperty.h */,
+				0ABE41DD9FD26CA4E3D1A0AD845487F0 /* POPAnimatableProperty.mm */,
+				282E2F2FDA796A2FBEF0072C8243569A /* POPAnimation.h */,
+				0FA83571ACDA20F6B1A09B35188C291E /* POPAnimation.mm */,
+				2F9310AF99B631378DA30718FDADD798 /* POPAnimationEvent.h */,
+				24A4A76FE8A49480C27594039D2339C3 /* POPAnimationEvent.mm */,
+				BC8C5F794D1D6A3CA42597BFFD5E2B1F /* POPAnimationEventInternal.h */,
+				4D924274FE901F193A8341F0F7F07526 /* POPAnimationExtras.h */,
+				543A028D5D940A11C9487CB664DD4F20 /* POPAnimationExtras.mm */,
+				881B00726BB6C5E75910FC1BB2F68B36 /* POPAnimationInternal.h */,
+				2B0C73747E84B3A5E8D57468E329F4BC /* POPAnimationPrivate.h */,
+				2826CCBF8AD5B4825E2E48271727445F /* POPAnimationRuntime.h */,
+				CAA53267D841AFE2D76D3B402CDAD363 /* POPAnimationRuntime.mm */,
+				D6ABA186E595B856F0882160843C230D /* POPAnimationTracer.h */,
+				86367141AD68B5E3272F57F9769DD519 /* POPAnimationTracer.mm */,
+				829D9E061E1BA933335B677C6040AD2F /* POPAnimationTracerInternal.h */,
+				11A177AB1CFC2B2A6FCDC382D4D6A4E0 /* POPAnimator.h */,
+				088F61BDAA2A2BC67828D77C90170835 /* POPAnimator.mm */,
+				02A98D74652DF377F49C7996376E18B1 /* POPAnimatorPrivate.h */,
+				3276C31CAB08502C6F79BBA71A16F3DA /* POPBasicAnimation.h */,
+				557A81D7618DC2088E197BCE63AC5D2E /* POPBasicAnimation.mm */,
+				561046D67BCCD84D35CB3B225B93327A /* POPBasicAnimationInternal.h */,
+				F583CAE7434C218B8AFFF347383AAF5F /* POPCGUtils.h */,
+				249D6F53F6F1C6833B2C9DD14FC9F611 /* POPCGUtils.mm */,
+				6043CE8DC8E1FF9CCD1EFD4FE5760D78 /* POPCustomAnimation.h */,
+				241313B0F82C1436112D6844CF11FE9E /* POPCustomAnimation.mm */,
+				95C9DE4323EC0656AAE5C3C51822526D /* POPDecayAnimation.h */,
+				EA5E36176D1DB3D431CF3EA6E8C1AE1F /* POPDecayAnimation.mm */,
+				A1CC50DA39DEE3D9F038C438A4BB4F67 /* POPDecayAnimationInternal.h */,
+				BB1CA732EE28F89F3788A9832E071CBD /* POPDefines.h */,
+				E80854A29AE1C288B2CA12F4CC298566 /* POPGeometry.h */,
+				5A30035A90D1E45120CD8E71D1FD02E0 /* POPGeometry.mm */,
+				2482B92621A5F8478D84C0F659B37925 /* POPLayerExtras.h */,
+				1D661D9FC9D9F9934BDC7197EFCFF9B7 /* POPLayerExtras.mm */,
+				8336E6770DFCDE124420EB3E054F2C71 /* POPMath.h */,
+				9A4DD9B4B5747DEDC0FA0C02F3302243 /* POPMath.mm */,
+				CEA0F8556D844F37FAE900A9D3648B34 /* POPPropertyAnimation.h */,
+				2C5B82CB7353F64503D680F868E7824C /* POPPropertyAnimation.mm */,
+				0D53649124224DEC57814C5DFD5BB18C /* POPPropertyAnimationInternal.h */,
+				1E9C376372F465AD3D54F997674DB41A /* POPSpringAnimation.h */,
+				2DA2E1DF4A7811B45DF80B20D04D38CA /* POPSpringAnimation.mm */,
+				319B8330C497D391CE84B9D10274A127 /* POPSpringAnimationInternal.h */,
+				73F76D29B9520857D491D9B1A83A8DDB /* POPSpringSolver.h */,
+				A2FE24606F6E1EBD965C805C5D034646 /* POPVector.h */,
+				A5762CF62DF6D5BD8A8A4200114B571D /* POPVector.mm */,
+				8911F859687E8B2988B6E9118C8EA159 /* TransformationMatrix.cpp */,
+				A3E475C2BF83560B6311266855DF2F50 /* TransformationMatrix.h */,
+				4EF0DABD5FA7371AF1FD2AE14DEFBF30 /* UnitBezier.h */,
+				5C22E3DE171BAF188E7AC808316C73E6 /* Support Files */,
 			);
-			path = OTMWebView;
+			path = pop;
 			sourceTree = "<group>";
 		};
-		2180271A63B7E2556C1BDC13A06280E8 /* Support Files */ = {
+		446BC400F92AC011F0C9950E3506D1F7 /* ZHAHKActionSheet */ = {
 			isa = PBXGroup;
 			children = (
-				0E537BFEB33F09145EE4F36195AB3629 /* AHKActionSheet.xcconfig */,
-				2A8F76F0A9DF68AD8AA3D97BE579C2D5 /* AHKActionSheet-dummy.m */,
-				C9AB75F1FBCC05D2D3F4F583BCDFC14D /* AHKActionSheet-prefix.pch */,
+				97C51B596775175951405164D77620F9 /* AHKActionSheet.h */,
+				2E8319E99ECF5970B15CD08D6C460DF3 /* AHKActionSheet.m */,
+				516CB85085904A4BE9803A37FA456876 /* AHKActionSheetViewController.h */,
+				DD84C7163E9E93F91C322E3846EA312C /* AHKActionSheetViewController.m */,
+				ABD30576E81C057FA45DEE8AEA6E204D /* UIImage+AHKAdditions.h */,
+				BC1F58BFE887A046E02AD8D3F21B1F30 /* UIImage+AHKAdditions.m */,
+				EDAD797203B6B54F028EBC3F2434D654 /* UIWindow+AHKAdditions.h */,
+				FD79B28F5BA171B1C17D4DB6F364837E /* UIWindow+AHKAdditions.m */,
+				544BE035AF51BC470CD9EF24435D23E1 /* Support Files */,
+			);
+			path = ZHAHKActionSheet;
+			sourceTree = "<group>";
+		};
+		544BE035AF51BC470CD9EF24435D23E1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0F66034C5AF7DD7949D88099E0802A69 /* ZHAHKActionSheet.xcconfig */,
+				D64118330A98F97FB5669EFA425B097C /* ZHAHKActionSheet-dummy.m */,
+				F03453BA4A51EE6A9EC543E9748DCD3F /* ZHAHKActionSheet-prefix.pch */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/AHKActionSheet";
+			path = "../Target Support Files/ZHAHKActionSheet";
 			sourceTree = "<group>";
 		};
-		6C4FB6F6F9044DEF05F70EC3D4F10D69 /* Pods */ = {
+		54F107C162F60B0C54D66C9161CAF7D1 /* ProgressBar */ = {
 			isa = PBXGroup;
 			children = (
-				CE025C37FE2DC05FAE0F365CBCCDC754 /* AHKActionSheet */,
-				217C349ECA7F76765719A7CBDCD803E7 /* OTMWebView */,
+				6795AAD441056707D208DFABC9C4EBEC /* OTMWebViewProgressBar.h */,
+				F915BC9C34F2D54547948EA21427D7EB /* OTMWebViewProgressBar.m */,
+				73930BA8E3D6ED73AF59BB5C1E188504 /* OTMWebViewProgressBarLayer.h */,
+				AF3C20E5350650E146C16242CBB8E443 /* OTMWebViewProgressBarLayer.m */,
 			);
-			name = Pods;
+			name = ProgressBar;
 			sourceTree = "<group>";
 		};
-		7AA42222818CF8A4D7374F0A9B3989E1 /* Resources */ = {
+		5C22E3DE171BAF188E7AC808316C73E6 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				85F7C11A2DC7EB0657C5B602403BBCC5 /* OTMWebView.js */,
-				8D1C5CDD5487D0D5A2E52385C2C411A5 /* OTMWebView+ContextMenu.js */,
+				3D8908CA246E425633F4EFB13DDE3E2D /* pop.xcconfig */,
+				8AFAA470123AA3B7D81E1F5A0F612939 /* pop-dummy.m */,
+				8FE742A4981F7335A29D55CBE22C32A0 /* pop-prefix.pch */,
 			);
-			name = Resources;
+			name = "Support Files";
+			path = "../Target Support Files/pop";
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -189,32 +392,20 @@
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
-				6C4FB6F6F9044DEF05F70EC3D4F10D69 /* Pods */,
-				F2BC7777064AE7FFE2E5B0DC5A7CD00C /* Products */,
+				B886568125BD277DDBF13C4DE467C763 /* Pods */,
+				BC139A3D2C5455D9ABE158C884CFE089 /* Products */,
 				037C0CA694176A3C0915F62C9D20B3E6 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		89EFD22E9C01F0E9981DAEBDECE4B9B7 /* ProgressBar */ = {
+		8BDDC9BA42E7B98C8A3630B81CFCF2A6 /* ZHOTMWebView */ = {
 			isa = PBXGroup;
 			children = (
-				A9DA8FA27EFF8A8AB758EE9B75313171 /* OTMWebViewProgressBar.h */,
-				BB8A0F3008B1EA7BDB02645E192DCD3B /* OTMWebViewProgressBar.m */,
-				E81635F984F161AC8B1BED96D90F4ECD /* OTMWebViewProgressBarLayer.h */,
-				E54033F148FBF936D70180D6CB9CBC75 /* OTMWebViewProgressBarLayer.m */,
+				B471FF2FEB243B971D3220131AD14884 /* Core */,
+				54F107C162F60B0C54D66C9161CAF7D1 /* ProgressBar */,
+				02C90C15104EFBFD5219FBC2A7760C9A /* Support Files */,
 			);
-			name = ProgressBar;
-			sourceTree = "<group>";
-		};
-		9907A85705EEC3384FD3D880828BF236 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				7A3FAA9A1A32500579365CC8E59327D0 /* OTMWebView.xcconfig */,
-				40740E9A2D00F3B4BD97072A1FA30652 /* OTMWebView-dummy.m */,
-				DC64858A2F461019F7ED9C50101150F4 /* OTMWebView-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/OTMWebView";
+			path = ZHOTMWebView;
 			sourceTree = "<group>";
 		};
 		B3D1D13E0C6553800746CB8FD61CF946 /* Pods */ = {
@@ -232,36 +423,41 @@
 			path = "Target Support Files/Pods";
 			sourceTree = "<group>";
 		};
-		C2358111EAFFE1D5364EAEE987B12BB8 /* Core */ = {
+		B471FF2FEB243B971D3220131AD14884 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				DDC385E0FB2C4383EB3959BD93749826 /* OTMWebView.h */,
-				58EAA6D884E69F04CE0FE41F34EDAC28 /* OTMWebView.m */,
-				B93D3F42B61D40DE24C78B0D903A6C7B /* OTMWebViewContextMenuItem.h */,
-				DB80FC7994953C84C69FB12EE2AEFFF9 /* OTMWebViewContextMenuItem.m */,
-				9484AA4D0F75F55812E8F1C9BF36C8CB /* OTMWebViewProgressTracker.h */,
-				404EA3774D9B7CB4344DEDB79BDD14D8 /* OTMWebViewProgressTracker.m */,
-				E9E90DFA7997911C405E21BA9C211256 /* OTMWebViewURLProtocol.h */,
-				13695E20FC01EF9510A12D15ABDF75D2 /* OTMWebViewURLProtocol.m */,
-				7AA42222818CF8A4D7374F0A9B3989E1 /* Resources */,
+				FEECF0B2EAF5B5DA1BD4350C82798897 /* OTMWebView.h */,
+				15794655CA80C637AF53A086E450E1FD /* OTMWebView.m */,
+				82BD7F3243C39B9AA52400C06E538B46 /* OTMWebViewContextMenuItem.h */,
+				A7EDFDC087996594C3524E6ADC42410E /* OTMWebViewContextMenuItem.m */,
+				07C11D6BFD863068677CD43F03574E2F /* OTMWebViewProgressTracker.h */,
+				1229F89AADF8BDBCE04D481A0BABB9CE /* OTMWebViewProgressTracker.m */,
+				5F12016E5488A7B5D5C493EF88782E53 /* OTMWebViewURLProtocol.h */,
+				EF7AD398D1C9DF309F04F0B11D039867 /* OTMWebViewURLProtocol.m */,
+				EDA30415BC555FD88CBC125748EE9F0E /* Resources */,
 			);
 			name = Core;
 			sourceTree = "<group>";
 		};
-		CE025C37FE2DC05FAE0F365CBCCDC754 /* AHKActionSheet */ = {
+		B886568125BD277DDBF13C4DE467C763 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2B8014E70A0B3269F26A5C2805364AD6 /* AHKActionSheet.h */,
-				0BB5B412922DBACF76D58C75CC73659B /* AHKActionSheet.m */,
-				0F7630FE627F27B280D4C33B8F2472B1 /* AHKActionSheetViewController.h */,
-				C3B66316BF507B9008DC946D71F6C366 /* AHKActionSheetViewController.m */,
-				B4E167BD4830A2AECAAAAE84522EDD49 /* UIImage+AHKAdditions.h */,
-				AA37A4276258353951F95DE60E044B4B /* UIImage+AHKAdditions.m */,
-				E04DCB76F83AB94C0CE1314B2450A207 /* UIWindow+AHKAdditions.h */,
-				8AF8348B44EA602BA4860FB5FCAE9BB1 /* UIWindow+AHKAdditions.m */,
-				2180271A63B7E2556C1BDC13A06280E8 /* Support Files */,
+				2DB7E89711F3BA45D8CD8C271FEDA069 /* pop */,
+				446BC400F92AC011F0C9950E3506D1F7 /* ZHAHKActionSheet */,
+				8BDDC9BA42E7B98C8A3630B81CFCF2A6 /* ZHOTMWebView */,
 			);
-			path = AHKActionSheet;
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BC139A3D2C5455D9ABE158C884CFE089 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F0D16A8C1ABCC437CEB52F6365996AE5 /* libPods.a */,
+				500AFDE553070CB753061A77F3514F7A /* libpop.a */,
+				58397FDDE9E0033C85FDFAE1558D4EA7 /* libZHAHKActionSheet.a */,
+				85330186373939EABDBDCD10E09637D0 /* libZHOTMWebView.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		DA23025FEDA7F7FE2AACB2532BD80D14 /* iOS */ = {
@@ -274,96 +470,153 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		F2BC7777064AE7FFE2E5B0DC5A7CD00C /* Products */ = {
+		EDA30415BC555FD88CBC125748EE9F0E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E28756A55C512C6F8642A7F18C1CCC30 /* libAHKActionSheet.a */,
-				9337D57E0591800D78DA56352828AF34 /* libOTMWebView.a */,
-				F5F5F4CBDBC5C028DC4D9C911424300D /* libPods.a */,
+				9B42292F0B94A7DE37C66692C3DCA1C5 /* OTMWebView.js */,
+				2D6CA6BE156CB3421E291E0DF0555039 /* OTMWebView+ContextMenu.js */,
 			);
-			name = Products;
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		06E38B855B4B5B4BCFEC39E82B667293 /* Headers */ = {
+		1A7EF66A64D9FA1BB87859152A3CB197 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E198F2D77F43012C32FD4787895D16BD /* AHKActionSheet.h in Headers */,
-				DF7A82BFC2441F21BE348080008A8FFB /* AHKActionSheetViewController.h in Headers */,
-				E6483EF33E7186CBFC6DEA2272D4CFC8 /* UIImage+AHKAdditions.h in Headers */,
-				01255D4342271147A9DB3198AF6FD564 /* UIWindow+AHKAdditions.h in Headers */,
+				997A65DD222C46EF19D9FE3330B35AF1 /* OTMWebView.h in Headers */,
+				7FE89B91ADAD6B1B7BA124290367D525 /* OTMWebViewContextMenuItem.h in Headers */,
+				66976D2792385AC1DFDD7EF27D02F667 /* OTMWebViewProgressBar.h in Headers */,
+				D376C0295F63407B866D5B14035A5000 /* OTMWebViewProgressBarLayer.h in Headers */,
+				EFF638E0CAB8D0AB89D78A46E220E55F /* OTMWebViewProgressTracker.h in Headers */,
+				6148C2EF55C71E831351B4377E5FB9DC /* OTMWebViewURLProtocol.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		31D494FF2F08B3885FB110AD12302B8D /* Headers */ = {
+		61EEFD6E3AA15298D4A7A9F3341AA018 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C70271FCCE1DD84410AAD6C7FBDCC08B /* OTMWebView.h in Headers */,
-				2D580116DA3EE3980C8F1D74F2EADBD2 /* OTMWebViewContextMenuItem.h in Headers */,
-				3C4B26FEB4C3E43A2D40CD585279DC59 /* OTMWebViewProgressBar.h in Headers */,
-				4FA56F54E2F1F307F4E5DF418C0759FD /* OTMWebViewProgressBarLayer.h in Headers */,
-				C007CB2B9C61E12B279DE643E1E2036D /* OTMWebViewProgressTracker.h in Headers */,
-				ADF83FB9FD796C7EAADE9CB3CD3E326F /* OTMWebViewURLProtocol.h in Headers */,
+				D1A992B4BB530BFA4ED7677A0A471F20 /* AHKActionSheet.h in Headers */,
+				422DA61556198D205A50EE476CC4EFC5 /* AHKActionSheetViewController.h in Headers */,
+				2639FC3118AD9799AF31456DCC8C1432 /* UIImage+AHKAdditions.h in Headers */,
+				9F947E05A789D1E30E5969D432BBE523 /* UIWindow+AHKAdditions.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B37E2C31CD86D3FFBE89AD66E2498AC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61AEAF6D2CD048DA75CFA46E76F2507D /* FloatConversion.h in Headers */,
+				E2E90BF29D8F2F9540FF6F11DEDEBEE3 /* POP.h in Headers */,
+				CE5C086EDD5B97FEB6756F034DC7BF91 /* POPAction.h in Headers */,
+				C8C0EA56CB142770F8CB56ED6B2DDDEF /* POPAnimatableProperty.h in Headers */,
+				713E5839FB7F895825230FE8F4B9C7CE /* POPAnimation.h in Headers */,
+				D1A0765B11856B051F31D4982B5A6926 /* POPAnimationEvent.h in Headers */,
+				E9C798846090231C0DDF94D4AF1DF2C6 /* POPAnimationEventInternal.h in Headers */,
+				1C5E6FBBC38E9F425B4C6C1628FE2945 /* POPAnimationExtras.h in Headers */,
+				D2D5651E194CA07C4F5A97C27B6115A1 /* POPAnimationInternal.h in Headers */,
+				168FBDA734E6C3750BB1D31A3F8AA252 /* POPAnimationPrivate.h in Headers */,
+				215E9117A5E63741DF18CFFE612ABE48 /* POPAnimationRuntime.h in Headers */,
+				73F06EE03E67000B399B6B69080C3FA4 /* POPAnimationTracer.h in Headers */,
+				C3D91D14C0F2C0F63094C9011D339909 /* POPAnimationTracerInternal.h in Headers */,
+				BD21234F46FB27232C8F7DC1101E8735 /* POPAnimator.h in Headers */,
+				00976D9CE707D30804271EFA53588787 /* POPAnimatorPrivate.h in Headers */,
+				C0D1F24F01E2DF212DF9A38C49B9C28A /* POPBasicAnimation.h in Headers */,
+				B0634C75F9606E24FFA59C2F3F789219 /* POPBasicAnimationInternal.h in Headers */,
+				E67357DEB94E8E36867AC1EE77BBCA7F /* POPCGUtils.h in Headers */,
+				2AFD8C688885CDC825BB1637FCC01AD2 /* POPCustomAnimation.h in Headers */,
+				2055C31079D9D34EE74C294E988B2270 /* POPDecayAnimation.h in Headers */,
+				560F853C9F9E94724DAA6F3BE7C2D04F /* POPDecayAnimationInternal.h in Headers */,
+				AEA3F4C82BCD679D37D14A44066A0F12 /* POPDefines.h in Headers */,
+				217CF45AFB9F78841F4481254B2A2944 /* POPGeometry.h in Headers */,
+				90426B81D62AF4960F8F53BDA3F0EA48 /* POPLayerExtras.h in Headers */,
+				62CE0CFE43A523C68B09BA7436B44846 /* POPMath.h in Headers */,
+				FEC6E64934DA7AAB61DF342F44D159C1 /* POPPropertyAnimation.h in Headers */,
+				CA9CF80B5E9BDAF23CE6BBF646EB9F23 /* POPPropertyAnimationInternal.h in Headers */,
+				23604B7596B647E5466D0DF55AD4D090 /* POPSpringAnimation.h in Headers */,
+				45D7B9652F5AED4C3FB59CE77911210E /* POPSpringAnimationInternal.h in Headers */,
+				3DB2AE40945B498B0CEE27EEE6AEE70E /* POPSpringSolver.h in Headers */,
+				93AEBDD435C89327908161C73A4DF54D /* POPVector.h in Headers */,
+				2A0B754190E1FB40F29AE5B072EBE556 /* TransformationMatrix.h in Headers */,
+				3804CE3F180342BA9DC28B18A9771B89 /* UnitBezier.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		148C4124300AB1E86458988CA56BB4C2 /* OTMWebView */ = {
+		3705FD1CA2769493EE53B657A17B5B35 /* Pods */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 50C4CAB32782789CF149C26C9C1AF230 /* Build configuration list for PBXNativeTarget "OTMWebView" */;
+			buildConfigurationList = 030C78F490A9F335ADA49329BAEE4B95 /* Build configuration list for PBXNativeTarget "Pods" */;
 			buildPhases = (
-				BBCCBB39E73B94614C935526C2D09340 /* Sources */,
-				C009C215CCB7EAD51AA647D2E66C2BBE /* Frameworks */,
-				31D494FF2F08B3885FB110AD12302B8D /* Headers */,
+				B1EB31B9C76AE55705107E83D6484CE2 /* Sources */,
+				32A32D73C2993F175C93BE2D55213DC8 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-			);
-			name = OTMWebView;
-			productName = OTMWebView;
-			productReference = 9337D57E0591800D78DA56352828AF34 /* libOTMWebView.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		388CF4FF9767275661FC3BCBB44A3458 /* AHKActionSheet */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7316A4F4B41871D4AFF5A7CC88A9D712 /* Build configuration list for PBXNativeTarget "AHKActionSheet" */;
-			buildPhases = (
-				3CA8A0207E211C65424467CA09CC75BE /* Sources */,
-				FC89AE41D2F2C353905D71C0B861624A /* Frameworks */,
-				06E38B855B4B5B4BCFEC39E82B667293 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = AHKActionSheet;
-			productName = AHKActionSheet;
-			productReference = E28756A55C512C6F8642A7F18C1CCC30 /* libAHKActionSheet.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		C2489C961B7CE9CF19040F7A82433CCB /* Pods */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5167760F94AD451E62FF8914135AD634 /* Build configuration list for PBXNativeTarget "Pods" */;
-			buildPhases = (
-				8416394D2713E9BBE67803A686649BEC /* Sources */,
-				C666A742285C019B955CDCA3DD4177E9 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E144F0E3818499D6A84F35372DF5F6C1 /* PBXTargetDependency */,
-				EEF9EE26EE258B97A8EE3AECABB5E2EF /* PBXTargetDependency */,
+				ED76B4226F0FF213EBD1CA2C22BF5287 /* PBXTargetDependency */,
+				BC612AC8BB295986D38CA6DAE234987C /* PBXTargetDependency */,
+				1829D63A29AC9F56B138226159174856 /* PBXTargetDependency */,
 			);
 			name = Pods;
 			productName = Pods;
-			productReference = F5F5F4CBDBC5C028DC4D9C911424300D /* libPods.a */;
+			productReference = F0D16A8C1ABCC437CEB52F6365996AE5 /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		7570F35C5E31833E0478E2CBA2CD58EF /* ZHOTMWebView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0E39300305382EF232A0404BEB1964D2 /* Build configuration list for PBXNativeTarget "ZHOTMWebView" */;
+			buildPhases = (
+				5A4E18D511C32AD533AB9B4BF39ED33C /* Sources */,
+				BBAA0FFAE6678358A171628730B0EB17 /* Frameworks */,
+				1A7EF66A64D9FA1BB87859152A3CB197 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZHOTMWebView;
+			productName = ZHOTMWebView;
+			productReference = 85330186373939EABDBDCD10E09637D0 /* libZHOTMWebView.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		C256D47FE6583DE22F4B8724CF967EEB /* ZHAHKActionSheet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EEFEAB9580C8C0BB4D17A7E291B15D93 /* Build configuration list for PBXNativeTarget "ZHAHKActionSheet" */;
+			buildPhases = (
+				3AB9640BE4594E268520C6055AFD54CB /* Sources */,
+				54F997F512B040CAE2252C0DC8E6E0D7 /* Frameworks */,
+				61EEFD6E3AA15298D4A7A9F3341AA018 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZHAHKActionSheet;
+			productName = ZHAHKActionSheet;
+			productReference = 58397FDDE9E0033C85FDFAE1558D4EA7 /* libZHAHKActionSheet.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		EFF9AAC98C39CCC42B1E7839396A8832 /* pop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2CD3CD2F56B67A494A4D4EF6E9AB9049 /* Build configuration list for PBXNativeTarget "pop" */;
+			buildPhases = (
+				A02DC6DAD1B20FF81AE040521BBB9884 /* Sources */,
+				3E34BF0B2D95FA782038EFB59D7471D6 /* Frameworks */,
+				8B37E2C31CD86D3FFBE89AD66E2498AC /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = pop;
+			productName = pop;
+			productReference = 500AFDE553070CB753061A77F3514F7A /* libpop.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -383,66 +636,99 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = F2BC7777064AE7FFE2E5B0DC5A7CD00C /* Products */;
+			productRefGroup = BC139A3D2C5455D9ABE158C884CFE089 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				388CF4FF9767275661FC3BCBB44A3458 /* AHKActionSheet */,
-				148C4124300AB1E86458988CA56BB4C2 /* OTMWebView */,
-				C2489C961B7CE9CF19040F7A82433CCB /* Pods */,
+				3705FD1CA2769493EE53B657A17B5B35 /* Pods */,
+				EFF9AAC98C39CCC42B1E7839396A8832 /* pop */,
+				C256D47FE6583DE22F4B8724CF967EEB /* ZHAHKActionSheet */,
+				7570F35C5E31833E0478E2CBA2CD58EF /* ZHOTMWebView */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		3CA8A0207E211C65424467CA09CC75BE /* Sources */ = {
+		3AB9640BE4594E268520C6055AFD54CB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD124ECEAE6DB0ABF77ACDAFD75AB377 /* AHKActionSheet-dummy.m in Sources */,
-				69E4D0437A1329C0ECEDE856FB0CE1E3 /* AHKActionSheet.m in Sources */,
-				D2D5F52B0B213AC99FF3631C0194C481 /* AHKActionSheetViewController.m in Sources */,
-				C5AB454361B8B677E4D7EB02975BF0BC /* UIImage+AHKAdditions.m in Sources */,
-				7B994F860A2689DDC24B86BB2D6B15F1 /* UIWindow+AHKAdditions.m in Sources */,
+				8E0B100E5B54E5AD494E2F9500D0A06C /* AHKActionSheet.m in Sources */,
+				34013A870FC365D1A10542FFA3F3E25F /* AHKActionSheetViewController.m in Sources */,
+				99779C220E5D28A2E63B2785AA044311 /* UIImage+AHKAdditions.m in Sources */,
+				CEADC74AE4E32DBC60A6FD4ED47BF163 /* UIWindow+AHKAdditions.m in Sources */,
+				162851CD822E14C9C6681AD4E7BE6CF8 /* ZHAHKActionSheet-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8416394D2713E9BBE67803A686649BEC /* Sources */ = {
+		5A4E18D511C32AD533AB9B4BF39ED33C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76804C68DF31863E9905DC44BC634E38 /* Pods-dummy.m in Sources */,
+				CC3664B389AC7DD70A026AE5A1AFC5FF /* OTMWebView.m in Sources */,
+				E2BA9152AA9CCEBCD55969A7EF8407E5 /* OTMWebViewContextMenuItem.m in Sources */,
+				B1E0C93F5AE0ED0EFB5888434F34810C /* OTMWebViewProgressBar.m in Sources */,
+				EC2EE72D51D1ABE3632547AE31F4191D /* OTMWebViewProgressBarLayer.m in Sources */,
+				A2358B5810B7D5080559D267183893EC /* OTMWebViewProgressTracker.m in Sources */,
+				E4D624891E926C75A8BBA5204F01F7CC /* OTMWebViewURLProtocol.m in Sources */,
+				50FDD0A75D34BB97CECD0505F52E7485 /* ZHOTMWebView-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BBCCBB39E73B94614C935526C2D09340 /* Sources */ = {
+		A02DC6DAD1B20FF81AE040521BBB9884 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4861990C025F4E059C9B31CF2EE69EBE /* OTMWebView-dummy.m in Sources */,
-				A848EC7C9E18BBAB40FB5F666104518C /* OTMWebView.m in Sources */,
-				E5863AB04763A4D31E46798F2BFF8AFB /* OTMWebViewContextMenuItem.m in Sources */,
-				B369D634C8656A985FE03CC9EAE92AC6 /* OTMWebViewProgressBar.m in Sources */,
-				EEE2F36B04E6B4ECF5272BC81C4E048C /* OTMWebViewProgressBarLayer.m in Sources */,
-				3563240743BFFE215539CCE205D0086C /* OTMWebViewProgressTracker.m in Sources */,
-				075A12818D529694506F82BD9BFFF497 /* OTMWebViewURLProtocol.m in Sources */,
+				BC6029D47D805B6D191FF88FC31974F7 /* pop-dummy.m in Sources */,
+				E895664CB54CAF4ED4B6ED36A9DCA673 /* POPAnimatableProperty.mm in Sources */,
+				4FDD76F783AE4771D47CE9B46C819BB0 /* POPAnimation.mm in Sources */,
+				9F6FC4D1429E79835D51B08D002F7B44 /* POPAnimationEvent.mm in Sources */,
+				686C3C03016905B8E44C9744823F2AF8 /* POPAnimationExtras.mm in Sources */,
+				DE0E1446DE9664CBB2E5C026E3962119 /* POPAnimationRuntime.mm in Sources */,
+				047D031BAB25381FEC68AECB03E6FE25 /* POPAnimationTracer.mm in Sources */,
+				824794DE045CB0EA1D77E69135AB8258 /* POPAnimator.mm in Sources */,
+				24DCB872F9FCB39DF53022162961F0C6 /* POPBasicAnimation.mm in Sources */,
+				225CA7FA9FC7EF9185BA19544CFC16F9 /* POPCGUtils.mm in Sources */,
+				B0707C97502A8B0C5DCB7E9002B6AED4 /* POPCustomAnimation.mm in Sources */,
+				2E939F264B2E6E52D5CD052E86C3C741 /* POPDecayAnimation.mm in Sources */,
+				DC2A9E90BC1D1F0EBD0A7226CCB7AB9A /* POPGeometry.mm in Sources */,
+				CE630B17DD02AE92A338E7C0AB4D8552 /* POPLayerExtras.mm in Sources */,
+				B2953E469FB1F36DDA75BA849F98E261 /* POPMath.mm in Sources */,
+				781ABFE8A04B0D9CD98BE1004470231B /* POPPropertyAnimation.mm in Sources */,
+				963B20DEE07F1E7A7A422B3E29B5D7E4 /* POPSpringAnimation.mm in Sources */,
+				975842F53F044083C76BE1940E1C2356 /* POPVector.mm in Sources */,
+				5822860B3F96A670AA98619507C717E6 /* TransformationMatrix.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1EB31B9C76AE55705107E83D6484CE2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9B448A53153C8E0B3687264580ACA58 /* Pods-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E144F0E3818499D6A84F35372DF5F6C1 /* PBXTargetDependency */ = {
+		1829D63A29AC9F56B138226159174856 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = AHKActionSheet;
-			target = 388CF4FF9767275661FC3BCBB44A3458 /* AHKActionSheet */;
-			targetProxy = 258A676F485E41545186C65CBCFE2476 /* PBXContainerItemProxy */;
+			name = pop;
+			target = EFF9AAC98C39CCC42B1E7839396A8832 /* pop */;
+			targetProxy = 96A5C1A4B8E64811973EA0082154E9ED /* PBXContainerItemProxy */;
 		};
-		EEF9EE26EE258B97A8EE3AECABB5E2EF /* PBXTargetDependency */ = {
+		BC612AC8BB295986D38CA6DAE234987C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = OTMWebView;
-			target = 148C4124300AB1E86458988CA56BB4C2 /* OTMWebView */;
-			targetProxy = AD4412BBB218A68F7F32F35B36EEBD11 /* PBXContainerItemProxy */;
+			name = ZHOTMWebView;
+			target = 7570F35C5E31833E0478E2CBA2CD58EF /* ZHOTMWebView */;
+			targetProxy = C67B03337DD9C3C59D4EB43077C7D2C9 /* PBXContainerItemProxy */;
+		};
+		ED76B4226F0FF213EBD1CA2C22BF5287 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ZHAHKActionSheet;
+			target = C256D47FE6583DE22F4B8724CF967EEB /* ZHAHKActionSheet */;
+			targetProxy = FF12F4B4E8DE818CFEB84BD18FE08417 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -481,29 +767,12 @@
 			};
 			name = Release;
 		};
-		42783DAD92BAB6231669FA4A21162614 /* Debug */ = {
+		25307C8E28F38F4CA575ACFCFC0D659F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E762F23EC34ED4A6FF3312D84E33A40 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 0F66034C5AF7DD7949D88099E0802A69 /* ZHAHKActionSheet.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		4F4C42D6A55A656AD1CEBCF7615F2A2F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7A3FAA9A1A32500579365CC8E59327D0 /* OTMWebView.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/OTMWebView/OTMWebView-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/ZHAHKActionSheet/ZHAHKActionSheet-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
@@ -516,7 +785,7 @@
 			};
 			name = Release;
 		};
-		51FC55B50C0C90780C85E894A0F4A2EF /* Release */ = {
+		58A928F6123BEE9B3A123FCDD06520B1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 98C98CDFB3F20F2925F6CD1F141BB14F /* Pods.release.xcconfig */;
 			buildSettings = {
@@ -533,12 +802,83 @@
 			};
 			name = Release;
 		};
-		9E90D207702A1A5C48C631C50EBA2460 /* Debug */ = {
+		60E8A4AFB22B3E9D68B5F8C6566A76C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7A3FAA9A1A32500579365CC8E59327D0 /* OTMWebView.xcconfig */;
+			baseConfigurationReference = 4D30834F314F38CF4952DE5A8B782753 /* ZHOTMWebView.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/OTMWebView/OTMWebView-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/ZHOTMWebView/ZHOTMWebView-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		8D87A0D0783FCB848E68190B64424032 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D30834F314F38CF4952DE5A8B782753 /* ZHOTMWebView.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ZHOTMWebView/ZHOTMWebView-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		90AFA7E8AE56F2B33DC65C7AA24F96A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D8908CA246E425633F4EFB13DDE3E2D /* pop.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/pop/pop-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		9E43C13DBBE2A693DE9D5FA12273CF18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E762F23EC34ED4A6FF3312D84E33A40 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		AFB073AC50BB75F67DF1F752CB8DC94B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D8908CA246E425633F4EFB13DDE3E2D /* pop.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/pop/pop-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
@@ -590,30 +930,12 @@
 			};
 			name = Debug;
 		};
-		D7F54C4BDA93154D51D64DF2639D6990 /* Release */ = {
+		B81E52D82E5D890FE6A45598F097EF67 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E537BFEB33F09145EE4F36195AB3629 /* AHKActionSheet.xcconfig */;
+			baseConfigurationReference = 0F66034C5AF7DD7949D88099E0802A69 /* ZHAHKActionSheet.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/AHKActionSheet/AHKActionSheet-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		EF31FE7A262C9304DC6B38C189CD410D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E537BFEB33F09145EE4F36195AB3629 /* AHKActionSheet.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/AHKActionSheet/AHKActionSheet-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/ZHAHKActionSheet/ZHAHKActionSheet-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
@@ -629,6 +951,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		030C78F490A9F335ADA49329BAEE4B95 /* Build configuration list for PBXNativeTarget "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E43C13DBBE2A693DE9D5FA12273CF18 /* Debug */,
+				58A928F6123BEE9B3A123FCDD06520B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0E39300305382EF232A0404BEB1964D2 /* Build configuration list for PBXNativeTarget "ZHOTMWebView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60E8A4AFB22B3E9D68B5F8C6566A76C7 /* Debug */,
+				8D87A0D0783FCB848E68190B64424032 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2CD3CD2F56B67A494A4D4EF6E9AB9049 /* Build configuration list for PBXNativeTarget "pop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFB073AC50BB75F67DF1F752CB8DC94B /* Debug */,
+				90AFA7E8AE56F2B33DC65C7AA24F96A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -638,29 +987,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		50C4CAB32782789CF149C26C9C1AF230 /* Build configuration list for PBXNativeTarget "OTMWebView" */ = {
+		EEFEAB9580C8C0BB4D17A7E291B15D93 /* Build configuration list for PBXNativeTarget "ZHAHKActionSheet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9E90D207702A1A5C48C631C50EBA2460 /* Debug */,
-				4F4C42D6A55A656AD1CEBCF7615F2A2F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5167760F94AD451E62FF8914135AD634 /* Build configuration list for PBXNativeTarget "Pods" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				42783DAD92BAB6231669FA4A21162614 /* Debug */,
-				51FC55B50C0C90780C85E894A0F4A2EF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7316A4F4B41871D4AFF5A7CC88A9D712 /* Build configuration list for PBXNativeTarget "AHKActionSheet" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EF31FE7A262C9304DC6B38C189CD410D /* Debug */,
-				D7F54C4BDA93154D51D64DF2639D6990 /* Release */,
+				B81E52D82E5D890FE6A45598F097EF67 /* Debug */,
+				25307C8E28F38F4CA575ACFCFC0D659F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

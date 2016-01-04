@@ -1,0 +1,23 @@
+{
+  "name": "ZHAHKActionSheet",
+  "version": "0.5.3",
+  "summary": "Iracle edit AHKActionSheet.",
+  "homepage": "https://github.com/Iracle",
+  "license": "MIT",
+  "authors": {
+    "Iracle": "ircle.zhang@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Iracle/ZHAHKActionSheet.git",
+    "tag": "0.5.3"
+  },
+  "requires_arc": true,
+  "source_files": "Classes",
+  "public_header_files": "Classes/*.h",
+  "platforms": {
+    "ios": "6.0"
+  },
+  "frameworks": [
+    "QuartzCore"
+  ]
+}
