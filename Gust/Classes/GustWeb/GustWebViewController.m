@@ -45,7 +45,6 @@
 
 @property (nonatomic, strong) UITableView *inputHistorisTableView;
 @property (nonatomic, assign) BOOL isInputingState;
-@property (nonatomic, strong) NSLayoutConstraint *searchBarWidthConstraint;
 //save input record array
 @property (nonatomic, strong) NSMutableArray *inputRecordArray;
 //save search record result array
@@ -88,14 +87,11 @@
     return _webView;
 }
 
-- (MainTouchView *)touchView
+- (MainTouchBaseView *)touchView
 {
     if (!_touchView) {
-        _touchView = [[MainTouchView alloc] init];
-        _touchView.bounds = CGRectMake(0, 0, MainTouchViewRadius, MainTouchViewRadius);
-        _touchView.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMaxY(self.view.bounds) - MainTouchViewRadius);
-        _touchView.delegate = self;
-        
+        _touchView = [[MainTouchBaseView alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - MainTouchViewRadius / 2, CGRectGetMaxY(self.view.bounds) - MainTouchViewRadius * 1.5, MainTouchViewRadius, MainTouchViewRadius)];
+        _touchView.mainTouchView.delegate = self;
     }
     return _touchView;
 }
@@ -160,6 +156,7 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.webURL]]];
 
     [self.view addSubview:self.touchView];
+
     [self.navigationController.navigationBar addSubview:self.searchBar];
 
     self.progressBar = [[OTMWebViewProgressBar alloc]init];

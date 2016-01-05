@@ -67,6 +67,7 @@
 		930B1DCB1C37DA5F003219D1 /* HorizontalCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 930B1DCA1C37DA5F003219D1 /* HorizontalCollectionViewLayout.m */; };
 		93552ED61BEA00FE004B0380 /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93552ED51BEA00FE004B0380 /* CustomNavigationController.m */; };
 		93A2C5571C3513420022C11D /* GustCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A2C5561C3513420022C11D /* GustCollectionView.m */; };
+		93B74D641C3BAC3F0057BDBB /* GustAssistScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B74D631C3BAC3F0057BDBB /* GustAssistScrollView.m */; };
 		93CE191B1BEB51E400DECA3E /* SetPrivacyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CE19191BEB51E400DECA3E /* SetPrivacyPasswordViewController.m */; };
 		93CE19941BEC81FB00DECA3E /* CHKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CE19931BEC81FB00DECA3E /* CHKeychain.m */; };
 		93CE199B1BEC9B2F00DECA3E /* MyScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CE199A1BEC9B2F00DECA3E /* MyScrollView.m */; };
@@ -206,6 +207,8 @@
 		93552ED51BEA00FE004B0380 /* CustomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationController.m; sourceTree = "<group>"; };
 		93A2C5551C3513420022C11D /* GustCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GustCollectionView.h; sourceTree = "<group>"; };
 		93A2C5561C3513420022C11D /* GustCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GustCollectionView.m; sourceTree = "<group>"; };
+		93B74D621C3BAC3F0057BDBB /* GustAssistScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GustAssistScrollView.h; sourceTree = "<group>"; };
+		93B74D631C3BAC3F0057BDBB /* GustAssistScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GustAssistScrollView.m; sourceTree = "<group>"; };
 		93CE19181BEB51E400DECA3E /* SetPrivacyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPrivacyPasswordViewController.h; sourceTree = "<group>"; };
 		93CE19191BEB51E400DECA3E /* SetPrivacyPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetPrivacyPasswordViewController.m; sourceTree = "<group>"; };
 		93CE19921BEC81FB00DECA3E /* CHKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHKeychain.h; sourceTree = "<group>"; };
@@ -561,6 +564,8 @@
 				93A2C5561C3513420022C11D /* GustCollectionView.m */,
 				930B1DC91C37DA5F003219D1 /* HorizontalCollectionViewLayout.h */,
 				930B1DCA1C37DA5F003219D1 /* HorizontalCollectionViewLayout.m */,
+				93B74D621C3BAC3F0057BDBB /* GustAssistScrollView.h */,
+				93B74D631C3BAC3F0057BDBB /* GustAssistScrollView.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -807,6 +812,7 @@
 				186D36731AD6D59100B03018 /* GustAlertView.m in Sources */,
 				183738311AAF3780009D9465 /* MGSwipeTableCell.m in Sources */,
 				1828231F1AD05D1900267C41 /* CoreDataManager.m in Sources */,
+				93B74D641C3BAC3F0057BDBB /* GustAssistScrollView.m in Sources */,
 				1898DDE51AC4361600C89513 /* QRCodeReader.m in Sources */,
 				18A445371AEA406C004649C0 /* UIImage+GIF.m in Sources */,
 				93A2C5571C3513420022C11D /* GustCollectionView.m in Sources */,

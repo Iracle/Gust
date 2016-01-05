@@ -18,25 +18,19 @@
 #define IMAGENAMED(NAME)       [UIImage imageNamed:NAME]
 #define ORIGINAL_IMAGE(NAME)   [[UIImage imageNamed:NAME] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
 
-//color
-#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
-
-#define COLOR(R, G, B, A) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:A]
-#define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
-#define RGB(r,g,b) RGBA(r,g,b,1.0f)
-
+//size
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
-
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 
 //custom define
 static const CGFloat MainTouchViewRadius = 57.5;
 static const CGFloat SearchBarHeight = 45;
 
-#define CollectionViewCellSize_WIDTH SCREEN_WIDTH / 3
-#define CollectionViewCellSize_HIGHT SCREEN_WIDTH / 3
-#define CollectionContentView_WIDTH (SCREEN_WIDTH - 70) / 3
-#define CollectionCell_OFFSET (CollectionViewCellSize_WIDTH - CollectionContentView_WIDTH) / 2
+#define COLLECTION_CELL_WIDTH SCREEN_WIDTH / 3
+#define COLLECTION_CELL_HIGHT SCREEN_WIDTH / 3
+#define COLLECTION_CONTENT_WIDTH (SCREEN_WIDTH - 70) / 3
+#define COLLECTION_CONTENT_OFFSET (COLLECTION_CELL_WIDTH - COLLECTION_CONTENT_WIDTH) / 2
+
 #define EntityNameBookmark @"Bookmark"
 #define EntityNameHistory @"History"
 

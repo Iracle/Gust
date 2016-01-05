@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GustScrollingNavBarViewController.h"
-#import "MainTouchView.h"
+#import "MainTouchBaseView.h"
 
 
 @interface GustWebViewController : GustScrollingNavBarViewController
@@ -17,7 +17,7 @@
 @property (nonatomic, strong) NSMutableString *currentSearchString;
 @property (nonatomic, assign) BOOL isSearch;
 
-@property (nonatomic, strong) MainTouchView *touchView;
+@property (nonatomic, strong) MainTouchBaseView *touchView;
 
 
 @end

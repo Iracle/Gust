@@ -34,7 +34,8 @@
 #import "GustRefreshHeader.h"
 #import "GustCollectionView.h"
 #import "HorizontalCollectionViewLayout.h"
-
+#import "GustAssistScrollView.h"
+#import <POP/POP.h>
 
 @interface HomeViewController () <MainTouchViewDelegate, VLDContextSheetDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate,UIViewControllerPreviewingDelegate, PrivacyPasswordViewDelegate>
 
@@ -65,6 +66,8 @@
 //pull back
 @property (nonatomic, strong) GustRefreshHeader *refreshHeader;
 
+//assist scrollView
+@property (nonatomic, strong) GustAssistScrollView *assistScrollView;
 
 @end
 
@@ -88,7 +91,7 @@
 {
     if (!_searchBar) {
         _searchBar = [[MainSearchBar alloc] init];
-        _searchBar.bounds = CGRectMake(0, 0, SCREEN_WIDTH - CollectionCell_OFFSET * 2, SearchBarHeight);
+        _searchBar.bounds = CGRectMake(0, 0, SCREEN_WIDTH - COLLECTION_CONTENT_OFFSET * 2, SearchBarHeight);
         _searchBar.center = CGPointMake(CGRectGetMidX(self.view.bounds), 102.5);
         _searchBar.delegate = self;
     }
@@ -133,9 +136,9 @@
 - (GustCollectionView *)homeCollectionView {
     if (!_homeCollectionView) {
         HorizontalCollectionViewLayout *layout = [[HorizontalCollectionViewLayout alloc] init];
-        layout.itemSize = CGSizeMake(CollectionViewCellSize_WIDTH,CollectionViewCellSize_HIGHT);
+        layout.itemSize = CGSizeMake(COLLECTION_CELL_WIDTH,COLLECTION_CELL_HIGHT);
         
-        _homeCollectionView = [[GustCollectionView alloc] initWithFrame:CGRectMake(0, 170, self.view.bounds.size.width, CollectionViewCellSize_HIGHT * 3 - 1) collectionViewLayout:layout];
+        _homeCollectionView = [[GustCollectionView alloc] initWithFrame:CGRectMake(0, 170, self.view.bounds.size.width, COLLECTION_CELL_HIGHT * 3 - 1) collectionViewLayout:layout];
         _homeCollectionView .backgroundColor = [UIColor clearColor];
         _homeCollectionView.pagingEnabled = YES;
         _homeCollectionView.showsHorizontalScrollIndicator = NO;
@@ -146,6 +149,17 @@
     }
     return _homeCollectionView;
 }
+
+- (GustAssistScrollView *)assistScrollView {
+    if (!_assistScrollView) {
+        _assistScrollView = [[GustAssistScrollView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_homeCollectionView.frame), SCREEN_WIDTH, SCREEN_HEIGHT - CGRectGetMaxY(_homeCollectionView.frame))];
+        _assistScrollView.backgroundColor = [UIColor clearColor];
+        _assistScrollView.pagingEnabled = YES;
+        _assistScrollView.showsHorizontalScrollIndicator = NO;
+        _assistScrollView.delegate = self;
+    }
+    return _assistScrollView;
+}
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self check3DTouch];
@@ -154,6 +168,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self performSelector:@selector(checkoutNetWorkState) withObject:self afterDelay:2];
+    [self touchViewAnimtion];
 }
 
 - (void)addContextSheet:(UIGestureRecognizer *)sender {
@@ -175,6 +190,7 @@
 
     [self.view addSubview:self.homeCollectionView];
     [self.view addSubview:self.searchBar];
+    [self.view addSubview:self.assistScrollView];
     [self.view addSubview:self.touchView];
     
     self.contextSheet = [[VLDContextSheet alloc] initWithItem:@"书签/历史" item:@"隐私模式" item:@"设置"];
@@ -242,6 +258,8 @@
         }
     }
     [_homeCollectionView reloadData];
+    //ret assist scrollView contentsize
+    self.assistScrollView.contentSize = CGSizeMake(SCREEN_WIDTH * ceil(_topSitesSortArray.count / 6.0), CGRectGetHeight(self.assistScrollView.bounds));
     [userDefaults setObject:_savedArray forKey:TopSits];
     [userDefaults synchronize];
         
@@ -687,7 +705,7 @@
         GustWebViewController *gustwebVC = [[GustWebViewController alloc] init];
         gustwebVC.touchView.hidden = YES;
         gustwebVC.webURL = homeCell.pageUrlString;
-        CGRect rect = CGRectMake(homeCell.frame.origin.x + CollectionCell_OFFSET, homeCell.frame.origin.y + CollectionCell_OFFSET, CollectionContentView_WIDTH, CollectionContentView_WIDTH);
+        CGRect rect = CGRectMake(homeCell.frame.origin.x + COLLECTION_CONTENT_OFFSET, homeCell.frame.origin.y + COLLECTION_CONTENT_OFFSET, COLLECTION_CONTENT_WIDTH, COLLECTION_CONTENT_WIDTH);
         previewingContext.sourceRect = [self.view convertRect:rect fromView:self.homeCollectionView];
         CustomNavigationController *nav = [[CustomNavigationController alloc] initWithRootViewController:gustwebVC];
         self.threeDTouchNav = nav;
@@ -802,7 +820,52 @@
     }];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if ([scrollView isKindOfClass:[GustCollectionView class]]) {
+        [self.assistScrollView setContentOffset:self.homeCollectionView.contentOffset ];
+    }else if([scrollView isKindOfClass:[GustAssistScrollView class]]) {
+        [self.homeCollectionView setContentOffset:self.assistScrollView.contentOffset];
+    } else {
+        return;
+    }
+    
+}
+
+#pragma mark -- animation
+- (void)touchViewAnimtion {
+    
+    self.touchView.transform = CGAffineTransformMakeScale(0.0001, 0.0001);
+    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+    animation.beginTime = CACurrentMediaTime() + 0.1;
+    animation.toValue = [NSValue valueWithCGPoint:CGPointMake(1.0, 1.0)];
+    animation.springBounciness = 10.0;
+    animation.springSpeed = 10.0;
+    [self.touchView.layer pop_addAnimation:animation forKey:@"spring"];
+    
+    [UIView transitionWithView:self.searchBar duration:1 options: UIViewAnimationOptionTransitionCurlDown animations:^{
+        
+    } completion:^(BOOL finished) {
+    }];
+}
+
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -18,9 +18,7 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
 
-        _cellContentView = [[UIView alloc] initWithFrame:CGRectMake(CollectionCell_OFFSET, CollectionCell_OFFSET, CollectionContentView_WIDTH, CollectionContentView_WIDTH)];
-//        _cellContentView.bounds = CGRectMake(0, 0, CollectionContentView_WIDTH, CollectionContentView_WIDTH);
-//        _cellContentView.center = CGPointMake(frame.origin.x, frame.origin.y);
+        _cellContentView = [[UIView alloc] initWithFrame:CGRectMake(COLLECTION_CONTENT_OFFSET, COLLECTION_CONTENT_OFFSET, COLLECTION_CONTENT_WIDTH, COLLECTION_CONTENT_WIDTH)];
         _cellContentView.backgroundColor = [UIColor whiteColor];
         _cellContentView.layer.shadowColor = HOME_COLLECTIONCELL_SHADOW_COLOR.CGColor;
         _cellContentView.layer.shadowOffset = CGSizeMake(0, 1);
