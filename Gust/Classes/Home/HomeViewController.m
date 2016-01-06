@@ -69,6 +69,8 @@
 //assist scrollView
 @property (nonatomic, strong) GustAssistScrollView *assistScrollView;
 
+@property (nonatomic) BOOL isFirstEnter;
+
 @end
 
 @implementation HomeViewController
@@ -169,6 +171,20 @@
     [super viewDidAppear:animated];
     [self performSelector:@selector(checkoutNetWorkState) withObject:self afterDelay:2];
     [self touchViewAnimtion];
+    if (!_isFirstEnter) {
+        [self performSelector:@selector(searchBarAnimation) withObject:nil afterDelay:0.24];
+        //get Visible collection cell
+        NSMutableArray *cellArray = [NSMutableArray array];
+        NSArray *indexPaths = [self.homeCollectionView indexPathsForVisibleItems];
+        for (NSIndexPath *indexPath in indexPaths) {
+            HomeCollectionViewCell *cell = (HomeCollectionViewCell*)[self.homeCollectionView cellForItemAtIndexPath:indexPath];
+            cell.cellContentView.backgroundColor = [UIColor colorWithRed:0.9618 green:0.9618 blue:0.9618 alpha:0.2];
+            cell.cellContentView.alpha = 0.0;
+            [cellArray addObject:cell];
+        }
+
+        [self performSelector:@selector(cellContentViewAnimation:) withObject:cellArray afterDelay:0.5];
+    }
 }
 
 - (void)addContextSheet:(UIGestureRecognizer *)sender {
@@ -187,7 +203,10 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = HOME_COLOR;
     [self getCurrentSearchEnginSave];
-
+    
+    if (!_isFirstEnter) {
+        self.searchBar.hidden = YES;
+    }
     [self.view addSubview:self.homeCollectionView];
     [self.view addSubview:self.searchBar];
     [self.view addSubview:self.assistScrollView];
@@ -836,18 +855,64 @@
     
     self.touchView.transform = CGAffineTransformMakeScale(0.0001, 0.0001);
     POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
-    animation.beginTime = CACurrentMediaTime() + 0.1;
+    animation.beginTime = CACurrentMediaTime() + 0.5;
     animation.toValue = [NSValue valueWithCGPoint:CGPointMake(1.0, 1.0)];
     animation.springBounciness = 10.0;
     animation.springSpeed = 10.0;
     [self.touchView.layer pop_addAnimation:animation forKey:@"spring"];
-    
-    [UIView transitionWithView:self.searchBar duration:1 options: UIViewAnimationOptionTransitionCurlDown animations:^{
-        
-    } completion:^(BOOL finished) {
-    }];
 }
 
+- (void)searchBarAnimation {
+    self.searchBar.hidden = NO;
+    _isFirstEnter = YES;
+    [UIView animateWithDuration:0.35 delay:0 options:0 animations:^{
+        [UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:self.searchBar cache:YES];
+    } completion:nil];
+}
+
+- (void)cellContentViewAnimation:(NSMutableArray *)cellArray {
+    for (NSInteger index = 0; index < cellArray.count; index ++) {
+        HomeCollectionViewCell *cell = cellArray[index];
+        switch (index) {
+            case 0:
+                [self showMycellWithAnimation:cell withDaly:0];
+                    
+                break;
+            case 1:
+                [self showMycellWithAnimation:cell withDaly:0.1];
+                    
+                break;
+            case 2:
+                [self showMycellWithAnimation:cell withDaly:0.2];
+                break;
+            case 3:
+                [self showMycellWithAnimation:cell withDaly:0.1];
+                    
+                break;
+            case 4:
+                [self showMycellWithAnimation:cell withDaly:0.2];
+                break;
+            case 5:
+                [self showMycellWithAnimation:cell withDaly:0.3];
+                break;
+            default:
+                    break;
+            }
+    }
+
+}
+
+- (void)showMycellWithAnimation:(HomeCollectionViewCell *)cell withDaly:(NSTimeInterval)dely {
+    [self performSelector:@selector(showCurrentCell:) withObject:cell afterDelay:dely];
+}
+
+- (void)showCurrentCell:(HomeCollectionViewCell *)cell {
+    cell.cellContentView.hidden = NO;
+    [UIView animateWithDuration:0.25 animations:^{
+        cell.cellContentView.backgroundColor = [UIColor whiteColor];
+        cell.cellContentView.alpha = 1.0;
+    }];
+}
 
 @end
 
