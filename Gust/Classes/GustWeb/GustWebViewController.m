@@ -147,7 +147,7 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.hidden = NO;
+    self.navigationController.navigationBar.hidden = YES;
     [self getCurrentSearchEnginSave];
     
     self.navigationController.hidesBarsWhenVerticallyCompact = YES;
@@ -408,7 +408,7 @@
 #pragma mark-- MainTouchViewDelegate
 - (void)SingleTapMainTouchView:(MainTouchView *)touchView withGesture:(UIGestureRecognizer *)gestureRecognizer
 {
-    [self.presentingViewController dismissViewControllerAnimated:NO completion:nil];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 - (void)DoubleTapMainTouchView:(MainTouchView *)touchView withGesture:(UIGestureRecognizer *)gestureRecognizer
 {

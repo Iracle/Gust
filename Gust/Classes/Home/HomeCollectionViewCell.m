@@ -25,13 +25,13 @@
         _cellContentView.layer.shadowOpacity = 0.8;
         _cellContentView.layer.cornerRadius = 3;
         [self.contentView addSubview:_cellContentView];
-        
         _pageNameLabel = [[UILabel alloc] initWithFrame:_cellContentView.bounds];
         _pageNameLabel.backgroundColor = [UIColor clearColor];
         _pageNameLabel.textAlignment = NSTextAlignmentCenter;
         _pageNameLabel.font = [UIFont systemFontOfSize:14];
         _pageNameLabel.textColor = HOME_COLLECTIONCELL_COLOR;
-        _pageNameLabel.numberOfLines = 0;
+        _pageNameLabel.numberOfLines = 0;  
+      
         [_cellContentView addSubview:_pageNameLabel];
         
     }

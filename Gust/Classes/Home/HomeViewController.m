@@ -36,6 +36,7 @@
 #import "HorizontalCollectionViewLayout.h"
 #import "GustAssistScrollView.h"
 #import <POP/POP.h>
+#import "GustNavigationControllerDelegate.h"
 
 @interface HomeViewController () <MainTouchViewDelegate, VLDContextSheetDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate,UIViewControllerPreviewingDelegate, PrivacyPasswordViewDelegate>
 
@@ -70,6 +71,8 @@
 @property (nonatomic, strong) GustAssistScrollView *assistScrollView;
 
 @property (nonatomic) BOOL isFirstEnter;
+
+@property (nonatomic, strong) GustNavigationControllerDelegate *gustNavDelegate;
 
 @end
 
@@ -201,6 +204,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.gustNavDelegate = [[GustNavigationControllerDelegate alloc] init];
+    self.navigationController.delegate = self.gustNavDelegate;
     self.view.backgroundColor = HOME_COLOR;
     [self getCurrentSearchEnginSave];
     
@@ -480,8 +485,8 @@
         _willSearchString = nil;
         
     }
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:gustWebVC];
-    [self presentViewController:nav animated:NO completion:nil];
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:gustWebVC];
+    [self.navigationController pushViewController:gustWebVC animated:YES];
     //clean searchBar state
     self.searchBar.text = nil;
     _isInputingState = NO;
@@ -592,6 +597,9 @@
     [self.searchBar resignFirstResponder];
     HomeCollectionViewCell *cell = (HomeCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     [self loadWebWithUrlString:cell.pageUrlString];
+    
+    CGRect cellRect = [self.view convertRect:cell.frame fromView:self.homeCollectionView];
+    self.cellPopAnimationView = [[UIView alloc] initWithFrame:cellRect];
     
 }
 
