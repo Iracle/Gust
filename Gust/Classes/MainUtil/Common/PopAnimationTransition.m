@@ -17,57 +17,56 @@
 @end
 
 @implementation PopAnimationTransition {
-    UIView *currentAnimationView;
     HomeViewController *fromVC;
     GustWebViewController *toVC;
 }
 
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext{
-    return  0.35;
+    return  0.38;
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext{
     fromVC = (HomeViewController *)[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     toVC = (GustWebViewController *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-
-    currentAnimationView = fromVC.cellPopAnimationView;
-    currentAnimationView.backgroundColor = [UIColor whiteColor];
-    [fromVC.view addSubview:currentAnimationView];
+    [[transitionContext containerView] addSubview:toVC.view];
+    toVC.view.center = CGPointMake(fromVC.cellPopAnimationView.frame.origin.x + CGRectGetWidth(fromVC.cellPopAnimationView.bounds)/2, fromVC.cellPopAnimationView.frame.origin.y + CGRectGetHeight(fromVC.cellPopAnimationView.bounds)/2);
+    toVC.view.transform = CGAffineTransformMakeScale(0.28, 0.17);
     
     [self showAllHomeSubview:NO];
     [fromVC.view insertSubview:self.blackBackgroundView atIndex:0];
     
-    POPBasicAnimation *animation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewFrame];
+    POPBasicAnimation *animation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewCenter];
     animation.duration = [self transitionDuration:transitionContext];
-    animation.toValue = [NSValue valueWithCGRect:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    animation.toValue = [NSValue valueWithCGPoint:CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)];
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
 
-    animation.completionBlock = ^(POPAnimation *anim, BOOL finished) {
+    [toVC.view pop_addAnimation:animation forKey:@"Center"];
+    
+    POPBasicAnimation *animation1 = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+    animation1.duration = [self transitionDuration:transitionContext];
+    animation1.toValue = [NSValue valueWithCGPoint:CGPointMake(1.0, 1.0)];
+    animation1.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
+    animation1.completionBlock = ^(POPAnimation *anim, BOOL finished) {
         if (finished) {
-            [[transitionContext containerView] addSubview:toVC.view];
-             [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
-            [currentAnimationView.layer pop_removeAllAnimations];
+            [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+            [toVC.view.layer pop_removeAllAnimations];
             [self showAllHomeSubview:YES];
             [self removeAllAnimationView];
         }
     };
-    [currentAnimationView.layer pop_addAnimation:animation forKey:@"decay"];
-    
+    [toVC.view.layer pop_addAnimation:animation1 forKey:@"ScaleXY"];
+
 }
 
 
 - (void)showAllHomeSubview:(BOOL)isSHow {
     for (UIView *homeSubview in fromVC.view.subviews) {
-        if (homeSubview != currentAnimationView) {
             homeSubview.hidden = !isSHow;
-        }
     }
 }
 
 - (void)removeAllAnimationView {
-    [currentAnimationView removeFromSuperview];
-    currentAnimationView = nil;
-    [_blackBackgroundView removeFromSuperview];
+   [_blackBackgroundView removeFromSuperview];
     _blackBackgroundView = nil;
 }
 

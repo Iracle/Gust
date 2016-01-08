@@ -58,6 +58,8 @@
 @property (nonatomic, strong) NSMutableArray *currentMutiTabArray;
 
 @property (nonatomic, strong) UIImage *currentTabPageImage;
+@property (nonatomic, strong) UIVisualEffectView *navSearchBaseView;
+
 
 @end
 
@@ -135,6 +137,14 @@
     }
     return _cancelButton;
 }
+
+- (UIVisualEffectView *)navSearchBaseView {
+    if (!_navSearchBaseView) {
+        _navSearchBaseView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
+        _navSearchBaseView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 64);
+    }
+    return _navSearchBaseView;
+}
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 }
@@ -145,8 +155,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.view.backgroundColor = [UIColor whiteColor];
+    
     self.navigationController.navigationBar.hidden = YES;
     [self getCurrentSearchEnginSave];
     
@@ -156,7 +166,7 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.webURL]]];
 
     [self.view addSubview:self.touchView];
-
+    [self.view addSubview:self.navSearchBaseView];
     [self.navigationController.navigationBar addSubview:self.searchBar];
 
     self.progressBar = [[OTMWebViewProgressBar alloc]init];
@@ -408,7 +418,7 @@
 #pragma mark-- MainTouchViewDelegate
 - (void)SingleTapMainTouchView:(MainTouchView *)touchView withGesture:(UIGestureRecognizer *)gestureRecognizer
 {
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)DoubleTapMainTouchView:(MainTouchView *)touchView withGesture:(UIGestureRecognizer *)gestureRecognizer
 {

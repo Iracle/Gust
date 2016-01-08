@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "PopAnimationTransition.h"
+#import "RevertPopAnimationTransition.h"
 
 @interface GustNavigationControllerDelegate : NSObject <UINavigationControllerDelegate>
 

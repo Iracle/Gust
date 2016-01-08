@@ -1,27 +1,25 @@
 //
-//  GustNavigationControllerDelegate.m
+//  GustRevertNavigationControllerDelegate.m
 //  Gust
 //
-//  Created by Iracle Zhang on 16/1/7.
+//  Created by Iracle Zhang on 16/1/8.
 //  Copyright © 2016年 Iralce. All rights reserved.
 //
 
-#import "GustNavigationControllerDelegate.h"
+#import "GustRevertNavigationControllerDelegate.h"
 
-@implementation GustNavigationControllerDelegate
+
+@implementation GustRevertNavigationControllerDelegate 
 
 - (id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
                                    animationControllerForOperation:(UINavigationControllerOperation)operation
                                                 fromViewController:(UIViewController *)fromVC
                                                   toViewController:(UIViewController *)toVC{
-    if (operation == UINavigationControllerOperationPush) {
-        PopAnimationTransition *popTransition = [[PopAnimationTransition alloc] init];
-        return popTransition;
-    } else if (operation == UINavigationControllerOperationPop) {
+    if (operation == UINavigationControllerOperationPop) {
         RevertPopAnimationTransition *revertPopTransition = [[RevertPopAnimationTransition alloc] init];
         return revertPopTransition;
-        
-    }else{
+
+    } else{
         return nil;
     }
 }
