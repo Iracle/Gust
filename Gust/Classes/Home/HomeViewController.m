@@ -172,7 +172,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self performSelector:@selector(checkoutNetWorkState) withObject:self afterDelay:2];
+   // [self performSelector:@selector(checkoutNetWorkState) withObject:self afterDelay:2];
     [self touchViewAnimtion];
     if (!_isFirstEnter) {
         [self performSelector:@selector(searchBarAnimation) withObject:nil afterDelay:0.24];
@@ -439,6 +439,10 @@
     if (textField.text.length == 0) {
         return NO;
     }
+    //transiotn animation position
+    self.cellPopAnimationView = [[UIView alloc] init];
+    self.cellPopAnimationView.bounds = CGRectMake(0, 0, COLLECTION_CELL_WIDTH, COLLECTION_CELL_HIGHT);
+    self.cellPopAnimationView.center = self.view.center;
     //if text length > 0,inputrecord should be save
     if (textField.text.length > 0) {
         //pravicy mode
@@ -454,7 +458,6 @@
             }
         }
     }
-    
     NSMutableString *returnString = [MainSearchBarTextManage manageTextFieldText:textField.text];
     if ([returnString hasPrefix:@"s"]) {
         _willSearchString = returnString;
@@ -485,7 +488,6 @@
         _willSearchString = nil;
         
     }
-//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:gustWebVC];
     [self.navigationController pushViewController:gustWebVC animated:YES];
     //clean searchBar state
     self.searchBar.text = nil;
@@ -596,14 +598,12 @@
     
     [self.searchBar resignFirstResponder];
     HomeCollectionViewCell *cell = (HomeCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    [self loadWebWithUrlString:cell.pageUrlString];
-    
     CGRect cellRect = [self.view convertRect:cell.frame fromView:self.homeCollectionView];
     self.cellPopAnimationView = [[UIView alloc] initWithFrame:cellRect];
-    
+    [self loadWebWithUrlString:cell.pageUrlString];
 }
 
-#pragma mark --UITableViewDelegate
+#pragma mark --UITableView Data Source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -631,7 +631,7 @@
     } else {
         cell.textLabel.text  = [_inputRecordArray objectAtIndex:indexPath.row];
     }
-    cell.textLabel.textColor = [UIColor colorWithWhite:0.172 alpha:0.940];
+    cell.textLabel.textColor = [UIColor colorWithWhite:0.3745 alpha:1.0];
     return cell;
 }
 
@@ -801,10 +801,7 @@
                 }
 
             }
-    
-            
         }];
-        
         
     } else {
         //not surport fingerprint

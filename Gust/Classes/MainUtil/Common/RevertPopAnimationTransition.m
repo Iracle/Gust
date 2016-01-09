@@ -32,7 +32,7 @@
     POPBasicAnimation *animation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
     animation.duration = [self transitionDuration:transitionContext];
     animation.toValue = @(1.0);
-    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     animation.completionBlock = ^(POPAnimation *anim, BOOL finished) {
         if (finished) {
             [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
@@ -45,7 +45,7 @@
     POPBasicAnimation *animation1 = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
     animation1.duration = [self transitionDuration:transitionContext];
     animation1.toValue = [NSValue valueWithCGPoint:CGPointMake(1.0, 1.0)];
-    animation1.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    animation1.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     [toVC.view.layer pop_addAnimation:animation1 forKey:@"ScaleXY"];
 }
 
