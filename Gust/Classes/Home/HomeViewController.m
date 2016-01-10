@@ -440,9 +440,7 @@
         return NO;
     }
     //transiotn animation position
-    self.cellPopAnimationView = [[UIView alloc] init];
-    self.cellPopAnimationView.bounds = CGRectMake(0, 0, COLLECTION_CELL_WIDTH, COLLECTION_CELL_HIGHT);
-    self.cellPopAnimationView.center = self.view.center;
+    self.cellPopAnimationViewRect = self.view.frame;
     //if text length > 0,inputrecord should be save
     if (textField.text.length > 0) {
         //pravicy mode
@@ -599,7 +597,7 @@
     [self.searchBar resignFirstResponder];
     HomeCollectionViewCell *cell = (HomeCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     CGRect cellRect = [self.view convertRect:cell.frame fromView:self.homeCollectionView];
-    self.cellPopAnimationView = [[UIView alloc] initWithFrame:cellRect];
+    self.cellPopAnimationViewRect = cellRect;
     [self loadWebWithUrlString:cell.pageUrlString];
 }
 

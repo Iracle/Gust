@@ -29,7 +29,7 @@
     fromVC = (HomeViewController *)[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     toVC = (GustWebViewController *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     [[transitionContext containerView] addSubview:toVC.view];
-    toVC.view.center = CGPointMake(fromVC.cellPopAnimationView.frame.origin.x + CGRectGetWidth(fromVC.cellPopAnimationView.bounds)/2, fromVC.cellPopAnimationView.frame.origin.y + CGRectGetHeight(fromVC.cellPopAnimationView.bounds)/2);
+    toVC.view.center = CGPointMake(fromVC.cellPopAnimationViewRect.origin.x + fromVC.cellPopAnimationViewRect.size.width/2, fromVC.cellPopAnimationViewRect.origin.y + fromVC.cellPopAnimationViewRect.size.height/2);
     toVC.view.transform = CGAffineTransformMakeScale(0.28, 0.17);
     
     [self showAllHomeSubview:NO];

@@ -10,5 +10,5 @@
 
 @interface HomeViewController : UIViewController <UICollectionViewDelegate,UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 
-@property (nonatomic,strong) UIView *cellPopAnimationView;
+@property (nonatomic) CGRect cellPopAnimationViewRect;
 @end
