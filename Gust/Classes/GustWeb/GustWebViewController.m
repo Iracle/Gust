@@ -31,6 +31,8 @@
 #import "MainSearchBarTextManage.h"
 //multiTab
 #import "MultiTabView.h"
+#import "NavaSearchBar.h"
+#import "GustRefreshHeader.h"
 
 @interface GustWebViewController ()< OTMWebViewDelegate, MainTouchViewDelegate, UIScrollViewDelegate, VLDContextSheetDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -49,7 +51,6 @@
 @property (nonatomic, strong) NSMutableArray *inputRecordArray;
 //save search record result array
 @property (nonatomic, strong) NSMutableArray *inputRecordSearchResultArray;
-@property (nonatomic, strong) UIButton *cancelButton;
 //save currentSearchEngin
 @property (nonatomic, strong) NSString *currentSearchEnginString;
 
@@ -58,7 +59,9 @@
 @property (nonatomic, strong) NSMutableArray *currentMutiTabArray;
 
 @property (nonatomic, strong) UIImage *currentTabPageImage;
-@property (nonatomic, strong) UIVisualEffectView *navSearchBaseView;
+@property (nonatomic, strong) NavaSearchBar *navaSearchBar;
+//pull back
+@property (nonatomic, strong) GustRefreshHeader *refreshHeader;
 
 
 @end
@@ -81,8 +84,7 @@
 - (OTMWebView *)webView
 {
     if (!_webView) {
-        _webView = [[OTMWebView alloc] initWithFrame:self.view.bounds];
-        _webView.translatesAutoresizingMaskIntoConstraints = NO;
+        _webView = [[OTMWebView alloc] initWithFrame:CGRectMake(0, 40.0, SCREEN_WIDTH, SCREEN_HEIGHT- 40.0)];
         _webView.delegate = self;
         _webView.scalesPageToFit = YES;
     }
@@ -98,9 +100,17 @@
     return _touchView;
 }
 
+- (NavaSearchBar *)navaSearchBar {
+    if (!_navaSearchBar) {
+        _navaSearchBar = [[NavaSearchBar alloc] init];
+    }
+    return _navaSearchBar;
+}
+
 - (MainSearchBar *)searchBar
 {
     if (!_searchBar) {
+        _searchBar = self.navaSearchBar.searchBar;
         _searchBar.delegate = self;
     }
     return _searchBar;
@@ -121,30 +131,31 @@
     }
     return _historyDic;
 }
-
-- (UIButton *)cancelButton
-{
-    if (!_cancelButton) {
-        [_cancelButton setTitle:@"取消" forState:UIControlStateNormal];
-        _cancelButton.titleLabel.font = [UIFont systemFontOfSize:15];
-        _cancelButton.backgroundColor = [UIColor clearColor];
-        [_cancelButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        [_cancelButton addTarget:self action:@selector(cancelButtonTaped:) forControlEvents:UIControlEventTouchUpInside];
-        _cancelButton.alpha = HomePageCancelButtonAlpha;
-        _cancelButton.hidden = YES;
+- (UITableView *)inputHistorisTableView {
+    if (!_inputHistorisTableView) {
+        _inputHistorisTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 70)];
+        _inputHistorisTableView.delegate = self;
+        _inputHistorisTableView.dataSource = self;
+        _inputHistorisTableView.alpha = 0.0;
+        _inputHistorisTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _inputHistorisTableView.separatorColor = [UIColor clearColor];
         
-        
+        _refreshHeader = [[GustRefreshHeader alloc] init];
+        _refreshHeader.scrollView = _inputHistorisTableView;
+        [_refreshHeader addHeadView];
+        _refreshHeader.pullBackOffset = 0.8;
+        __strong typeof(self) weakSelf = self;
+        _refreshHeader.beginRefreshingBlock = ^(){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf hiddeInputHistorisTableView];
+                weakSelf.searchBar.text = nil;
+            });
+        };
     }
-    return _cancelButton;
+    return _inputHistorisTableView;
 }
 
-- (UIVisualEffectView *)navSearchBaseView {
-    if (!_navSearchBaseView) {
-        _navSearchBaseView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
-        _navSearchBaseView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 64);
-    }
-    return _navSearchBaseView;
-}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 }
@@ -156,6 +167,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.navigationController.navigationBar.hidden = YES;
     [self getCurrentSearchEnginSave];
@@ -164,11 +176,10 @@
     [self.view addSubview:self.webView];
     [self gustFollowRollingScrollView: self.webView];
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.webURL]]];
-
     [self.view addSubview:self.touchView];
-    [self.view addSubview:self.navSearchBaseView];
-    [self.navigationController.navigationBar addSubview:self.searchBar];
-
+    
+    [self.navaSearchBar showInView:self.view];
+    
     self.progressBar = [[OTMWebViewProgressBar alloc]init];
     CGFloat progressBarHeight = 1.5;
     self.progressBar.frame = CGRectMake(0.0, CGRectGetMaxY(self.navigationController.navigationBar.bounds) - progressBarHeight, CGRectGetWidth(self.navigationController.navigationBar.bounds), progressBarHeight);
@@ -178,7 +189,6 @@
 
     self.contextSheet = [[VLDContextSheet alloc] initWithItem:@"书签/历史" item:@"分享" item:@"设置"];
     self.contextSheet.delegate = self;
-    [self.navigationController.navigationBar addSubview:self.cancelButton];
     [self.view setNeedsUpdateConstraints];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchBarTextChanged:) name:@"UITextFieldTextDidChangeNotification" object:_searchBar];
@@ -231,39 +241,48 @@
 {
     textField.text = nil;
     _isInputingState = YES;
-    if (!_inputHistorisTableView) {
-        
-        [self loadInputHistorisTableView];
-    }    [self loadInputHistoryData];
-    [self setupSearchBarAnimation];
+    [self.searchBar hiddenSearchIcon];
+    
+    [self.view insertSubview:self.inputHistorisTableView aboveSubview:self.webView];
+    [self showInputHistorisTableView];
+    [self loadInputHistoryData];
     return YES;
 }
-- (void)loadInputHistorisTableView {
-    _inputHistorisTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 700, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - CGRectGetHeight(self.navigationController.navigationBar.bounds) - 20)];
-    _inputHistorisTableView.delegate = self;
-    _inputHistorisTableView.dataSource = self;
-    _inputHistorisTableView.alpha = 0.0;
-    [self.view addSubview:_inputHistorisTableView];
-    
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    [self.searchBar resignFirstResponder];
+
+    return YES;
+}
+#pragma mark -- Search Bar History Animation
+
+- (void)hiddeInputHistorisTableView {
+    [self.navaSearchBar hiddenSearchBar];
+    [UIView animateWithDuration:0.3 animations:^{
+        _inputHistorisTableView.alpha = 0.3;
+        _inputHistorisTableView.frame = CGRectMake(0, SCREEN_HEIGHT, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 70);
+    } completion:^(BOOL finished) {
+
+        [_refreshHeader endRefreshing];
+           
+    }];
+}
+
+- (void)showInputHistorisTableView {
     [UIView animateWithDuration:0.3 animations:^{
         _inputHistorisTableView.alpha = 1.0;
-        _inputHistorisTableView.frame = CGRectMake(0,CGRectGetHeight(self.navigationController.navigationBar.bounds) + 20, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - CGRectGetHeight(self.navigationController.navigationBar.bounds) - 20);
+        _inputHistorisTableView.frame = CGRectMake(0, 65.0, SCREEN_WIDTH, SCREEN_HEIGHT - 65.0);
     }];
-    
 }
 
 - (void)loadWebWithUrlString:(NSString *)urlString
 {
     //down hidden hisTable
-    [UIView animateWithDuration:0.3 animations:^{
-        _inputHistorisTableView.alpha = 10.0;
-        _inputHistorisTableView.frame = CGRectMake(0, 700, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 70);
-    }];
-
+    [self hiddeInputHistorisTableView];
+    
     //clean searchBar state
     self.searchBar.text = nil;
     _isInputingState = NO;
-    [self setupSearchBarAnimation];
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
 
 }
@@ -317,42 +336,6 @@
     [self.inputHistorisTableView reloadData];
 }
 
-- (void)setupSearchBarAnimation
-{
-    [self.view setNeedsUpdateConstraints];
-    if (_isInputingState) {
-        _cancelButton.hidden = NO;
-        if (_cancelButton.alpha == HomePageCancelButtonAlpha) {
-            _cancelButton.alpha = 0.0;
-        }
-    }
-    [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:0.8 initialSpringVelocity:0.0 options:0 animations:^{
-        
-        [self.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        if (!_isInputingState) {
-            
-            _cancelButton.hidden = YES;
-            [_inputHistorisTableView removeFromSuperview];
-            _inputHistorisTableView = nil;
-        }
-    }];
-    
-}
-
-- (void)cancelButtonTaped:(UIButton *)sender
-{
-    [self.searchBar resignFirstResponder];
-    _searchBar.text = nil;
-    _isInputingState = NO;
-    [self setupSearchBarAnimation];
-    
-    [UIView animateWithDuration:0.3 animations:^{
-        _inputHistorisTableView.alpha = 10.0;
-        _inputHistorisTableView.frame = CGRectMake(0, 700, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - CGRectGetHeight(self.navigationController.navigationBar.bounds) - 20);
-    }];
-}
-
 #pragma mark --OTMWebViewDelegate
 - (void)webView:(OTMWebView *)progressTracker progressDidChange:(double)progress
 {
@@ -396,7 +379,7 @@
             [CoreDataManager insertObjectWithParameter:self.historyDic entityName:[History entityName]];
         }
     }
-    self.searchBar.text = currentDocumentTitle;
+    self.navaSearchBar.webTitle.text = currentDocumentTitle;
 
     //is search
     if (_isSearch) {
@@ -481,7 +464,10 @@
 }
 - (void)SwipeDownMainTouchView:(MainTouchView *)touchView withGesture:(UIGestureRecognizer *)gestureRecognizer
 {
+    [self.navaSearchBar showSearchBar];
+
     [self.searchBar becomeFirstResponder];
+
 }
 
 #pragma mark-- VLDContextSheetDelegate
@@ -577,7 +563,7 @@
     } else {
         cell.textLabel.text  = [_inputRecordArray objectAtIndex:indexPath.row];
     }
-    cell.textLabel.textColor = [UIColor colorWithWhite:0.172 alpha:0.940];
+    cell.textLabel.textColor = [UIColor colorWithWhite:0.3745 alpha:1.0];
     return cell;
 }
 
@@ -624,7 +610,6 @@
 
 - (void)gustWebViewScrollUp
 {
-    [self.searchBar resignFirstResponder];
     if (self.touchView.alpha != CGFLOAT_MIN) {
         
         [UIView animateWithDuration:0.5 animations:^{
@@ -638,7 +623,6 @@
 
 -(void)gustWebViewScrollDown
 {
-    [self.searchBar resignFirstResponder];
     if (self.touchView.alpha != 1.0) {
         
         [UIView animateWithDuration:0.5 animations:^{

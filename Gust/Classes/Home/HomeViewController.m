@@ -508,8 +508,6 @@
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-    [self.searchBar showSearchIcon];
-
     return YES;
 }
 
@@ -531,6 +529,8 @@
             self.searchBar.transform = CGAffineTransformMakeTranslation(0, -40);
         } else {
             self.searchBar.transform = CGAffineTransformIdentity;
+            [self.searchBar showSearchIcon];
+
         }
     } completion:^(BOOL finished) {
     }];
