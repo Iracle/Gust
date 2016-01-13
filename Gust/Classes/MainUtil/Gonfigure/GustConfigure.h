@@ -68,6 +68,7 @@ const static float HomePageCancelButtonAlpha = 0.9999999;
 #define NotificationUpdateTopSites @"notificationUpdateTopSites"
 #define NotificationUpdateMainTouchViewLocation @"notificationUpdateMainTouchViewLocation"
 #define NotificationChangeDefautSearchEngin @"notificationChangeDefautSearchEngin"
+#define NotificationResetTransitionDuration @"notificationResetTransitionDuration"
 
 #define ShareText @"我在Gust浏览器发现了一个好网站，快来看看吧："
 

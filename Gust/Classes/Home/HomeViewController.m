@@ -38,7 +38,10 @@
 #import <POP/POP.h>
 #import "GustNavigationControllerDelegate.h"
 
-@interface HomeViewController () <MainTouchViewDelegate, VLDContextSheetDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate,UIViewControllerPreviewingDelegate, PrivacyPasswordViewDelegate>
+#import "QRCodeReaderViewController.h"
+#import "QRCodeReader.h"
+
+@interface HomeViewController () <MainTouchViewDelegate, VLDContextSheetDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate,UIViewControllerPreviewingDelegate, PrivacyPasswordViewDelegate, QRCodeReaderDelegate>
 
 @property (nonatomic, assign) BOOL didSetupConstraints;
 @property (nonatomic, strong) MainTouchBaseView *touchView;
@@ -203,10 +206,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = HOME_COLOR;
+
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.gustNavDelegate = [[GustNavigationControllerDelegate alloc] init];
     self.navigationController.delegate = self.gustNavDelegate;
-    self.view.backgroundColor = HOME_COLOR;
     [self getCurrentSearchEnginSave];
     
     if (!_isFirstEnter) {
@@ -224,6 +228,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchBarTextChanged:) name:@"UITextFieldTextDidChangeNotification" object:_searchBar];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updataMainTouchViewLocation:) name:NotificationUpdateMainTouchViewLocation object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chooseDefautSeachEngin:) name:NotificationChangeDefautSearchEngin object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetnResetTransitionDuration:) name:NotificationResetTransitionDuration object:nil];
     
     [self setupTopSitsData];
 
@@ -305,6 +310,10 @@
     [self getCurrentSearchEnginSave];
 }
 
+- (void)resetnResetTransitionDuration:(NSNotification *)notification {
+    self.animator.transitionDuration = 0.0;
+}
+
 - (void)getCurrentSearchEnginSave {
     NSUserDefaults *searchDefaut = [NSUserDefaults standardUserDefaults];
     if ([[searchDefaut objectForKey:DefautSearchEngin] isEqualToString:SearchEnginBaidu]) {
@@ -318,16 +327,16 @@
 - (void) contextSheet: (VLDContextSheet *) contextSheet didSelectItem: (VLDContextSheetItem *) item {
     
     if ([item.title isEqualToString:@"设置"]){
-        UINavigationController *moreVC = [[UINavigationController alloc] initWithRootViewController:[[MoreViewController alloc] init]];
-        moreVC.modalPresentationStyle = UIModalPresentationCustom;
+        MoreViewController *more = [[MoreViewController alloc] init];
+        UINavigationController *moreVC = [[UINavigationController alloc] initWithRootViewController:more];
         self.animator = [[ZFModalTransitionAnimator alloc] initWithModalViewController:moreVC];
-        self.animator.dragable = NO;
-        self.animator.bounces = NO;
-        self.animator.behindViewAlpha = 0.5f;
-        self.animator.behindViewScale = 0.6f;
-        self.animator.transitionDuration = 0.7f;
+        self.animator.dragable = YES;
+        self.animator.transitionDuration = 0.7;
+        self.animator.behindViewAlpha = 0.7;
         self.animator.direction = ZFModalTransitonDirectionBottom;
+        [self.animator setContentScrollView:more.tableView];
         moreVC.transitioningDelegate = self.animator;
+        moreVC.modalPresentationStyle = UIModalPresentationCustom;
        [self presentViewController:moreVC animated:YES completion:nil];
         
     } else if ([item.title isEqualToString:@"隐私模式"]){
@@ -375,20 +384,19 @@
         HistoryAndBookmarkViewController *hisBookVC = [[HistoryAndBookmarkViewController alloc] init];
         hisBookVC.isFromHomePage = YES;
         hisBookVC.getUrltoHomeValueBlock = ^(NSString *UrlString){
+            self.cellPopAnimationViewRect = self.view.frame;
             [self loadWebWithUrlString:UrlString];
         };
         UINavigationController *historyAndBookmarkVC = [[UINavigationController alloc] initWithRootViewController:hisBookVC];
-        historyAndBookmarkVC.modalPresentationStyle = UIModalPresentationCustom;
         self.animator = [[ZFModalTransitionAnimator alloc] initWithModalViewController:historyAndBookmarkVC];
-        self.animator.dragable = NO;
-        self.animator.bounces = NO;
-        self.animator.behindViewAlpha = 0.5f;
-        self.animator.behindViewScale = 0.6f;
-        self.animator.transitionDuration = 0.7f;
+        self.animator.dragable = YES;
+        self.animator.transitionDuration = 0.7;
+        self.animator.behindViewAlpha = 0.7;
         self.animator.direction = ZFModalTransitonDirectionBottom;
+        [self.animator setContentScrollView:hisBookVC.tableView];
         historyAndBookmarkVC.transitioningDelegate = self.animator;
+        historyAndBookmarkVC.modalPresentationStyle = UIModalPresentationCustom;
         [self presentViewController:historyAndBookmarkVC animated:YES completion:nil];
-        
     }
 }
 
@@ -424,6 +432,30 @@
 }
 - (void)SwipeUpMainTouchView:(MainTouchView *)touchView withGesture:(UIGestureRecognizer *)gestureRecognizer
 {
+    
+    if ([QRCodeReader supportsMetadataObjectTypes:@[AVMetadataObjectTypeQRCode]]) {
+        static QRCodeReaderViewController *reader = nil;
+        static dispatch_once_t onceToken;
+        
+        dispatch_once(&onceToken, ^{
+            reader = [QRCodeReaderViewController new];
+            reader.modalPresentationStyle = UIModalPresentationFormSheet;
+        });
+        reader.delegate = self;
+        
+        [reader setCompletionWithBlock:^(NSString *resultAsString) {
+        }];
+        
+        [self presentViewController:reader animated:YES completion:NULL];
+    }
+    else {
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"当前设备不支持" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+        [alertController addAction:sureAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+
     
 }
 - (void)SwipeDownMainTouchView:(MainTouchView *)touchView withGesture:(UIGestureRecognizer *)gestureRecognizer
@@ -916,6 +948,24 @@
         cell.cellContentView.alpha = 1.0;
     }];
 }
+
+#pragma mark - QRCodeReader Delegate Methods
+
+- (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result
+{
+    [self dismissViewControllerAnimated:NO completion:^{
+        
+        GustWebViewController *gustWebVC = [[GustWebViewController alloc] init];
+        gustWebVC.webURL = result;
+        [self.navigationController pushViewController:gustWebVC animated:YES];
+    }];
+}
+
+- (void)readerDidCancel:(QRCodeReaderViewController *)reader
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
 
 @end
 

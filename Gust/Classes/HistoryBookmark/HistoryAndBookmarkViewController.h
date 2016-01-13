@@ -19,6 +19,8 @@ typedef void (^GetUrlToHomeValueBlock) (NSString *value);
 @property (nonatomic, strong) GetUrlToHomeValueBlock getUrltoHomeValueBlock;
 
 @property (nonatomic, assign) BOOL isFromHomePage;
+@property (nonatomic, strong) UITableView *tableView;
+
 
 
 

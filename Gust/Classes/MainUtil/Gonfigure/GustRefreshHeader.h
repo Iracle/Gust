@@ -27,5 +27,4 @@ typedef void (^BeginRefreshingBlock)(void);
 -(void)beginRefreshing;
 
 
-
 @end

@@ -258,7 +258,7 @@
 
 - (void)hiddeInputHistorisTableView {
     [self.navaSearchBar hiddenSearchBar];
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.24 animations:^{
         _inputHistorisTableView.alpha = 0.3;
         _inputHistorisTableView.frame = CGRectMake(0, SCREEN_HEIGHT, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 70);
     } completion:^(BOOL finished) {
@@ -269,7 +269,7 @@
 }
 
 - (void)showInputHistorisTableView {
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.15 animations:^{
         _inputHistorisTableView.alpha = 1.0;
         _inputHistorisTableView.frame = CGRectMake(0, 65.0, SCREEN_WIDTH, SCREEN_HEIGHT - 65.0);
     }];
@@ -474,18 +474,18 @@
 - (void) contextSheet: (VLDContextSheet *) contextSheet didSelectItem: (VLDContextSheetItem *) item {
     
     if ([item.title isEqualToString:@"设置"]){
-        UINavigationController *moreVC = [[UINavigationController alloc] initWithRootViewController:[[MoreViewController alloc] init]];
-        moreVC.modalPresentationStyle = UIModalPresentationCustom;
+        MoreViewController *more = [[MoreViewController alloc] init];
+        UINavigationController *moreVC = [[UINavigationController alloc] initWithRootViewController:more];
         self.animator = [[ZFModalTransitionAnimator alloc] initWithModalViewController:moreVC];
-        self.animator.dragable = NO;
-        self.animator.bounces = NO;
-        self.animator.behindViewAlpha = 0.5f;
-        self.animator.behindViewScale = 0.6f;
-        self.animator.transitionDuration = 0.7f;
+        self.animator.dragable = YES;
+        self.animator.transitionDuration = 0.7;
+        self.animator.behindViewAlpha = 0.7;
+        self.animator.behindViewScale = 0.8;
         self.animator.direction = ZFModalTransitonDirectionBottom;
+        [self.animator setContentScrollView:more.tableView];
         moreVC.transitioningDelegate = self.animator;
+        moreVC.modalPresentationStyle = UIModalPresentationCustom;
         [self presentViewController:moreVC animated:YES completion:nil];
-    
         
     } else if ([item.title isEqualToString:@"分享"]){
         
@@ -521,15 +521,15 @@
             
         };
         UINavigationController *historyAndBookmarkVC = [[UINavigationController alloc] initWithRootViewController:hisBookVC];
-        historyAndBookmarkVC.modalPresentationStyle = UIModalPresentationCustom;
         self.animator = [[ZFModalTransitionAnimator alloc] initWithModalViewController:historyAndBookmarkVC];
-        self.animator.dragable = NO;
-        self.animator.bounces = NO;
-        self.animator.behindViewAlpha = 0.5f;
-        self.animator.behindViewScale = 0.6f;
-        self.animator.transitionDuration = 0.7f;
+        self.animator.dragable = YES;
+        self.animator.transitionDuration = 0.7;
+        self.animator.behindViewAlpha = 0.7;
+        self.animator.behindViewScale = 0.8;
         self.animator.direction = ZFModalTransitonDirectionBottom;
+        [self.animator setContentScrollView:hisBookVC.tableView];
         historyAndBookmarkVC.transitioningDelegate = self.animator;
+        historyAndBookmarkVC.modalPresentationStyle = UIModalPresentationCustom;
         [self presentViewController:historyAndBookmarkVC animated:YES completion:nil];
         
     }

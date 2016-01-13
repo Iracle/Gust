@@ -58,7 +58,7 @@
   CGRect offsetRect = CGRectOffset(innerRect, 0, 15);
   
   
-  _overlay.path = [UIBezierPath bezierPathWithRoundedRect:offsetRect cornerRadius:5].CGPath;
+  _overlay.path = [UIBezierPath bezierPathWithRoundedRect:offsetRect cornerRadius:3].CGPath;
 }
 
 #pragma mark - Private Methods
@@ -70,7 +70,6 @@
   _overlay.fillColor       = [UIColor clearColor].CGColor;
   _overlay.strokeColor     = [UIColor greenColor].CGColor;
   _overlay.lineWidth       = 2;
-  _overlay.lineDashPattern = @[@7.0, @7.0];
   _overlay.lineDashPhase   = 0;
   
   [self.layer addSublayer:_overlay];

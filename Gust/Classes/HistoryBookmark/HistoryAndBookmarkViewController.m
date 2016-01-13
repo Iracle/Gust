@@ -7,7 +7,7 @@
 //
 
 #import "HistoryAndBookmarkViewController.h"
-#import "MGSwipeTableCell.h"
+//#import "MGSwipeTableCell.h"
 #import "MGSwipeButton.h"
 #import "HisAndBooModel.h"
 #import "History.h"
@@ -18,11 +18,12 @@
 #import "GustAlertView.h"
 #import "GustWebViewController.h"
 #import "GustConfigure.h"
+#import "UINavigationBar+Addition.h"
+#import "GustSwipeTableCell.h"
 
 @interface HistoryAndBookmarkViewController () <UITableViewDataSource, UITableViewDelegate, MGSwipeTableCellDelegate>
 
 @property (nonatomic, assign) BOOL didSetupConstraints;
-@property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *bookmarkArray;
 @property (nonatomic, strong) NSArray *historyArray;
 @property (nonatomic, strong) NSMutableArray *currentDataArray;
@@ -42,15 +43,19 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+#pragma mark -- getter
 - (UITableView *)tableView
 {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
-        _tableView.contentInset = UIEdgeInsetsMake(0, 0, 45.0, 0);
-        _tableView.rowHeight = 70.0;
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 64.0, SCREEN_WIDTH, SCREEN_HEIGHT - 64.0 - 45.0)];
+        _tableView.backgroundColor = [UIColor clearColor];
+        _tableView.rowHeight = 54.0;
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableFooterView = [UIView new];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.showsVerticalScrollIndicator = NO;
+        _tableView.separatorColor = [UIColor clearColor];
     }
     
     return _tableView;
@@ -63,14 +68,29 @@
         _segment.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMaxY(self.view.bounds) - 22.5);
         [_segment addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
         _segment.selectedSegmentIndex = 0;
-        _segment.tintColor = [UIColor colorWithRed:0.827 green:0.986 blue:1.000 alpha:1.000];
+        _segment.tintColor = [UIColor colorWithRed:93 / 255.0 green:148 / 255.0 blue:140 / 255.0 alpha:1.0];
     }
     return _segment;
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor blackColor];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    [navigationBar hideBottomHairline];
+    navigationBar.barTintColor = [UIColor whiteColor];
+    [navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.3107 green:0.3107 blue:0.3107 alpha:1.0]}];
+    
+     self.view.backgroundColor = [UIColor colorWithRed:250 / 255.0 green:250 / 255.0 blue:250 / 255.0 alpha:1.0];
     self.title = @"书签";
     self.isBookmark = YES;
     [self.view addSubview:self.tableView];
@@ -82,15 +102,15 @@
     _refreshHeader = [[GustRefreshHeader alloc] init];
     _refreshHeader.scrollView = self.tableView;
     [_refreshHeader addHeadView];
-    
+    _refreshHeader.pullBackOffset = 0.9;
+
     //clear history button
-    _clearHistoryButton = [[UIBarButtonItem alloc] initWithTitle:@"清空" style:UIBarButtonItemStylePlain target:self action:@selector(clearHistoryButtonTaped:)];
-    _clearHistoryButton.tintColor = [UIColor blackColor];
+    _clearHistoryButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(clearHistoryButtonTaped:)];
+    _clearHistoryButton.tintColor = [UIColor colorWithRed:0.2752 green:0.2752 blue:0.2752 alpha:1.0];
     
     __strong typeof (self) strongSelf = self;
     _refreshHeader.beginRefreshingBlock = ^(){
         dispatch_async(dispatch_get_main_queue(), ^{
-            
             [strongSelf.presentingViewController dismissViewControllerAnimated:YES completion:nil];
         });
     };
@@ -132,29 +152,39 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"SwipCell";
-    MGSwipeTableCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    GustSwipeTableCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[MGSwipeTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+        cell = [[GustSwipeTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    if (_isBookmark) {
+        [cell isBookmarks:YES];
+    } else {
+        [cell isBookmarks:NO];
     }
     cell.delegate = self;
     NSManagedObject *obj = [self.currentDataArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = [obj valueForKey:PageName];
-    cell.detailTextLabel.text = [obj valueForKey:PageUrl];
-    
-    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"删除" backgroundColor:[UIColor redColor]],[MGSwipeButton buttonWithTitle:@"添加" backgroundColor:[UIColor lightGrayColor]]];
+    [cell configCell:[obj valueForKey:PageName]];
+    MGSwipeButton *deleteButton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"cellDelete"] backgroundColor:[UIColor colorWithRed:0.9621 green:0.4919 blue:0.4729 alpha:1.0]];
+    deleteButton.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+    MGSwipeButton *addButton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"cellAdd"] backgroundColor:[UIColor colorWithRed:0.1171 green:0.8897 blue:0.5259 alpha:1.0]];
+    addButton.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+
+
+    cell.rightButtons = @[deleteButton, addButton];
     cell.rightSwipeSettings.transition = MGSwipeTransitionBorder;
     cell.rightExpansion.buttonIndex = 0;
     cell.rightExpansion.fillOnTrigger = YES;
     
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
-    cell.detailTextLabel.textColor = [UIColor colorWithWhite:0.732 alpha:1.000];
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
+     NSLog(@"%@",NSStringFromCGRect(deleteButton.frame));
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    [self changeBackHomeTimeNotification];
+
     NSManagedObject *obj = [self.currentDataArray objectAtIndex:indexPath.row];
     _selectedPageUrlString = [obj valueForKey:PageUrl];
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
@@ -207,17 +237,14 @@
 
 #pragma mark -- Button Events
 - (void)clearHistoryButtonTaped:(UIBarButtonItem *)sender {
-    
+    [self.currentDataArray removeAllObjects];
     [CoreDataManager removeObjectWithEntityName:[History entityName] predicateString:nil];
     [_tableView reloadData];
 }
 
-
-
-
-
-
-
+- (void)changeBackHomeTimeNotification {
+    [[NSNotificationCenter defaultCenter] postNotificationName:NotificationResetTransitionDuration object:nil];
+}
 
 
 

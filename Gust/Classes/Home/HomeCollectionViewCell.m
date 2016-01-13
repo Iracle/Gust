@@ -17,7 +17,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-
         _cellContentView = [[UIView alloc] initWithFrame:CGRectMake(COLLECTION_CONTENT_OFFSET, COLLECTION_CONTENT_OFFSET, COLLECTION_CONTENT_WIDTH, COLLECTION_CONTENT_WIDTH)];
         _cellContentView.backgroundColor = [UIColor whiteColor];
         _cellContentView.layer.shadowColor = HOME_COLLECTIONCELL_SHADOW_COLOR.CGColor;
@@ -77,5 +76,6 @@
     }
     return strlength;
 }
+
 
 @end

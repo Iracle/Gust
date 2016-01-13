@@ -10,5 +10,6 @@
 #import "QRCodeReaderDelegate.h"
 
 @interface MoreViewController : UIViewController <QRCodeReaderDelegate>
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
