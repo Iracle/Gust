@@ -1,23 +1,23 @@
 //
-//  GustSwipeTableCell.m
+//  SettingsTableViewCell.m
 //  Gust
 //
-//  Created by Iracle Zhang on 16/1/12.
-//  Copyright © 2016年 Iralce. All rights reserved.
+//  Created by Iracle Zhang on 1/18/16.
+//  Copyright © 2016 Iralce. All rights reserved.
 //
 
-#import "GustSwipeTableCell.h"
+#import "SettingsTableViewCell.h"
 #import "GustConfigure.h"
-@interface GustSwipeTableCell ()
+
+@interface SettingsTableViewCell ()
 
 @property (nonatomic, strong) UIView *cellBackgroundView;
 @property (nonatomic, strong) UIImageView *leftImage;
 @property (nonatomic, strong) UILabel *webTitle;
 
-
 @end
 
-@implementation GustSwipeTableCell
+@implementation SettingsTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -47,19 +47,5 @@
     _webTitle.text = webTitle;
 }
 
-- (void)isBookmarks:(BOOL)isBook {
-    if (isBook) {
-        _leftImage.image = IMAGENAMED(@"webBookmark");
-        
-    } else {
-        _leftImage.image = IMAGENAMED(@"webhistory");
-
-    }
-}
 
 @end
-
-
-
-
-

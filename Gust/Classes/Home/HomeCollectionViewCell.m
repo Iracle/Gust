@@ -8,7 +8,6 @@
 
 #import "HomeCollectionViewCell.h"
 #import "GustConfigure.h"
-#import "UIImageView+WebCache.h"
 
 @implementation HomeCollectionViewCell
 

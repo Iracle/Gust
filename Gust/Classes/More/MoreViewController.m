@@ -13,11 +13,15 @@
 #import "DefaultSearchViewController.h"
 #import "AboutGustViewController.h"
 #import "SetPrivacyPasswordViewController.h"
+#import "UINavigationBar+Addition.h"
+#import "SettingsTableViewCell.h"
+
 
 @interface MoreViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) NSArray *tableListDataArray;
-@property (nonatomic, strong) GustRefreshHeader *refreshHeader;
+@property (nonatomic, strong)  NSArray *tableListDataArray;
+@property (nonatomic, copy)    NSArray *detailPageClassNames;
+@property (nonatomic, strong)  GustRefreshHeader *refreshHeader;
 
 @end
 
@@ -27,8 +31,9 @@
 {
     self = [super init];
     if (self) {
-        self.title = @"更多";
-        _tableListDataArray = @[@"首页书签管理",@"默认搜索引擎", @"设置隐私模式密码", @"关于"];
+        self.title = @"设置";
+        _detailPageClassNames = @[@"TopSitesManageViewController", @"DefaultSearchViewController", @"SetPrivacyPasswordViewController", @"PushNotifictionSettingController", @"ClearWebCacheController", @"FunctionIntroduceController", @"FeedbackController",@"AboutGustViewController"];
+        _tableListDataArray = @[@"首页书签管理",@"默认搜索引擎", @"隐私模式密码", @"推送设置", @"清除缓存", @"功能介绍", @"反馈", @"关于"];
     }
     return self;
 }
@@ -36,12 +41,17 @@
 - (UITableView *)tableView
 {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
-        _tableView.rowHeight = 70.0;
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+        _tableView.backgroundColor = [UIColor clearColor];
+        _tableView.rowHeight = 54.0;
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableFooterView = [UIView new];
-        [self.view setNeedsUpdateConstraints];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.showsVerticalScrollIndicator = NO;
+        _tableView.separatorColor = [UIColor clearColor];
+        _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _tableView.bounds.size.width, 0.01f)];
+
 
     }
     
@@ -49,18 +59,21 @@
 }
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    [navigationBar hideBottomHairline];
+    navigationBar.barTintColor = [UIColor whiteColor];
+    navigationBar.tintColor = [UIColor colorWithRed:0.3253 green:0.3253 blue:0.3253 alpha:1.0];
+    [navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.3107 green:0.3107 blue:0.3107 alpha:1.0]}];
+    self.view.backgroundColor = [UIColor colorWithRed:250 / 255.0 green:250 / 255.0 blue:250 / 255.0 alpha:1.0];
+    
     [self.view addSubview:self.tableView];
-    [self.view setNeedsUpdateConstraints];
     
     _refreshHeader = [[GustRefreshHeader alloc] init];
     _refreshHeader.scrollView = self.tableView;
     [_refreshHeader addHeadView];
-    
     __strong typeof (self) strongSelf = self;
-    
     _refreshHeader.beginRefreshingBlock = ^(){
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -76,24 +89,34 @@
 #pragma mark UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _tableListDataArray.count;
+    if (section == 0) {
+        return 5;
+        
+    } else {
+        return 3;
+        
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"MoreCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    SettingsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[SettingsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.textLabel.text = _tableListDataArray[indexPath.row];
+    if (indexPath.section == 0) {
+        [cell configCell:_tableListDataArray[indexPath.row]];
+        
+    } else {
+        [cell configCell:_tableListDataArray[indexPath.row + 5]];
+    }
     
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:17.0];
     return cell;
 }
 
@@ -102,20 +125,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row == 0) {
-        TopSitesManageViewController *topSitesManageVC = [[TopSitesManageViewController alloc] init];
-        [self.navigationController pushViewController:topSitesManageVC animated:YES];
-    } else if (indexPath.row == 1) {
-        DefaultSearchViewController *defaultSearchVC = [[DefaultSearchViewController alloc] init];
-        [self.navigationController pushViewController:defaultSearchVC animated:YES];
-    } else if (indexPath.row == 2) {
-        SetPrivacyPasswordViewController *privacyVC = [[SetPrivacyPasswordViewController alloc] init];
-        [self.navigationController pushViewController:privacyVC animated:YES];
-        } else if(indexPath.row == 3) {
-        AboutGustViewController *aboutGustVC = [[AboutGustViewController alloc] init];
-        [self.navigationController pushViewController:aboutGustVC animated:YES];
+    UIViewController *destinationViewController;
+    if (indexPath.section == 0) {
+        destinationViewController = [[NSClassFromString(_detailPageClassNames[indexPath.row]) alloc] init];
+    } else {
+        destinationViewController = [[NSClassFromString(_detailPageClassNames[indexPath.row + 5]) alloc] init];
 
     }
+    [self.navigationController pushViewController:destinationViewController animated:YES];
 }
 
 

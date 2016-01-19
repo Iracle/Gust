@@ -7,7 +7,6 @@
 //
 
 #import "HistoryAndBookmarkViewController.h"
-//#import "MGSwipeTableCell.h"
 #import "MGSwipeButton.h"
 #import "HisAndBooModel.h"
 #import "History.h"
@@ -84,13 +83,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
     [navigationBar hideBottomHairline];
     navigationBar.barTintColor = [UIColor whiteColor];
     [navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.3107 green:0.3107 blue:0.3107 alpha:1.0]}];
+    self.view.backgroundColor = [UIColor colorWithRed:250 / 255.0 green:250 / 255.0 blue:250 / 255.0 alpha:1.0];
     
-     self.view.backgroundColor = [UIColor colorWithRed:250 / 255.0 green:250 / 255.0 blue:250 / 255.0 alpha:1.0];
     self.title = @"书签";
     self.isBookmark = YES;
     [self.view addSubview:self.tableView];
