@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>FDFullscreenPopGesture.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,22 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3705FD1CA2769493EE53B657A17B5B35</key>
+		<key>23DFF151841658E88D4E129F96AA72FA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7570F35C5E31833E0478E2CBA2CD58EF</key>
+		<key>2C71DE0FB8A6E5BB6EAF9FB037D799CC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C256D47FE6583DE22F4B8724CF967EEB</key>
+		<key>6D4B4C4B3CB0851D7F18D1DD4144E915</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EFF9AAC98C39CCC42B1E7839396A8832</key>
+		<key>85618D5E726BE13A7296E1019DC9625F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>86D4D7A7F2876980BE573857FD832277</key>
 		<dict>
 			<key>primary</key>
 			<true/>

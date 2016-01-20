@@ -51,6 +51,7 @@ static const CGFloat SearchBarHeight = 45;
 #define PageUrl @"pageUrl"
 #define ImageUrl @"imageUrl"
 
+//UserDefualts
 //privacy mode
 #define IsGustPrivacy @"gustPrivacy"
 
@@ -65,24 +66,21 @@ static const CGFloat SearchBarHeight = 45;
 const static float HomePageCancelButtonAlpha = 0.9999999;
 
 //notification
-#define NotificationUpdateTopSites @"notificationUpdateTopSites"
-#define NotificationUpdateMainTouchViewLocation @"notificationUpdateMainTouchViewLocation"
-#define NotificationChangeDefautSearchEngin @"notificationChangeDefautSearchEngin"
-#define NotificationResetTransitionDuration @"notificationResetTransitionDuration"
+#define NotificationUpdateTopSites                @"notificationUpdateTopSites"
+#define NotificationUpdateMainTouchViewLocation   @"notificationUpdateMainTouchViewLocation"
+#define NotificationChangeDefautSearchEngin       @"notificationChangeDefautSearchEngin"
+#define NotificationResetTransitionDuration       @"notificationResetTransitionDuration"
+#define NotificationDeleteTopsit                  @"notificationDeleteTopsit"
+#define NotificationReminderMe                    @"notificationReminderMe"
 
 #define ShareText @"我在Gust浏览器发现了一个好网站，快来看看吧："
-
 #define BaiduWebsite @"http://www.baidu.com"
 #define GoogleWebsite @"http://www.google.com.tw"
-
-//keychain
 
 //color
 #define HOME_COLOR [UIColor colorWithRed:251/255.0 green:252/255.0 blue:253/255.0 alpha:1.0]
 #define HOME_COLLECTIONCELL_COLOR [UIColor colorWithRed:109/255.0 green:109/255.0 blue:109/255.0 alpha:1.0]
 #define HOME_COLLECTIONCELL_SHADOW_COLOR [UIColor colorWithRed:188.0/255.0 green:188.0/255.0 blue:188.0/255.0 alpha:0.2]
-
-
 #define SEARCH_BAR_SHADOW_COLOR [UIColor colorWithRed:188.0/255.0 green:188.0/255.0 blue:188.0/255.0 alpha:0.3]
 
 

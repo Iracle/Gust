@@ -15,12 +15,14 @@
 #import "SetPrivacyPasswordViewController.h"
 #import "UINavigationBar+Addition.h"
 #import "SettingsTableViewCell.h"
+#import "GustConfigure.h"
 
 
 @interface MoreViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong)  NSArray *tableListDataArray;
-@property (nonatomic, copy)    NSArray *detailPageClassNames;
+@property (nonatomic, strong)  NSArray<NSString *> *tableListDataArray;
+@property (nonatomic, copy)    NSArray<NSString *> *detailPageClassNames;
+@property (nonatomic, copy)    NSArray<NSString *> *settingIcons;
 @property (nonatomic, strong)  GustRefreshHeader *refreshHeader;
 
 @end
@@ -33,7 +35,8 @@
     if (self) {
         self.title = @"设置";
         _detailPageClassNames = @[@"TopSitesManageViewController", @"DefaultSearchViewController", @"SetPrivacyPasswordViewController", @"PushNotifictionSettingController", @"ClearWebCacheController", @"FunctionIntroduceController", @"FeedbackController",@"AboutGustViewController"];
-        _tableListDataArray = @[@"首页书签管理",@"默认搜索引擎", @"隐私模式密码", @"推送设置", @"清除缓存", @"功能介绍", @"反馈", @"关于"];
+        _tableListDataArray = @[@"首页书签管理",@"默认搜索引擎", @"隐私模式密码", @"推送设置", @"清除数据", @"功能介绍", @"反馈", @"关于"];
+        _settingIcons = @[@"settingTopsite", @"settingSearch", @"settingPrivacy", @"settingPush", @"settingClear", @"settingGuide", @"settingFeedback", @"settingAbout"];
     }
     return self;
 }
@@ -52,7 +55,6 @@
         _tableView.separatorColor = [UIColor clearColor];
         _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _tableView.bounds.size.width, 0.01f)];
 
-
     }
     
     return _tableView;
@@ -64,7 +66,7 @@
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
     [navigationBar hideBottomHairline];
     navigationBar.barTintColor = [UIColor whiteColor];
-    navigationBar.tintColor = [UIColor colorWithRed:0.3253 green:0.3253 blue:0.3253 alpha:1.0];
+    navigationBar.tintColor = [UIColor whiteColor];
     [navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.3107 green:0.3107 blue:0.3107 alpha:1.0]}];
     self.view.backgroundColor = [UIColor colorWithRed:250 / 255.0 green:250 / 255.0 blue:250 / 255.0 alpha:1.0];
     
@@ -111,9 +113,11 @@
         cell = [[SettingsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     if (indexPath.section == 0) {
+        cell.leftImage.image = IMAGENAMED(_settingIcons[indexPath.row]);
         [cell configCell:_tableListDataArray[indexPath.row]];
         
     } else {
+        cell.leftImage.image = IMAGENAMED(_settingIcons[indexPath.row + 5]);
         [cell configCell:_tableListDataArray[indexPath.row + 5]];
     }
     
@@ -127,6 +131,9 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     UIViewController *destinationViewController;
     if (indexPath.section == 0) {
+        if (indexPath.row == 4) {
+            [self clearWebCookieAndCache];
+        }
         destinationViewController = [[NSClassFromString(_detailPageClassNames[indexPath.row]) alloc] init];
     } else {
         destinationViewController = [[NSClassFromString(_detailPageClassNames[indexPath.row + 5]) alloc] init];
@@ -135,6 +142,21 @@
     [self.navigationController pushViewController:destinationViewController animated:YES];
 }
 
+- (void)clearWebCookieAndCache {
+    NSHTTPCookie *cookie;
+    NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (cookie in [storage cookies])
+    {
+        [storage deleteCookie:cookie];
+    }
+    
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    NSURLCache * cache = [NSURLCache sharedURLCache];
+    [cache removeAllCachedResponses];
+    [cache setDiskCapacity:0];
+    [cache setMemoryCapacity:0];
+
+}
 
 
 

@@ -23,7 +23,6 @@
 #import "History.h"
 #import "Bookmark.h"
 
-#import "GustAlertView.h"
 //input record
 #import "InputRecord.h"
 #import "TopSites.h"
@@ -33,6 +32,7 @@
 #import "MultiTabView.h"
 #import "NavaSearchBar.h"
 #import "GustRefreshHeader.h"
+#import "AllAlertView.h"
 
 @interface GustWebViewController ()< OTMWebViewDelegate, MainTouchViewDelegate, UIScrollViewDelegate, VLDContextSheetDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -446,19 +446,18 @@
 {
     NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
     if ([[privacyDefaults objectForKey:IsGustPrivacy] boolValue]) {
-        GustAlertView *alertView = [[GustAlertView alloc] init];
-        [alertView showInView:self.view type:0 title:@"隐私模式不能添加书签!"];
+        [[AllAlertView sharedAlert] showWithTitle:@"隐私模式不能添加书签!" alertType:AllAlertViewAlertTypeRemind height:100.0];
         return;
     }
-    GustAlertView *alertView = [[GustAlertView alloc] init];
     NSString *bookmark = [self.bookmarkDic objectForKey:PageName];
     NSArray *resultsArray = [CoreDataManager searchObjectWithEntityName:[Bookmark entityName] predicateString:[NSString stringWithFormat:@"pageName = '%@'",bookmark] ];
     if (resultsArray.count < 1 && [self.bookmarkDic[PageName] length] > 0 ) {
         
         [CoreDataManager insertObjectWithParameter:self.bookmarkDic entityName:[Bookmark entityName]];
-        [alertView showInView:self.view type:1 title:@"添加书签成功"];
+        [[AllAlertView sharedAlert] showWithTitle:@"添加书签成功" alertType:AllAlertViewAlertTypeDone height:100.0];
+
     } else {
-        [alertView showInView:self.view type:1 title:@"书签已存在"];
+        [[AllAlertView sharedAlert] showWithTitle:@"书签已存在" alertType:AllAlertViewAlertTypeRemind height:100.0];
     }
 
 }
@@ -510,8 +509,7 @@
     } else{
         NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
         if ([[privacyDefaults objectForKey:IsGustPrivacy] boolValue]) {
-            GustAlertView *alertView = [[GustAlertView alloc] init];
-            [alertView showInView:self.view type:0 title:@"处于隐私模式不能访问!"];
+            [[AllAlertView sharedAlert] showWithTitle:@"处于隐私模式不能访问" alertType:AllAlertViewAlertTypeRemind height:100.0];
             return;
         }
 
@@ -649,6 +647,20 @@
     _touchView.hidden = NO;
     return image;
 }
+
+#pragma -- 3D Touch
+- (NSArray<id<UIPreviewActionItem>> *)previewActionItems {
+    UIPreviewAction *remindAction = [UIPreviewAction actionWithTitle:@"提醒" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationReminderMe object:nil];
+        
+    }];
+    UIPreviewAction *deleteAction = [UIPreviewAction actionWithTitle:@"删除" style:UIPreviewActionStyleDestructive handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationDeleteTopsit object:nil];
+
+    }];
+    return @[remindAction, deleteAction];
+}
+
 
 
 @end

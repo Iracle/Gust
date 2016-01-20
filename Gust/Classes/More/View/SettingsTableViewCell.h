@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingsTableViewCell : UITableViewCell
+
+@property (nonatomic, strong) UILabel *webTitle;
+@property (nonatomic, strong) UIImageView *leftImage;
+
 - (void)configCell:(NSString *)webTitle;
+
 @end

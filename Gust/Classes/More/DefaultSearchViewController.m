@@ -8,6 +8,7 @@
 
 #import "DefaultSearchViewController.h"
 #import "GustConfigure.h"
+#import "SettingsTableViewCell.h"
 
 @interface DefaultSearchViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -18,6 +19,23 @@
 @end
 
 @implementation DefaultSearchViewController
+
+- (UITableView *)tableView
+{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+        _tableView.backgroundColor = [UIColor clearColor];
+        _tableView.rowHeight = 54.0;
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.tableFooterView = [UIView new];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.showsVerticalScrollIndicator = NO;
+        _tableView.separatorColor = [UIColor clearColor];
+    }
+    
+    return _tableView;
+}
 
 - (void)dealloc
 {
@@ -33,15 +51,10 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    _tableView.rowHeight = 65.0;
-    _tableView.tableFooterView = [UIView new];
-    [self.view addSubview:_tableView];
+    self.view.backgroundColor = [UIColor colorWithRed:250 / 255.0 green:250 / 255.0 blue:250 / 255.0 alpha:1.0];
+
+    [self.view addSubview:self.tableView];
     [self getMainTouchViewLocationData];
-    
     
 }
 
@@ -59,11 +72,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"MainTouchViewCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    SettingsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[SettingsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell.webTitle.transform = CGAffineTransformMakeTranslation(-30.0, 0.0);
     }
-    cell.textLabel.text = _dataArray[indexPath.row];
+    [cell configCell:_dataArray[indexPath.row]];
     if ([_defautSearchEnginSting isEqualToString:SearchEnginBaidu]) {
         if (indexPath.row == 0) {
             
@@ -83,10 +97,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UITableViewCell *cell = (UITableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    SettingsTableViewCell *cell = (SettingsTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     
     for (UIView *view in cell.superview.subviews) {
-        UITableViewCell *currentCell = (UITableViewCell *)view;
+        SettingsTableViewCell *currentCell = (SettingsTableViewCell *)view;
         currentCell.accessoryType = UITableViewCellAccessoryNone;
     }
     cell.accessoryType = UITableViewCellAccessoryCheckmark;

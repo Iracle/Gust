@@ -9,10 +9,10 @@
 #import "SetPrivacyPasswordViewController.h"
 #import "CHKeychain.h"
 #import "GustConfigure.h"
-#import "GustAlertView.h"
+#import "AllAlertView.h"
 
 #define TEXTFIELD_INDEX 0
-#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+
 @interface SetPrivacyPasswordViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIView *bgView;
 @property (weak, nonatomic) IBOutlet UILabel *titleInfo;
@@ -25,6 +25,11 @@
 @end
 
 @implementation SetPrivacyPasswordViewController
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [self.view endEditing:YES];
+}
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -43,6 +48,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textfieldDidChange:) name:UITextFieldTextDidChangeNotification  object:nil];
     
     [_textFields enumerateObjectsUsingBlock:^(UITextField  *textFied, NSUInteger idx, BOOL * stop) {
+//        textFied.layer.masksToBounds = YES;
+//        textFied.layer.cornerRadius = 5;
         //hidde InputTraits
         [[textFied valueForKey:@"textInputTraits"] setValue:[UIColor clearColor] forKey:@"insertionPointColor"];
         textFied.delegate = self;
@@ -120,10 +127,8 @@
         _isfirstSavedsucess = YES;
         //save privacypassword
         [CHKeychain save:@"KEY_PRIVACY" data:@{@"privacypasswrd": firstpassword}];
-        GustAlertView *alertView = [[GustAlertView alloc] init];
-        [alertView showInView:self.view type:1 title:@"设置隐私模式密码成功"];
+        [[AllAlertView sharedAlert] showWithTitle:@"设置隐私模式密码成功" alertType:AllAlertViewAlertTypeDone height:100.0];
         [self performSelector:@selector(popToSetting) withObject:nil afterDelay:2];
-        
         
     } else {
         //retry
@@ -143,6 +148,7 @@
 - (void)popToSetting {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 
 @end
 

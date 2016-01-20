@@ -51,7 +51,6 @@
     };
 
     [scaleView.layer pop_addAnimation:animation forKey:@"Opacity"];
-    
     POPBasicAnimation *animation1 = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
     animation1.duration = [self transitionDuration:transitionContext];
     animation1.toValue = [NSValue valueWithCGPoint:CGPointMake(1.0, 1.0)];

@@ -11,7 +11,8 @@
 @interface HomeCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, strong) UILabel *pageNameLabel;
-@property (nonatomic, strong) NSString *pageUrlString;
+@property (nonatomic, copy) NSString *pageNames;
+@property (nonatomic, copy) NSString *pageUrlString;
 @property (nonatomic, strong) UIView *cellContentView;
 
 - (void)configCollectionViewCell:(NSDictionary *)dic;

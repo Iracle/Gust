@@ -14,11 +14,11 @@
 #import "TopSites.h"
 #import "CoreDataManager.h"
 #import "GustRefreshHeader.h"
-#import "GustAlertView.h"
 #import "GustWebViewController.h"
 #import "GustConfigure.h"
 #import "UINavigationBar+Addition.h"
 #import "GustSwipeTableCell.h"
+#import "AllAlertView.h"
 
 @interface HistoryAndBookmarkViewController () <UITableViewDataSource, UITableViewDelegate, MGSwipeTableCellDelegate>
 
@@ -174,9 +174,6 @@
     cell.rightSwipeSettings.transition = MGSwipeTransitionBorder;
     cell.rightExpansion.buttonIndex = 0;
     cell.rightExpansion.fillOnTrigger = YES;
-    
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
-     NSLog(@"%@",NSStringFromCGRect(deleteButton.frame));
     return cell;
 }
 
@@ -224,12 +221,12 @@
             NSDictionary *saveDic = @{PageName:pageName, PageUrl: [obj valueForKey:PageUrl], ImageUrl:  [obj valueForKey:ImageUrl]};
             [CoreDataManager insertObjectWithParameter:saveDic entityName:[TopSites entityName]];
             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUpdateTopSites object:self];
+            [[AllAlertView sharedAlert] showWithTitle:@"主页书签添加成功" alertType:AllAlertViewAlertTypeDone height:100.0];
+
             
         } else {
             
-            GustAlertView *alertView = [[GustAlertView alloc] init];
-            [alertView showInView:self.view type:1 title:@"主页书签已经存在!"];
-            
+            [[AllAlertView sharedAlert] showWithTitle:@"主页书签已经存在!" alertType:AllAlertViewAlertTypeRemind height:100.0];
         }
     }
     return YES;

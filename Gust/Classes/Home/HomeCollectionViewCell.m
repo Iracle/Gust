@@ -23,10 +23,11 @@
         _cellContentView.layer.shadowOpacity = 0.8;
         _cellContentView.layer.cornerRadius = 3;
         [self.contentView addSubview:_cellContentView];
+        
         _pageNameLabel = [[UILabel alloc] initWithFrame:_cellContentView.bounds];
         _pageNameLabel.backgroundColor = [UIColor clearColor];
         _pageNameLabel.textAlignment = NSTextAlignmentCenter;
-        _pageNameLabel.font = [UIFont systemFontOfSize:14];
+        _pageNameLabel.font = [UIFont systemFontOfSize:14.0 weight:UIFontWeightThin];
         _pageNameLabel.textColor = HOME_COLLECTIONCELL_COLOR;
         _pageNameLabel.numberOfLines = 0;  
       
@@ -39,6 +40,7 @@
 - (void)configCollectionViewCell:(NSDictionary *)dic
 {
     _pageUrlString = dic[PageUrl];
+    _pageNames = dic[PageName];
     NSString *webTitle =[dic[PageName] copy];
     webTitle = [webTitle stringByReplacingOccurrencesOfString:@"【" withString:@""];
     webTitle = [webTitle stringByReplacingOccurrencesOfString:@"】" withString:@""];

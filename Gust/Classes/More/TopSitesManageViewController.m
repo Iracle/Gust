@@ -10,6 +10,7 @@
 #import "TopSites.h"
 #import "CoreDataManager.h"
 #import "GustConfigure.h"
+#import "SettingsTableViewCell.h"
 @interface TopSitesManageViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, assign) BOOL didSetupConstraints;
@@ -37,18 +38,23 @@
 - (UITableView *)topSitesManageTableView {
     if (!_topSitesManageTableView) {
         _topSitesManageTableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+        _topSitesManageTableView.backgroundColor = [UIColor clearColor];
         _topSitesManageTableView.delegate = self;
         _topSitesManageTableView.dataSource = self;
-        _topSitesManageTableView.rowHeight = 70.0;
+        _topSitesManageTableView.rowHeight = 54.0;
         _topSitesManageTableView.tableFooterView = [UIView new];
         _topSitesManageTableView.editing = YES;
+        _topSitesManageTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _topSitesManageTableView.showsVerticalScrollIndicator = NO;
+        _topSitesManageTableView.separatorColor = [UIColor clearColor];
     }
     return _topSitesManageTableView;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor colorWithRed:250 / 255.0 green:250 / 255.0 blue:250 / 255.0 alpha:1.0];
+    
     [self.view addSubview:self.topSitesManageTableView];
     [self setupTopSitesManageTableViewData];
     [self.view setNeedsUpdateConstraints];
@@ -86,15 +92,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *cellIdentifier = @"topSitesManageCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    SettingsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[SettingsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     NSManagedObject *obj = [_currentDataArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = [obj valueForKey:PageName];
-    cell.detailTextLabel.text = [obj valueForKey:PageUrl];
-
-    cell.textLabel.font = [UIFont systemFontOfSize:18];
+    [cell configCell:[obj valueForKey:PageName]];
     return cell;
 }
 
@@ -104,6 +107,7 @@
         NSManagedObject *obj = [_currentDataArray objectAtIndex:indexPath.row];
         [_currentDataArray removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        
         [CoreDataManager removeObjectWithEntityName:[TopSites entityName] predicateString:[NSString stringWithFormat:@"pageName = '%@'",[obj valueForKey:PageName]]];
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSMutableArray * topSitesSaveArray= [NSMutableArray arrayWithArray:[userDefaults valueForKey:TopSits]];

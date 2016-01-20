@@ -24,7 +24,6 @@
 #import "MainSearchBarTextManage.h"
 #import "CustomNavigationController.h"
 
-#import "GustAlertView.h"
 #import <objc/message.h>
 //surport Touch ID
 #import <LocalAuthentication/LocalAuthentication.h>
@@ -40,6 +39,7 @@
 
 #import "QRCodeReaderViewController.h"
 #import "QRCodeReader.h"
+#import "AllAlertView.h"
 
 @interface HomeViewController () <MainTouchViewDelegate, VLDContextSheetDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate,UIViewControllerPreviewingDelegate, PrivacyPasswordViewDelegate, QRCodeReaderDelegate>
 
@@ -62,7 +62,7 @@
 @property (nonatomic, strong) NSMutableArray *inputRecordSearchResultArray;
 @property (nonatomic, strong) NSString *currentSearchEnginString;
 @property (nonatomic, strong) NSMutableString *willSearchString;
-@property (nonatomic, strong) CustomNavigationController *threeDTouchNav;
+@property (nonatomic, strong) GustWebViewController *threeDTouchVC;
 @property (nonatomic, copy) NSString *urlString;
 //privacy password view
 @property (nonatomic, weak) PrivacyPasswordView *privacyView;
@@ -76,6 +76,9 @@
 @property (nonatomic) BOOL isFirstEnter;
 
 @property (nonatomic, strong) GustNavigationControllerDelegate *gustNavDelegate;
+//save 3D Touch webname
+@property (nonatomic) NSInteger touchPageNumber;
+
 
 @end
 
@@ -228,7 +231,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchBarTextChanged:) name:@"UITextFieldTextDidChangeNotification" object:_searchBar];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updataMainTouchViewLocation:) name:NotificationUpdateMainTouchViewLocation object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chooseDefautSeachEngin:) name:NotificationChangeDefautSearchEngin object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetnResetTransitionDuration:) name:NotificationResetTransitionDuration object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetnResetTransitionDuration:) name:NotificationResetTransitionDuration object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(threeDTouchDeleteTopsite:) name:NotificationDeleteTopsit object:nil];
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(remindTheWebsite:) name:NotificationReminderMe object:nil];
     
     [self setupTopSitsData];
 
@@ -314,6 +319,29 @@
     self.animator.transitionDuration = 0.0;
 }
 
+- (void)threeDTouchDeleteTopsite:(NSNotification *)notification {
+    //delete cuttent collection cell data
+    NSString *pageName = _topSitesSortArray[self.touchPageNumber][@"pageName"];
+    [_topSitesSortArray removeObjectAtIndex:self.touchPageNumber];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.touchPageNumber inSection:0];
+    [self.homeCollectionView deleteItemsAtIndexPaths:@[indexPath]];
+    
+    //delete coredata data
+    [CoreDataManager removeObjectWithEntityName:[TopSites entityName] predicateString:[NSString stringWithFormat:@"pageName = '%@'", pageName]];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray * topSitesSaveArray= [NSMutableArray arrayWithArray:[userDefaults valueForKey:TopSits]];
+    [topSitesSaveArray removeObject:pageName];
+    [userDefaults setObject:topSitesSaveArray forKey:TopSits];
+    [userDefaults synchronize];
+    [self setupTopSitsData];
+    
+}
+
+- (void)remindTheWebsite:(NSNotification *)notification {
+    NSLog(@"rrrrr");
+
+}
+
 - (void)getCurrentSearchEnginSave {
     NSUserDefaults *searchDefaut = [NSUserDefaults standardUserDefaults];
     if ([[searchDefaut objectForKey:DefautSearchEngin] isEqualToString:SearchEnginBaidu]) {
@@ -376,8 +404,8 @@
         //if is privicy mode
         NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
         if ([[privacyDefaults objectForKey:IsGustPrivacy] boolValue]) {
-            GustAlertView *alertView = [[GustAlertView alloc] init];
-            [alertView showInView:self.view type:0 title:@"处于隐私模式不能访问!"];
+            [[AllAlertView sharedAlert] showWithTitle:@"处于隐私模式不能访问" alertType:AllAlertViewAlertTypeRemind height:130.0];
+
             return;
         }
 
@@ -715,10 +743,11 @@
     }
     //0 - 无网络; 1 - 2G; 2 - 3G; 3 - 4G; 5 - WIFI
     if (type == 0) {
-        GustAlertView *alert = [[GustAlertView alloc] init];
-        [alert showInView:self.view type:1 title:@"没有网络连接"];
+        
+        [[AllAlertView sharedAlert] showWithTitle:@"没有网络连接" alertType:AllAlertViewAlertTypeAlert height:130.0];
     }
 }
+
 #pragma mark -- PrivacyPasswordViewDelegate
 - (void)privacyPasswordView:(PrivacyPasswordView *)privacyView sucess:(BOOL)success {
     if (success) {
@@ -759,15 +788,15 @@
     if (touchIndexPath) {
         [_homeCollectionView deselectItemAtIndexPath:touchIndexPath animated:YES];
         HomeCollectionViewCell *homeCell = (HomeCollectionViewCell *)[_homeCollectionView cellForItemAtIndexPath:touchIndexPath];
+        self.touchPageNumber = touchIndexPath.row;
         GustWebViewController *gustwebVC = [[GustWebViewController alloc] init];
-        gustwebVC.touchView.hidden = YES;
         gustwebVC.webURL = homeCell.pageUrlString;
+        gustwebVC.touchView.hidden = YES;
         CGRect rect = CGRectMake(homeCell.frame.origin.x + COLLECTION_CONTENT_OFFSET, homeCell.frame.origin.y + COLLECTION_CONTENT_OFFSET, COLLECTION_CONTENT_WIDTH, COLLECTION_CONTENT_WIDTH);
         previewingContext.sourceRect = [self.view convertRect:rect fromView:self.homeCollectionView];
-        CustomNavigationController *nav = [[CustomNavigationController alloc] initWithRootViewController:gustwebVC];
-        self.threeDTouchNav = nav;
+        self.threeDTouchVC = gustwebVC;
         self.urlString = homeCell.pageUrlString;
-        return nav;
+        return gustwebVC;
         
     }
     return nil;
@@ -776,10 +805,10 @@
 
 - (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
 
-    GustWebViewController *gustwebVC = [[GustWebViewController alloc] init];
-    gustwebVC.webURL = self.urlString;
-    CustomNavigationController *nav = [[CustomNavigationController alloc] initWithRootViewController:gustwebVC];
-    [self showViewController:nav sender:self];
+//    GustWebViewController *gustwebVC = [[GustWebViewController alloc] init];
+//    gustwebVC.webURL = self.urlString;
+//    CustomNavigationController *nav = [[CustomNavigationController alloc] initWithRootViewController:gustwebVC];
+    [self.navigationController pushViewController:self.threeDTouchVC  animated:YES];
     
    }
 
@@ -859,8 +888,9 @@
     
 }
 -(void)showPrivcyAlert:(NSNotification *)notification {
-    GustAlertView *alertView = [[GustAlertView alloc] init];
-    [alertView showInView:self.view type:0 title:(NSString *)notification];
+    
+    [[AllAlertView sharedAlert] showWithTitle:(NSString *)notification alertType:AllAlertViewAlertTypeRemind height:130.0];
+
 }
 
 - (void)loadPrivacyView {

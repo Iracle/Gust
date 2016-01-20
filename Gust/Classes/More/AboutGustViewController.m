@@ -8,22 +8,40 @@
 
 #import "AboutGustViewController.h"
 #import "GuideViewController.h"
+#import "SettingsTableViewCell.h"
 
 @interface AboutGustViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property(nonatomic, strong) UITableView *aboutGustTableView;
-@property(nonatomic, strong) NSArray *aboutGustDataArray;
-
+@property (nonatomic, strong) UITableView *aboutGustTableView;
+@property (nonatomic, strong) NSArray *aboutGustDataArray;
 @end
 
 @implementation AboutGustViewController
+
+- (UITableView *)aboutGustTableView
+{
+    if (!_aboutGustTableView) {
+        _aboutGustTableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+        _aboutGustTableView.backgroundColor = [UIColor clearColor];
+        _aboutGustTableView.rowHeight = 54.0;
+        _aboutGustTableView.delegate = self;
+        _aboutGustTableView.dataSource = self;
+        _aboutGustTableView.tableFooterView = [UIView new];
+        _aboutGustTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _aboutGustTableView.showsVerticalScrollIndicator = NO;
+        _aboutGustTableView.separatorColor = [UIColor clearColor];
+    }
+    
+    return _aboutGustTableView;
+}
+
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
         self.title = @"关于";
-        _aboutGustDataArray = @[@"功能介绍", @"去评分"];
+        _aboutGustDataArray = @[@"去评分"];
     }
     return self;
 }
@@ -32,13 +50,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-    _aboutGustTableView = [[UITableView alloc] initWithFrame:self.view.bounds];
-    _aboutGustTableView.delegate = self;
-    _aboutGustTableView.dataSource = self;
-    _aboutGustTableView.rowHeight = 65.0;
-    _aboutGustTableView.tableFooterView = [UIView new];
-    [self.view addSubview:_aboutGustTableView];
+    self.view.backgroundColor = [UIColor colorWithRed:250 / 255.0 green:250 / 255.0 blue:250 / 255.0 alpha:1.0];
+    [self.view addSubview:self.aboutGustTableView];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -51,11 +64,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    cell.textLabel.text = _aboutGustDataArray[indexPath.row];
-    
-    cell.textLabel.font = [UIFont systemFontOfSize:18];
-
+    SettingsTableViewCell *cell = [[SettingsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    cell.webTitle.transform = CGAffineTransformMakeTranslation(-30.0, 0.0);
+    cell.webTitle.text = _aboutGustDataArray[indexPath.row];
     return cell;
 }
 
@@ -77,11 +88,11 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *headerView = [UIView new];
-    headerView.backgroundColor = [UIColor colorWithRed:0.533 green:0.982 blue:1.000 alpha:0.640];
+    headerView.backgroundColor = [UIColor colorWithRed:0.533 green:0.982 blue:1.000 alpha:1.0];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 230)];
     label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont fontWithName:@"zapfino" size:38];
+    label.font = [UIFont systemFontOfSize:28];
     label.textColor = [UIColor colorWithRed:0.354 green:0.141 blue:0.118 alpha:1.000];
     label.text = @"Gust";
     label.layer.shadowColor = [UIColor grayColor].CGColor;
