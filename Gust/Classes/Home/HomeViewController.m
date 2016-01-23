@@ -128,12 +128,12 @@
         _inputHistorisTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _inputHistorisTableView.separatorColor = [UIColor clearColor];
         
-        _refreshHeader = [[GustRefreshHeader alloc] init];
-        _refreshHeader.scrollView = _inputHistorisTableView;
-        [_refreshHeader addHeadView];
-        _refreshHeader.pullBackOffset = 0.8;
+        self.refreshHeader = [[GustRefreshHeader alloc] init];
+        self.refreshHeader.scrollView = _inputHistorisTableView;
+        [self.refreshHeader addHeadView];
+        self.refreshHeader.pullBackOffset = 0.8;
         __weak typeof(self) weakSelf = self;
-        _refreshHeader.beginRefreshingBlock = ^(){
+        self.refreshHeader.beginRefreshingBlock = ^(){
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakSelf hiddeInputHistorisTableView];
                 [weakSelf setupSearchBarAnimation:NO];
@@ -142,6 +142,12 @@
         };
     }
     return _inputHistorisTableView;
+}
+- (GustRefreshHeader *)refreshHeader {
+    if (!_refreshHeader) {
+        _refreshHeader = [[GustRefreshHeader alloc] init];
+    }
+    return _refreshHeader;
 }
 
 - (GustCollectionView *)homeCollectionView {
@@ -233,7 +239,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chooseDefautSeachEngin:) name:NotificationChangeDefautSearchEngin object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetnResetTransitionDuration:) name:NotificationResetTransitionDuration object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(threeDTouchDeleteTopsite:) name:NotificationDeleteTopsit object:nil];
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(remindTheWebsite:) name:NotificationReminderMe object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(remindTheWebsite:) name:NotificationReminderMe object:nil];
+    //applicationWillResignActive
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
     
     [self setupTopSitsData];
 
@@ -342,6 +350,10 @@
 
 }
 
+- (void)applicationWillResignActive:(NSNotification *)notification {
+    
+    
+}
 - (void)getCurrentSearchEnginSave {
     NSUserDefaults *searchDefaut = [NSUserDefaults standardUserDefaults];
     if ([[searchDefaut objectForKey:DefautSearchEngin] isEqualToString:SearchEnginBaidu]) {
@@ -996,25 +1008,7 @@
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
-
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

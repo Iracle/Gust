@@ -44,6 +44,7 @@
         _topSitesManageTableView.rowHeight = 54.0;
         _topSitesManageTableView.tableFooterView = [UIView new];
         _topSitesManageTableView.editing = YES;
+        _topSitesManageTableView.allowsSelectionDuringEditing = YES;
         _topSitesManageTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _topSitesManageTableView.showsVerticalScrollIndicator = NO;
         _topSitesManageTableView.separatorColor = [UIColor clearColor];

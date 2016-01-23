@@ -55,6 +55,8 @@
 		9326CE721C4D0F9900D39574 /* SettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9326CE711C4D0F9900D39574 /* SettingsTableViewCell.m */; };
 		93552ED61BEA00FE004B0380 /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93552ED51BEA00FE004B0380 /* CustomNavigationController.m */; };
 		9361C28D1C4398BF00A0E625 /* NavaSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9361C28C1C4398BF00A0E625 /* NavaSearchBar.m */; };
+		937949961C520B780062F6A4 /* TodayExtentionWebSeletedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 937949941C520B780062F6A4 /* TodayExtentionWebSeletedViewController.m */; };
+		9379499A1C523B550062F6A4 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 937949991C523B550062F6A4 /* ArrayDataSource.m */; };
 		9387EFA31C4F58D400870DEF /* AllAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9387EFA21C4F58D400870DEF /* AllAlertView.m */; };
 		938BC7A21C44F25E005976F9 /* UINavigationBar+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 938BC7A11C44F25E005976F9 /* UINavigationBar+Addition.m */; };
 		938BC7A51C44F442005976F9 /* GustSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 938BC7A41C44F442005976F9 /* GustSwipeTableCell.m */; };
@@ -68,6 +70,10 @@
 		93CE19A51BEC9B4A00DECA3E /* SetPrivacyPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93CE19A41BEC9B4A00DECA3E /* SetPrivacyPasswordViewController.xib */; };
 		93CE19A81BEC9B6D00DECA3E /* PrivacyPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CE19A71BEC9B6D00DECA3E /* PrivacyPasswordView.m */; };
 		93CE19AA1BEC9B9100DECA3E /* PrivacyPassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93CE19A91BEC9B9100DECA3E /* PrivacyPassword.xib */; };
+		93CE7AAE1C50C2B400A5BEE5 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93CE7AAD1C50C2B400A5BEE5 /* NotificationCenter.framework */; };
+		93CE7AB21C50C2B400A5BEE5 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CE7AB11C50C2B400A5BEE5 /* TodayViewController.m */; };
+		93CE7AB51C50C2B400A5BEE5 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93CE7AB31C50C2B400A5BEE5 /* MainInterface.storyboard */; };
+		93CE7AB91C50C2B400A5BEE5 /* GustTodayExtenstion.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 93CE7AAC1C50C2B400A5BEE5 /* GustTodayExtenstion.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		93F50C7C1C36A6650028EF1F /* MainTouchBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F50C7B1C36A6650028EF1F /* MainTouchBaseView.m */; };
 /* End PBXBuildFile section */
 
@@ -79,7 +85,28 @@
 			remoteGlobalIDString = 18EEDF111AA5FD6000033447;
 			remoteInfo = Gust;
 		};
+		93CE7AB71C50C2B400A5BEE5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18EEDF0A1AA5FD5F00033447 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 93CE7AAB1C50C2B400A5BEE5;
+			remoteInfo = GustTodayExtenstion;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		93CE7ABD1C50C2B400A5BEE5 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				93CE7AB91C50C2B400A5BEE5 /* GustTodayExtenstion.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		182823091AD05D1900267C41 /* Bookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bookmark.h; sourceTree = "<group>"; };
@@ -174,6 +201,10 @@
 		93552ED51BEA00FE004B0380 /* CustomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationController.m; sourceTree = "<group>"; };
 		9361C28B1C4398BF00A0E625 /* NavaSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavaSearchBar.h; sourceTree = "<group>"; };
 		9361C28C1C4398BF00A0E625 /* NavaSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavaSearchBar.m; sourceTree = "<group>"; };
+		937949931C520B780062F6A4 /* TodayExtentionWebSeletedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayExtentionWebSeletedViewController.h; sourceTree = "<group>"; };
+		937949941C520B780062F6A4 /* TodayExtentionWebSeletedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayExtentionWebSeletedViewController.m; sourceTree = "<group>"; };
+		937949981C523B550062F6A4 /* ArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataSource.h; sourceTree = "<group>"; };
+		937949991C523B550062F6A4 /* ArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayDataSource.m; sourceTree = "<group>"; };
 		9387EFA11C4F58D400870DEF /* AllAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllAlertView.h; sourceTree = "<group>"; };
 		9387EFA21C4F58D400870DEF /* AllAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllAlertView.m; sourceTree = "<group>"; };
 		938BC7A01C44F25E005976F9 /* UINavigationBar+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Addition.h"; sourceTree = "<group>"; };
@@ -198,6 +229,14 @@
 		93CE19A61BEC9B6D00DECA3E /* PrivacyPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivacyPasswordView.h; sourceTree = "<group>"; };
 		93CE19A71BEC9B6D00DECA3E /* PrivacyPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivacyPasswordView.m; sourceTree = "<group>"; };
 		93CE19A91BEC9B9100DECA3E /* PrivacyPassword.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrivacyPassword.xib; sourceTree = "<group>"; };
+		93CE7AAC1C50C2B400A5BEE5 /* GustTodayExtenstion.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GustTodayExtenstion.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		93CE7AAD1C50C2B400A5BEE5 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		93CE7AB01C50C2B400A5BEE5 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		93CE7AB11C50C2B400A5BEE5 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		93CE7AB41C50C2B400A5BEE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		93CE7AB61C50C2B400A5BEE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93CE7ABE1C50C47200A5BEE5 /* Gust.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Gust.entitlements; sourceTree = "<group>"; };
+		93CE7ABF1C50C57800A5BEE5 /* GustTodayExtenstion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GustTodayExtenstion.entitlements; sourceTree = "<group>"; };
 		93F50C7A1C36A6650028EF1F /* MainTouchBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTouchBaseView.h; sourceTree = "<group>"; };
 		93F50C7B1C36A6650028EF1F /* MainTouchBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTouchBaseView.m; sourceTree = "<group>"; };
 		E099BCDEE40684383A57D605 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -220,6 +259,14 @@
 				187436991AA7172200297383 /* Foundation.framework in Frameworks */,
 				187436981AA7171900297383 /* UIKit.framework in Frameworks */,
 				5292A0994F307A26F7EFB673 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93CE7AA91C50C2B400A5BEE5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93CE7AAE1C50C2B400A5BEE5 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				93CE19A31BEC9B4A00DECA3E /* View */,
+				9379498A1C52007F0062F6A4 /* TodayExtentionSetting */,
 				187436BE1AA753D400297383 /* MoreViewController.h */,
 				187436BF1AA753D400297383 /* MoreViewController.m */,
 				18A19C6A1AE3EDDA002345AF /* TopSitesManageViewController.h */,
@@ -443,6 +491,7 @@
 			isa = PBXGroup;
 			children = (
 				18EEDF141AA5FD6000033447 /* Gust */,
+				93CE7AAF1C50C2B400A5BEE5 /* GustTodayExtenstion */,
 				18EEDF131AA5FD6000033447 /* Products */,
 				726C1FD81874DB5460AEBFD9 /* Pods */,
 				89F1BFF9DBF2D7901F72C03F /* Frameworks */,
@@ -454,6 +503,7 @@
 			children = (
 				18EEDF121AA5FD6000033447 /* Gust.app */,
 				187436841AA7076B00297383 /* GustTests.xctest */,
+				93CE7AAC1C50C2B400A5BEE5 /* GustTodayExtenstion.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -461,6 +511,7 @@
 		18EEDF141AA5FD6000033447 /* Gust */ = {
 			isa = PBXGroup;
 			children = (
+				93CE7ABE1C50C47200A5BEE5 /* Gust.entitlements */,
 				18EEDF191AA5FD6000033447 /* AppDelegate.h */,
 				18EEDF1A1AA5FD6000033447 /* AppDelegate.m */,
 				1874362D1AA6F90800297383 /* External */,
@@ -497,8 +548,20 @@
 				1874363A1AA6F99D00297383 /* UIKit.framework */,
 				187436381AA6F99000297383 /* CoreGraphics.framework */,
 				81A79D13067030A3AE28A30F /* libPods.a */,
+				93CE7AAD1C50C2B400A5BEE5 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9379498A1C52007F0062F6A4 /* TodayExtentionSetting */ = {
+			isa = PBXGroup;
+			children = (
+				937949981C523B550062F6A4 /* ArrayDataSource.h */,
+				937949991C523B550062F6A4 /* ArrayDataSource.m */,
+				937949931C520B780062F6A4 /* TodayExtentionWebSeletedViewController.h */,
+				937949941C520B780062F6A4 /* TodayExtentionWebSeletedViewController.m */,
+			);
+			path = TodayExtentionSetting;
 			sourceTree = "<group>";
 		};
 		93A2C5541C3513240022C11D /* Common */ = {
@@ -551,6 +614,18 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		93CE7AAF1C50C2B400A5BEE5 /* GustTodayExtenstion */ = {
+			isa = PBXGroup;
+			children = (
+				93CE7ABF1C50C57800A5BEE5 /* GustTodayExtenstion.entitlements */,
+				93CE7AB01C50C2B400A5BEE5 /* TodayViewController.h */,
+				93CE7AB11C50C2B400A5BEE5 /* TodayViewController.m */,
+				93CE7AB31C50C2B400A5BEE5 /* MainInterface.storyboard */,
+				93CE7AB61C50C2B400A5BEE5 /* Info.plist */,
+			);
+			path = GustTodayExtenstion;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -585,15 +660,34 @@
 				18EEDF101AA5FD6000033447 /* Resources */,
 				B19AC9A4A200247620B26C04 /* Copy Pods Resources */,
 				6664DB24B37317BC54F4CBCB /* Embed Pods Frameworks */,
+				93CE7ABD1C50C2B400A5BEE5 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				93CE7AB81C50C2B400A5BEE5 /* PBXTargetDependency */,
 			);
 			name = Gust;
 			productName = Gust;
 			productReference = 18EEDF121AA5FD6000033447 /* Gust.app */;
 			productType = "com.apple.product-type.application";
+		};
+		93CE7AAB1C50C2B400A5BEE5 /* GustTodayExtenstion */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93CE7ABC1C50C2B400A5BEE5 /* Build configuration list for PBXNativeTarget "GustTodayExtenstion" */;
+			buildPhases = (
+				93CE7AA81C50C2B400A5BEE5 /* Sources */,
+				93CE7AA91C50C2B400A5BEE5 /* Frameworks */,
+				93CE7AAA1C50C2B400A5BEE5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GustTodayExtenstion;
+			productName = GustTodayExtenstion;
+			productReference = 93CE7AAC1C50C2B400A5BEE5 /* GustTodayExtenstion.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -611,6 +705,20 @@
 					18EEDF111AA5FD6000033447 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = 8KR9XW3F3W;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					93CE7AAB1C50C2B400A5BEE5 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 8KR9XW3F3W;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -629,6 +737,7 @@
 			targets = (
 				18EEDF111AA5FD6000033447 /* Gust */,
 				187436831AA7076B00297383 /* GustTests */,
+				93CE7AAB1C50C2B400A5BEE5 /* GustTodayExtenstion */,
 			);
 		};
 /* End PBXProject section */
@@ -649,6 +758,14 @@
 				93CE19A51BEC9B4A00DECA3E /* SetPrivacyPasswordViewController.xib in Resources */,
 				18EEDF261AA5FD6000033447 /* Images.xcassets in Resources */,
 				18A9C7541AFA679300436555 /* Launch Screen.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93CE7AAA1C50C2B400A5BEE5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93CE7AB51C50C2B400A5BEE5 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -777,6 +894,7 @@
 				93CE199B1BEC9B2F00DECA3E /* MyScrollView.m in Sources */,
 				18CC9D641AAA025400165601 /* HomeCollectionViewCell.m in Sources */,
 				1898DDE61AC4361600C89513 /* QRCodeReaderView.m in Sources */,
+				9379499A1C523B550062F6A4 /* ArrayDataSource.m in Sources */,
 				9326CE6E1C4D0AD400D39574 /* PopAnimationTransition.m in Sources */,
 				187436351AA6F90800297383 /* VLDContextSheet.m in Sources */,
 				18CF62591AD7A946001177D6 /* TopSites.m in Sources */,
@@ -804,6 +922,7 @@
 				1898DDE41AC4361600C89513 /* QRCameraSwitchButton.m in Sources */,
 				1874362C1AA6F7E600297383 /* HomeViewController.m in Sources */,
 				9387EFA31C4F58D400870DEF /* AllAlertView.m in Sources */,
+				937949961C520B780062F6A4 /* TodayExtentionWebSeletedViewController.m in Sources */,
 				187436361AA6F90800297383 /* VLDContextSheetItem.m in Sources */,
 				187436C01AA753D400297383 /* MoreViewController.m in Sources */,
 				182823231AD05D1900267C41 /* MainTouchView.m in Sources */,
@@ -815,6 +934,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		93CE7AA81C50C2B400A5BEE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93CE7AB21C50C2B400A5BEE5 /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -823,7 +950,23 @@
 			target = 18EEDF111AA5FD6000033447 /* Gust */;
 			targetProxy = 1874368A1AA7076B00297383 /* PBXContainerItemProxy */;
 		};
+		93CE7AB81C50C2B400A5BEE5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 93CE7AAB1C50C2B400A5BEE5 /* GustTodayExtenstion */;
+			targetProxy = 93CE7AB71C50C2B400A5BEE5 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		93CE7AB31C50C2B400A5BEE5 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				93CE7AB41C50C2B400A5BEE5 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1874368D1AA7076B00297383 /* Debug */ = {
@@ -955,6 +1098,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_ENTITLEMENTS = Gust/Gust.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -973,6 +1117,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_ENTITLEMENTS = Gust/Gust.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -982,6 +1127,43 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Iraclemei.Gust;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		93CE7ABA1C50C2B400A5BEE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = GustTodayExtenstion/GustTodayExtenstion.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = GustTodayExtenstion/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Iraclemei.Gust.GustTodayExtenstion;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		93CE7ABB1C50C2B400A5BEE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = GustTodayExtenstion/GustTodayExtenstion.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = GustTodayExtenstion/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Iraclemei.Gust.GustTodayExtenstion;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -1011,6 +1193,15 @@
 			buildConfigurations = (
 				18EEDF391AA5FD6000033447 /* Debug */,
 				18EEDF3A1AA5FD6000033447 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93CE7ABC1C50C2B400A5BEE5 /* Build configuration list for PBXNativeTarget "GustTodayExtenstion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93CE7ABA1C50C2B400A5BEE5 /* Debug */,
+				93CE7ABB1C50C2B400A5BEE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

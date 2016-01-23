@@ -16,6 +16,7 @@
 #import "UINavigationBar+Addition.h"
 #import "SettingsTableViewCell.h"
 #import "GustConfigure.h"
+#import "TodayExtentionWebSeletedViewController.h"
 
 
 @interface MoreViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -34,8 +35,8 @@
     self = [super init];
     if (self) {
         self.title = @"设置";
-        _detailPageClassNames = @[@"TopSitesManageViewController", @"DefaultSearchViewController", @"SetPrivacyPasswordViewController", @"PushNotifictionSettingController", @"ClearWebCacheController", @"FunctionIntroduceController", @"FeedbackController",@"AboutGustViewController"];
-        _tableListDataArray = @[@"首页书签管理",@"默认搜索引擎", @"隐私模式密码", @"推送设置", @"清除数据", @"功能介绍", @"反馈", @"关于"];
+        _detailPageClassNames = @[@"TopSitesManageViewController", @"DefaultSearchViewController", @"SetPrivacyPasswordViewController", @"TodayExtentionWebSeletedViewController", @"ClearWebCacheController", @"FunctionIntroduceController", @"FeedbackController",@"AboutGustViewController"];
+        _tableListDataArray = @[@"首页书签管理",@"默认搜索引擎", @"隐私模式密码", @"通知中心设置", @"清除数据", @"功能介绍", @"反馈", @"关于"];
         _settingIcons = @[@"settingTopsite", @"settingSearch", @"settingPrivacy", @"settingPush", @"settingClear", @"settingGuide", @"settingFeedback", @"settingAbout"];
     }
     return self;

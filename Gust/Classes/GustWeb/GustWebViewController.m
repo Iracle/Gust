@@ -72,6 +72,11 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+-(void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    [self.navigationController setNavigationBarHidden:NO];
+}
 
 - (instancetype)init
 {
@@ -163,7 +168,16 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
-
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    NSURLRequest *request = nil;
+    [self.webView loadRequest:request];
+    [self.webView removeFromSuperview];
+    self.webView = nil;
+    self.webView.delegate = nil;
+    [self.webView stopLoading];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
@@ -396,6 +410,7 @@
         [webView stringByEvaluatingJavaScriptFromString:@"document.forms[0].submit();"];
         _isSearch = NO;
     }
+    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"WebKitCacheModelPreferenceKey"];
 }
 
 #pragma mark-- MainTouchViewDelegate
