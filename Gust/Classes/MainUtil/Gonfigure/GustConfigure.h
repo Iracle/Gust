@@ -72,6 +72,8 @@ const static float HomePageCancelButtonAlpha = 0.9999999;
 #define NotificationResetTransitionDuration       @"notificationResetTransitionDuration"
 #define NotificationDeleteTopsit                  @"notificationDeleteTopsit"
 #define NotificationReminderMe                    @"notificationReminderMe"
+#define NotificationOpenTodayUrl                  @"notificationOpenTodayUrl"
+
 
 #define ShareText @"我在Gust浏览器发现了一个好网站，快来看看吧："
 #define BaiduWebsite @"http://www.baidu.com"

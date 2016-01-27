@@ -240,6 +240,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetnResetTransitionDuration:) name:NotificationResetTransitionDuration object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(threeDTouchDeleteTopsite:) name:NotificationDeleteTopsit object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(remindTheWebsite:) name:NotificationReminderMe object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openTodayWebsite:) name:NotificationOpenTodayUrl object:nil];
     //applicationWillResignActive
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
     
@@ -353,6 +354,12 @@
 - (void)applicationWillResignActive:(NSNotification *)notification {
     
     
+}
+
+- (void)openTodayWebsite:(NSNotification *)notification {
+    self.cellPopAnimationViewRect = self.view.frame;
+    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.localNotificationSharedDefaults"];
+    [self loadWebWithUrlString:[shared valueForKey:@"openUrl"]];
 }
 - (void)getCurrentSearchEnginSave {
     NSUserDefaults *searchDefaut = [NSUserDefaults standardUserDefaults];

@@ -11,7 +11,7 @@
 
 @property (nonatomic, copy) NSString *cellIdentifier;
 @property (nonatomic, copy) TableViewConfigureBlock cellCOnfigureBlock;
-
+@property (nonatomic, copy) TableViewCallbackBlock cellDidSeletedBlock;
 @end
 
 @implementation ArrayDataSource
@@ -52,4 +52,34 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    self.cellDidSeletedBlock(tableView, indexPath,self.items[indexPath.row] );
+}
+
+- (void)tableViewDidSelectRowAtIndexPathWithBlock:(TableViewCallbackBlock)callBackBlock {
+    self.cellDidSeletedBlock = [callBackBlock copy];
+}
+
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

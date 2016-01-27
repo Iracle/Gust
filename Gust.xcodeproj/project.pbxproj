@@ -55,6 +55,7 @@
 		9326CE721C4D0F9900D39574 /* SettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9326CE711C4D0F9900D39574 /* SettingsTableViewCell.m */; };
 		93552ED61BEA00FE004B0380 /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93552ED51BEA00FE004B0380 /* CustomNavigationController.m */; };
 		9361C28D1C4398BF00A0E625 /* NavaSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9361C28C1C4398BF00A0E625 /* NavaSearchBar.m */; };
+		936CAD391C589A190057F3E0 /* UIButton+additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 936CAD381C589A190057F3E0 /* UIButton+additions.m */; };
 		937949961C520B780062F6A4 /* TodayExtentionWebSeletedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 937949941C520B780062F6A4 /* TodayExtentionWebSeletedViewController.m */; };
 		9379499A1C523B550062F6A4 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 937949991C523B550062F6A4 /* ArrayDataSource.m */; };
 		9387EFA31C4F58D400870DEF /* AllAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9387EFA21C4F58D400870DEF /* AllAlertView.m */; };
@@ -201,6 +202,8 @@
 		93552ED51BEA00FE004B0380 /* CustomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationController.m; sourceTree = "<group>"; };
 		9361C28B1C4398BF00A0E625 /* NavaSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavaSearchBar.h; sourceTree = "<group>"; };
 		9361C28C1C4398BF00A0E625 /* NavaSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavaSearchBar.m; sourceTree = "<group>"; };
+		936CAD371C589A190057F3E0 /* UIButton+additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+additions.h"; sourceTree = "<group>"; };
+		936CAD381C589A190057F3E0 /* UIButton+additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+additions.m"; sourceTree = "<group>"; };
 		937949931C520B780062F6A4 /* TodayExtentionWebSeletedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayExtentionWebSeletedViewController.h; sourceTree = "<group>"; };
 		937949941C520B780062F6A4 /* TodayExtentionWebSeletedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayExtentionWebSeletedViewController.m; sourceTree = "<group>"; };
 		937949981C523B550062F6A4 /* ArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataSource.h; sourceTree = "<group>"; };
@@ -620,6 +623,8 @@
 				93CE7ABF1C50C57800A5BEE5 /* GustTodayExtenstion.entitlements */,
 				93CE7AB01C50C2B400A5BEE5 /* TodayViewController.h */,
 				93CE7AB11C50C2B400A5BEE5 /* TodayViewController.m */,
+				936CAD371C589A190057F3E0 /* UIButton+additions.h */,
+				936CAD381C589A190057F3E0 /* UIButton+additions.m */,
 				93CE7AB31C50C2B400A5BEE5 /* MainInterface.storyboard */,
 				93CE7AB61C50C2B400A5BEE5 /* Info.plist */,
 			);
@@ -939,6 +944,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93CE7AB21C50C2B400A5BEE5 /* TodayViewController.m in Sources */,
+				936CAD391C589A190057F3E0 /* UIButton+additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

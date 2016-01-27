@@ -14,25 +14,50 @@
 #import "History.h"
 #import "Bookmark.h"
 #import "GustRefreshHeader.h"
+#import "AllAlertView.h"
 
 #define SELECTED_VIEW_HEIGHT (SCREEN_HEIGHT - 200.0)
 
-@interface TodayExtentionWebSeletedViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface TodayExtentionWebSeletedViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIScrollViewDelegate>
 
-@property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *todayWebs;
-@property (nonatomic, strong) UIWindow *seletedWindow;
-@property (nonatomic, strong) UIView *seletedContainView;
+@property (nonatomic, strong) UITableView      *tableView;
+@property (nonatomic, copy)   NSMutableArray   *todayWebs;
+@property (nonatomic, strong) UIWindow         *seletedWindow;
+@property (nonatomic, strong) UIView           *seletedContainView;
 @property (nonatomic, strong) UISegmentedControl *segment;
-@property (nonatomic, strong) UITableView *seletedTableView;
-@property (nonatomic, strong) ArrayDataSource *arraydataSource;
-@property (nonatomic, strong) NSMutableArray *webItems;
+@property (nonatomic, strong) UITableView       *seletedTableView;
+@property (nonatomic, strong) ArrayDataSource   *arraydataSource;
+@property (nonatomic, copy)   NSMutableArray    *webItems;
 @property (nonatomic, strong) GustRefreshHeader *refreshHeader;
 
+@property (nonatomic, strong) UITextField       *webNameTextField;
+@property (nonatomic, strong) UITextField       *webUrlTextField;
 
 @end
 
 @implementation TodayExtentionWebSeletedViewController
+
+- (UITextField *)webNameTextField {
+    if (!_webNameTextField) {
+        _webNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(15.0, 0, SCREEN_WIDTH, 54.0)];
+        _webNameTextField.placeholder = @"请输入网站名";
+        _webNameTextField.delegate = self;
+        
+    }
+    return _webNameTextField;
+}
+
+- (UITextField *)webUrlTextField {
+    if (!_webUrlTextField) {
+        _webUrlTextField = [[UITextField alloc] initWithFrame:CGRectMake(15.0, 54.0, SCREEN_WIDTH, 54.0)];
+        _webUrlTextField.placeholder = @"请输入网址";
+        _webUrlTextField.keyboardType = UIKeyboardTypeURL;
+        _webUrlTextField.returnKeyType = UIReturnKeyDone;
+        _webUrlTextField.delegate = self;
+        
+    }
+    return _webUrlTextField;
+}
 
 - (UITableView *)tableView {
     if (!_tableView) {
@@ -53,14 +78,16 @@
 - (UITableView *)seletedTableView {
     if (!_seletedTableView) {
         _seletedTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 10.0, SCREEN_WIDTH, CGRectGetHeight(self.seletedContainView.bounds) - 10 - 50)];
-        
+        _seletedTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        _seletedTableView.separatorColor = [UIColor colorWithRed:0.9471 green:0.9471 blue:0.9471 alpha:1.0];
         _seletedTableView.rowHeight = 45.0;
         _seletedTableView.tableFooterView = [UIView new];
+        _seletedTableView.delegate = self;
         
         self.refreshHeader.scrollView = _seletedTableView;
         [self.refreshHeader addHeadView];
         self.refreshHeader.pullBackOffset = 0.8;
-        __weak typeof(self) weakSelf = self;
+        __strong typeof(self) weakSelf = self;
         self.refreshHeader.beginRefreshingBlock = ^(){
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakSelf hiddeSeletedPanel];
@@ -81,6 +108,7 @@
 - (UIWindow *)seletedWindow {
     if (!_seletedWindow) {
         _seletedWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        _seletedWindow.windowLevel = UIWindowLevelNormal;
         _seletedWindow.alpha = 0.0;
         _seletedWindow.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.2];
     }
@@ -139,7 +167,7 @@
     if (!cell) {
         cell = [[SettingsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.webTitle.text = self.todayWebs[indexPath.row];
+    cell.webTitle.text = self.todayWebs[indexPath.row][PageName];
     return cell;
 }
 
@@ -155,17 +183,45 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        
+        [self.todayWebs removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self saveWebInfoToUserDefaults];
         
     }
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    NSDictionary *willMoveDic = [self.todayWebs objectAtIndex:sourceIndexPath.row];
+    [self.todayWebs removeObject:willMoveDic];
+    [self.todayWebs insertObject:willMoveDic atIndex:destinationIndexPath.row];
+    [self saveWebInfoToUserDefaults];
     
 }
 
+#pragma mark -- UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.seletedContainView endEditing:YES];
+    if (self.webNameTextField.text.length > 0 && self.webUrlTextField.text.length > 0) {
+        if (self.todayWebs.count > 3) {
+            [[AllAlertView sharedAlert] showWithTitle:@"网页不能超过4个" alertType:AllAlertViewAlertTypeRemind height:100.0];
+            return NO;
+        }
+        NSDictionary *seletedWebInfo = @{PageName: self.webNameTextField.text, PageUrl: self.webUrlTextField.text};
+        [self.todayWebs addObject:seletedWebInfo];
+        [self saveWebInfoToUserDefaults];
+        [self hiddeSeletedPanel];
+        [self.tableView reloadData];
+    } else {
+        
+    }
+    return YES;
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self.seletedContainView endEditing:YES];
+}
 - (void)loadTodayWebsData{
-    _todayWebs = [@[@"雅虎新闻", @"苹果官网"] mutableCopy];
+    _todayWebs = [[self getWebInfoFromUserDefaults] mutableCopy];
     [self.tableView reloadData];
 }
 
@@ -175,22 +231,20 @@
     [self.seletedWindow addSubview:self.seletedContainView];
     [self.seletedContainView addSubview:self.segment];
     
-    NSArray *bookmarks = [NSArray arrayWithArray:[HisAndBooModel getDataWithType:@"Bookmark"]];
-    self.webItems = [NSMutableArray arrayWithArray:bookmarks];
-    
-    self.arraydataSource = [[ArrayDataSource alloc] initWithItems:self.webItems cellIdentifier:@"cellIdentifier" cellConfigureBlock:^(UITableViewCell *cell, NSManagedObject *data) {
-        
-        cell.textLabel.text = [data valueForKey:PageName];
-        
-    }];
-    self.seletedTableView.dataSource = self.arraydataSource;
+    [self configSeletedTableView];
+
     [self.seletedContainView addSubview:self.seletedTableView];
+    [self.seletedTableView addSubview:self.webNameTextField];
+    [self.seletedTableView addSubview:self.webUrlTextField];
     
+    self.webNameTextField.hidden = YES;
+    self.webUrlTextField.hidden = YES;
     
     [UIView animateWithDuration:0.24 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.seletedWindow.alpha = 1.0;
         self.seletedContainView.transform = CGAffineTransformMakeTranslation(0.0, -SELECTED_VIEW_HEIGHT);
     } completion:^(BOOL finished) {
+        
         
     }];
     
@@ -199,18 +253,20 @@
 {
     NSInteger index = segment.selectedSegmentIndex;
     if (index == 0) {
+        [self seletedBookmarksAndHistories];
         NSArray *bookmarks = [NSArray arrayWithArray:[HisAndBooModel getDataWithType:@"Bookmark"]];
         self.webItems = [NSMutableArray arrayWithArray:bookmarks];
         self.arraydataSource.items = [self.webItems copy];
         [self.seletedTableView reloadData];
 
     } else if (index == 1) {
+        [self seletedBookmarksAndHistories];
         NSArray *histories = [NSArray arrayWithArray:[HisAndBooModel getDataWithType:@"History"]];
         self.webItems = [NSMutableArray arrayWithArray:histories];
         self.arraydataSource.items = [self.webItems copy];
         [self.seletedTableView reloadData];
     } else {
-
+        [self customInputWeb];
     }
 }
 
@@ -224,14 +280,16 @@
         for (UIView *windowSubView in self.seletedWindow.subviews) {
             [windowSubView removeFromSuperview];
         }
-        
+        [_segment removeFromSuperview];
+        _segment = nil;
         _seletedWindow.hidden = YES;
         [_seletedWindow resignKeyWindow];
-        _seletedWindow = nil;
     }];
 }
 
 - (void)customInputWeb {
+    self.webNameTextField.hidden = NO;
+    self.webUrlTextField.hidden = NO;
     self.webItems = nil;
     self.arraydataSource.items = nil;
     self.seletedTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -240,11 +298,74 @@
 }
 
 - (void)seletedBookmarksAndHistories {
-    self.seletedTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.seletedTableView.separatorColor = [UIColor clearColor];
+    self.webNameTextField.hidden = YES;
+    self.webUrlTextField.hidden = YES;
+    self.seletedTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.seletedTableView.separatorColor = [UIColor colorWithRed:0.9471 green:0.9471 blue:0.9471 alpha:1.0];
+
 }
 
+- (void)configSeletedTableView {
+    
+    NSArray *bookmarks = [NSArray arrayWithArray:[HisAndBooModel getDataWithType:@"Bookmark"]];
+    self.webItems = [NSMutableArray arrayWithArray:bookmarks];
+    
+    self.arraydataSource = [[ArrayDataSource alloc] initWithItems:self.webItems cellIdentifier:@"cellIdentifier" cellConfigureBlock:^(UITableViewCell *cell, NSManagedObject *data) {
+        
+        cell.textLabel.text = [data valueForKey:PageName];
+        
+    }];
+    __weak typeof(self) weakSelf = self;
+    [self.arraydataSource tableViewDidSelectRowAtIndexPathWithBlock:^(UITableView *tableView, NSIndexPath *indexPath, NSManagedObject *data) {
+        NSDictionary *seletedWebInfo = @{PageName: [data valueForKey:PageName], PageUrl: [data valueForKey:PageUrl]};
+
+        if ([self filterTodayWebs:seletedWebInfo]) {
+            [[AllAlertView sharedAlert] showWithTitle:@"网页已经存在" alertType:AllAlertViewAlertTypeRemind height:100.0];
+            return ;
+        }
+        if (weakSelf.todayWebs.count > 3) {
+            [[AllAlertView sharedAlert] showWithTitle:@"网页不能超过4个" alertType:AllAlertViewAlertTypeRemind height:100.0];
+            return ;
+        }
+        [weakSelf.todayWebs addObject:seletedWebInfo];
+        [weakSelf.tableView reloadData];
+        [weakSelf hiddeSeletedPanel];
+        [weakSelf saveWebInfoToUserDefaults];
+        
+    }];
+    
+    self.seletedTableView.dataSource = self.arraydataSource;
+    self.seletedTableView.delegate = self.arraydataSource;
+    
+}
+
+- (void)saveWebInfoToUserDefaults{
+    
+    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.localNotificationSharedDefaults"];
+    [shared setObject:self.todayWebs forKey:@"todayWeb"];
+    [shared synchronize];
+    
+}
+
+- (NSArray *)getWebInfoFromUserDefaults {
+    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.localNotificationSharedDefaults"];
+    NSArray *results = [NSArray arrayWithArray:[shared objectForKey:@"todayWeb"]];
+    return results;
+}
+
+- (BOOL)filterTodayWebs:(NSDictionary *)webInfo {
+    return [self.todayWebs containsObject:webInfo];
+}
+
+
+
+
 @end
+
+
+
+
+
 
 
 
