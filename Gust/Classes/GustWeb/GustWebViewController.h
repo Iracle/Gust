@@ -16,8 +16,8 @@
 @property (nonatomic, strong) NSString * webURL;
 @property (nonatomic, strong) NSMutableString *currentSearchString;
 @property (nonatomic, assign) BOOL isSearch;
-
 @property (nonatomic, strong) MainTouchBaseView *touchView;
+
 
 
 @end

@@ -72,6 +72,7 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 -(void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -159,7 +160,6 @@
     }
     return _inputHistorisTableView;
 }
-
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

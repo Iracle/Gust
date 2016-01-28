@@ -347,7 +347,6 @@
 }
 
 - (void)remindTheWebsite:(NSNotification *)notification {
-    NSLog(@"rrrrr");
 
 }
 
@@ -549,6 +548,7 @@
     }
     return YES;
 }
+
 - (void)loadWebWithUrlString:(NSString *)urlString
 {
     //down hidden hisTable
@@ -566,6 +566,7 @@
         
     }
     [self.navigationController pushViewController:gustWebVC animated:YES];
+    
     //clean searchBar state
     self.searchBar.text = nil;
     _isInputingState = NO;
@@ -824,12 +825,8 @@
 
 - (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
 
-//    GustWebViewController *gustwebVC = [[GustWebViewController alloc] init];
-//    gustwebVC.webURL = self.urlString;
-//    CustomNavigationController *nav = [[CustomNavigationController alloc] initWithRootViewController:gustwebVC];
     [self.navigationController pushViewController:self.threeDTouchVC  animated:YES];
-    
-   }
+}
 
 #pragma mark -- Touch ID
 - (void)authenticateUser:(void(^)(_Bool isEnter))handler {
