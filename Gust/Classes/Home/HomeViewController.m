@@ -79,6 +79,13 @@
 //save 3D Touch webname
 @property (nonatomic) NSInteger touchPageNumber;
 
+@property (nonatomic, strong) HistoryAndBookmarkViewController *hisBookVC;
+@property (nonatomic, strong) UINavigationController *historyAndBookmarkVC;
+@property (nonatomic, strong) UINavigationController *moreVC;
+@property (nonatomic, strong) MoreViewController *more;
+
+@property (nonatomic, strong) GustWebViewController *currentGustWebVC;
+@property (nonatomic, strong) QRCodeReaderViewController *currentQRReader;
 
 @end
 
@@ -89,6 +96,35 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 #pragma mark -- getter
+
+- (HistoryAndBookmarkViewController *)hisBookVC {
+    if (!_hisBookVC) {
+        _hisBookVC = [[HistoryAndBookmarkViewController alloc] init];
+    }
+    return _hisBookVC;
+}
+
+- (UINavigationController *)historyAndBookmarkVC {
+    if (!_historyAndBookmarkVC) {
+        _historyAndBookmarkVC = [[UINavigationController alloc] initWithRootViewController:self.hisBookVC];
+        
+    }
+    return _historyAndBookmarkVC;
+}
+
+- (MoreViewController *)more {
+    if (!_more) {
+        _more = [[MoreViewController alloc] init];
+    }
+    return _more;
+}
+- (UINavigationController *)moreVC {
+    if (!_moreVC) {
+        _moreVC = [[UINavigationController alloc] initWithRootViewController:self.more];
+    }
+    return _moreVC;
+}
+
 - (MainTouchBaseView *)touchView
 {
     if (!_touchView) {
@@ -356,10 +392,45 @@
 }
 
 - (void)openTodayWebsite:(NSNotification *)notification {
+    /**
+     *  sure open the today extention quick open webPage from homeviewcontroller
+     */
     self.cellPopAnimationViewRect = self.view.frame;
     NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.localNotificationSharedDefaults"];
+    
+    if (self.historyAndBookmarkVC) {
+        [self.historyAndBookmarkVC.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        [self loadWebWithUrlString:[shared valueForKey:@"openUrl"]];
+        return;
+    }
+    
+    if (self.moreVC) {
+        [self.moreVC.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        [self loadWebWithUrlString:[shared valueForKey:@"openUrl"]];
+        return;
+        
+    }
+    if (self.currentQRReader) {
+        [self.currentQRReader.presentingViewController dismissViewControllerAnimated:NO completion:nil];
+        [self loadWebWithUrlString:[shared valueForKey:@"openUrl"]];
+        return;
+    }
+    
+    if (self.currentGustWebVC) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self loadWebWithUrlString:[shared valueForKey:@"openUrl"]];
+        return;
+
+    }
+    
+    if (self.threeDTouchVC) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self loadWebWithUrlString:[shared valueForKey:@"openUrl"]];
+        return;
+    }
     [self loadWebWithUrlString:[shared valueForKey:@"openUrl"]];
 }
+
 - (void)getCurrentSearchEnginSave {
     NSUserDefaults *searchDefaut = [NSUserDefaults standardUserDefaults];
     if ([[searchDefaut objectForKey:DefautSearchEngin] isEqualToString:SearchEnginBaidu]) {
@@ -373,17 +444,17 @@
 - (void) contextSheet: (VLDContextSheet *) contextSheet didSelectItem: (VLDContextSheetItem *) item {
     
     if ([item.title isEqualToString:@"设置"]){
-        MoreViewController *more = [[MoreViewController alloc] init];
-        UINavigationController *moreVC = [[UINavigationController alloc] initWithRootViewController:more];
-        self.animator = [[ZFModalTransitionAnimator alloc] initWithModalViewController:moreVC];
+        
+
+        self.animator = [[ZFModalTransitionAnimator alloc] initWithModalViewController:self.moreVC];
         self.animator.dragable = YES;
         self.animator.transitionDuration = 0.7;
         self.animator.behindViewAlpha = 0.7;
         self.animator.direction = ZFModalTransitonDirectionBottom;
-        [self.animator setContentScrollView:more.tableView];
-        moreVC.transitioningDelegate = self.animator;
-        moreVC.modalPresentationStyle = UIModalPresentationCustom;
-       [self presentViewController:moreVC animated:YES completion:nil];
+        [self.animator setContentScrollView:self.more.tableView];
+        self.moreVC.transitioningDelegate = self.animator;
+        self.moreVC.modalPresentationStyle = UIModalPresentationCustom;
+       [self presentViewController:self.moreVC animated:YES completion:nil];
         
     } else if ([item.title isEqualToString:@"隐私模式"]){
         
@@ -427,22 +498,23 @@
             return;
         }
 
-        HistoryAndBookmarkViewController *hisBookVC = [[HistoryAndBookmarkViewController alloc] init];
-        hisBookVC.isFromHomePage = YES;
-        hisBookVC.getUrltoHomeValueBlock = ^(NSString *UrlString){
-            self.cellPopAnimationViewRect = self.view.frame;
-            [self loadWebWithUrlString:UrlString];
+
+        self.hisBookVC.isFromHomePage = YES;
+         __weak typeof(self) weakSelf = self;
+        self.hisBookVC.getUrltoHomeValueBlock = ^(NSString *UrlString){
+            weakSelf.cellPopAnimationViewRect = weakSelf.view.frame;
+            [weakSelf loadWebWithUrlString:UrlString];
         };
-        UINavigationController *historyAndBookmarkVC = [[UINavigationController alloc] initWithRootViewController:hisBookVC];
-        self.animator = [[ZFModalTransitionAnimator alloc] initWithModalViewController:historyAndBookmarkVC];
+        
+        self.animator = [[ZFModalTransitionAnimator alloc] initWithModalViewController:self.historyAndBookmarkVC];
         self.animator.dragable = YES;
         self.animator.transitionDuration = 0.7;
         self.animator.behindViewAlpha = 0.7;
         self.animator.direction = ZFModalTransitonDirectionBottom;
-        [self.animator setContentScrollView:hisBookVC.tableView];
-        historyAndBookmarkVC.transitioningDelegate = self.animator;
-        historyAndBookmarkVC.modalPresentationStyle = UIModalPresentationCustom;
-        [self presentViewController:historyAndBookmarkVC animated:YES completion:nil];
+        [self.animator setContentScrollView:self.hisBookVC.tableView];
+        self.historyAndBookmarkVC.transitioningDelegate = self.animator;
+        self.historyAndBookmarkVC.modalPresentationStyle = UIModalPresentationCustom;
+        [self presentViewController:self.historyAndBookmarkVC animated:YES completion:nil];
     }
 }
 
@@ -491,7 +563,7 @@
         
         [reader setCompletionWithBlock:^(NSString *resultAsString) {
         }];
-        
+        self.currentQRReader = reader;
         [self presentViewController:reader animated:YES completion:NULL];
     }
     else {
@@ -555,6 +627,8 @@
     [self hiddeInputHistorisTableView];
     
     GustWebViewController *gustWebVC = [[GustWebViewController alloc] init];
+    //user for today extention open web dismiss current GustWebViewController
+    self.currentGustWebVC = gustWebVC;
     gustWebVC.webURL = urlString;
     //if is search state
     if (_willSearchString) {

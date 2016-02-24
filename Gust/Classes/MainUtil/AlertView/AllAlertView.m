@@ -25,7 +25,8 @@ static const CGFloat AlertImageHeight = 50.0;
 
 - (UIWindow *)window {
     if (!_window) {
-        _window = [UIApplication sharedApplication].keyWindow;
+        _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        _window.windowLevel = UIWindowLevelAlert;
     }
     return _window;
 }
@@ -100,6 +101,7 @@ static const CGFloat AlertImageHeight = 50.0;
     self.alertLabel.text = title;
     [self addSubview:self.alertImage];
     [self addSubview:self.alertLabel];
+    [self.window makeKeyAndVisible];
     [self.window addSubview:self];
     __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:0.24 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -117,6 +119,8 @@ static const CGFloat AlertImageHeight = 50.0;
         
     } completion:^(BOOL finished) {
         self.alertFinish = NO;
+        self.window.hidden = YES;
+        [self.window resignKeyWindow];
     }];
 }
 

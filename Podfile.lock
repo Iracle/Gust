@@ -1,5 +1,4 @@
 PODS:
-  - FDFullscreenPopGesture (1.1)
   - pop (1.0.8)
   - ZHAHKActionSheet (0.5.3)
   - ZHOTMWebView (0.0.4):
@@ -9,7 +8,6 @@ PODS:
   - ZHOTMWebView/ProgressBar (0.0.4)
 
 DEPENDENCIES:
-  - FDFullscreenPopGesture (= 1.1)
   - pop
   - ZHAHKActionSheet (from `https://github.com/Iracle/ZHAHKActionSheet.git`)
   - ZHOTMWebView (from `https://github.com/Iracle/ZHOTMWebView.git`)
@@ -29,7 +27,6 @@ CHECKOUT OPTIONS:
     :git: https://github.com/Iracle/ZHOTMWebView.git
 
 SPEC CHECKSUMS:
-  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   pop: bb773ae2c791ca2629de13b347e7a8b450fa6a57
   ZHAHKActionSheet: 2d6b73a39624b2a488b6e609407876cbb1b39b92
   ZHOTMWebView: be2e740889f387dccfd5554404a5034e9e01c06a
