@@ -12,6 +12,7 @@
 @property (nonatomic, copy) NSString *cellIdentifier;
 @property (nonatomic, copy) TableViewConfigureBlock cellCOnfigureBlock;
 @property (nonatomic, copy) TableViewCallbackBlock cellDidSeletedBlock;
+@property (nonatomic, copy) TableViewWillDragingBlock tableViewWillDragBlock;
 @end
 
 @implementation ArrayDataSource
@@ -60,6 +61,16 @@
 - (void)tableViewDidSelectRowAtIndexPathWithBlock:(TableViewCallbackBlock)callBackBlock {
     self.cellDidSeletedBlock = [callBackBlock copy];
 }
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    self.tableViewWillDragBlock(scrollView);
+}
+
+-(void)tableViewWillDragingWithBlock:(TableViewWillDragingBlock)completeBlock {
+    self.tableViewWillDragBlock = completeBlock;
+}
+
+
 
 
 @end

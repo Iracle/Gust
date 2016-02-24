@@ -32,6 +32,7 @@
 
 @property (nonatomic, strong) UITextField       *webNameTextField;
 @property (nonatomic, strong) UITextField       *webUrlTextField;
+@property (nonatomic, strong) UILabel           *alertLabel;
 
 @end
 
@@ -51,12 +52,25 @@
     if (!_webUrlTextField) {
         _webUrlTextField = [[UITextField alloc] initWithFrame:CGRectMake(15.0, 54.0, SCREEN_WIDTH, 54.0)];
         _webUrlTextField.placeholder = @"请输入网址";
+        _webUrlTextField.text = @"http://";
         _webUrlTextField.keyboardType = UIKeyboardTypeURL;
         _webUrlTextField.returnKeyType = UIReturnKeyDone;
         _webUrlTextField.delegate = self;
         
     }
     return _webUrlTextField;
+}
+
+- (UILabel *)alertLabel {
+    if (!_alertLabel) {
+        _alertLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 108.0, SCREEN_WIDTH, 54.0)];
+        _alertLabel.text = @"下拉取消";
+        _alertLabel.textColor = [UIColor colorWithRed:0.3554 green:0.3554 blue:0.3554 alpha:1.0];
+        _alertLabel.textAlignment = NSTextAlignmentCenter;
+        _alertLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightThin];
+        
+    }
+    return _alertLabel;
 }
 
 - (UITableView *)tableView {
@@ -212,7 +226,7 @@
         [self hiddeSeletedPanel];
         [self.tableView reloadData];
     } else {
-        
+        [[AllAlertView sharedAlert] showWithTitle:@"输入不正确" alertType:AllAlertViewAlertTypeRemind height:100.0];
     }
     return YES;
 }
@@ -236,9 +250,11 @@
     [self.seletedContainView addSubview:self.seletedTableView];
     [self.seletedTableView addSubview:self.webNameTextField];
     [self.seletedTableView addSubview:self.webUrlTextField];
+    [self.seletedTableView addSubview:self.alertLabel];
     
     self.webNameTextField.hidden = YES;
     self.webUrlTextField.hidden = YES;
+    self.alertLabel.hidden = YES;
     
     [UIView animateWithDuration:0.24 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.seletedWindow.alpha = 1.0;
@@ -290,16 +306,19 @@
 - (void)customInputWeb {
     self.webNameTextField.hidden = NO;
     self.webUrlTextField.hidden = NO;
+    self.alertLabel.hidden = NO;
     self.webItems = nil;
     self.arraydataSource.items = nil;
     self.seletedTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.seletedTableView.separatorColor = [UIColor clearColor];
     [self.seletedTableView reloadData];
+    [self.webNameTextField becomeFirstResponder];
 }
 
 - (void)seletedBookmarksAndHistories {
     self.webNameTextField.hidden = YES;
     self.webUrlTextField.hidden = YES;
+    self.alertLabel.hidden = YES;
     self.seletedTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.seletedTableView.separatorColor = [UIColor colorWithRed:0.9471 green:0.9471 blue:0.9471 alpha:1.0];
 
@@ -332,6 +351,13 @@
         [weakSelf hiddeSeletedPanel];
         [weakSelf saveWebInfoToUserDefaults];
         
+    }];
+    //tableview drag
+    [self.arraydataSource tableViewWillDragingWithBlock:^(UIScrollView *scrollView) {
+        [self.webNameTextField resignFirstResponder];
+        [self.webUrlTextField resignFirstResponder];
+        self.webNameTextField.text = nil;
+        self.webUrlTextField.text = @"http://";
     }];
     
     self.seletedTableView.dataSource = self.arraydataSource;

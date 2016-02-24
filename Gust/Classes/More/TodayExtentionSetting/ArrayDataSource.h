@@ -11,6 +11,7 @@
 
 typedef void (^TableViewConfigureBlock) (id cell, id item);
 typedef void (^TableViewCallbackBlock) (UITableView *tableView, NSIndexPath *indexPath, id item);
+typedef void (^TableViewWillDragingBlock) (UIScrollView *scrollView);
 
 @interface ArrayDataSource : NSObject <UITableViewDataSource, UITableViewDelegate>
 
@@ -19,5 +20,7 @@ typedef void (^TableViewCallbackBlock) (UITableView *tableView, NSIndexPath *ind
 - (instancetype)initWithItems:(NSArray *)anItem cellIdentifier:(NSString *)acellIdentifier cellConfigureBlock:(TableViewConfigureBlock) atableViewConfigureBlock;
 
 - (void)tableViewDidSelectRowAtIndexPathWithBlock:(TableViewCallbackBlock) callBackBlock;
+
+- (void)tableViewWillDragingWithBlock:(TableViewWillDragingBlock) completeBlock;
 
 @end
