@@ -196,10 +196,11 @@
     
     self.progressBar = [[OTMWebViewProgressBar alloc]init];
     CGFloat progressBarHeight = 1.5;
-    self.progressBar.frame = CGRectMake(0.0, CGRectGetMaxY(self.navigationController.navigationBar.bounds) - progressBarHeight, CGRectGetWidth(self.navigationController.navigationBar.bounds), progressBarHeight);
+    
+    self.progressBar.frame = CGRectMake(0.0, CGRectGetMaxY(self.navaSearchBar.bounds) - progressBarHeight, CGRectGetWidth(self.navaSearchBar.bounds), progressBarHeight);
     self.progressBar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     self.progressBar.tintColor = [UIColor colorWithRed:0.013 green:0.763 blue:0.634 alpha:1.000];
-    [self.navigationController.navigationBar addSubview:self.progressBar];
+    [self.navaSearchBar addSubview:self.progressBar];
 
     self.contextSheet = [[VLDContextSheet alloc] initWithItem:@"书签/历史" item:@"分享" item:@"设置"];
     self.contextSheet.delegate = self;

@@ -17,6 +17,7 @@
 #import "SettingsTableViewCell.h"
 #import "GustConfigure.h"
 #import "TodayExtentionWebSeletedViewController.h"
+#import "AllAlertView.h"
 
 
 @interface MoreViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -156,6 +157,8 @@
     [cache removeAllCachedResponses];
     [cache setDiskCapacity:0];
     [cache setMemoryCapacity:0];
+    
+    [[AllAlertView sharedAlert] showWithTitle:@"数据清楚成功" alertType:AllAlertViewAlertTypeDone height:100.0];
 
 }
 

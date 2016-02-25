@@ -416,7 +416,7 @@ NSString *const kOTMWebViewURLScheme = @"OTMWebView";
 + (NSArray *)defaultContextMenuItemsForElement:(NSDictionary *)element
 {
     if ([element[OTMWebViewElementTagNameKey] isEqualToString:@"A"]) {
-        return @[[[self class] openContextMenuItem], [[self class]copyURLContextMenuItem], [[self class]readingListContextMenuItem]];
+        return @[[[self class] openContextMenuItem], [[self class]copyURLContextMenuItem]];
     }
     else if ([element[OTMWebViewElementTagNameKey] isEqualToString:@"IMG"]) {
         return @[[[self class]openContextMenuItem], [[self class]saveImageContextMenuItem], [[self class]copyImageContextMenuItem], [[self class]copyURLContextMenuItem]];
@@ -500,8 +500,10 @@ NSString *const kOTMWebViewURLScheme = @"OTMWebView";
             else if ([tagName isEqualToString:@"IMG"]) {
                 link = element[OTMWebViewElementSRCKey];
             }
-            
-            [UIPasteboard generalPasteboard].URL = [NSURL URLWithString:link relativeToURL:[NSURL URLWithString:element[OTMWebViewElementDocumentURL]]];
+            if ([link hasPrefix:@"http"]) {
+                [UIPasteboard generalPasteboard].URL = [NSURL URLWithString:link relativeToURL:[NSURL URLWithString:element[OTMWebViewElementDocumentURL]]];
+            }
+
         }];
         
         copyLinkItem.titleForElement = ^NSString * (OTMWebView *webView, NSDictionary *element) {
@@ -545,24 +547,7 @@ NSString *const kOTMWebViewURLScheme = @"OTMWebView";
     
     return copyImageContextMenuItem;
 }
-//加入阅读列表
-+ (OTMWebViewContextMenuItem *)readingListContextMenuItem
-{
-    static OTMWebViewContextMenuItem *readingListMenuItem;
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        readingListMenuItem = [[OTMWebViewContextMenuItem alloc]initWithTitle:@"添加到阅读列表" actionHandler: ^(OTMWebView *webView, NSDictionary *element) {
-            NSURL *url = [NSURL URLWithString:element[OTMWebViewElementHREFKey] relativeToURL:[NSURL URLWithString:element[OTMWebViewElementDocumentURL]]];
-            
-            SSReadingList *readingList = [SSReadingList defaultReadingList];
-            
-            [readingList addReadingListItemWithURL:url title:element[OTMWebViewElementTitleKey] previewText:nil error:NULL];
-        }];
-    });
-    
-    return readingListMenuItem;
-}
+
 
 @end
 

@@ -58,10 +58,10 @@
 {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    layout.itemSize = CGSizeMake(_visualEffectView.bounds.size.width / 2 - 50,_visualEffectView.bounds.size.height / 3 - 20);
+    layout.itemSize = CGSizeMake(_visualEffectView.bounds.size.width / 2 - 53,_visualEffectView.bounds.size.height / 3 - 9);
     layout.minimumInteritemSpacing = 10;
-    layout.minimumLineSpacing = 10;
-    layout.sectionInset = UIEdgeInsetsMake(0, 20, 0, 20);
+    layout.minimumLineSpacing = 38;
+    layout.sectionInset = UIEdgeInsetsMake(0, 30, 0, 30);
     
     _mutiTabCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     _mutiTabCollectionView.center = CGPointMake(_visualEffectView.center.x, _visualEffectView.center.y);
