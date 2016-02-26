@@ -61,6 +61,13 @@
 		9387EFA31C4F58D400870DEF /* AllAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9387EFA21C4F58D400870DEF /* AllAlertView.m */; };
 		938BC7A21C44F25E005976F9 /* UINavigationBar+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 938BC7A11C44F25E005976F9 /* UINavigationBar+Addition.m */; };
 		938BC7A51C44F442005976F9 /* GustSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 938BC7A41C44F442005976F9 /* GustSwipeTableCell.m */; };
+		939438C71C8039F3003C26CB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 939438C91C8039F3003C26CB /* Localizable.strings */; };
+		939438CF1C803ABC003C26CB /* Localisator.m in Sources */ = {isa = PBXBuildFile; fileRef = 939438CD1C803ABC003C26CB /* Localisator.m */; };
+		939438D01C803ABC003C26CB /* Localisator.m in Sources */ = {isa = PBXBuildFile; fileRef = 939438CD1C803ABC003C26CB /* Localisator.m */; };
+		939438D11C803ABC003C26CB /* Localisator.m in Sources */ = {isa = PBXBuildFile; fileRef = 939438CD1C803ABC003C26CB /* Localisator.m */; };
+		939438D71C803B24003C26CB /* LocalisatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 939438D61C803B24003C26CB /* LocalisatorViewController.m */; };
+		939438D81C803B24003C26CB /* LocalisatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 939438D61C803B24003C26CB /* LocalisatorViewController.m */; };
+		939438D91C803B24003C26CB /* LocalisatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 939438D61C803B24003C26CB /* LocalisatorViewController.m */; };
 		93A2C5571C3513420022C11D /* GustCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A2C5561C3513420022C11D /* GustCollectionView.m */; };
 		93B74D641C3BAC3F0057BDBB /* GustAssistScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B74D631C3BAC3F0057BDBB /* GustAssistScrollView.m */; };
 		93CE191B1BEB51E400DECA3E /* SetPrivacyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CE19191BEB51E400DECA3E /* SetPrivacyPasswordViewController.m */; };
@@ -214,6 +221,13 @@
 		938BC7A11C44F25E005976F9 /* UINavigationBar+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Addition.m"; sourceTree = "<group>"; };
 		938BC7A31C44F442005976F9 /* GustSwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GustSwipeTableCell.h; sourceTree = "<group>"; };
 		938BC7A41C44F442005976F9 /* GustSwipeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GustSwipeTableCell.m; sourceTree = "<group>"; };
+		939438C61C8038D2003C26CB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainInterface.strings"; sourceTree = "<group>"; };
+		939438C81C8039F3003C26CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		939438CA1C8039F7003C26CB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		939438CC1C803ABC003C26CB /* Localisator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Localisator.h; sourceTree = "<group>"; };
+		939438CD1C803ABC003C26CB /* Localisator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Localisator.m; sourceTree = "<group>"; };
+		939438D51C803B24003C26CB /* LocalisatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalisatorViewController.h; sourceTree = "<group>"; };
+		939438D61C803B24003C26CB /* LocalisatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalisatorViewController.m; sourceTree = "<group>"; };
 		93A2C5551C3513420022C11D /* GustCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GustCollectionView.h; sourceTree = "<group>"; };
 		93A2C5561C3513420022C11D /* GustCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GustCollectionView.m; sourceTree = "<group>"; };
 		93B74D621C3BAC3F0057BDBB /* GustAssistScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GustAssistScrollView.h; sourceTree = "<group>"; };
@@ -424,6 +438,7 @@
 		1874362D1AA6F90800297383 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				939438CB1C803ABC003C26CB /* Localisator */,
 				1898DDDA1AC4361600C89513 /* QRCodeReader */,
 				1874362E1AA6F90800297383 /* VLDContextSheet */,
 			);
@@ -458,6 +473,8 @@
 				186540881AF4B7920076947D /* AboutGustViewController.m */,
 				93CE19181BEB51E400DECA3E /* SetPrivacyPasswordViewController.h */,
 				93CE19191BEB51E400DECA3E /* SetPrivacyPasswordViewController.m */,
+				939438D51C803B24003C26CB /* LocalisatorViewController.h */,
+				939438D61C803B24003C26CB /* LocalisatorViewController.m */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -517,6 +534,7 @@
 				93CE7ABE1C50C47200A5BEE5 /* Gust.entitlements */,
 				18EEDF191AA5FD6000033447 /* AppDelegate.h */,
 				18EEDF1A1AA5FD6000033447 /* AppDelegate.m */,
+				939438C91C8039F3003C26CB /* Localizable.strings */,
 				1874362D1AA6F90800297383 /* External */,
 				187436271AA6F7E600297383 /* Classes */,
 				18EEDF251AA5FD6000033447 /* Images.xcassets */,
@@ -565,6 +583,15 @@
 				937949941C520B780062F6A4 /* TodayExtentionWebSeletedViewController.m */,
 			);
 			path = TodayExtentionSetting;
+			sourceTree = "<group>";
+		};
+		939438CB1C803ABC003C26CB /* Localisator */ = {
+			isa = PBXGroup;
+			children = (
+				939438CC1C803ABC003C26CB /* Localisator.h */,
+				939438CD1C803ABC003C26CB /* Localisator.m */,
+			);
+			path = Localisator;
 			sourceTree = "<group>";
 		};
 		93A2C5541C3513240022C11D /* Common */ = {
@@ -734,6 +761,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 18EEDF091AA5FD5F00033447;
 			productRefGroup = 18EEDF131AA5FD6000033447 /* Products */;
@@ -759,6 +787,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				939438C71C8039F3003C26CB /* Localizable.strings in Resources */,
 				93CE19AA1BEC9B9100DECA3E /* PrivacyPassword.xib in Resources */,
 				93CE19A51BEC9B4A00DECA3E /* SetPrivacyPasswordViewController.xib in Resources */,
 				18EEDF261AA5FD6000033447 /* Images.xcassets in Resources */,
@@ -874,6 +903,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				939438D81C803B24003C26CB /* LocalisatorViewController.m in Sources */,
+				939438D01C803ABC003C26CB /* Localisator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -899,6 +930,7 @@
 				93CE199B1BEC9B2F00DECA3E /* MyScrollView.m in Sources */,
 				18CC9D641AAA025400165601 /* HomeCollectionViewCell.m in Sources */,
 				1898DDE61AC4361600C89513 /* QRCodeReaderView.m in Sources */,
+				939438D71C803B24003C26CB /* LocalisatorViewController.m in Sources */,
 				9379499A1C523B550062F6A4 /* ArrayDataSource.m in Sources */,
 				9326CE6E1C4D0AD400D39574 /* PopAnimationTransition.m in Sources */,
 				187436351AA6F90800297383 /* VLDContextSheet.m in Sources */,
@@ -918,6 +950,7 @@
 				9326CE6C1C4D0AD400D39574 /* GustNavigationControllerDelegate.m in Sources */,
 				18A87A421AA83B0C00724A74 /* GustWebViewController.m in Sources */,
 				93F50C7C1C36A6650028EF1F /* MainTouchBaseView.m in Sources */,
+				939438CF1C803ABC003C26CB /* Localisator.m in Sources */,
 				18A19C6C1AE3EDDA002345AF /* TopSitesManageViewController.m in Sources */,
 				930B1DCB1C37DA5F003219D1 /* HorizontalCollectionViewLayout.m in Sources */,
 				182823211AD05D1900267C41 /* History.m in Sources */,
@@ -945,6 +978,8 @@
 			files = (
 				93CE7AB21C50C2B400A5BEE5 /* TodayViewController.m in Sources */,
 				936CAD391C589A190057F3E0 /* UIButton+additions.m in Sources */,
+				939438D91C803B24003C26CB /* LocalisatorViewController.m in Sources */,
+				939438D11C803ABC003C26CB /* Localisator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -964,10 +999,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		939438C91C8039F3003C26CB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				939438C81C8039F3003C26CB /* en */,
+				939438CA1C8039F7003C26CB /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		93CE7AB31C50C2B400A5BEE5 /* MainInterface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				93CE7AB41C50C2B400A5BEE5 /* Base */,
+				939438C61C8038D2003C26CB /* zh-Hans */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
