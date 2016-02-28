@@ -79,11 +79,8 @@
 //save 3D Touch webname
 @property (nonatomic) NSInteger touchPageNumber;
 
-@property (nonatomic, strong) HistoryAndBookmarkViewController *hisBookVC;
-@property (nonatomic, strong) UINavigationController *historyAndBookmarkVC;
-@property (nonatomic, strong) UINavigationController *moreVC;
-@property (nonatomic, strong) MoreViewController *more;
-
+@property (nonatomic, strong) UINavigationController *currentHistoryAndBookmarkVC;
+@property (nonatomic, strong) UINavigationController *currentMoreVC;
 @property (nonatomic, strong) GustWebViewController *currentGustWebVC;
 @property (nonatomic, strong) QRCodeReaderViewController *currentQRReader;
 
@@ -97,33 +94,6 @@
 }
 #pragma mark -- getter
 
-- (HistoryAndBookmarkViewController *)hisBookVC {
-    if (!_hisBookVC) {
-        _hisBookVC = [[HistoryAndBookmarkViewController alloc] init];
-    }
-    return _hisBookVC;
-}
-
-- (UINavigationController *)historyAndBookmarkVC {
-    if (!_historyAndBookmarkVC) {
-        _historyAndBookmarkVC = [[UINavigationController alloc] initWithRootViewController:self.hisBookVC];
-        
-    }
-    return _historyAndBookmarkVC;
-}
-
-- (MoreViewController *)more {
-    if (!_more) {
-        _more = [[MoreViewController alloc] init];
-    }
-    return _more;
-}
-- (UINavigationController *)moreVC {
-    if (!_moreVC) {
-        _moreVC = [[UINavigationController alloc] initWithRootViewController:self.more];
-    }
-    return _moreVC;
-}
 
 - (MainTouchBaseView *)touchView
 {
@@ -398,14 +368,14 @@
     self.cellPopAnimationViewRect = self.view.frame;
     NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.localNotificationSharedDefaults"];
     
-    if (self.historyAndBookmarkVC) {
-        [self.historyAndBookmarkVC.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    if (self.currentHistoryAndBookmarkVC) {
+        [self.currentHistoryAndBookmarkVC.presentingViewController dismissViewControllerAnimated:YES completion:nil];
         [self loadWebWithUrlString:[shared valueForKey:@"openUrl"]];
         return;
     }
     
-    if (self.moreVC) {
-        [self.moreVC.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    if (self.currentMoreVC) {
+        [self.currentMoreVC.presentingViewController dismissViewControllerAnimated:YES completion:nil];
         [self loadWebWithUrlString:[shared valueForKey:@"openUrl"]];
         return;
         
@@ -445,16 +415,19 @@
     
     if ([item.title isEqualToString:@"设置"]){
         
-
-        self.animator = [[ZFModalTransitionAnimator alloc] initWithModalViewController:self.moreVC];
+        MoreViewController *more = [[MoreViewController alloc] init];
+        UINavigationController *moreVC = [[UINavigationController alloc] initWithRootViewController:more];
+        self.currentMoreVC = moreVC;
+        
+        self.animator = [[ZFModalTransitionAnimator alloc] initWithModalViewController:moreVC];
         self.animator.dragable = YES;
         self.animator.transitionDuration = 0.7;
         self.animator.behindViewAlpha = 0.7;
         self.animator.direction = ZFModalTransitonDirectionBottom;
-        [self.animator setContentScrollView:self.more.tableView];
-        self.moreVC.transitioningDelegate = self.animator;
-        self.moreVC.modalPresentationStyle = UIModalPresentationCustom;
-       [self presentViewController:self.moreVC animated:YES completion:nil];
+        [self.animator setContentScrollView:more.tableView];
+        moreVC.transitioningDelegate = self.animator;
+        moreVC.modalPresentationStyle = UIModalPresentationCustom;
+       [self presentViewController:moreVC animated:YES completion:nil];
         
     } else if ([item.title isEqualToString:@"隐私模式"]){
         
@@ -499,22 +472,26 @@
         }
 
 
-        self.hisBookVC.isFromHomePage = YES;
+        HistoryAndBookmarkViewController *hisBookVC = [[HistoryAndBookmarkViewController alloc] init];
+        hisBookVC.isFromHomePage = YES;
          __weak typeof(self) weakSelf = self;
-        self.hisBookVC.getUrltoHomeValueBlock = ^(NSString *UrlString){
+        hisBookVC.getUrltoHomeValueBlock = ^(NSString *UrlString){
             weakSelf.cellPopAnimationViewRect = weakSelf.view.frame;
             [weakSelf loadWebWithUrlString:UrlString];
         };
         
-        self.animator = [[ZFModalTransitionAnimator alloc] initWithModalViewController:self.historyAndBookmarkVC];
+        UINavigationController *historyAndBookmarkVC = [[UINavigationController alloc] initWithRootViewController:hisBookVC];
+        self.currentHistoryAndBookmarkVC = historyAndBookmarkVC;
+        
+        self.animator = [[ZFModalTransitionAnimator alloc] initWithModalViewController:historyAndBookmarkVC];
         self.animator.dragable = YES;
         self.animator.transitionDuration = 0.7;
         self.animator.behindViewAlpha = 0.7;
         self.animator.direction = ZFModalTransitonDirectionBottom;
-        [self.animator setContentScrollView:self.hisBookVC.tableView];
-        self.historyAndBookmarkVC.transitioningDelegate = self.animator;
-        self.historyAndBookmarkVC.modalPresentationStyle = UIModalPresentationCustom;
-        [self presentViewController:self.historyAndBookmarkVC animated:YES completion:nil];
+        [self.animator setContentScrollView:hisBookVC.tableView];
+        historyAndBookmarkVC.transitioningDelegate = self.animator;
+        historyAndBookmarkVC.modalPresentationStyle = UIModalPresentationCustom;
+        [self presentViewController:historyAndBookmarkVC animated:YES completion:nil];
     }
 }
 
