@@ -221,17 +221,14 @@
         return NO;
     }
     if (textField.text.length > 0) {
-        //pravicy mode
-        NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
-        if (![[privacyDefaults objectForKey:IsGustPrivacy] boolValue]) {
-            
-            NSMutableDictionary *inputRecordDic= [NSMutableDictionary dictionary];
-            [inputRecordDic setObject:textField.text forKey:InputRecordString];
-            //if the InputRecord is exist
-            NSArray *resultsArray = [CoreDataManager searchObjectWithEntityName:[InputRecord entityName] predicateString:[NSString stringWithFormat:@"inputString = '%@'",textField.text]];
-            if (resultsArray.count < 1) {
-                [CoreDataManager insertObjectWithParameter:inputRecordDic entityName:[InputRecord entityName]];}
-        }
+        
+        NSMutableDictionary *inputRecordDic= [NSMutableDictionary dictionary];
+        [inputRecordDic setObject:textField.text forKey:InputRecordString];
+        //if the InputRecord is exist
+        NSArray *resultsArray = [CoreDataManager searchObjectWithEntityName:[InputRecord entityName] predicateString:[NSString stringWithFormat:@"inputString = '%@'",textField.text]];
+        if (resultsArray.count < 1) {
+            [CoreDataManager insertObjectWithParameter:inputRecordDic entityName:[InputRecord entityName]];}
+        
     }
         
     NSMutableString *returnString = [MainSearchBarTextManage manageTextFieldText:textField.text];
@@ -384,16 +381,13 @@
     [self.historyDic setObject:currentDocumentTitle forKey:PageName];
     [self.historyDic setObject:currentDocumentUrl forKey:PageUrl];
     [self.historyDic setObject:currentDocumentImageUrl forKey:ImageUrl];
-    //Privicy mode
-    NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
-    if (![[privacyDefaults objectForKey:IsGustPrivacy] boolValue]) {
+    
+    NSArray *rusultsArray = [CoreDataManager searchObjectWithEntityName:[History entityName] predicateString:[NSString stringWithFormat:@"pageName = '%@'",currentDocumentTitle] ];
+    if (rusultsArray.count == 0 && currentDocumentTitle.length > 0) {
         
-        NSArray *rusultsArray = [CoreDataManager searchObjectWithEntityName:[History entityName] predicateString:[NSString stringWithFormat:@"pageName = '%@'",currentDocumentTitle] ];
-        if (rusultsArray.count == 0 && currentDocumentTitle.length > 0) {
-            
-            [CoreDataManager insertObjectWithParameter:self.historyDic entityName:[History entityName]];
+        [CoreDataManager insertObjectWithParameter:self.historyDic entityName:[History entityName]];
         }
-    }
+    
     self.navaSearchBar.webTitle.text = currentDocumentTitle;
 
     //is search
@@ -460,11 +454,6 @@
 }
 - (void)SwipeUpMainTouchView:(MainTouchView *)touchView withGesture:(UIGestureRecognizer *)gestureRecognizer
 {
-    NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
-    if ([[privacyDefaults objectForKey:IsGustPrivacy] boolValue]) {
-        [[AllAlertView sharedAlert] showWithTitle:@"隐私模式不能添加书签!" alertType:AllAlertViewAlertTypeRemind height:100.0];
-        return;
-    }
     NSString *bookmark = [self.bookmarkDic objectForKey:PageName];
     NSArray *resultsArray = [CoreDataManager searchObjectWithEntityName:[Bookmark entityName] predicateString:[NSString stringWithFormat:@"pageName = '%@'",bookmark] ];
     if (resultsArray.count < 1 && [self.bookmarkDic[PageName] length] > 0 ) {
@@ -523,11 +512,6 @@
         [self presentViewController:activityVC animated:YES completion:nil];
         
     } else{
-        NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
-        if ([[privacyDefaults objectForKey:IsGustPrivacy] boolValue]) {
-            [[AllAlertView sharedAlert] showWithTitle:@"处于隐私模式不能访问" alertType:AllAlertViewAlertTypeRemind height:100.0];
-            return;
-        }
 
         HistoryAndBookmarkViewController *hisBookVC = [[HistoryAndBookmarkViewController alloc] init];
         hisBookVC.getUrlValueBlock = ^(NSString *value){

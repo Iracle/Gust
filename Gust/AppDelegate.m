@@ -10,6 +10,7 @@
 #import "HomeViewController.h"
 #import "GustConfigure.h"
 #import "GuideViewController.h"
+#import "LockWindow.h"
 
 @interface AppDelegate ()
 
@@ -43,10 +44,11 @@
     }
     
     //privacy mode
-    NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
-    BOOL privicyBool = NO;
-    [privacyDefaults setObject: [NSNumber numberWithBool:privicyBool] forKey:IsGustPrivacy];
-    [privacyDefaults synchronize];
+//    NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
+//    BOOL privicyBool = [privacyDefaults objectForKey:IsGustPrivacy];
+//    [privacyDefaults setBool:privicyBool forKey:IsGustPrivacy];
+//    [privacyDefaults synchronize];
+    
     /*
     NSUserDefaults *userDetaults = [NSUserDefaults standardUserDefaults];
     if (![userDetaults objectForKey:@"Guide"]) {
@@ -58,6 +60,12 @@
 //    GuideViewController *guideVC = [[GuideViewController alloc] init];
 //    [nav presentViewController:guideVC animated:NO completion:nil];
     
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
+        if ([privacyDefaults boolForKey:IsGustPrivacy] == YES) {
+            [[LockWindow shareLockWindow] showLockWindow];
+        }
+    });
     return YES;
 }
 
@@ -67,16 +75,29 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
+        if ([privacyDefaults boolForKey:IsGustPrivacy] == YES) {
+            [[LockWindow shareLockWindow] showLockWindow];
+        }
+    });
+    
 }
 
+
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
+//        if ([privacyDefaults boolForKey:IsGustPrivacy] == YES) {
+//            [[LockWindow shareLockWindow] showLockWindow];
+//        }
+//    });
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

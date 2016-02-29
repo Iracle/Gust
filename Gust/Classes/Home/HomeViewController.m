@@ -25,8 +25,7 @@
 #import "CustomNavigationController.h"
 
 #import <objc/message.h>
-//surport Touch ID
-#import <LocalAuthentication/LocalAuthentication.h>
+
 //privacy password view
 #import "PrivacyPasswordView.h"
 
@@ -432,6 +431,26 @@
     } else if ([item.title isEqualToString:@"隐私模式"]){
         
         __weak typeof(self) weakSelf = self;
+        NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
+        if ([privacyDefaults boolForKey:IsGustPrivacy] == NO) {
+            BOOL privicyBool = YES;
+            [privacyDefaults setBool:privicyBool forKey:IsGustPrivacy];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf performSelector:@selector(showPrivcyAlert:) withObject:@"已开启隐私模式" afterDelay:0.5];
+            });
+            
+        } else {
+            BOOL privicyBool = NO;
+            [privacyDefaults setBool:privicyBool forKey:IsGustPrivacy];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf performSelector:@selector(showPrivcyAlert:) withObject:@"已关闭隐私模式" afterDelay:0.5];
+            });
+        }
+        [privacyDefaults synchronize];
+
+        
+        /*
+        __weak typeof(self) weakSelf = self;
         //Touch ID auth
         [self authenticateUser:^(bool isEnter) {
             if (isEnter) {
@@ -461,17 +480,10 @@
             }
             
         }];
+         */
         
     } else{
-        //if is privicy mode
-        NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
-        if ([[privacyDefaults objectForKey:IsGustPrivacy] boolValue]) {
-            [[AllAlertView sharedAlert] showWithTitle:@"处于隐私模式不能访问" alertType:AllAlertViewAlertTypeRemind height:130.0];
-
-            return;
-        }
-
-
+        
         HistoryAndBookmarkViewController *hisBookVC = [[HistoryAndBookmarkViewController alloc] init];
         hisBookVC.isFromHomePage = YES;
          __weak typeof(self) weakSelf = self;
@@ -570,18 +582,13 @@
     self.cellPopAnimationViewRect = self.view.frame;
     //if text length > 0,inputrecord should be save
     if (textField.text.length > 0) {
-        //pravicy mode
-        NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
-        if (![[privacyDefaults objectForKey:IsGustPrivacy] boolValue]) {
-            
-            NSMutableDictionary *inputRecordDic= [NSMutableDictionary dictionary];
-            [inputRecordDic setObject:textField.text forKey:InputRecordString];
-            //if the InputRecord is exist
-            NSArray *resultsArray = [CoreDataManager searchObjectWithEntityName:[InputRecord entityName] predicateString:[NSString stringWithFormat:@"inputString = '%@'",textField.text]];
-            if (resultsArray.count < 1) {
-                [CoreDataManager insertObjectWithParameter:inputRecordDic entityName:[InputRecord entityName]];
+        NSMutableDictionary *inputRecordDic= [NSMutableDictionary dictionary];
+        [inputRecordDic setObject:textField.text forKey:InputRecordString];
+        //if the InputRecord is exist
+        NSArray *resultsArray = [CoreDataManager searchObjectWithEntityName:[InputRecord entityName] predicateString:[NSString stringWithFormat:@"inputString = '%@'",textField.text]];
+        if (resultsArray.count < 1) {
+            [CoreDataManager insertObjectWithParameter:inputRecordDic entityName:[InputRecord entityName]];
             }
-        }
     }
     NSMutableString *returnString = [MainSearchBarTextManage manageTextFieldText:textField.text];
     if ([returnString hasPrefix:@"s"]) {
@@ -880,80 +887,7 @@
 }
 
 #pragma mark -- Touch ID
-- (void)authenticateUser:(void(^)(_Bool isEnter))handler {
-    //inti context object
-    LAContext *context = [LAContext new];
-    context.localizedFallbackTitle = @"输入密码";
-    NSError *error = nil;
-    NSString* result = @"获取进入隐私模式的权限";
-    //judge if the device suport internationl
-    if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
-        //use fingerpint
-        [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:result reply:^(BOOL success, NSError * _Nullable error) {
-            if (success) {
-                handler(YES);
-                //update main UI
-            } else {
-                NSLog(@"%@",error.localizedDescription);
-                switch (error.code) {
-                    case LAErrorSystemCancel:
-                    {
-                        NSLog(@"Authentication was cancelled by the system");
-                        //切换到其他APP，系统取消验证Touch ID
-                        break;
-                    }
-                    case LAErrorUserCancel:
-                    {
-                        NSLog(@"Authentication was cancelled by the user");
-                        //用户取消验证Touch ID
-                        break;
-                    }
-                    case LAErrorUserFallback:
-                    {
-                        NSLog(@"User selected to enter custom password");
-                        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                            //用户选择输入密码，切换主线程处理
-                            handler(NO);
-                        }];
-                        break;
-                    }
-                    default:
-                    {
-                        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                            //其他情况，切换主线程处理
-                        }];
-                        break;
-                    }
-                }
 
-            }
-        }];
-        
-    } else {
-        //not surport fingerprint
-        switch (error.code) {
-            case LAErrorTouchIDNotEnrolled:
-            {
-                NSLog(@"TouchID is not enrolled");
-                break;
-            }
-            case LAErrorPasscodeNotSet:
-            {
-                NSLog(@"A passcode has not been set");
-                break;
-            }
-            default:
-            {
-                NSLog(@"TouchID not available");
-                break;
-            }
-        }
-        
-        NSLog(@"%@",error.localizedDescription);
-        NSLog(@"pass world alert");
-}
-    
-}
 -(void)showPrivcyAlert:(NSNotification *)notification {
     
     [[AllAlertView sharedAlert] showWithTitle:(NSString *)notification alertType:AllAlertViewAlertTypeRemind height:130.0];

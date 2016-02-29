@@ -500,10 +500,8 @@ NSString *const kOTMWebViewURLScheme = @"OTMWebView";
             else if ([tagName isEqualToString:@"IMG"]) {
                 link = element[OTMWebViewElementSRCKey];
             }
-            if ([link hasPrefix:@"http"]) {
-                [UIPasteboard generalPasteboard].URL = [NSURL URLWithString:link relativeToURL:[NSURL URLWithString:element[OTMWebViewElementDocumentURL]]];
-            }
-
+            
+            [UIPasteboard generalPasteboard].URL = [NSURL URLWithString:link relativeToURL:[NSURL URLWithString:element[OTMWebViewElementDocumentURL]]];
         }];
         
         copyLinkItem.titleForElement = ^NSString * (OTMWebView *webView, NSDictionary *element) {
@@ -547,7 +545,5 @@ NSString *const kOTMWebViewURLScheme = @"OTMWebView";
     
     return copyImageContextMenuItem;
 }
-
-
 @end
 

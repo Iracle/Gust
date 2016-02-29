@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '430A42B211858A12BECDF85B'
+               BlueprintIdentifier = '48EE0E82F101D781CD9EF8E7'
                BlueprintName = 'ZHOTMWebView'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libZHOTMWebView.a'>
