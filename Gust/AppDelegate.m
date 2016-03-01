@@ -11,8 +11,12 @@
 #import "GustConfigure.h"
 #import "GuideViewController.h"
 #import "LockWindow.h"
+#import "GustBKPasscodeDelegate.h"
+
+//NSString *const BKPasscodeKeychainServiceName = @"BKPasscodeSampleService";
 
 @interface AppDelegate ()
+@property (nonatomic, strong) GustBKPasscodeDelegate *gustBKPasscodeDelegate;
 
 @end
 
@@ -21,6 +25,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.gustBKPasscodeDelegate = [[GustBKPasscodeDelegate alloc] init];
+
+    [[BKPasscodeLockScreenManager sharedManager] setDelegate:self];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];
@@ -60,12 +67,7 @@
 //    GuideViewController *guideVC = [[GuideViewController alloc] init];
 //    [nav presentViewController:guideVC animated:NO completion:nil];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
-        if ([privacyDefaults boolForKey:IsGustPrivacy] == YES) {
-            [[LockWindow shareLockWindow] showLockWindow];
-        }
-    });
+
     return YES;
 }
 
@@ -75,17 +77,11 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-
+    [[BKPasscodeLockScreenManager sharedManager] showLockScreen:NO];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
-        if ([privacyDefaults boolForKey:IsGustPrivacy] == YES) {
-            [[LockWindow shareLockWindow] showLockWindow];
-        }
-    });
-    
+
 }
 
 
@@ -199,5 +195,24 @@
         }
     }
 }
+
+- (BOOL)lockScreenManagerShouldShowLockScreen:(BKPasscodeLockScreenManager *)aManager
+{
+    return YES;
+}
+
+- (UIViewController *)lockScreenManagerPasscodeViewController:(BKPasscodeLockScreenManager *)aManager
+{
+    BKPasscodeViewController *viewController = [[BKPasscodeViewController alloc] initWithNibName:nil bundle:nil];
+    viewController.type = BKPasscodeViewControllerCheckPasscodeType;
+    viewController.delegate = self.gustBKPasscodeDelegate;
+    
+    viewController.touchIDManager = [[BKTouchIDManager alloc] initWithKeychainServiceName:@"BKPasscodeSampleService"];
+    viewController.touchIDManager.promptText = @"Scan fingerprint to unlock";
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    return navController;
+}
+
 
 @end

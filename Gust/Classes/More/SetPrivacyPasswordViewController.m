@@ -9,145 +9,46 @@
 #import "SetPrivacyPasswordViewController.h"
 #import "CHKeychain.h"
 #import "GustConfigure.h"
-#import "AllAlertView.h"
+#import "BKCustomPasscodeViewController.h"
+#import "SettingsTableViewCell.h"
 
 #define TEXTFIELD_INDEX 0
 
-@interface SetPrivacyPasswordViewController () <UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet UIView *bgView;
-@property (weak, nonatomic) IBOutlet UILabel *titleInfo;
-@property (weak, nonatomic) IBOutlet UILabel *errorInfo;
-@property (strong, nonatomic) IBOutletCollection(UITextField) NSArray *textFields;
-@property (nonatomic) NSInteger textFiledIndext;
-@property (nonatomic, copy) NSMutableString *currentPassword;
-@property (nonatomic) BOOL isfirstSavedsucess;
-@property (nonatomic) BOOL isfirstInput;
+@interface SetPrivacyPasswordViewController () <UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, strong) UITableView *tableView;
+
+
 @end
 
 @implementation SetPrivacyPasswordViewController
 
-- (void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-    [self.view endEditing:YES];
+- (UITableView *)tableView
+{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+        _tableView.backgroundColor = [UIColor clearColor];
+        _tableView.rowHeight = 54.0;
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.tableFooterView = [UIView new];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.showsVerticalScrollIndicator = NO;
+        _tableView.separatorColor = [UIColor clearColor];
+    }
+    
+    return _tableView;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    _errorInfo.layer.masksToBounds = YES;
-    _errorInfo.layer.cornerRadius = 8;
-   
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _currentPassword = [NSMutableString string];
-    _textFiledIndext = 0;
-    _isfirstInput = YES;
     
-    _errorInfo.hidden = YES;
-    //check is first save keychain
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textfieldDidChange:) name:UITextFieldTextDidChangeNotification  object:nil];
+    self.view.backgroundColor = [UIColor colorWithRed:250 / 255.0 green:250 / 255.0 blue:250 / 255.0 alpha:1.0];
     
-    [_textFields enumerateObjectsUsingBlock:^(UITextField  *textFied, NSUInteger idx, BOOL * stop) {
-//        textFied.layer.masksToBounds = YES;
-//        textFied.layer.cornerRadius = 5;
-        //hidde InputTraits
-        [[textFied valueForKey:@"textInputTraits"] setValue:[UIColor clearColor] forKey:@"insertionPointColor"];
-        textFied.delegate = self;
-        if (idx == 0) {
-            [textFied becomeFirstResponder];
-        }
-    }];
+    [self.view addSubview:self.tableView];
+
 
 }
 
-#pragma mark -- UITextFieldDelegate
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    if (range.location > 0) {
-        return NO;
-    } else {
-        return YES;
-    }
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    
-}
-- (void)textfieldDidChange:(NSNotification *)notification {
-    _errorInfo.text = nil;
-    _errorInfo.hidden = YES;
-    if (_textFiledIndext == 3) {
-        //save current password
-        [_textFields enumerateObjectsUsingBlock:^(UITextField  *textFied, NSUInteger idx, BOOL * stop) {
-            [_currentPassword appendString:textFied.text];
-            if (_currentPassword.length == 8) {
-                [self checkpassword];
-            }
-        }];
-        if (!_isfirstSavedsucess) {
-            [self bgViewAnimation];
-        }
-        return;
-    }
-    UITextField *currentField = _textFields[_textFiledIndext + 1];
-    NSString *passwordText = [notification.object valueForKey:@"text"];
-    if (passwordText) {
-        [currentField becomeFirstResponder];
-    }
-    _textFiledIndext ++;
-    
-}
-
-- (void)bgViewAnimation {
-    [UIView animateWithDuration:0.25 animations:^{
-        _bgView.transform = CGAffineTransformMakeTranslation(-SCREEN_WIDTH, 0);
-        
-    } completion:^(BOOL finished) {
-        _bgView.transform = CGAffineTransformMakeTranslation(SCREEN_WIDTH, 0);
-        [UIView animateWithDuration:0.25 animations:^{
-            _bgView.transform = CGAffineTransformIdentity;
-        }];
-        _textFiledIndext = 0;
-        _isfirstInput = NO;
-        UITextField *currentField = _textFields[_textFiledIndext];
-        [currentField becomeFirstResponder];
-        [_textFields enumerateObjectsUsingBlock:^(UITextField *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            obj.text = nil;
-        }];
-        _titleInfo.text = @"请再次输入密码";
-        
-    }];
-}
-
-//check first and second password is equal
-- (void)checkpassword {
-    NSString *firstpassword = [_currentPassword substringToIndex:4];
-    NSRange range = NSMakeRange(4, 4);
-    NSString *secondpassword = [_currentPassword substringWithRange:range];
-    if ([firstpassword isEqualToString:secondpassword]) {
-        _isfirstSavedsucess = YES;
-        //save privacypassword
-        [CHKeychain save:@"KEY_PRIVACY" data:@{@"privacypasswrd": firstpassword}];
-        [[AllAlertView sharedAlert] showWithTitle:@"设置隐私模式密码成功" alertType:AllAlertViewAlertTypeDone height:100.0];
-        [self performSelector:@selector(popToSetting) withObject:nil afterDelay:2];
-        
-    } else {
-        //retry
-        [_currentPassword deleteCharactersInRange:NSMakeRange(0, _currentPassword.length)];
-        [self performSelector:@selector(changeErrorLabel) withObject:nil afterDelay:0.35];
-        
-    }
-    
-}
-
-- (void)changeErrorLabel {
-    _titleInfo.text = @"请输入密码";
-    _errorInfo.hidden = NO;
-    _errorInfo.text = @"两次密码不匹配，请重新输入";
-}
-
-- (void)popToSetting {
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 
 @end

@@ -19,6 +19,8 @@
 #import "TodayExtentionWebSeletedViewController.h"
 #import "AllAlertView.h"
 #import "LocalisatorViewController.h"
+#import "BKPasscodeViewController.h"
+#import "GustBKPasscodeDelegate.h"
 
 @interface MoreViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -26,6 +28,8 @@
 @property (nonatomic, copy)    NSArray<NSString *> *detailPageClassNames;
 @property (nonatomic, copy)    NSArray<NSString *> *settingIcons;
 @property (nonatomic, strong)  GustRefreshHeader *refreshHeader;
+@property (nonatomic, strong) GustBKPasscodeDelegate *gustBKPasscodeDelegate;
+
 
 @end
 
@@ -39,6 +43,7 @@
         _detailPageClassNames = @[@"TopSitesManageViewController", @"DefaultSearchViewController", @"SetPrivacyPasswordViewController", @"TodayExtentionWebSeletedViewController", @"ClearWebCacheController", @"FunctionIntroduceController", @"FeedbackController",@"AboutGustViewController"];
         _tableListDataArray = @[@"首页书签管理",@"默认搜索引擎", @"隐私模式密码", @"通知中心设置", @"清除数据", @"功能介绍", @"反馈", @"关于"];
         _settingIcons = @[@"settingTopsite", @"settingSearch", @"settingPrivacy", @"settingPush", @"settingClear", @"settingGuide", @"settingFeedback", @"settingAbout"];
+        self.gustBKPasscodeDelegate = [[GustBKPasscodeDelegate alloc] init];
     }
     return self;
 }
@@ -135,6 +140,11 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 4) {
             [self clearWebCookieAndCache];
+            return;
+        }
+        if (indexPath.row == 2) {
+            [self presentPasscodeViewControllerWithType:BKPasscodeViewControllerNewPasscodeType];
+            return;
         }
         destinationViewController = [[NSClassFromString(_detailPageClassNames[indexPath.row]) alloc] init];
     } else {
@@ -143,7 +153,6 @@
     }
     [self.navigationController pushViewController:destinationViewController animated:YES];
 }
-
 - (void)clearWebCookieAndCache {
     NSHTTPCookie *cookie;
     NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
@@ -160,6 +169,37 @@
     
     [[AllAlertView sharedAlert] showWithTitle:@"数据清楚成功" alertType:AllAlertViewAlertTypeDone height:100.0];
 
+}
+
+- (void)presentPasscodeViewControllerWithType:(BKPasscodeViewControllerType)type
+{
+    BKPasscodeViewController *viewController = [self createPasscodeViewController];
+    viewController.delegate = self.gustBKPasscodeDelegate;
+    viewController.type = type;
+    
+    // Passcode style (numeric or ASCII)
+    viewController.passcodeStyle = BKPasscodeInputViewNumericPasscodeStyle;
+    
+    // Setup Touch ID manager
+    BKTouchIDManager *touchIDManager = [[BKTouchIDManager alloc] initWithKeychainServiceName:@"BKPasscodeSampleService"];
+    touchIDManager.promptText = @"BKPasscodeView Touch ID Demo";
+    viewController.touchIDManager = touchIDManager;
+    
+    viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(passcodeViewCloseButtonPressed:)];
+    
+   [self.navigationController pushViewController:viewController animated:YES];;
+
+}
+
+- (BKPasscodeViewController *)createPasscodeViewController
+{
+    return [[BKPasscodeViewController alloc] init];
+
+}
+
+- (void)passcodeViewCloseButtonPressed:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

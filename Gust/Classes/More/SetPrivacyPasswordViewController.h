@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BKPasscodeViewController.h"
 
 @interface SetPrivacyPasswordViewController : UIViewController
 
