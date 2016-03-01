@@ -13,7 +13,6 @@
 #import "LockWindow.h"
 #import "GustBKPasscodeDelegate.h"
 
-//NSString *const BKPasscodeKeychainServiceName = @"BKPasscodeSampleService";
 
 @interface AppDelegate ()
 @property (nonatomic, strong) GustBKPasscodeDelegate *gustBKPasscodeDelegate;
@@ -24,10 +23,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
     self.gustBKPasscodeDelegate = [[GustBKPasscodeDelegate alloc] init];
-
     [[BKPasscodeLockScreenManager sharedManager] setDelegate:self];
+//    [[BKPasscodeLockScreenManager sharedManager] showLockScreen:NO];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];

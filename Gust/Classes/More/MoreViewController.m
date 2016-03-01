@@ -153,6 +153,8 @@
     }
     [self.navigationController pushViewController:destinationViewController animated:YES];
 }
+
+#pragma mark -- Web Cache
 - (void)clearWebCookieAndCache {
     NSHTTPCookie *cookie;
     NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
@@ -171,6 +173,7 @@
 
 }
 
+#pragma mark -- Passcode
 - (void)presentPasscodeViewControllerWithType:(BKPasscodeViewControllerType)type
 {
     BKPasscodeViewController *viewController = [self createPasscodeViewController];
@@ -182,10 +185,9 @@
     
     // Setup Touch ID manager
     BKTouchIDManager *touchIDManager = [[BKTouchIDManager alloc] initWithKeychainServiceName:@"BKPasscodeSampleService"];
-    touchIDManager.promptText = @"BKPasscodeView Touch ID Demo";
+    touchIDManager.promptText = @"Gust Touch ID ";
     viewController.touchIDManager = touchIDManager;
     
-    viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(passcodeViewCloseButtonPressed:)];
     
    [self.navigationController pushViewController:viewController animated:YES];;
 
@@ -197,10 +199,6 @@
 
 }
 
-- (void)passcodeViewCloseButtonPressed:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 
 

@@ -42,6 +42,7 @@ typedef enum : NSUInteger {
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        self.title = @"设置密码";
         // init state
         _type = BKPasscodeViewControllerNewPasscodeType;
         _currentState = BKPasscodeViewControllerStateInputPassword;
