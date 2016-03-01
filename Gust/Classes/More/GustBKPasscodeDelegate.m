@@ -7,13 +7,15 @@
 //
 
 #import "GustBKPasscodeDelegate.h"
+#import "CHKeychain.h"
 
 @implementation GustBKPasscodeDelegate
 
 
 - (void)passcodeViewController:(BKPasscodeViewController *)aViewController authenticatePasscode:(NSString *)aPasscode resultHandler:(void (^)(BOOL))aResultHandler
 {
-
+    self.passcode = [CHKeychain load:@"KEY_PRIVACY"];
+     NSLog(@"ppp:%@",self.passcode);
     if ([aPasscode isEqualToString:self.passcode]) {
         
         self.lockUntilDate = nil;
@@ -63,9 +65,8 @@
     switch (aViewController.type) {
         case BKPasscodeViewControllerNewPasscodeType:
         {
-            [aViewController.touchIDManager savePasscode:aPasscode completionBlock:^(BOOL success) {
-                
-            }];
+            [CHKeychain save:@"KEY_PRIVACY" data:aPasscode];
+            
             break;
         }
         case BKPasscodeViewControllerChangePasscodeType:
@@ -73,11 +74,11 @@
             self.passcode = aPasscode;
             self.failedAttempts = 0;
             self.lockUntilDate = nil;
-//            BKTouchIDManager *touchIDManager = [[BKTouchIDManager alloc] initWithKeychainServiceName:@"BKPasscodeSampleService"];
-//            [touchIDManager savePasscode:self.passcode completionBlock:^(BOOL success) {
-//                
-//            }];
             break;
+        }
+        case BKPasscodeViewControllerCheckPasscodeType:
+        {
+
         }
         default:
             break;
