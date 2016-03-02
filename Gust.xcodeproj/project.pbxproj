@@ -63,6 +63,7 @@
 		9326CE6F1C4D0AD400D39574 /* RevertPopAnimationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9326CE6B1C4D0AD400D39574 /* RevertPopAnimationTransition.m */; };
 		9326CE721C4D0F9900D39574 /* SettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9326CE711C4D0F9900D39574 /* SettingsTableViewCell.m */; };
 		9344D41A1C86C2B100C78715 /* GustBKPasscodeDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344D4191C86C2B100C78715 /* GustBKPasscodeDelegate.m */; };
+		9344D41D1C871F6F00C78715 /* UIViewController+Visible.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344D41C1C871F6F00C78715 /* UIViewController+Visible.m */; };
 		93552ED61BEA00FE004B0380 /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93552ED51BEA00FE004B0380 /* CustomNavigationController.m */; };
 		9361C28D1C4398BF00A0E625 /* NavaSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9361C28C1C4398BF00A0E625 /* NavaSearchBar.m */; };
 		936CAD391C589A190057F3E0 /* UIButton+additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 936CAD381C589A190057F3E0 /* UIButton+additions.m */; };
@@ -239,6 +240,8 @@
 		9326CE711C4D0F9900D39574 /* SettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewCell.m; sourceTree = "<group>"; };
 		9344D4181C86C2B100C78715 /* GustBKPasscodeDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GustBKPasscodeDelegate.h; sourceTree = "<group>"; };
 		9344D4191C86C2B100C78715 /* GustBKPasscodeDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GustBKPasscodeDelegate.m; sourceTree = "<group>"; };
+		9344D41B1C871F6F00C78715 /* UIViewController+Visible.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Visible.h"; sourceTree = "<group>"; };
+		9344D41C1C871F6F00C78715 /* UIViewController+Visible.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Visible.m"; sourceTree = "<group>"; };
 		93552ED41BEA00FE004B0380 /* CustomNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationController.h; sourceTree = "<group>"; };
 		93552ED51BEA00FE004B0380 /* CustomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationController.m; sourceTree = "<group>"; };
 		9361C28B1C4398BF00A0E625 /* NavaSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavaSearchBar.h; sourceTree = "<group>"; };
@@ -644,6 +647,8 @@
 			children = (
 				9344D4181C86C2B100C78715 /* GustBKPasscodeDelegate.h */,
 				9344D4191C86C2B100C78715 /* GustBKPasscodeDelegate.m */,
+				9344D41B1C871F6F00C78715 /* UIViewController+Visible.h */,
+				9344D41C1C871F6F00C78715 /* UIViewController+Visible.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1002,6 +1007,7 @@
 				938BC7A21C44F25E005976F9 /* UINavigationBar+Addition.m in Sources */,
 				1828231E1AD05D1900267C41 /* Bookmark.m in Sources */,
 				184AA79D1AE68DCB00E37DC5 /* InputRecord.m in Sources */,
+				9344D41D1C871F6F00C78715 /* UIViewController+Visible.m in Sources */,
 				1837382F1AAF3780009D9465 /* HistoryAndBookmarkViewController.m in Sources */,
 				18EEDF1B1AA5FD6000033447 /* AppDelegate.m in Sources */,
 				1898DDE71AC4361600C89513 /* QRCodeReaderViewController.m in Sources */,

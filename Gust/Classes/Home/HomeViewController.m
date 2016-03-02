@@ -37,6 +37,7 @@
 #import "QRCodeReader.h"
 #import "AllAlertView.h"
 #import "TodayExtentionWebSeletedViewController.h"
+#import "UIViewController+Visible.h"
 
 @interface HomeViewController () <MainTouchViewDelegate, VLDContextSheetDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate,UIViewControllerPreviewingDelegate, QRCodeReaderDelegate>
 
@@ -367,47 +368,48 @@
     self.cellPopAnimationViewRect = self.view.frame;
     NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.localNotificationSharedDefaults"];
     
-    if (self.currentHistoryAndBookmarkVC) {
-        [self.currentHistoryAndBookmarkVC.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-        [self loadWebWithUrlString:[shared valueForKey:@"openUrl"]];
+    if (self.currentHistoryAndBookmarkVC.isVisibe) {
+        [self.currentHistoryAndBookmarkVC.presentingViewController dismissViewControllerAnimated:YES completion:^{
+            [self loadWebWithUrlString:[shared valueForKey:@"openUrl"]];
+        }];
         return;
     }
     
-    if (self.currentMoreVC) {
-        [self.currentMoreVC.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-        [self loadWebWithUrlString:[shared valueForKey:@"openUrl"]];
+    if (self.currentMoreVC.isVisibe) {
+        [self.currentMoreVC.presentingViewController dismissViewControllerAnimated:YES completion:^{
+           [self loadWebWithUrlString:[shared valueForKey:@"openUrl"]];
+        }];
         return;
         
     }
-    if (self.currentQRReader) {
-        [self.currentQRReader.presentingViewController dismissViewControllerAnimated:NO completion:nil];
-        [self loadWebWithUrlString:[shared valueForKey:@"openUrl"]];
+    if (self.currentQRReader.isVisibe) {
+        [self.currentQRReader.presentingViewController dismissViewControllerAnimated:YES completion:^{
+            [self loadWebWithUrlString:[shared valueForKey:@"openUrl"]];
+        }];
         return;
     }
     
-    if (self.currentGustWebVC) {
+    if (self.currentGustWebVC.isVisibe) {
         [self.navigationController popToRootViewControllerAnimated:YES];
         [self loadWebWithUrlString:[shared valueForKey:@"openUrl"]];
         return;
 
     }
     
-    if (self.threeDTouchVC) {
+    if (self.threeDTouchVC.isVisibe) {
         [self.navigationController popToRootViewControllerAnimated:YES];
         [self loadWebWithUrlString:[shared valueForKey:@"openUrl"]];
         return;
     }
-    if ( self.currentDayExtentionVC) {
-        [self.currentDayExtentionVC.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 
-    }
     [self loadWebWithUrlString:[shared valueForKey:@"openUrl"]];
 }
 
 - (void)addNewTodayWebsite:(NSNotification *)notification {
-
     
-    
+    if (self.currentDayExtentionVC.isVisibe) {
+        return;
+    }
     self.animator = [[ZFModalTransitionAnimator alloc] initWithModalViewController:self.todayExtention];
     self.animator.dragable = YES;
     self.animator.transitionDuration = 0.7;
