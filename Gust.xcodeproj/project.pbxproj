@@ -62,6 +62,7 @@
 		9326CE6E1C4D0AD400D39574 /* PopAnimationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9326CE691C4D0AD400D39574 /* PopAnimationTransition.m */; };
 		9326CE6F1C4D0AD400D39574 /* RevertPopAnimationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9326CE6B1C4D0AD400D39574 /* RevertPopAnimationTransition.m */; };
 		9326CE721C4D0F9900D39574 /* SettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9326CE711C4D0F9900D39574 /* SettingsTableViewCell.m */; };
+		9344D41A1C86C2B100C78715 /* GustBKPasscodeDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344D4191C86C2B100C78715 /* GustBKPasscodeDelegate.m */; };
 		93552ED61BEA00FE004B0380 /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93552ED51BEA00FE004B0380 /* CustomNavigationController.m */; };
 		9361C28D1C4398BF00A0E625 /* NavaSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9361C28C1C4398BF00A0E625 /* NavaSearchBar.m */; };
 		936CAD391C589A190057F3E0 /* UIButton+additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 936CAD381C589A190057F3E0 /* UIButton+additions.m */; };
@@ -70,7 +71,6 @@
 		9387EFA31C4F58D400870DEF /* AllAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9387EFA21C4F58D400870DEF /* AllAlertView.m */; };
 		938BC7A21C44F25E005976F9 /* UINavigationBar+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 938BC7A11C44F25E005976F9 /* UINavigationBar+Addition.m */; };
 		938BC7A51C44F442005976F9 /* GustSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 938BC7A41C44F442005976F9 /* GustSwipeTableCell.m */; };
-		9393DD5A1C857487005EA419 /* GustBKPasscodeDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9393DD591C857487005EA419 /* GustBKPasscodeDelegate.m */; };
 		939438C71C8039F3003C26CB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 939438C91C8039F3003C26CB /* Localizable.strings */; };
 		939438CF1C803ABC003C26CB /* Localisator.m in Sources */ = {isa = PBXBuildFile; fileRef = 939438CD1C803ABC003C26CB /* Localisator.m */; };
 		939438D01C803ABC003C26CB /* Localisator.m in Sources */ = {isa = PBXBuildFile; fileRef = 939438CD1C803ABC003C26CB /* Localisator.m */; };
@@ -90,7 +90,6 @@
 		93CE199B1BEC9B2F00DECA3E /* MyScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CE199A1BEC9B2F00DECA3E /* MyScrollView.m */; };
 		93CE19A11BEC9B3F00DECA3E /* MultiTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CE199E1BEC9B3F00DECA3E /* MultiTabView.m */; };
 		93CE19A21BEC9B3F00DECA3E /* MutiTabCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CE19A01BEC9B3F00DECA3E /* MutiTabCollectionViewCell.m */; };
-		93CE19A81BEC9B6D00DECA3E /* PrivacyPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CE19A71BEC9B6D00DECA3E /* PrivacyPasswordView.m */; };
 		93CE19AA1BEC9B9100DECA3E /* PrivacyPassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93CE19A91BEC9B9100DECA3E /* PrivacyPassword.xib */; };
 		93CE7AAE1C50C2B400A5BEE5 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93CE7AAD1C50C2B400A5BEE5 /* NotificationCenter.framework */; };
 		93CE7AB21C50C2B400A5BEE5 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CE7AB11C50C2B400A5BEE5 /* TodayViewController.m */; };
@@ -238,6 +237,8 @@
 		9326CE6B1C4D0AD400D39574 /* RevertPopAnimationTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RevertPopAnimationTransition.m; sourceTree = "<group>"; };
 		9326CE701C4D0F9900D39574 /* SettingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewCell.h; sourceTree = "<group>"; };
 		9326CE711C4D0F9900D39574 /* SettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewCell.m; sourceTree = "<group>"; };
+		9344D4181C86C2B100C78715 /* GustBKPasscodeDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GustBKPasscodeDelegate.h; sourceTree = "<group>"; };
+		9344D4191C86C2B100C78715 /* GustBKPasscodeDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GustBKPasscodeDelegate.m; sourceTree = "<group>"; };
 		93552ED41BEA00FE004B0380 /* CustomNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationController.h; sourceTree = "<group>"; };
 		93552ED51BEA00FE004B0380 /* CustomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationController.m; sourceTree = "<group>"; };
 		9361C28B1C4398BF00A0E625 /* NavaSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavaSearchBar.h; sourceTree = "<group>"; };
@@ -254,8 +255,6 @@
 		938BC7A11C44F25E005976F9 /* UINavigationBar+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Addition.m"; sourceTree = "<group>"; };
 		938BC7A31C44F442005976F9 /* GustSwipeTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GustSwipeTableCell.h; sourceTree = "<group>"; };
 		938BC7A41C44F442005976F9 /* GustSwipeTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GustSwipeTableCell.m; sourceTree = "<group>"; };
-		9393DD581C857487005EA419 /* GustBKPasscodeDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GustBKPasscodeDelegate.h; sourceTree = "<group>"; };
-		9393DD591C857487005EA419 /* GustBKPasscodeDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GustBKPasscodeDelegate.m; sourceTree = "<group>"; };
 		939438C61C8038D2003C26CB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainInterface.strings"; sourceTree = "<group>"; };
 		939438C81C8039F3003C26CB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		939438CA1C8039F7003C26CB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -283,8 +282,6 @@
 		93CE199E1BEC9B3F00DECA3E /* MultiTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiTabView.m; sourceTree = "<group>"; };
 		93CE199F1BEC9B3F00DECA3E /* MutiTabCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutiTabCollectionViewCell.h; sourceTree = "<group>"; };
 		93CE19A01BEC9B3F00DECA3E /* MutiTabCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutiTabCollectionViewCell.m; sourceTree = "<group>"; };
-		93CE19A61BEC9B6D00DECA3E /* PrivacyPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivacyPasswordView.h; sourceTree = "<group>"; };
-		93CE19A71BEC9B6D00DECA3E /* PrivacyPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivacyPasswordView.m; sourceTree = "<group>"; };
 		93CE19A91BEC9B9100DECA3E /* PrivacyPassword.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrivacyPassword.xib; sourceTree = "<group>"; };
 		93CE7AAC1C50C2B400A5BEE5 /* GustTodayExtenstion.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GustTodayExtenstion.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		93CE7AAD1C50C2B400A5BEE5 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -333,6 +330,7 @@
 		182823071AD05D1900267C41 /* MainUtil */ = {
 			isa = PBXGroup;
 			children = (
+				9344D4171C86C2B100C78715 /* Helpers */,
 				93A2C5541C3513240022C11D /* Common */,
 				186D36701AD6D57200B03018 /* AlertView */,
 				182823081AD05D1900267C41 /* Data */,
@@ -506,8 +504,6 @@
 				9379498A1C52007F0062F6A4 /* TodayExtentionSetting */,
 				187436BE1AA753D400297383 /* MoreViewController.h */,
 				187436BF1AA753D400297383 /* MoreViewController.m */,
-				9393DD581C857487005EA419 /* GustBKPasscodeDelegate.h */,
-				9393DD591C857487005EA419 /* GustBKPasscodeDelegate.m */,
 				18A19C6A1AE3EDDA002345AF /* TopSitesManageViewController.h */,
 				18A19C6B1AE3EDDA002345AF /* TopSitesManageViewController.m */,
 				187D14E31AE8E19A001A9419 /* DefaultSearchViewController.h */,
@@ -643,6 +639,15 @@
 			path = BKPasscodeView;
 			sourceTree = "<group>";
 		};
+		9344D4171C86C2B100C78715 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9344D4181C86C2B100C78715 /* GustBKPasscodeDelegate.h */,
+				9344D4191C86C2B100C78715 /* GustBKPasscodeDelegate.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		9379498A1C52007F0062F6A4 /* TodayExtentionSetting */ = {
 			isa = PBXGroup;
 			children = (
@@ -689,8 +694,6 @@
 			children = (
 				93CE19991BEC9B2F00DECA3E /* MyScrollView.h */,
 				93CE199A1BEC9B2F00DECA3E /* MyScrollView.m */,
-				93CE19A61BEC9B6D00DECA3E /* PrivacyPasswordView.h */,
-				93CE19A71BEC9B6D00DECA3E /* PrivacyPasswordView.m */,
 				93CE19A91BEC9B9100DECA3E /* PrivacyPassword.xib */,
 			);
 			path = View;
@@ -1024,7 +1027,6 @@
 				9326CE721C4D0F9900D39574 /* SettingsTableViewCell.m in Sources */,
 				18EEDF181AA5FD6000033447 /* main.m in Sources */,
 				93CE191B1BEB51E400DECA3E /* SetPrivacyPasswordViewController.m in Sources */,
-				93CE19A81BEC9B6D00DECA3E /* PrivacyPasswordView.m in Sources */,
 				9326CE6C1C4D0AD400D39574 /* GustNavigationControllerDelegate.m in Sources */,
 				18A87A421AA83B0C00724A74 /* GustWebViewController.m in Sources */,
 				93F50C7C1C36A6650028EF1F /* MainTouchBaseView.m in Sources */,
@@ -1040,7 +1042,7 @@
 				187436371AA6F90800297383 /* VLDContextSheetItemView.m in Sources */,
 				186540891AF4B7920076947D /* AboutGustViewController.m in Sources */,
 				1898DDE41AC4361600C89513 /* QRCameraSwitchButton.m in Sources */,
-				9393DD5A1C857487005EA419 /* GustBKPasscodeDelegate.m in Sources */,
+				9344D41A1C86C2B100C78715 /* GustBKPasscodeDelegate.m in Sources */,
 				93C9E1761C842D00006692A3 /* TouchIdHelper.m in Sources */,
 				1874362C1AA6F7E600297383 /* HomeViewController.m in Sources */,
 				930D7B161C84939900B059F8 /* BKPasscodeField.m in Sources */,

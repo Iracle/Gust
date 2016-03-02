@@ -21,12 +21,15 @@
 
 @implementation AppDelegate
 
-
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+    //lock passcode
     self.gustBKPasscodeDelegate = [[GustBKPasscodeDelegate alloc] init];
     [[BKPasscodeLockScreenManager sharedManager] setDelegate:self];
-//    [[BKPasscodeLockScreenManager sharedManager] showLockScreen:NO];
+    [[BKPasscodeLockScreenManager sharedManager] showLockScreen:NO];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor blackColor];
@@ -50,12 +53,6 @@
         [searcDefaults synchronize];
     }
     
-    //privacy mode
-//    NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
-//    BOOL privicyBool = [privacyDefaults objectForKey:IsGustPrivacy];
-//    [privacyDefaults setBool:privicyBool forKey:IsGustPrivacy];
-//    [privacyDefaults synchronize];
-    
     /*
     NSUserDefaults *userDetaults = [NSUserDefaults standardUserDefaults];
     if (![userDetaults objectForKey:@"Guide"]) {
@@ -77,6 +74,7 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+
     [[BKPasscodeLockScreenManager sharedManager] showLockScreen:NO];
 }
 
@@ -87,12 +85,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
-//        if ([privacyDefaults boolForKey:IsGustPrivacy] == YES) {
-//            [[LockWindow shareLockWindow] showLockWindow];
-//        }
-//    });
+
 
 }
 
@@ -102,10 +95,14 @@
     [self saveContext];
 }
 
+#pragma mark -- today extention
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
     if ([url.scheme isEqualToString:@"LocalNotification"]) {
         if ([url.host isEqualToString:@"finished"]) {
             [self performSelector:@selector(delayOpenTodayWeb) withObject:nil afterDelay:1];
+        }
+        if ([url.host isEqualToString:@"space"]) {
+            [self performSelector:@selector(delayAddNewTodayWeb) withObject:nil afterDelay:1];
         }
     }
     return YES;
@@ -114,6 +111,10 @@
 - (void)delayOpenTodayWeb {
     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationOpenTodayUrl object:nil];
 
+}
+
+- (void)delayAddNewTodayWeb {
+    [[NSNotificationCenter defaultCenter] postNotificationName:NotificationAddNewWeb object:nil];
 }
 
 #pragma mark - Core Data stack
@@ -196,9 +197,18 @@
     }
 }
 
+#pragma mark -- Lock Passcode
 - (BOOL)lockScreenManagerShouldShowLockScreen:(BKPasscodeLockScreenManager *)aManager
 {
-    return YES;
+    //privacy mode
+    NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL privicyBool = [privacyDefaults boolForKey:IsGustPrivacy];
+     NSLog(@"zh: %d",privicyBool);
+    if (privicyBool) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 - (UIViewController *)lockScreenManagerPasscodeViewController:(BKPasscodeLockScreenManager *)aManager
@@ -213,6 +223,5 @@
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
     return navController;
 }
-
 
 @end

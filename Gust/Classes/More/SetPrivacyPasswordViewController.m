@@ -9,13 +9,17 @@
 #import "SetPrivacyPasswordViewController.h"
 #import "CHKeychain.h"
 #import "GustConfigure.h"
-#import "BKCustomPasscodeViewController.h"
 #import "SettingsTableViewCell.h"
+#import "BKPasscodeViewController.h"
+#import "GustBKPasscodeDelegate.h"
 
 #define TEXTFIELD_INDEX 0
 
 @interface SetPrivacyPasswordViewController () <UITableViewDelegate, UITableViewDataSource>
+
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UISwitch *openPasscodeSwitch;
+@property (nonatomic, strong) GustBKPasscodeDelegate *gustBKPasscodeDelegate;
 
 
 @end
@@ -39,14 +43,109 @@
     return _tableView;
 }
 
+- (UISwitch *)openPasscodeSwitch {
+    if (!_openPasscodeSwitch) {
+        _openPasscodeSwitch = [[UISwitch alloc] init];
+        [_openPasscodeSwitch addTarget:self action:@selector(openPasscodeSwitchAction:) forControlEvents:UIControlEventValueChanged];
+    }
+    return _openPasscodeSwitch;
+}
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.title = @"密码锁定";
+        self.gustBKPasscodeDelegate = [[GustBKPasscodeDelegate alloc] init];
+
+        
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor colorWithRed:250 / 255.0 green:250 / 255.0 blue:250 / 255.0 alpha:1.0];
     
     [self.view addSubview:self.tableView];
+    
+    NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL privicyBool = [privacyDefaults objectForKey:IsGustPrivacy];
+    self.openPasscodeSwitch.on = privicyBool;
 
+}
 
+#pragma mark UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *cellIdentifier = @"SetPrivacyPasswordViewController";
+    SettingsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[SettingsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+         cell.webTitle.transform = CGAffineTransformMakeTranslation(-30.0, 0.0);
+    }
+    if (indexPath.row == 0) {
+        cell.webTitle.text = @"是否开启密码锁定";
+        cell.accessoryView = self.openPasscodeSwitch;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    } else {
+        cell.webTitle.text = @"设置锁定密码";
+    }
+
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.row == 1) {
+         [self presentPasscodeViewControllerWithType:BKPasscodeViewControllerNewPasscodeType];
+    }
+    
+}
+
+#pragma mark -- Passcode
+- (void)presentPasscodeViewControllerWithType:(BKPasscodeViewControllerType)type
+{
+    BKPasscodeViewController *viewController = [self createPasscodeViewController];
+    viewController.delegate = self.gustBKPasscodeDelegate;
+    viewController.type = type;
+    
+    // Passcode style (numeric or ASCII)
+    viewController.passcodeStyle = BKPasscodeInputViewNumericPasscodeStyle;
+    
+    // Setup Touch ID manager
+    BKTouchIDManager *touchIDManager = [[BKTouchIDManager alloc] initWithKeychainServiceName:@"BKPasscodeSampleService"];
+    touchIDManager.promptText = @"Gust Touch ID ";
+    viewController.touchIDManager = touchIDManager;
+    
+    
+    [self.navigationController pushViewController:viewController animated:YES];;
+    
+}
+
+- (BKPasscodeViewController *)createPasscodeViewController
+{
+    return [[BKPasscodeViewController alloc] init];
+    
+}
+
+- (void)openPasscodeSwitchAction:(UISwitch *)sender {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+     NSLog(@"%d",sender.on);
+    [userDefaults setBool:sender.on forKey:IsGustPrivacy];
+    
+    [userDefaults synchronize];
+    
+     NSLog(@"ooo:%d", [userDefaults boolForKey:IsGustPrivacy]);
+    
 }
 
 

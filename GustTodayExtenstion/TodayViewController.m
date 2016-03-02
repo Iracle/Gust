@@ -103,14 +103,15 @@
     [shared setObject:sender.str forKey:@"openUrl"];
     [shared synchronize];
     [self.extensionContext openURL:[NSURL URLWithString:@"LocalNotification://finished"] completionHandler:^(BOOL success) {
-        
+
     }];
 
-    
 }
 
 - (void)addButtonTaped:(UIButton *)sender {
-    
+    [self.extensionContext openURL:[NSURL URLWithString:@"LocalNotification://space"] completionHandler:^(BOOL success) {
+        
+    }];
 }
 
 @end

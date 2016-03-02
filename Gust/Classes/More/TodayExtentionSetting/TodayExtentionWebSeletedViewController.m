@@ -20,7 +20,6 @@
 
 @interface TodayExtentionWebSeletedViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIScrollViewDelegate>
 
-@property (nonatomic, strong) UITableView      *tableView;
 @property (nonatomic, copy)   NSMutableArray   *todayWebs;
 @property (nonatomic, strong) UIWindow         *seletedWindow;
 @property (nonatomic, strong) UIView           *seletedContainView;

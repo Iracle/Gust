@@ -26,9 +26,6 @@
 
 #import <objc/message.h>
 
-//privacy password view
-#import "PrivacyPasswordView.h"
-
 #import "GustRefreshHeader.h"
 #import "GustCollectionView.h"
 #import "HorizontalCollectionViewLayout.h"
@@ -39,8 +36,9 @@
 #import "QRCodeReaderViewController.h"
 #import "QRCodeReader.h"
 #import "AllAlertView.h"
+#import "TodayExtentionWebSeletedViewController.h"
 
-@interface HomeViewController () <MainTouchViewDelegate, VLDContextSheetDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate,UIViewControllerPreviewingDelegate, PrivacyPasswordViewDelegate, QRCodeReaderDelegate>
+@interface HomeViewController () <MainTouchViewDelegate, VLDContextSheetDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate,UIViewControllerPreviewingDelegate, QRCodeReaderDelegate>
 
 @property (nonatomic, assign) BOOL didSetupConstraints;
 @property (nonatomic, strong) MainTouchBaseView *touchView;
@@ -63,8 +61,6 @@
 @property (nonatomic, strong) NSMutableString *willSearchString;
 @property (nonatomic, strong) GustWebViewController *threeDTouchVC;
 @property (nonatomic, copy) NSString *urlString;
-//privacy password view
-@property (nonatomic, weak) PrivacyPasswordView *privacyView;
 
 //pull back
 @property (nonatomic, strong) GustRefreshHeader *refreshHeader;
@@ -82,7 +78,8 @@
 @property (nonatomic, strong) UINavigationController *currentMoreVC;
 @property (nonatomic, strong) GustWebViewController *currentGustWebVC;
 @property (nonatomic, strong) QRCodeReaderViewController *currentQRReader;
-
+@property (nonatomic, strong) UINavigationController *currentDayExtentionVC;
+@property (nonatomic, strong) TodayExtentionWebSeletedViewController *todayExtention;
 @end
 
 @implementation HomeViewController
@@ -93,7 +90,18 @@
 }
 #pragma mark -- getter
 
-
+- (UINavigationController *)currentDayExtentionVC {
+    if (!_currentDayExtentionVC) {
+        _currentDayExtentionVC = [[UINavigationController alloc] initWithRootViewController:self.todayExtention];
+    }
+    return _currentDayExtentionVC;
+}
+- (TodayExtentionWebSeletedViewController *)todayExtention {
+    if (!_todayExtention) {
+        _todayExtention = [[TodayExtentionWebSeletedViewController alloc] init];
+    }
+    return _todayExtention;
+}
 - (MainTouchBaseView *)touchView
 {
     if (!_touchView) {
@@ -112,16 +120,6 @@
         _searchBar.delegate = self;
     }
     return _searchBar;
-}
-
-- (PrivacyPasswordView *)privacyView {
-    if (!_privacyView) {
-        _privacyView = [[[NSBundle mainBundle] loadNibNamed:@"PrivacyPassword" owner:nil options:nil] lastObject];
-        _privacyView.frame = CGRectMake(0, -50, CGRectGetWidth(self.view.bounds), 180);
-        _privacyView.delegate = self;
-    }
-    return _privacyView;
-    
 }
 
 - (UITableView *)inputHistorisTableView {
@@ -246,6 +244,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(threeDTouchDeleteTopsite:) name:NotificationDeleteTopsit object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(remindTheWebsite:) name:NotificationReminderMe object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openTodayWebsite:) name:NotificationOpenTodayUrl object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addNewTodayWebsite:) name:NotificationAddNewWeb object:nil];
+
     //applicationWillResignActive
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
     
@@ -397,7 +397,27 @@
         [self loadWebWithUrlString:[shared valueForKey:@"openUrl"]];
         return;
     }
+    if ( self.currentDayExtentionVC) {
+        [self.currentDayExtentionVC.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+
+    }
     [self loadWebWithUrlString:[shared valueForKey:@"openUrl"]];
+}
+
+- (void)addNewTodayWebsite:(NSNotification *)notification {
+
+    
+    
+    self.animator = [[ZFModalTransitionAnimator alloc] initWithModalViewController:self.todayExtention];
+    self.animator.dragable = YES;
+    self.animator.transitionDuration = 0.7;
+    self.animator.behindViewAlpha = 0.7;
+    self.animator.direction = ZFModalTransitonDirectionBottom;
+    [self.animator setContentScrollView:self.todayExtention.tableView];
+    self.currentDayExtentionVC.transitioningDelegate = self.animator;
+    self.currentDayExtentionVC.modalPresentationStyle = UIModalPresentationCustom;
+    [self presentViewController:self.currentDayExtentionVC animated:YES completion:nil];
+    
 }
 
 - (void)getCurrentSearchEnginSave {
@@ -417,7 +437,6 @@
         MoreViewController *more = [[MoreViewController alloc] init];
         UINavigationController *moreVC = [[UINavigationController alloc] initWithRootViewController:more];
         self.currentMoreVC = moreVC;
-        
         self.animator = [[ZFModalTransitionAnimator alloc] initWithModalViewController:moreVC];
         self.animator.dragable = YES;
         self.animator.transitionDuration = 0.7;
@@ -430,57 +449,6 @@
         
     } else if ([item.title isEqualToString:@"隐私模式"]){
         
-        __weak typeof(self) weakSelf = self;
-        NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
-        if ([privacyDefaults boolForKey:IsGustPrivacy] == NO) {
-            BOOL privicyBool = YES;
-            [privacyDefaults setBool:privicyBool forKey:IsGustPrivacy];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [weakSelf performSelector:@selector(showPrivcyAlert:) withObject:@"已开启隐私模式" afterDelay:0.5];
-            });
-            
-        } else {
-            BOOL privicyBool = NO;
-            [privacyDefaults setBool:privicyBool forKey:IsGustPrivacy];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [weakSelf performSelector:@selector(showPrivcyAlert:) withObject:@"已关闭隐私模式" afterDelay:0.5];
-            });
-        }
-        [privacyDefaults synchronize];
-
-        
-        /*
-        __weak typeof(self) weakSelf = self;
-        //Touch ID auth
-        [self authenticateUser:^(bool isEnter) {
-            if (isEnter) {
-                NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
-                if ([[privacyDefaults objectForKey:IsGustPrivacy] boolValue] == NO) {
-                    BOOL privicyBool = YES;
-                    [privacyDefaults setObject: [NSNumber numberWithBool:privicyBool] forKey:IsGustPrivacy];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [weakSelf performSelector:@selector(showPrivcyAlert:) withObject:@"已开启隐私模式" afterDelay:0.5];
-                    });
-                    
-                } else {
-                    BOOL privicyBool = NO;
-                    [privacyDefaults setObject: [NSNumber numberWithBool:privicyBool] forKey:IsGustPrivacy];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [weakSelf performSelector:@selector(showPrivcyAlert:) withObject:@"已关闭隐私模式" afterDelay:0.5];
-                    });
-                }
-                [privacyDefaults synchronize];
-
-                
-            } else {
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [weakSelf performSelector:@selector(loadPrivacyView) withObject:nil afterDelay:0.35];
-                });
-            }
-            
-        }];
-         */
         
     } else{
         
@@ -826,29 +794,6 @@
     }
 }
 
-#pragma mark -- PrivacyPasswordViewDelegate
-- (void)privacyPasswordView:(PrivacyPasswordView *)privacyView sucess:(BOOL)success {
-    if (success) {
-        
-        NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
-        if ([[privacyDefaults objectForKey:IsGustPrivacy] boolValue] == NO) {
-            BOOL privicyBool = YES;
-            [privacyDefaults setObject: [NSNumber numberWithBool:privicyBool] forKey:IsGustPrivacy];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self performSelector:@selector(showPrivcyAlert:) withObject:@"已开启隐私模式" afterDelay:0.5];
-            });
-            
-        } else {
-            BOOL privicyBool = NO;
-            [privacyDefaults setObject: [NSNumber numberWithBool:privicyBool] forKey:IsGustPrivacy];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self performSelector:@selector(showPrivcyAlert:) withObject:@"已关闭隐私模式" afterDelay:0.5];
-            });
-        }
-        [privacyDefaults synchronize];
-    }
-}
-
 #pragma mark -- Add 3D Touch
 - (void)check3DTouch {
     if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
@@ -858,6 +803,7 @@
         NSLog(@"3d touch 没有开启");
     }
 }
+
 #pragma mark -- UIViewControllerPreviewingDelegate
 
 - (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location {
@@ -884,25 +830,6 @@
 - (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
 
     [self.navigationController pushViewController:self.threeDTouchVC  animated:YES];
-}
-
-#pragma mark -- Touch ID
-
--(void)showPrivcyAlert:(NSNotification *)notification {
-    
-    [[AllAlertView sharedAlert] showWithTitle:(NSString *)notification alertType:AllAlertViewAlertTypeRemind height:130.0];
-
-}
-
-- (void)loadPrivacyView {
-    [self.view addSubview:self.privacyView];
-    self.privacyView.transform = CGAffineTransformMakeTranslation(0, -130);
-    [UIView animateWithDuration:0.35 delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:0 options:0 animations:^{
-        self.privacyView.transform = CGAffineTransformIdentity;
-        
-    } completion:^(BOOL finished) {
-        
-    }];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
