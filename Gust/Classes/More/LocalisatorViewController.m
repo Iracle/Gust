@@ -14,6 +14,15 @@
 
 @implementation LocalisatorViewController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.title = @"语言";
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithRed:250 / 255.0 green:250 / 255.0 blue:250 / 255.0 alpha:1.0];

@@ -75,12 +75,16 @@
 //save 3D Touch webname
 @property (nonatomic) NSInteger touchPageNumber;
 
+/**
+ *  make sure open the today extention web from homepage never have a viewcontroller was show
+ */
 @property (nonatomic, strong) UINavigationController *currentHistoryAndBookmarkVC;
 @property (nonatomic, strong) UINavigationController *currentMoreVC;
 @property (nonatomic, strong) GustWebViewController *currentGustWebVC;
 @property (nonatomic, strong) QRCodeReaderViewController *currentQRReader;
 @property (nonatomic, strong) UINavigationController *currentDayExtentionVC;
 @property (nonatomic, strong) TodayExtentionWebSeletedViewController *todayExtention;
+
 @end
 
 @implementation HomeViewController
@@ -234,7 +238,7 @@
     [self.view addSubview:self.assistScrollView];
     [self.view addSubview:self.touchView];
     
-    self.contextSheet = [[VLDContextSheet alloc] initWithItem:@"书签/历史" item:@"隐私模式" item:@"设置"];
+    self.contextSheet = [[VLDContextSheet alloc] initWithItem:@"书签/历史" item:@"二维码" item:@"设置"];
     self.contextSheet.delegate = self;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTopSitesDate:) name:NotificationUpdateTopSites object:nil];
@@ -449,7 +453,30 @@
         moreVC.modalPresentationStyle = UIModalPresentationCustom;
        [self presentViewController:moreVC animated:YES completion:nil];
         
-    } else if ([item.title isEqualToString:@"隐私模式"]){
+    } else if ([item.title isEqualToString:@"二维码"]){
+        
+        if ([QRCodeReader supportsMetadataObjectTypes:@[AVMetadataObjectTypeQRCode]]) {
+            static QRCodeReaderViewController *reader = nil;
+            static dispatch_once_t onceToken;
+            
+            dispatch_once(&onceToken, ^{
+                reader = [QRCodeReaderViewController new];
+                reader.modalPresentationStyle = UIModalPresentationFormSheet;
+            });
+            reader.delegate = self;
+            
+            [reader setCompletionWithBlock:^(NSString *resultAsString) {
+            }];
+            self.currentQRReader = reader;
+            [self presentViewController:reader animated:YES completion:NULL];
+        }
+        else {
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"当前设备不支持" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+            [alertController addAction:sureAction];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
         
         
     } else{
@@ -509,30 +536,6 @@
 }
 - (void)SwipeUpMainTouchView:(MainTouchView *)touchView withGesture:(UIGestureRecognizer *)gestureRecognizer
 {
-    
-    if ([QRCodeReader supportsMetadataObjectTypes:@[AVMetadataObjectTypeQRCode]]) {
-        static QRCodeReaderViewController *reader = nil;
-        static dispatch_once_t onceToken;
-        
-        dispatch_once(&onceToken, ^{
-            reader = [QRCodeReaderViewController new];
-            reader.modalPresentationStyle = UIModalPresentationFormSheet;
-        });
-        reader.delegate = self;
-        
-        [reader setCompletionWithBlock:^(NSString *resultAsString) {
-        }];
-        self.currentQRReader = reader;
-        [self presentViewController:reader animated:YES completion:NULL];
-    }
-    else {
-        
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"当前设备不支持" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
-        [alertController addAction:sureAction];
-        [self presentViewController:alertController animated:YES completion:nil];
-    }
-
     
 }
 - (void)SwipeDownMainTouchView:(MainTouchView *)touchView withGesture:(UIGestureRecognizer *)gestureRecognizer

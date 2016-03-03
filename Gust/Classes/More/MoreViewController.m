@@ -38,9 +38,9 @@
     self = [super init];
     if (self) {
         self.title = @"设置";
-        _detailPageClassNames = @[@"TopSitesManageViewController", @"DefaultSearchViewController", @"SetPrivacyPasswordViewController", @"TodayExtentionWebSeletedViewController", @"ClearWebCacheController", @"FunctionIntroduceController", @"FeedbackController",@"AboutGustViewController"];
-        _tableListDataArray = @[@"首页书签管理",@"默认搜索引擎", @"隐私模式密码", @"通知中心设置", @"清除数据", @"功能介绍", @"反馈", @"关于"];
-        _settingIcons = @[@"settingTopsite", @"settingSearch", @"settingPrivacy", @"settingPush", @"settingClear", @"settingGuide", @"settingFeedback", @"settingAbout"];
+        _detailPageClassNames = @[@"TopSitesManageViewController", @"DefaultSearchViewController", @"SetPrivacyPasswordViewController", @"TodayExtentionWebSeletedViewController",@"LocalisatorViewController", @"ClearWebCacheController", @"FunctionIntroduceController", @"FeedbackController",@"AboutGustViewController"];
+        _tableListDataArray = @[@"首页书签管理",@"默认搜索引擎", @"隐私模式密码", @"通知中心设置", @"语言设置", @"清除数据", @"功能介绍", @"反馈", @"关于"];
+        _settingIcons = @[@"settingTopsite", @"settingSearch", @"settingPrivacy", @"settingPush",@"settingsLanguage", @"settingClear", @"settingGuide", @"settingFeedback", @"settingAbout"];
     }
     return self;
 }
@@ -101,7 +101,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 5;
+        return 6;
         
     } else {
         return 3;
@@ -135,7 +135,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     UIViewController *destinationViewController;
     if (indexPath.section == 0) {
-        if (indexPath.row == 4) {
+        if (indexPath.row == 5) {
             [self clearWebCookieAndCache];
             return;
         }

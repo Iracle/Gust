@@ -650,15 +650,24 @@
 
 #pragma -- 3D Touch
 - (NSArray<id<UIPreviewActionItem>> *)previewActionItems {
+    
+    /**
+     *   next version add the remander open web function
+     *
+     *
+     */
+    
+    /*
     UIPreviewAction *remindAction = [UIPreviewAction actionWithTitle:@"提醒" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationReminderMe object:nil];
         
     }];
+    */
     UIPreviewAction *deleteAction = [UIPreviewAction actionWithTitle:@"删除" style:UIPreviewActionStyleDestructive handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationDeleteTopsit object:nil];
 
     }];
-    return @[remindAction, deleteAction];
+    return @[deleteAction];
 }
 
 
