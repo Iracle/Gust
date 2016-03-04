@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'F3F127D893E77FE9799A3A9D'
+               BlueprintIdentifier = '7F34B02FC71284E27F42CE7B'
                BlueprintName = 'ZHAHKActionSheet'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libZHAHKActionSheet.a'>

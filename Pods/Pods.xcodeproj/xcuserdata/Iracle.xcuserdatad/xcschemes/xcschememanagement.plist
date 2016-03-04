@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>OpenShare.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,17 +37,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0484B0D2809F9208C9AAECB0AF0B534B</key>
+		<key>203BFB51371ADB4EBF999F668AE416F5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>15FFF44EAFB01C6BF3271E02BFA7F518</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>24E5C38C08818CD9811C224ADDDD5B53</key>
+		<key>3874D09F014D1102EF943494B48D1C1E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -52,7 +52,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5CE6DD76703B8799B0716B304553F7B9</key>
+		<key>A289C279A81904F6DC1C112DEEE83F73</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D79C5D02C5B82672F3342670170FC25C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D7D66D04FA7340283A4226EA279850F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -11,7 +11,7 @@
 #import "GustConfigure.h"
 #import "GuideViewController.h"
 #import "GustBKPasscodeDelegate.h"
-
+#import "OpenShareHeader.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong) GustBKPasscodeDelegate *gustBKPasscodeDelegate;
@@ -24,6 +24,7 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     //lock passcode
     self.gustBKPasscodeDelegate = [[GustBKPasscodeDelegate alloc] init];
@@ -52,6 +53,9 @@
         [searcDefaults synchronize];
     }
     
+    //register Weichat share
+    [OpenShare connectWeixinWithAppId:@"wx98e8def97c8002f0"];
+    
     /*
     NSUserDefaults *userDetaults = [NSUserDefaults standardUserDefaults];
     if (![userDetaults objectForKey:@"Guide"]) {
@@ -64,6 +68,14 @@
 //    [nav presentViewController:guideVC animated:NO completion:nil];
     
 
+    return YES;
+}
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    //第二步：添加回调
+    if ([OpenShare handleOpenURL:url]) {
+        return YES;
+    }
+    //这里可以写上其他OpenShare不支持的客户端的回调，比如支付宝等。
     return YES;
 }
 

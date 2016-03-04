@@ -76,7 +76,6 @@ const static float HomePageCancelButtonAlpha = 0.9999999;
 #define NotificationAddNewWeb                     @"notificationAddNewWeb"
 
 
-
 #define ShareText @"我在Gust浏览器发现了一个好网站，快来看看吧："
 #define BaiduWebsite @"http://www.baidu.com"
 #define GoogleWebsite @"http://www.google.com.tw"
@@ -86,6 +85,21 @@ const static float HomePageCancelButtonAlpha = 0.9999999;
 #define HOME_COLLECTIONCELL_COLOR [UIColor colorWithRed:109/255.0 green:109/255.0 blue:109/255.0 alpha:1.0]
 #define HOME_COLLECTIONCELL_SHADOW_COLOR [UIColor colorWithRed:188.0/255.0 green:188.0/255.0 blue:188.0/255.0 alpha:0.2]
 #define SEARCH_BAR_SHADOW_COLOR [UIColor colorWithRed:188.0/255.0 green:188.0/255.0 blue:188.0/255.0 alpha:0.3]
+
+
+//重写NSLog,Debug模式下打印日志和当前行数
+#if DEBUG
+#define NSLog(FORMAT, ...) fprintf(stderr,"\nfunction:%s line:%d\n%s\n", __FUNCTION__, __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#else
+#define NSLog(FORMAT, ...) nil
+#endif
+
+//DEBUG  模式下打印日志,当前行 并弹出一个警告
+#ifdef DEBUG
+#   define ULog(fmt, ...)  { UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%s\n [Line %d] ", __PRETTY_FUNCTION__, __LINE__] message:[NSString stringWithFormat:fmt, ##__VA_ARGS__]  delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil]; [alert show]; }
+#else
+#   define ULog(...)
+#endif
 
 
 
