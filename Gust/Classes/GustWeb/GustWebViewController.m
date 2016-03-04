@@ -33,6 +33,7 @@
 #import "NavaSearchBar.h"
 #import "GustRefreshHeader.h"
 #import "AllAlertView.h"
+#import "GustActivity.h"
 
 @interface GustWebViewController ()< OTMWebViewDelegate, MainTouchViewDelegate, UIScrollViewDelegate, VLDContextSheetDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -502,7 +503,14 @@
         NSURL *urlToShare = [NSURL URLWithString:self.historyDic[PageUrl]];
         
         NSArray *activityItems = @[textToShare,imageToShare, urlToShare];
-        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+        
+        GustActivity *actWeichat = [[GustActivity alloc]initWithImage:[UIImage imageNamed:@"wechat_session"] atURL:@"" atTitle:@"WeChat" atShareContentArray:activityItems];
+        
+        GustActivity *actWeiCircle = [[GustActivity alloc]initWithImage:[UIImage imageNamed:@"wechat_timeline"] atURL:@"" atTitle:@"Moments" atShareContentArray:activityItems];
+        
+        NSArray *shareApps = @[actWeichat, actWeiCircle];
+        
+        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:shareApps];
         activityVC.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *activityError) {
             _contextSheet.hidden = NO;
             _touchView.hidden = NO;
