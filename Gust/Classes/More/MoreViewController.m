@@ -18,6 +18,7 @@
 #import "GustConfigure.h"
 #import "TodayExtentionWebSeletedViewController.h"
 #import "AllAlertView.h"
+#import "Localisator.h"
 
 
 @interface MoreViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -32,14 +33,19 @@
 
 @implementation MoreViewController
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        self.title = @"设置";
+        
         _detailPageClassNames = @[@"TopSitesManageViewController", @"DefaultSearchViewController", @"SetPrivacyPasswordViewController", @"TodayExtentionWebSeletedViewController",@"ChooseLanguageViewController", @"ClearWebCacheController", @"FunctionIntroduceController", @"FeedbackController",@"AboutGustViewController"];
-        _tableListDataArray = @[@"首页书签管理",@"默认搜索引擎", @"隐私模式密码", @"通知中心设置", @"语言设置", @"清除数据", @"功能介绍", @"反馈", @"关于"];
         _settingIcons = @[@"settingTopsite", @"settingSearch", @"settingPrivacy", @"settingPush",@"settingsLanguage", @"settingClear", @"settingGuide", @"settingFeedback", @"settingAbout"];
+
     }
     return self;
 }
@@ -62,10 +68,13 @@
     
     return _tableView;
 }
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self configureViewFromLocalisation];
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
     [navigationBar hideBottomHairline];
     navigationBar.barTintColor = [UIColor whiteColor];
@@ -88,6 +97,12 @@
         });
         
     };
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveLanguageChangedNotification:)
+                                                 name:kNotificationLanguageChanged
+                                               object:nil];
 
 }
 
@@ -120,8 +135,8 @@
         [cell configCell:_tableListDataArray[indexPath.row]];
         
     } else {
-        cell.leftImage.image = IMAGENAMED(_settingIcons[indexPath.row + 5]);
-        [cell configCell:_tableListDataArray[indexPath.row + 5]];
+        cell.leftImage.image = IMAGENAMED(_settingIcons[indexPath.row + 6]);
+        [cell configCell:_tableListDataArray[indexPath.row + 6]];
     }
     
     return cell;
@@ -141,7 +156,7 @@
 
         destinationViewController = [[NSClassFromString(_detailPageClassNames[indexPath.row]) alloc] init];
     } else {
-        destinationViewController = [[NSClassFromString(_detailPageClassNames[indexPath.row + 5]) alloc] init];
+        destinationViewController = [[NSClassFromString(_detailPageClassNames[indexPath.row + 6]) alloc] init];
 
     }
     [self.navigationController pushViewController:destinationViewController animated:YES];
@@ -163,6 +178,19 @@
     [cache setMemoryCapacity:0];
     
     [[AllAlertView sharedAlert] showWithTitle:@"数据清楚成功" alertType:AllAlertViewAlertTypeDone height:100.0];
+
+}
+- (void) receiveLanguageChangedNotification:(NSNotification *) notification
+{
+    if ([notification.name isEqualToString:kNotificationLanguageChanged])
+    {
+        [self configureViewFromLocalisation];
+    }
+}
+
+- (void)configureViewFromLocalisation {
+    self.title = LOCALIZATION(@"Settings");
+    _tableListDataArray = [@[LOCALIZATION(@"TopSites"), LOCALIZATION(@"SearchEngine"), LOCALIZATION(@"PasscodeLock"), LOCALIZATION(@"TodayExtention"), LOCALIZATION(@"Language"), LOCALIZATION(@"ClearDara"), LOCALIZATION(@"UserGuide"), LOCALIZATION(@"SendFeedback"), LOCALIZATION(@"AboutApp")] copy];
 
 }
 

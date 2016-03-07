@@ -6,6 +6,19 @@
 
 */
 
+//MoreViewController
+"Settings"                             = "设置";
+"TopSites"                             = "首页书签管理";
+"SearchEngine"                         = "默认搜索引擎";
+"PasscodeLock"                         = "密码锁定";
+"TodayExtention"                       = "通知中心快捷启动";
+"Language"                             = "语言";
+"ClearDara"                            = "清除数据";
+"UserGuide"                            = "用户使用指南";
+"SendFeedback"                         = "建议与反馈";
+"AboutApp"                             = "关于";
+
+//ChooseLanguageViewController
 "DeviceLanguage"                        = "设备语言";
 "English_en"                            = "English";
 "zh-Hans"                               = "中文";

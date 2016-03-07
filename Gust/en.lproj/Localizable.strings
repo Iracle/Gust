@@ -6,6 +6,23 @@
 
 */
 
+/**
+ *  settings
+ */
+
+//MoreViewController
+"Settings"                              = "Settings";
+"TopSites"                              = "Top Sites Manager";
+"SearchEngine"                          = "Search Engine";
+"PasscodeLock"                          = "Passcode Lock";
+"TodayExtention"                        = "Today Extention Quick Link";
+"Language"                              = "Language";
+"ClearDara"                             = "Clear Data";
+"UserGuide"                             = "User Guide";
+"SendFeedback"                          = "Send Feedback";
+"AboutApp"                              = "About";
+
+//ChooseLanguageViewController
 "DeviceLanguage"                        = "Device Language";
 "English_en"                            = "English";
 "zh-Hans"                               = "中文";
