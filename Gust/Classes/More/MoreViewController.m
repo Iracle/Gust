@@ -18,7 +18,6 @@
 #import "GustConfigure.h"
 #import "TodayExtentionWebSeletedViewController.h"
 #import "AllAlertView.h"
-#import "LocalisatorViewController.h"
 
 
 @interface MoreViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -38,7 +37,7 @@
     self = [super init];
     if (self) {
         self.title = @"设置";
-        _detailPageClassNames = @[@"TopSitesManageViewController", @"DefaultSearchViewController", @"SetPrivacyPasswordViewController", @"TodayExtentionWebSeletedViewController",@"LocalisatorViewController", @"ClearWebCacheController", @"FunctionIntroduceController", @"FeedbackController",@"AboutGustViewController"];
+        _detailPageClassNames = @[@"TopSitesManageViewController", @"DefaultSearchViewController", @"SetPrivacyPasswordViewController", @"TodayExtentionWebSeletedViewController",@"ChooseLanguageViewController", @"ClearWebCacheController", @"FunctionIntroduceController", @"FeedbackController",@"AboutGustViewController"];
         _tableListDataArray = @[@"首页书签管理",@"默认搜索引擎", @"隐私模式密码", @"通知中心设置", @"语言设置", @"清除数据", @"功能介绍", @"反馈", @"关于"];
         _settingIcons = @[@"settingTopsite", @"settingSearch", @"settingPrivacy", @"settingPush",@"settingsLanguage", @"settingClear", @"settingGuide", @"settingFeedback", @"settingAbout"];
     }

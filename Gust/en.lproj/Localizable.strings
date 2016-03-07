@@ -5,3 +5,8 @@
   Created by Iracle Zhang on 2/26/16.
 
 */
+
+"DeviceLanguage"                        = "Device Language";
+"English_en"                            = "English";
+"zh-Hans"                               = "中文";
+"LocalisatorViewTitle"                  = "Choose your language";

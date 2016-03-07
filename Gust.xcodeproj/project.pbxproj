@@ -76,15 +76,13 @@
 		939438CF1C803ABC003C26CB /* Localisator.m in Sources */ = {isa = PBXBuildFile; fileRef = 939438CD1C803ABC003C26CB /* Localisator.m */; };
 		939438D01C803ABC003C26CB /* Localisator.m in Sources */ = {isa = PBXBuildFile; fileRef = 939438CD1C803ABC003C26CB /* Localisator.m */; };
 		939438D11C803ABC003C26CB /* Localisator.m in Sources */ = {isa = PBXBuildFile; fileRef = 939438CD1C803ABC003C26CB /* Localisator.m */; };
-		939438D71C803B24003C26CB /* LocalisatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 939438D61C803B24003C26CB /* LocalisatorViewController.m */; };
-		939438D81C803B24003C26CB /* LocalisatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 939438D61C803B24003C26CB /* LocalisatorViewController.m */; };
-		939438D91C803B24003C26CB /* LocalisatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 939438D61C803B24003C26CB /* LocalisatorViewController.m */; };
 		939707011C898107005284DD /* GustActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 939707001C898107005284DD /* GustActivity.m */; };
 		93A2C5571C3513420022C11D /* GustCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A2C5561C3513420022C11D /* GustCollectionView.m */; };
 		93B74D641C3BAC3F0057BDBB /* GustAssistScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B74D631C3BAC3F0057BDBB /* GustAssistScrollView.m */; };
 		93C9E1791C8434B2006692A3 /* UIAlertController+Window.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C9E1781C8434B2006692A3 /* UIAlertController+Window.m */; };
 		93C9E17A1C8434B2006692A3 /* UIAlertController+Window.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C9E1781C8434B2006692A3 /* UIAlertController+Window.m */; };
 		93C9E17B1C8434B2006692A3 /* UIAlertController+Window.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C9E1781C8434B2006692A3 /* UIAlertController+Window.m */; };
+		93CA22851C8D69B6000A614B /* ChooseLanguageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA22841C8D69B6000A614B /* ChooseLanguageViewController.m */; };
 		93CE191B1BEB51E400DECA3E /* SetPrivacyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CE19191BEB51E400DECA3E /* SetPrivacyPasswordViewController.m */; };
 		93CE19941BEC81FB00DECA3E /* CHKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CE19931BEC81FB00DECA3E /* CHKeychain.m */; };
 		93CE199B1BEC9B2F00DECA3E /* MyScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CE199A1BEC9B2F00DECA3E /* MyScrollView.m */; };
@@ -262,8 +260,6 @@
 		939438CA1C8039F7003C26CB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		939438CC1C803ABC003C26CB /* Localisator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Localisator.h; sourceTree = "<group>"; };
 		939438CD1C803ABC003C26CB /* Localisator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Localisator.m; sourceTree = "<group>"; };
-		939438D51C803B24003C26CB /* LocalisatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalisatorViewController.h; sourceTree = "<group>"; };
-		939438D61C803B24003C26CB /* LocalisatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalisatorViewController.m; sourceTree = "<group>"; };
 		939706FF1C898107005284DD /* GustActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GustActivity.h; sourceTree = "<group>"; };
 		939707001C898107005284DD /* GustActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GustActivity.m; sourceTree = "<group>"; };
 		93A2C5551C3513420022C11D /* GustCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GustCollectionView.h; sourceTree = "<group>"; };
@@ -272,6 +268,8 @@
 		93B74D631C3BAC3F0057BDBB /* GustAssistScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GustAssistScrollView.m; sourceTree = "<group>"; };
 		93C9E1771C8434B2006692A3 /* UIAlertController+Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Window.h"; sourceTree = "<group>"; };
 		93C9E1781C8434B2006692A3 /* UIAlertController+Window.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Window.m"; sourceTree = "<group>"; };
+		93CA22831C8D69B6000A614B /* ChooseLanguageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseLanguageViewController.h; sourceTree = "<group>"; };
+		93CA22841C8D69B6000A614B /* ChooseLanguageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseLanguageViewController.m; sourceTree = "<group>"; };
 		93CE19181BEB51E400DECA3E /* SetPrivacyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPrivacyPasswordViewController.h; sourceTree = "<group>"; };
 		93CE19191BEB51E400DECA3E /* SetPrivacyPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetPrivacyPasswordViewController.m; sourceTree = "<group>"; };
 		93CE19921BEC81FB00DECA3E /* CHKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHKeychain.h; sourceTree = "<group>"; };
@@ -512,8 +510,8 @@
 				186540881AF4B7920076947D /* AboutGustViewController.m */,
 				93CE19181BEB51E400DECA3E /* SetPrivacyPasswordViewController.h */,
 				93CE19191BEB51E400DECA3E /* SetPrivacyPasswordViewController.m */,
-				939438D51C803B24003C26CB /* LocalisatorViewController.h */,
-				939438D61C803B24003C26CB /* LocalisatorViewController.m */,
+				93CA22831C8D69B6000A614B /* ChooseLanguageViewController.h */,
+				93CA22841C8D69B6000A614B /* ChooseLanguageViewController.m */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -979,7 +977,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				939438D81C803B24003C26CB /* LocalisatorViewController.m in Sources */,
 				939438D01C803ABC003C26CB /* Localisator.m in Sources */,
 				93C9E17A1C8434B2006692A3 /* UIAlertController+Window.m in Sources */,
 			);
@@ -1010,7 +1007,6 @@
 				93CE199B1BEC9B2F00DECA3E /* MyScrollView.m in Sources */,
 				18CC9D641AAA025400165601 /* HomeCollectionViewCell.m in Sources */,
 				1898DDE61AC4361600C89513 /* QRCodeReaderView.m in Sources */,
-				939438D71C803B24003C26CB /* LocalisatorViewController.m in Sources */,
 				9379499A1C523B550062F6A4 /* ArrayDataSource.m in Sources */,
 				9326CE6E1C4D0AD400D39574 /* PopAnimationTransition.m in Sources */,
 				187436351AA6F90800297383 /* VLDContextSheet.m in Sources */,
@@ -1046,6 +1042,7 @@
 				9344D41A1C86C2B100C78715 /* GustBKPasscodeDelegate.m in Sources */,
 				1874362C1AA6F7E600297383 /* HomeViewController.m in Sources */,
 				930D7B161C84939900B059F8 /* BKPasscodeField.m in Sources */,
+				93CA22851C8D69B6000A614B /* ChooseLanguageViewController.m in Sources */,
 				9387EFA31C4F58D400870DEF /* AllAlertView.m in Sources */,
 				937949961C520B780062F6A4 /* TodayExtentionWebSeletedViewController.m in Sources */,
 				930D7B191C84939900B059F8 /* BKPasscodeViewController.m in Sources */,
@@ -1067,7 +1064,6 @@
 			files = (
 				93CE7AB21C50C2B400A5BEE5 /* TodayViewController.m in Sources */,
 				936CAD391C589A190057F3E0 /* UIButton+additions.m in Sources */,
-				939438D91C803B24003C26CB /* LocalisatorViewController.m in Sources */,
 				93C9E17B1C8434B2006692A3 /* UIAlertController+Window.m in Sources */,
 				939438D11C803ABC003C26CB /* Localisator.m in Sources */,
 			);
@@ -1175,8 +1171,8 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "Gust/Gust-prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Gust/Gust-prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1218,8 +1214,8 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "Gust/Gust-prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Gust/Gust-prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1243,6 +1239,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Gust/Gust-prefix.pch";
 				INFOPLIST_FILE = Gust/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1262,6 +1259,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Gust/Gust-prefix.pch";
 				INFOPLIST_FILE = Gust/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
