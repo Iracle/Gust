@@ -114,7 +114,9 @@
             [strongSelf.presentingViewController dismissViewControllerAnimated:YES completion:nil];
         });
     };
+    
 }
+
 
 - (void)segmentAction:(UISegmentedControl *)segment
 {

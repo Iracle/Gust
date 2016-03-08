@@ -11,6 +11,8 @@
 #import "CoreDataManager.h"
 #import "GustConfigure.h"
 #import "SettingsTableViewCell.h"
+#import "Localisator.h"
+
 @interface TopSitesManageViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, assign) BOOL didSetupConstraints;
@@ -30,7 +32,7 @@
 - (instancetype)init{
     self = [super init];
     if (self) {
-        self.title = @"首页书签管理";
+        self.title = LOCALIZATION(@"TopSites");
     }
     return self;
 }
@@ -77,8 +79,6 @@
 
         }
     }
-
-
 }
 
 #pragma mark UITableViewDataSource
@@ -146,8 +146,9 @@ indexPath {
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return @"删除";
+    return LOCALIZATION(@"TopSiteDelete");
 }
+
 
 
 

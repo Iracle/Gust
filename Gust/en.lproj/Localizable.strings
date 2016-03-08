@@ -22,6 +22,19 @@
 "SendFeedback"                          = "Send Feedback";
 "AboutApp"                              = "About";
 
+"TopSiteDelete"                         = "Delete";
+"SearchEngineBaidu"                     = "Baidu";
+"SearchEngineGoogle"                    = "Google";
+"ChangePassCode"                        = "Change Passcode";
+"TouchIDPasscode"                       = "Touch ID & Passcode";
+"Bookmarks"                             = "Bookmarks";
+"History"                               = "Custom";
+
+//TodayExtentionWebSeletedViewController
+"LinkName"                             = "site name";
+"WebLink"                              = "web link";
+"SwipeDown"                            = "Slide Down To Cancel"
+
 //ChooseLanguageViewController
 "DeviceLanguage"                        = "Device Language";
 "English_en"                            = "English";

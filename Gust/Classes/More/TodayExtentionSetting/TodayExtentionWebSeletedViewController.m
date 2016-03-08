@@ -15,6 +15,7 @@
 #import "Bookmark.h"
 #import "GustRefreshHeader.h"
 #import "AllAlertView.h"
+#import "Localisator.h"
 
 #define SELECTED_VIEW_HEIGHT (SCREEN_HEIGHT - 200.0)
 
@@ -40,7 +41,7 @@
 - (UITextField *)webNameTextField {
     if (!_webNameTextField) {
         _webNameTextField = [[UITextField alloc] initWithFrame:CGRectMake(15.0, 0, SCREEN_WIDTH, 54.0)];
-        _webNameTextField.placeholder = @"请输入网站名";
+        _webNameTextField.placeholder = LOCALIZATION(@"LinkName");
         _webNameTextField.delegate = self;
         
     }
@@ -50,12 +51,12 @@
 - (UITextField *)webUrlTextField {
     if (!_webUrlTextField) {
         _webUrlTextField = [[UITextField alloc] initWithFrame:CGRectMake(15.0, 54.0, SCREEN_WIDTH, 54.0)];
-        _webUrlTextField.placeholder = @"请输入网址";
+        _webUrlTextField.placeholder = LOCALIZATION(@"WebLink");
         _webUrlTextField.text = @"http://";
         _webUrlTextField.keyboardType = UIKeyboardTypeURL;
         _webUrlTextField.returnKeyType = UIReturnKeyDone;
         _webUrlTextField.delegate = self;
-        
+
     }
     return _webUrlTextField;
 }
@@ -139,7 +140,7 @@
 - (UISegmentedControl *)segment
 {
     if (!_segment) {
-        _segment = [[UISegmentedControl alloc] initWithItems:@[@"书签", @"历史记录", @"自定义"]];
+        _segment = [[UISegmentedControl alloc] initWithItems:@[LOCALIZATION(@"Bookmarks"), LOCALIZATION(@"History"), LOCALIZATION(@"CustomLink")]];
         _segment.bounds = CGRectMake(0, 0, SCREEN_WIDTH - 70, 35);
         _segment.center = CGPointMake(CGRectGetMidX(self.seletedContainView.bounds), CGRectGetMaxY(self.seletedContainView.bounds) - 22.5);
         [_segment addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
@@ -152,7 +153,7 @@
 {
     self = [super init];
     if (self) {
-        self.title = @"选择快速启动网页";
+        self.title = LOCALIZATION(@"TodayExtention");
     }
     return self;
 }
@@ -190,7 +191,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return @"删除";
+    return LOCALIZATION(@"TopSiteDelete");
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {

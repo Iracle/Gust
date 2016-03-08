@@ -9,6 +9,7 @@
 #import "DefaultSearchViewController.h"
 #import "GustConfigure.h"
 #import "SettingsTableViewCell.h"
+#import "Localisator.h"
 
 @interface DefaultSearchViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -45,7 +46,7 @@
 {
     self = [super init];
     if (self) {
-        self.title = @"搜索引擎选择";
+        self.title = LOCALIZATION(@"SearchEngine");
     }
     return self;
 }
@@ -55,7 +56,7 @@
 
     [self.view addSubview:self.tableView];
     [self getMainTouchViewLocationData];
-    
+        
 }
 
 #pragma mark UITableViewDataSource
@@ -119,7 +120,7 @@
 
 - (void)getMainTouchViewLocationData
 {
-    _dataArray = @[@"百度", @"谷歌"];
+    _dataArray = @[LOCALIZATION(@"SearchEngineBaidu"), LOCALIZATION(@"SearchEngineGoogle")];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     _defautSearchEnginSting =[[defaults objectForKey:DefautSearchEngin] copy];
     [_tableView reloadData];

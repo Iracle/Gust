@@ -21,11 +21,13 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         [self setupCellUserInterface];
+
     }
     return self;
 }
 
 - (void)setupCellUserInterface {
+
     self.backgroundColor = [UIColor clearColor];
     _cellBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 2.0, SCREEN_WIDTH, 52.0)];
     _cellBackgroundView.backgroundColor = [UIColor whiteColor];

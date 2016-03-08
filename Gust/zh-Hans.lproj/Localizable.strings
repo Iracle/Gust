@@ -18,6 +18,24 @@
 "SendFeedback"                         = "建议与反馈";
 "AboutApp"                             = "关于";
 
+//MoreViewController pushs
+"TopSiteDelete"                        = "删除";
+"SearchEngineBaidu"                    = "百度";
+"SearchEngineGoogle"                   = "谷歌";
+"ChangePassCode"                       = "重置密码";
+"TouchIDPasscode"                      = "密码、指纹解锁";
+"Bookmarks"                            = "书签";
+"History"                              = "历史记录";
+"CustomLink"                           = "自定义";
+
+//TodayExtentionWebSeletedViewController
+"LinkName"                             = "网站名称";
+"WebLink"                              = "网址";
+"SwipeDown"                            = "下滑取消输入";
+
+
+
+
 //ChooseLanguageViewController
 "DeviceLanguage"                        = "设备语言";
 "English_en"                            = "English";

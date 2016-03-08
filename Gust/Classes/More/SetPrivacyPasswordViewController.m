@@ -12,6 +12,7 @@
 #import "SettingsTableViewCell.h"
 #import "BKPasscodeViewController.h"
 #import "GustBKPasscodeDelegate.h"
+#import "Localisator.h"
 
 #define TEXTFIELD_INDEX 0
 
@@ -54,7 +55,7 @@
 {
     self = [super init];
     if (self) {
-        self.title = @"密码锁定";
+        self.title = LOCALIZATION(@"PasscodeLock");
         self.gustBKPasscodeDelegate = [[GustBKPasscodeDelegate alloc] init];
 
         
@@ -92,11 +93,11 @@
          cell.webTitle.transform = CGAffineTransformMakeTranslation(-30.0, 0.0);
     }
     if (indexPath.row == 0) {
-        cell.webTitle.text = @"是否开启密码锁定";
+        cell.webTitle.text = LOCALIZATION(@"TouchIDPasscode");
         cell.accessoryView = self.openPasscodeSwitch;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else {
-        cell.webTitle.text = @"设置锁定密码";
+        cell.webTitle.text = LOCALIZATION(@"ChangePassCode");
     }
 
     return cell;
@@ -106,13 +107,13 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.row == 1) {
-         [self presentPasscodeViewControllerWithType:BKPasscodeViewControllerNewPasscodeType];
+        [self presentPasscodeViewControllerWithType:BKPasscodeViewControllerNewPasscodeType isPush:YES];
     }
     
 }
 
 #pragma mark -- Passcode
-- (void)presentPasscodeViewControllerWithType:(BKPasscodeViewControllerType)type
+- (void)presentPasscodeViewControllerWithType:(BKPasscodeViewControllerType)type isPush:(BOOL)isPush
 {
     BKPasscodeViewController *viewController = [self createPasscodeViewController];
     viewController.delegate = self.gustBKPasscodeDelegate;
@@ -126,8 +127,11 @@
     touchIDManager.promptText = @"Gust Touch ID ";
     viewController.touchIDManager = touchIDManager;
     
-    
-    [self.navigationController pushViewController:viewController animated:YES];;
+    if (isPush) {
+        [self.navigationController pushViewController:viewController animated:YES];
+    } else {
+        [self presentViewController:viewController animated:YES completion:nil];
+    }
     
 }
 
@@ -139,12 +143,12 @@
 
 - (void)openPasscodeSwitchAction:(UISwitch *)sender {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-     NSLog(@"%d",sender.on);
     [userDefaults setBool:sender.on forKey:IsGustPrivacy];
-    
     [userDefaults synchronize];
     
-     NSLog(@"ooo:%d", [userDefaults boolForKey:IsGustPrivacy]);
+    if (sender.on) {
+        [self presentPasscodeViewControllerWithType:BKPasscodeViewControllerNewPasscodeType isPush:NO];
+    }
     
 }
 
