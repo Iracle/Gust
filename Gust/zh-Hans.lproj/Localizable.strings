@@ -5,6 +5,9 @@
   Created by Iracle Zhang on 2/26/16.
 
 */
+//Common
+"PullRelease"                           = "下拉返回上一页";
+"LooseRelease"                          = "松开返回上一页";
 
 //MoreViewController
 "Settings"                             = "设置";
@@ -32,12 +35,33 @@
 "LinkName"                             = "网站名称";
 "WebLink"                              = "网址";
 "SwipeDown"                            = "下滑取消输入";
-
-
-
+"TotalLink"                            = "快捷链接不能超过 4 个";
+"WebInputError"                        = "输入错误";
+"LinkExist"                            = "快捷链接已经存在";
+"DataCLeared"                          = "数据清楚成功";
+"RatingApp"                            = "应用评分";
 
 //ChooseLanguageViewController
 "DeviceLanguage"                        = "设备语言";
 "English_en"                            = "English";
 "zh-Hans"                               = "中文";
 "LocalisatorViewTitle"                  = "选择你的语言";
+
+//HistoryAndBookmarkViewController
+"TopSiteExist"                          = "首页书签已存在";
+"TopSiteSucess"                         = "添加成功";
+
+//GustWebViewController
+"ShareWeb"                              = "分享";
+"BookmarksExist"                        = "书签已经存在";
+"ClearInput"                            = "清空输入历史";
+
+
+
+
+
+
+
+
+
+

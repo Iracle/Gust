@@ -10,6 +10,7 @@
 #import "GustConfigure.h"
 
 static const CGFloat AlertImageHeight = 50.0;
+
 @interface AllAlertView ()
 
 @property (nonatomic, copy)   NSString *alertImageName;
@@ -40,8 +41,9 @@ static const CGFloat AlertImageHeight = 50.0;
 
 - (UILabel *)alertLabel {
     if (!_alertLabel) {
-        _alertLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.alertImage.frame) + 33.0, self.alertHeight / 2 - 20.0, SCREEN_WIDTH - 40 - CGRectGetMaxX(self.alertImage.frame) , AlertImageHeight)];
+        _alertLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.alertImage.frame) + 33.0, self.alertHeight / 2 - 20.0, SCREEN_WIDTH - 65 - CGRectGetMaxX(self.alertImage.frame) , AlertImageHeight)];
         _alertLabel.textAlignment = NSTextAlignmentLeft;
+        _alertLabel.numberOfLines = 0;
         _alertLabel.font = [UIFont systemFontOfSize:18.0 weight:UIFontWeightRegular];
     }
     return _alertLabel;

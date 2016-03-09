@@ -7,6 +7,7 @@
 //
 
 #import "GustRefreshHeader.h"
+#import "Localisator.h"
 
 @interface GustRefreshHeader()
 
@@ -35,8 +36,8 @@
     _headerLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, scrollWidth, labelHeight)];
     [_headerView addSubview:_headerLabel];
     _headerLabel.textAlignment=NSTextAlignmentCenter;
-    _headerLabel.text=@"下拉可以返回上一页";
-    _headerLabel.font=[UIFont systemFontOfSize:14];
+    _headerLabel.text= LOCALIZATION(@"PullRelease");
+    _headerLabel.font=[UIFont systemFontOfSize:14.0 weight:UIFontWeightThin];
     
     [_scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     
@@ -58,18 +59,18 @@
             [UIView animateWithDuration:0.3 animations:^{
                 if (currentPostion < - 85 * _pullBackOffset) {
                     
-                    _headerLabel.text = @"松开可以返回上一页";
+                    _headerLabel.text = LOCALIZATION(@"LooseRelease");
                     
                 } else {
                     
-                    _headerLabel.text=@"下拉可以返回上一页";
+                    _headerLabel.text = LOCALIZATION(@"PullRelease");
                 }
             }];
         }
         
     }else{
         
-        if ([_headerLabel.text isEqualToString:@"松开可以返回上一页"]) {
+        if ([_headerLabel.text isEqualToString: LOCALIZATION(@"LooseRelease")]) {
             [self beginRefreshing];
         }
     }
@@ -80,7 +81,7 @@
     if (!_isRefresh) {
         _isRefresh=YES;
         [UIView animateWithDuration:0.3 animations:^{
-            _scrollView.contentInset=UIEdgeInsetsMake(75 * 1.5, 0, 0, 0);
+            _scrollView.contentInset = UIEdgeInsetsMake(75 * 1.5, 0, 0, 0);
         }];
         
         _beginRefreshingBlock();
@@ -92,8 +93,8 @@
     
     _isRefresh=NO;
     dispatch_async(dispatch_get_main_queue(), ^{
-            _scrollView.contentInset=UIEdgeInsetsMake(0, 0, 0, 0);
-            _headerLabel.text=@"下拉可以返回上一页";
+            _scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+            _headerLabel.text= LOCALIZATION(@"PullRelease");
     });
 }
 

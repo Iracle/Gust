@@ -9,6 +9,7 @@
 #import "AboutGustViewController.h"
 #import "GuideViewController.h"
 #import "SettingsTableViewCell.h"
+#import "Localisator.h"
 
 @interface AboutGustViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -40,8 +41,8 @@
 {
     self = [super init];
     if (self) {
-        self.title = @"关于";
-        _aboutGustDataArray = @[@"去评分"];
+        self.title = LOCALIZATION(@"AboutApp");
+        _aboutGustDataArray = @[LOCALIZATION(@"RatingApp")];
     }
     return self;
 }

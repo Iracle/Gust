@@ -24,7 +24,7 @@
 @property (strong, nonatomic) NSArray *items;
 @property (assign, nonatomic) id<VLDContextSheetDelegate> delegate;
 
-- (instancetype)initWithItem:(NSString *)itemOne item:(NSString *)itemTwo item:(NSString *)itemThree;
+- (instancetype)initWithItem:(VLDContextSheetItem *)itemOne item:(VLDContextSheetItem *)itemTwo item:(VLDContextSheetItem *)itemThree;
 
 - (void) startWithGestureRecognizer: (UIGestureRecognizer *) gestureRecognizer
                              inView: (UIView *) view;

@@ -238,7 +238,19 @@
     [self.view addSubview:self.assistScrollView];
     [self.view addSubview:self.touchView];
     
-    self.contextSheet = [[VLDContextSheet alloc] initWithItem:@"书签/历史" item:@"二维码" item:@"设置"];
+    VLDContextSheetItem *item1 = [[VLDContextSheetItem alloc] initWithTitle: @"书签/历史"
+                                                                      image: [UIImage imageNamed: @"bookhistory"]
+                                                           highlightedImage: [UIImage imageNamed: @"bookhistory_h"]];
+    
+    
+    VLDContextSheetItem *item2 = [[VLDContextSheetItem alloc] initWithTitle: @"二维码"
+                                                                      image: [UIImage imageNamed: @"securityMode"]
+                                                           highlightedImage: [UIImage imageNamed: @"securityMode_h"]];
+    
+    VLDContextSheetItem *item3 = [[VLDContextSheetItem alloc] initWithTitle: @"设置"
+                                                                      image: [UIImage imageNamed: @"mainTouchSetting"]
+                                                           highlightedImage: [UIImage imageNamed: @"mainTouchSetting_h"]];
+    self.contextSheet = [[VLDContextSheet alloc] initWithItem:item1 item:item2 item:item3];
     self.contextSheet.delegate = self;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTopSitesDate:) name:NotificationUpdateTopSites object:nil];

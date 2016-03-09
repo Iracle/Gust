@@ -19,6 +19,7 @@
 #import "UINavigationBar+Addition.h"
 #import "GustSwipeTableCell.h"
 #import "AllAlertView.h"
+#import "Localisator.h"
 
 @interface HistoryAndBookmarkViewController () <UITableViewDataSource, UITableViewDelegate, MGSwipeTableCellDelegate>
 
@@ -62,7 +63,7 @@
 - (UISegmentedControl *)segment
 {
     if (!_segment) {
-        _segment = [[UISegmentedControl alloc] initWithItems:@[@"书签", @"历史"]];
+        _segment = [[UISegmentedControl alloc] initWithItems:@[LOCALIZATION(@"Bookmarks"), LOCALIZATION(@"History")]];
         _segment.bounds = CGRectMake(0, 0, SCREEN_WIDTH - 70, 35);
         _segment.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMaxY(self.view.bounds) - 22.5);
         [_segment addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
@@ -91,7 +92,7 @@
     [navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.3107 green:0.3107 blue:0.3107 alpha:1.0]}];
     self.view.backgroundColor = [UIColor colorWithRed:250 / 255.0 green:250 / 255.0 blue:250 / 255.0 alpha:1.0];
     
-    self.title = @"书签";
+    self.title = LOCALIZATION(@"Bookmarks");
     self.isBookmark = YES;
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.segment];
@@ -223,12 +224,12 @@
             NSDictionary *saveDic = @{PageName:pageName, PageUrl: [obj valueForKey:PageUrl], ImageUrl:  [obj valueForKey:ImageUrl]};
             [CoreDataManager insertObjectWithParameter:saveDic entityName:[TopSites entityName]];
             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUpdateTopSites object:self];
-            [[AllAlertView sharedAlert] showWithTitle:@"主页书签添加成功" alertType:AllAlertViewAlertTypeDone height:100.0];
+            [[AllAlertView sharedAlert] showWithTitle: LOCALIZATION(@"TopSiteSucess") alertType:AllAlertViewAlertTypeDone height:100.0];
 
             
         } else {
             
-            [[AllAlertView sharedAlert] showWithTitle:@"主页书签已经存在!" alertType:AllAlertViewAlertTypeRemind height:100.0];
+            [[AllAlertView sharedAlert] showWithTitle: LOCALIZATION(@"TopSiteExist") alertType:AllAlertViewAlertTypeRemind height:100.0];
         }
     }
     return YES;

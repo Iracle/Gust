@@ -7,7 +7,7 @@
 //
 
 #import "MoreViewController.h"
-#import  "GustRefreshHeader.h"
+#import "GustRefreshHeader.h"
 #import "GustWebViewController.h"
 #import "TopSitesManageViewController.h"
 #import "DefaultSearchViewController.h"
@@ -92,7 +92,9 @@
                                              selector:@selector(receiveLanguageChangedNotification:)
                                                  name:kNotificationLanguageChanged
                                                object:nil];
-  
+//UIPickerView
+    
+//UIDatePicker
 
 }
 
@@ -171,7 +173,7 @@
     [cache setDiskCapacity:0];
     [cache setMemoryCapacity:0];
     
-    [[AllAlertView sharedAlert] showWithTitle:@"数据清楚成功" alertType:AllAlertViewAlertTypeDone height:100.0];
+    [[AllAlertView sharedAlert] showWithTitle: LOCALIZATION(@"DataCLeared") alertType:AllAlertViewAlertTypeDone height:100.0];
 
 }
 - (void) receiveLanguageChangedNotification:(NSNotification *) notification

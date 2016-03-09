@@ -66,28 +66,14 @@ static CGRect VLDOrientedScreenBounds() {
 }
 
 
-- (instancetype)initWithItem:(NSString *)itemOne item:(NSString *)itemTwo item:(NSString *)itemThree
+- (instancetype)initWithItem:(VLDContextSheetItem *)itemOne item:(VLDContextSheetItem *)itemTwo item:(VLDContextSheetItem *)itemThree
 {
     self = [super init];
     if (self) {
+        
         _radius = 100;
         _rangeAngle = M_PI / 1.6;
-        
-        VLDContextSheetItem *item1 = [[VLDContextSheetItem alloc] initWithTitle: itemOne
-                                                                          image: [UIImage imageNamed: @"bookhistory"]
-                                                               highlightedImage: [UIImage imageNamed: @"bookhistory_h"]];
-        
-        
-        VLDContextSheetItem *item2 = [[VLDContextSheetItem alloc] initWithTitle: itemTwo
-                                                                          image: [UIImage imageNamed: @"securityMode"]
-                                                               highlightedImage: [UIImage imageNamed: @"securityMode_h"]];
-        
-        VLDContextSheetItem *item3 = [[VLDContextSheetItem alloc] initWithTitle: itemThree
-                                                                          image: [UIImage imageNamed: @"mainTouchSetting"]
-                                                               highlightedImage: [UIImage imageNamed: @"mainTouchSetting_h"]];
-        
-        
-        _items = @[ item1, item2, item3 ];
+        _items = @[itemOne, itemTwo, itemThree ];
         [self createSubviews];
     }
     return self;

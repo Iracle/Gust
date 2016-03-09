@@ -64,7 +64,7 @@
 - (UILabel *)alertLabel {
     if (!_alertLabel) {
         _alertLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 108.0, SCREEN_WIDTH, 54.0)];
-        _alertLabel.text = @"下拉取消";
+        _alertLabel.text = LOCALIZATION(@"SwipeDown");
         _alertLabel.textColor = [UIColor colorWithRed:0.3554 green:0.3554 blue:0.3554 alpha:1.0];
         _alertLabel.textAlignment = NSTextAlignmentCenter;
         _alertLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightThin];
@@ -217,7 +217,7 @@
     [self.seletedContainView endEditing:YES];
     if (self.webNameTextField.text.length > 0 && self.webUrlTextField.text.length > 0) {
         if (self.todayWebs.count > 3) {
-            [[AllAlertView sharedAlert] showWithTitle:@"网页不能超过4个" alertType:AllAlertViewAlertTypeRemind height:100.0];
+            [[AllAlertView sharedAlert] showWithTitle:LOCALIZATION(@"TotalLink") alertType:AllAlertViewAlertTypeRemind height:100.0];
             return NO;
         }
         NSDictionary *seletedWebInfo = @{PageName: self.webNameTextField.text, PageUrl: self.webUrlTextField.text};
@@ -226,7 +226,7 @@
         [self hiddeSeletedPanel];
         [self.tableView reloadData];
     } else {
-        [[AllAlertView sharedAlert] showWithTitle:@"输入不正确" alertType:AllAlertViewAlertTypeRemind height:100.0];
+        [[AllAlertView sharedAlert] showWithTitle:LOCALIZATION(@"WebInputError") alertType:AllAlertViewAlertTypeRemind height:100.0];
     }
     return YES;
 }
@@ -339,11 +339,11 @@
         NSDictionary *seletedWebInfo = @{PageName: [data valueForKey:PageName], PageUrl: [data valueForKey:PageUrl]};
 
         if ([self filterTodayWebs:seletedWebInfo]) {
-            [[AllAlertView sharedAlert] showWithTitle:@"网页已经存在" alertType:AllAlertViewAlertTypeRemind height:100.0];
+            [[AllAlertView sharedAlert] showWithTitle:LOCALIZATION(@"LinkExist") alertType:AllAlertViewAlertTypeRemind height:100.0];
             return ;
         }
         if (weakSelf.todayWebs.count > 3) {
-            [[AllAlertView sharedAlert] showWithTitle:@"网页不能超过4个" alertType:AllAlertViewAlertTypeRemind height:100.0];
+            [[AllAlertView sharedAlert] showWithTitle: LOCALIZATION(@"TotalLink") alertType:AllAlertViewAlertTypeRemind height:100.0];
             return ;
         }
         [weakSelf.todayWebs addObject:seletedWebInfo];

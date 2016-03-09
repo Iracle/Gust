@@ -10,6 +10,10 @@
  *  settings
  */
 
+//Common
+"PullRelease"                           = "Pull down to release";
+"LooseRelease"                          = "Loose could release";
+
 //MoreViewController
 "Settings"                              = "Settings";
 "TopSites"                              = "Top Sites Manager";
@@ -28,15 +32,48 @@
 "ChangePassCode"                        = "Change Passcode";
 "TouchIDPasscode"                       = "Touch ID & Passcode";
 "Bookmarks"                             = "Bookmarks";
-"History"                               = "Custom";
+"History"                               = "History";
+"CustomLink"                            = "Custom";
 
 //TodayExtentionWebSeletedViewController
 "LinkName"                             = "site name";
 "WebLink"                              = "web link";
-"SwipeDown"                            = "Slide Down To Cancel"
+"SwipeDown"                            = "Slide Down To Cancel";
+"TotalLink"                            = "Quick links can't be more than 4";
+"WebInputError"                        = "Input error";
+"LinkExist"                            = "Quick link already exists";
+
+"DataCLeared"                          = "Data Cleared";
+"RatingApp"                            = "Rating";
 
 //ChooseLanguageViewController
 "DeviceLanguage"                        = "Device Language";
 "English_en"                            = "English";
 "zh-Hans"                               = "中文";
 "LocalisatorViewTitle"                  = "Choose your language";
+
+//HistoryAndBookmarkViewController
+"TopSiteExist"                          = "Top Sites already exists";
+"TopSiteSucess"                         = "Add success";
+
+//GustWebViewController
+
+"ShareWeb"                              = "Share";
+"BookmarksExist"                        = "Bookmark already exists";
+"ClearInput"                            = "Clear Input History";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

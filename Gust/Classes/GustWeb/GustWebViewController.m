@@ -34,6 +34,7 @@
 #import "GustRefreshHeader.h"
 #import "AllAlertView.h"
 #import "GustActivity.h"
+#import "Localisator.h"
 
 @interface GustWebViewController ()< OTMWebViewDelegate, MainTouchViewDelegate, UIScrollViewDelegate, VLDContextSheetDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -203,7 +204,19 @@
     self.progressBar.tintColor = [UIColor colorWithRed:0.013 green:0.763 blue:0.634 alpha:1.000];
     [self.navaSearchBar addSubview:self.progressBar];
 
-    self.contextSheet = [[VLDContextSheet alloc] initWithItem:@"书签/历史" item:@"分享" item:@"设置"];
+    VLDContextSheetItem *item1 = [[VLDContextSheetItem alloc] initWithTitle: [NSString stringWithFormat:@"%@/%@", LOCALIZATION(@"Bookmarks"), LOCALIZATION(@"History")]
+                                                                      image: [UIImage imageNamed: @"bookhistory"]
+                                                           highlightedImage: [UIImage imageNamed: @"bookhistory_h"]];
+    
+    
+    VLDContextSheetItem *item2 = [[VLDContextSheetItem alloc] initWithTitle: LOCALIZATION(@"ShareWeb")
+                                                                      image: [UIImage imageNamed: @"securityMode"]
+                                                           highlightedImage: [UIImage imageNamed: @"securityMode_h"]];
+    
+    VLDContextSheetItem *item3 = [[VLDContextSheetItem alloc] initWithTitle: LOCALIZATION(@"Settings")
+                                                                      image: [UIImage imageNamed: @"mainTouchSetting"]
+                                                           highlightedImage: [UIImage imageNamed: @"mainTouchSetting_h"]];
+    self.contextSheet = [[VLDContextSheet alloc] initWithItem:item1 item:item2 item:item3];
     self.contextSheet.delegate = self;
     [self.view setNeedsUpdateConstraints];
     
@@ -460,10 +473,10 @@
     if (resultsArray.count < 1 && [self.bookmarkDic[PageName] length] > 0 ) {
         
         [CoreDataManager insertObjectWithParameter:self.bookmarkDic entityName:[Bookmark entityName]];
-        [[AllAlertView sharedAlert] showWithTitle:@"添加书签成功" alertType:AllAlertViewAlertTypeDone height:100.0];
+        [[AllAlertView sharedAlert] showWithTitle: LOCALIZATION(@"TopSiteSucess") alertType:AllAlertViewAlertTypeDone height:100.0];
 
     } else {
-        [[AllAlertView sharedAlert] showWithTitle:@"书签已存在" alertType:AllAlertViewAlertTypeRemind height:100.0];
+        [[AllAlertView sharedAlert] showWithTitle: LOCALIZATION(@"BookmarksExist") alertType:AllAlertViewAlertTypeRemind height:100.0];
     }
 
 }
@@ -478,7 +491,7 @@
 #pragma mark-- VLDContextSheetDelegate
 - (void) contextSheet: (VLDContextSheet *) contextSheet didSelectItem: (VLDContextSheetItem *) item {
     
-    if ([item.title isEqualToString:@"设置"]){
+    if ([item.title isEqualToString: LOCALIZATION(@"Settings")]){
         MoreViewController *more = [[MoreViewController alloc] init];
         UINavigationController *moreVC = [[UINavigationController alloc] initWithRootViewController:more];
         self.animator = [[ZFModalTransitionAnimator alloc] initWithModalViewController:moreVC];
@@ -492,7 +505,7 @@
         moreVC.modalPresentationStyle = UIModalPresentationCustom;
         [self presentViewController:moreVC animated:YES completion:nil];
         
-    } else if ([item.title isEqualToString:@"分享"]){
+    } else if ([item.title isEqualToString: LOCALIZATION(@"ShareWeb")]){
         
         if (!self.historyDic[PageUrl]) {
             return;
@@ -594,7 +607,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     UIButton *clearAllTopsiteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [clearAllTopsiteButton setTitle:@"清空输入历史" forState:UIControlStateNormal];
+    [clearAllTopsiteButton setTitle: LOCALIZATION(@"ClearInput") forState:UIControlStateNormal];
     clearAllTopsiteButton.titleLabel.font = [UIFont systemFontOfSize:15];
     clearAllTopsiteButton.backgroundColor = [UIColor clearColor];
     [clearAllTopsiteButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
@@ -671,7 +684,7 @@
         
     }];
     */
-    UIPreviewAction *deleteAction = [UIPreviewAction actionWithTitle:@"删除" style:UIPreviewActionStyleDestructive handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+    UIPreviewAction *deleteAction = [UIPreviewAction actionWithTitle: LOCALIZATION(@"TopSiteDelete") style:UIPreviewActionStyleDestructive handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationDeleteTopsit object:nil];
 
     }];
