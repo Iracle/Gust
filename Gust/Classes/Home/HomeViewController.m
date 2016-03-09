@@ -38,6 +38,7 @@
 #import "AllAlertView.h"
 #import "TodayExtentionWebSeletedViewController.h"
 #import "UIViewController+Visible.h"
+#import "Localisator.h"
 
 @interface HomeViewController () <MainTouchViewDelegate, VLDContextSheetDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate,UIViewControllerPreviewingDelegate, QRCodeReaderDelegate>
 
@@ -85,6 +86,14 @@
 @property (nonatomic, strong) UINavigationController *currentDayExtentionVC;
 @property (nonatomic, strong) TodayExtentionWebSeletedViewController *todayExtention;
 
+//international language
+@property (nonatomic, strong) NSString *localisatorSettings;
+@property (nonatomic, strong) NSString *localisatorQrCode;
+@property (nonatomic, strong) NSString *localisatorBookhis;
+@property (nonatomic, strong) NSString *localisatorClearHis;
+@property (nonatomic, strong) UIButton *clearAllTopsiteButton;
+
+
 @end
 
 @implementation HomeViewController
@@ -92,6 +101,8 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationLanguageChanged object:nil];
+
 }
 #pragma mark -- getter
 
@@ -224,11 +235,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = HOME_COLOR;
-
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.gustNavDelegate = [[GustNavigationControllerDelegate alloc] init];
     self.navigationController.delegate = self.gustNavDelegate;
     [self getCurrentSearchEnginSave];
+    [self configureViewFromLocalisation];
     
     if (!_isFirstEnter) {
         self.searchBar.hidden = YES;
@@ -237,21 +248,6 @@
     [self.view addSubview:self.searchBar];
     [self.view addSubview:self.assistScrollView];
     [self.view addSubview:self.touchView];
-    
-    VLDContextSheetItem *item1 = [[VLDContextSheetItem alloc] initWithTitle: @"书签/历史"
-                                                                      image: [UIImage imageNamed: @"bookhistory"]
-                                                           highlightedImage: [UIImage imageNamed: @"bookhistory_h"]];
-    
-    
-    VLDContextSheetItem *item2 = [[VLDContextSheetItem alloc] initWithTitle: @"二维码"
-                                                                      image: [UIImage imageNamed: @"securityMode"]
-                                                           highlightedImage: [UIImage imageNamed: @"securityMode_h"]];
-    
-    VLDContextSheetItem *item3 = [[VLDContextSheetItem alloc] initWithTitle: @"设置"
-                                                                      image: [UIImage imageNamed: @"mainTouchSetting"]
-                                                           highlightedImage: [UIImage imageNamed: @"mainTouchSetting_h"]];
-    self.contextSheet = [[VLDContextSheet alloc] initWithItem:item1 item:item2 item:item3];
-    self.contextSheet.delegate = self;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTopSitesDate:) name:NotificationUpdateTopSites object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchBarTextChanged:) name:@"UITextFieldTextDidChangeNotification" object:_searchBar];
@@ -267,6 +263,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
     
     [self setupTopSitsData];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveLanguageChangedNotification:)
+                                                 name:kNotificationLanguageChanged
+                                               object:nil];
 
 }
 
@@ -450,7 +452,7 @@
 #pragma mark-- VLDContextSheetDelegate
 - (void) contextSheet: (VLDContextSheet *) contextSheet didSelectItem: (VLDContextSheetItem *) item {
     
-    if ([item.title isEqualToString:@"设置"]){
+    if ([item.title isEqualToString: self.localisatorSettings]){
         
         MoreViewController *more = [[MoreViewController alloc] init];
         UINavigationController *moreVC = [[UINavigationController alloc] initWithRootViewController:more];
@@ -465,7 +467,7 @@
         moreVC.modalPresentationStyle = UIModalPresentationCustom;
        [self presentViewController:moreVC animated:YES completion:nil];
         
-    } else if ([item.title isEqualToString:@"二维码"]){
+    } else if ([item.title isEqualToString: self.localisatorQrCode]){
         
         if ([QRCodeReader supportsMetadataObjectTypes:@[AVMetadataObjectTypeQRCode]]) {
             static QRCodeReaderViewController *reader = nil;
@@ -484,8 +486,8 @@
         }
         else {
             
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"当前设备不支持" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle: LOCALIZATION(@"QrRemender") message: LOCALIZATION(@"QRcodeMessege") preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *sureAction = [UIAlertAction actionWithTitle: LOCALIZATION(@"Sure") style:UIAlertActionStyleDefault handler:nil];
             [alertController addAction:sureAction];
             [self presentViewController:alertController animated:YES completion:nil];
         }
@@ -775,13 +777,14 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    UIButton *clearAllTopsiteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [clearAllTopsiteButton setTitle:@"清空输入历史" forState:UIControlStateNormal];
-    clearAllTopsiteButton.titleLabel.font = [UIFont systemFontOfSize:15];
-    clearAllTopsiteButton.backgroundColor = [UIColor clearColor];
-    [clearAllTopsiteButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    [clearAllTopsiteButton addTarget:self action:@selector(clearAllTopsiteButtonTaped:) forControlEvents:UIControlEventTouchUpInside];
-    return clearAllTopsiteButton;
+    _clearAllTopsiteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_clearAllTopsiteButton setTitle: self.localisatorClearHis forState:UIControlStateNormal];
+    _clearAllTopsiteButton.titleLabel.font = [UIFont systemFontOfSize:15];
+    _clearAllTopsiteButton.backgroundColor = [UIColor clearColor];
+    [_clearAllTopsiteButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_clearAllTopsiteButton addTarget:self action:@selector(clearAllTopsiteButtonTaped:) forControlEvents:UIControlEventTouchUpInside];
+    
+    return _clearAllTopsiteButton;
 }
 
 - (void)clearAllTopsiteButtonTaped:(UIButton *)sender {
@@ -939,6 +942,38 @@
 - (void)readerDidCancel:(QRCodeReaderViewController *)reader
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void) receiveLanguageChangedNotification:(NSNotification *) notification
+{
+    if ([notification.name isEqualToString:kNotificationLanguageChanged])
+    {
+        [self configureViewFromLocalisation];
+    }
+}
+
+- (void)configureViewFromLocalisation {
+    
+    self.localisatorBookhis = [NSString stringWithFormat:@"%@/%@", LOCALIZATION(@"Bookmarks"), LOCALIZATION(@"History")];
+    self.localisatorQrCode = LOCALIZATION(@"QrCode");
+    self.localisatorSettings = LOCALIZATION(@"Settings");
+    self.localisatorClearHis  = LOCALIZATION(@"ClearInput");
+    [_clearAllTopsiteButton setTitle:self.localisatorClearHis forState:UIControlStateNormal];
+    
+    VLDContextSheetItem *item1 = [[VLDContextSheetItem alloc] initWithTitle: self.localisatorBookhis
+                                                                      image: [UIImage imageNamed: @"bookhistory"]
+                                                           highlightedImage: [UIImage imageNamed: @"bookhistory_h"]];
+    
+    VLDContextSheetItem *item2 = [[VLDContextSheetItem alloc] initWithTitle: self.localisatorQrCode
+                                                                      image: [UIImage imageNamed: @"securityMode"]
+                                                           highlightedImage: [UIImage imageNamed: @"securityMode_h"]];
+    
+    VLDContextSheetItem *item3 = [[VLDContextSheetItem alloc] initWithTitle: self.localisatorSettings
+                                                                      image: [UIImage imageNamed: @"mainTouchSetting"]
+                                                           highlightedImage: [UIImage imageNamed: @"mainTouchSetting_h"]];
+    
+    self.contextSheet = [[VLDContextSheet alloc] initWithItem:item1 item:item2 item:item3];
+    self.contextSheet.delegate = self;
 }
 
 @end

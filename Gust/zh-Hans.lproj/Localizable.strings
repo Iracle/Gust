@@ -56,6 +56,14 @@
 "BookmarksExist"                        = "书签已经存在";
 "ClearInput"                            = "清空输入历史";
 
+//HomeViewController
+"QrCode"                                = "二维码";
+"QrRemender"                            = "温馨提示";
+"QRcodeMessege"                         = "你的设备不支持扫描二维码";
+"Sure"                                  = "好";
+
+
+
 
 
 

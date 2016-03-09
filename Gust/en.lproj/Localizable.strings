@@ -62,6 +62,13 @@
 "BookmarksExist"                        = "Bookmark already exists";
 "ClearInput"                            = "Clear Input History";
 
+//HomeViewController
+"QrCode"                                = "QR Code";
+"QrRemender"                            = "Reminder";
+"QRcodeMessege"                         = "Your device does not support QR Code";
+"Sure"                                  = "OK";
+
+
 
 
 

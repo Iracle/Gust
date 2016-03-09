@@ -92,9 +92,6 @@
                                              selector:@selector(receiveLanguageChangedNotification:)
                                                  name:kNotificationLanguageChanged
                                                object:nil];
-//UIPickerView
-    
-//UIDatePicker
 
 }
 
