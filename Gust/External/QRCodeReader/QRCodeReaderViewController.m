@@ -26,6 +26,7 @@
 #import "QRCodeReaderViewController.h"
 #import "QRCameraSwitchButton.h"
 #import "QRCodeReaderView.h"
+#import "Localisator.h"
 
 @interface QRCodeReaderViewController ()
 @property (strong, nonatomic) QRCameraSwitchButton *switchCameraButton;
@@ -75,7 +76,7 @@
     self.codeReader           = codeReader;
     
     if (cancelTitle == nil) {
-      cancelTitle = NSLocalizedString(@"取消", @"取消");
+      cancelTitle = LOCALIZATION(@"Cancel");
     }
     
     [self setupUIComponentsWithCancelButtonTitle:cancelTitle];

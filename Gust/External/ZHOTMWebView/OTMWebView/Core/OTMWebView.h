@@ -105,8 +105,6 @@ extern NSString *const OTMWebViewElementDocumentURL;
 
 + (OTMWebViewContextMenuItem *)copyImageContextMenuItem;
 
-+ (OTMWebViewContextMenuItem *)readingListContextMenuItem;
-
 @end
 
 /**

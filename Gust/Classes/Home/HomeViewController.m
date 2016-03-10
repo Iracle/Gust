@@ -944,7 +944,7 @@
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
-- (void) receiveLanguageChangedNotification:(NSNotification *) notification
+- (void)receiveLanguageChangedNotification:(NSNotification *) notification
 {
     if ([notification.name isEqualToString:kNotificationLanguageChanged])
     {

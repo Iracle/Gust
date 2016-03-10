@@ -8,53 +8,26 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>OpenShare.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
-		</dict>
-		<key>ZHAHKActionSheet.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>7</integer>
-		</dict>
-		<key>ZHOTMWebView.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>8</integer>
 		</dict>
 		<key>pop.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>6</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>203BFB51371ADB4EBF999F668AE416F5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3874D09F014D1102EF943494B48D1C1E</key>
+		<key>0543883450DEF4E2E273C446BA11FAEC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -64,17 +37,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A289C279A81904F6DC1C112DEEE83F73</key>
+		<key>B7B072BFEE3A4E60C4357B876ADB19FA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>D79C5D02C5B82672F3342670170FC25C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D7D66D04FA7340283A4226EA279850F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

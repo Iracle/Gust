@@ -2,39 +2,15 @@ PODS:
   - AFViewShaker (0.0.2)
   - OpenShare (0.0.1)
   - pop (1.0.9)
-  - ZHAHKActionSheet (0.5.3)
-  - ZHOTMWebView (0.0.4):
-    - ZHOTMWebView/Core (= 0.0.4)
-    - ZHOTMWebView/ProgressBar (= 0.0.4)
-  - ZHOTMWebView/Core (0.0.4)
-  - ZHOTMWebView/ProgressBar (0.0.4)
 
 DEPENDENCIES:
   - AFViewShaker (~> 0.0)
   - OpenShare
   - pop
-  - ZHAHKActionSheet (from `https://github.com/Iracle/ZHAHKActionSheet.git`)
-  - ZHOTMWebView (from `https://github.com/Iracle/ZHOTMWebView.git`)
-
-EXTERNAL SOURCES:
-  ZHAHKActionSheet:
-    :git: https://github.com/Iracle/ZHAHKActionSheet.git
-  ZHOTMWebView:
-    :git: https://github.com/Iracle/ZHOTMWebView.git
-
-CHECKOUT OPTIONS:
-  ZHAHKActionSheet:
-    :commit: 95ce97b1c123eedf1ca70a9829a9a78ada3a6db8
-    :git: https://github.com/Iracle/ZHAHKActionSheet.git
-  ZHOTMWebView:
-    :commit: 1a841d88208ab5a63e271936e37e1c00582da0cf
-    :git: https://github.com/Iracle/ZHOTMWebView.git
 
 SPEC CHECKSUMS:
   AFViewShaker: 7e4bc215ca3e92347b78da436fca74e1730b52e8
   OpenShare: a560580dbb729d5c0c3cc1ee84cd6aa4a07e94c6
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
-  ZHAHKActionSheet: 2d6b73a39624b2a488b6e609407876cbb1b39b92
-  ZHOTMWebView: be2e740889f387dccfd5554404a5034e9e01c06a
 
 COCOAPODS: 0.39.0

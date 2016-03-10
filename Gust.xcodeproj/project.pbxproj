@@ -83,6 +83,22 @@
 		93C9E17A1C8434B2006692A3 /* UIAlertController+Window.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C9E1781C8434B2006692A3 /* UIAlertController+Window.m */; };
 		93C9E17B1C8434B2006692A3 /* UIAlertController+Window.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C9E1781C8434B2006692A3 /* UIAlertController+Window.m */; };
 		93CA22851C8D69B6000A614B /* ChooseLanguageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA22841C8D69B6000A614B /* ChooseLanguageViewController.m */; };
+		93CA56581C914A90007B2B86 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 93CA56441C914A90007B2B86 /* LICENSE */; };
+		93CA56591C914A90007B2B86 /* OTMWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA56481C914A90007B2B86 /* OTMWebView.m */; };
+		93CA565A1C914A90007B2B86 /* OTMWebViewContextMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA564A1C914A90007B2B86 /* OTMWebViewContextMenuItem.m */; };
+		93CA565B1C914A90007B2B86 /* OTMWebViewProgressTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA564C1C914A90007B2B86 /* OTMWebViewProgressTracker.m */; };
+		93CA565C1C914A90007B2B86 /* OTMWebViewURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA564E1C914A90007B2B86 /* OTMWebViewURLProtocol.m */; };
+		93CA565D1C914A90007B2B86 /* OTMWebView+ContextMenu.js in Resources */ = {isa = PBXBuildFile; fileRef = 93CA56501C914A90007B2B86 /* OTMWebView+ContextMenu.js */; };
+		93CA565E1C914A90007B2B86 /* OTMWebView.js in Resources */ = {isa = PBXBuildFile; fileRef = 93CA56511C914A90007B2B86 /* OTMWebView.js */; };
+		93CA565F1C914A90007B2B86 /* OTMWebViewProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA56541C914A90007B2B86 /* OTMWebViewProgressBar.m */; };
+		93CA56601C914A90007B2B86 /* OTMWebViewProgressBarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA56561C914A90007B2B86 /* OTMWebViewProgressBarLayer.m */; };
+		93CA56611C914A90007B2B86 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 93CA56571C914A90007B2B86 /* README.md */; };
+		93CA566E1C9151B7007B2B86 /* AHKActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA56651C9151B7007B2B86 /* AHKActionSheet.m */; };
+		93CA566F1C9151B7007B2B86 /* AHKActionSheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA56671C9151B7007B2B86 /* AHKActionSheetViewController.m */; };
+		93CA56701C9151B7007B2B86 /* UIImage+AHKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA56691C9151B7007B2B86 /* UIImage+AHKAdditions.m */; };
+		93CA56711C9151B7007B2B86 /* UIWindow+AHKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CA566B1C9151B7007B2B86 /* UIWindow+AHKAdditions.m */; };
+		93CA56721C9151B7007B2B86 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 93CA566C1C9151B7007B2B86 /* LICENSE */; };
+		93CA56731C9151B7007B2B86 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 93CA566D1C9151B7007B2B86 /* README.md */; };
 		93CE191B1BEB51E400DECA3E /* SetPrivacyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CE19191BEB51E400DECA3E /* SetPrivacyPasswordViewController.m */; };
 		93CE19941BEC81FB00DECA3E /* CHKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CE19931BEC81FB00DECA3E /* CHKeychain.m */; };
 		93CE199B1BEC9B2F00DECA3E /* MyScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CE199A1BEC9B2F00DECA3E /* MyScrollView.m */; };
@@ -270,6 +286,32 @@
 		93C9E1781C8434B2006692A3 /* UIAlertController+Window.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Window.m"; sourceTree = "<group>"; };
 		93CA22831C8D69B6000A614B /* ChooseLanguageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseLanguageViewController.h; sourceTree = "<group>"; };
 		93CA22841C8D69B6000A614B /* ChooseLanguageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseLanguageViewController.m; sourceTree = "<group>"; };
+		93CA56441C914A90007B2B86 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		93CA56471C914A90007B2B86 /* OTMWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTMWebView.h; sourceTree = "<group>"; };
+		93CA56481C914A90007B2B86 /* OTMWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTMWebView.m; sourceTree = "<group>"; };
+		93CA56491C914A90007B2B86 /* OTMWebViewContextMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTMWebViewContextMenuItem.h; sourceTree = "<group>"; };
+		93CA564A1C914A90007B2B86 /* OTMWebViewContextMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTMWebViewContextMenuItem.m; sourceTree = "<group>"; };
+		93CA564B1C914A90007B2B86 /* OTMWebViewProgressTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTMWebViewProgressTracker.h; sourceTree = "<group>"; };
+		93CA564C1C914A90007B2B86 /* OTMWebViewProgressTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTMWebViewProgressTracker.m; sourceTree = "<group>"; };
+		93CA564D1C914A90007B2B86 /* OTMWebViewURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTMWebViewURLProtocol.h; sourceTree = "<group>"; };
+		93CA564E1C914A90007B2B86 /* OTMWebViewURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTMWebViewURLProtocol.m; sourceTree = "<group>"; };
+		93CA56501C914A90007B2B86 /* OTMWebView+ContextMenu.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "OTMWebView+ContextMenu.js"; sourceTree = "<group>"; };
+		93CA56511C914A90007B2B86 /* OTMWebView.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = OTMWebView.js; sourceTree = "<group>"; };
+		93CA56531C914A90007B2B86 /* OTMWebViewProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTMWebViewProgressBar.h; sourceTree = "<group>"; };
+		93CA56541C914A90007B2B86 /* OTMWebViewProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTMWebViewProgressBar.m; sourceTree = "<group>"; };
+		93CA56551C914A90007B2B86 /* OTMWebViewProgressBarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTMWebViewProgressBarLayer.h; sourceTree = "<group>"; };
+		93CA56561C914A90007B2B86 /* OTMWebViewProgressBarLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTMWebViewProgressBarLayer.m; sourceTree = "<group>"; };
+		93CA56571C914A90007B2B86 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		93CA56641C9151B7007B2B86 /* AHKActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHKActionSheet.h; sourceTree = "<group>"; };
+		93CA56651C9151B7007B2B86 /* AHKActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHKActionSheet.m; sourceTree = "<group>"; };
+		93CA56661C9151B7007B2B86 /* AHKActionSheetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHKActionSheetViewController.h; sourceTree = "<group>"; };
+		93CA56671C9151B7007B2B86 /* AHKActionSheetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHKActionSheetViewController.m; sourceTree = "<group>"; };
+		93CA56681C9151B7007B2B86 /* UIImage+AHKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AHKAdditions.h"; sourceTree = "<group>"; };
+		93CA56691C9151B7007B2B86 /* UIImage+AHKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AHKAdditions.m"; sourceTree = "<group>"; };
+		93CA566A1C9151B7007B2B86 /* UIWindow+AHKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+AHKAdditions.h"; sourceTree = "<group>"; };
+		93CA566B1C9151B7007B2B86 /* UIWindow+AHKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+AHKAdditions.m"; sourceTree = "<group>"; };
+		93CA566C1C9151B7007B2B86 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		93CA566D1C9151B7007B2B86 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		93CE19181BEB51E400DECA3E /* SetPrivacyPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPrivacyPasswordViewController.h; sourceTree = "<group>"; };
 		93CE19191BEB51E400DECA3E /* SetPrivacyPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetPrivacyPasswordViewController.m; sourceTree = "<group>"; };
 		93CE19921BEC81FB00DECA3E /* CHKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHKeychain.h; sourceTree = "<group>"; };
@@ -472,6 +514,8 @@
 		1874362D1AA6F90800297383 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				93CA56621C9151B7007B2B86 /* ZHAHKActionSheet */,
+				93CA56431C914A90007B2B86 /* ZHOTMWebView */,
 				930D7B031C84939900B059F8 /* BKPasscodeView */,
 				939438CB1C803ABC003C26CB /* Localisator */,
 				1898DDDA1AC4361600C89513 /* QRCodeReader */,
@@ -687,6 +731,86 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		93CA56431C914A90007B2B86 /* ZHOTMWebView */ = {
+			isa = PBXGroup;
+			children = (
+				93CA56441C914A90007B2B86 /* LICENSE */,
+				93CA56451C914A90007B2B86 /* OTMWebView */,
+				93CA56571C914A90007B2B86 /* README.md */,
+			);
+			path = ZHOTMWebView;
+			sourceTree = "<group>";
+		};
+		93CA56451C914A90007B2B86 /* OTMWebView */ = {
+			isa = PBXGroup;
+			children = (
+				93CA56461C914A90007B2B86 /* Core */,
+				93CA56521C914A90007B2B86 /* ProgressBar */,
+			);
+			path = OTMWebView;
+			sourceTree = "<group>";
+		};
+		93CA56461C914A90007B2B86 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				93CA56471C914A90007B2B86 /* OTMWebView.h */,
+				93CA56481C914A90007B2B86 /* OTMWebView.m */,
+				93CA56491C914A90007B2B86 /* OTMWebViewContextMenuItem.h */,
+				93CA564A1C914A90007B2B86 /* OTMWebViewContextMenuItem.m */,
+				93CA564B1C914A90007B2B86 /* OTMWebViewProgressTracker.h */,
+				93CA564C1C914A90007B2B86 /* OTMWebViewProgressTracker.m */,
+				93CA564D1C914A90007B2B86 /* OTMWebViewURLProtocol.h */,
+				93CA564E1C914A90007B2B86 /* OTMWebViewURLProtocol.m */,
+				93CA564F1C914A90007B2B86 /* Resources */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		93CA564F1C914A90007B2B86 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				93CA56501C914A90007B2B86 /* OTMWebView+ContextMenu.js */,
+				93CA56511C914A90007B2B86 /* OTMWebView.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		93CA56521C914A90007B2B86 /* ProgressBar */ = {
+			isa = PBXGroup;
+			children = (
+				93CA56531C914A90007B2B86 /* OTMWebViewProgressBar.h */,
+				93CA56541C914A90007B2B86 /* OTMWebViewProgressBar.m */,
+				93CA56551C914A90007B2B86 /* OTMWebViewProgressBarLayer.h */,
+				93CA56561C914A90007B2B86 /* OTMWebViewProgressBarLayer.m */,
+			);
+			path = ProgressBar;
+			sourceTree = "<group>";
+		};
+		93CA56621C9151B7007B2B86 /* ZHAHKActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				93CA56631C9151B7007B2B86 /* Classes */,
+				93CA566C1C9151B7007B2B86 /* LICENSE */,
+				93CA566D1C9151B7007B2B86 /* README.md */,
+			);
+			path = ZHAHKActionSheet;
+			sourceTree = "<group>";
+		};
+		93CA56631C9151B7007B2B86 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				93CA56641C9151B7007B2B86 /* AHKActionSheet.h */,
+				93CA56651C9151B7007B2B86 /* AHKActionSheet.m */,
+				93CA56661C9151B7007B2B86 /* AHKActionSheetViewController.h */,
+				93CA56671C9151B7007B2B86 /* AHKActionSheetViewController.m */,
+				93CA56681C9151B7007B2B86 /* UIImage+AHKAdditions.h */,
+				93CA56691C9151B7007B2B86 /* UIImage+AHKAdditions.m */,
+				93CA566A1C9151B7007B2B86 /* UIWindow+AHKAdditions.h */,
+				93CA566B1C9151B7007B2B86 /* UIWindow+AHKAdditions.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		93CE19981BEC9B2F00DECA3E /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -862,10 +986,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93CA565D1C914A90007B2B86 /* OTMWebView+ContextMenu.js in Resources */,
+				93CA565E1C914A90007B2B86 /* OTMWebView.js in Resources */,
+				93CA56721C9151B7007B2B86 /* LICENSE in Resources */,
 				939438C71C8039F3003C26CB /* Localizable.strings in Resources */,
 				93CE19AA1BEC9B9100DECA3E /* PrivacyPassword.xib in Resources */,
 				18EEDF261AA5FD6000033447 /* Images.xcassets in Resources */,
 				18A9C7541AFA679300436555 /* Launch Screen.xib in Resources */,
+				93CA56581C914A90007B2B86 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -993,7 +1121,9 @@
 				93B74D641C3BAC3F0057BDBB /* GustAssistScrollView.m in Sources */,
 				930D7B1B1C84939900B059F8 /* BKTouchIDManager.m in Sources */,
 				1898DDE51AC4361600C89513 /* QRCodeReader.m in Sources */,
+				93CA565F1C914A90007B2B86 /* OTMWebViewProgressBar.m in Sources */,
 				93A2C5571C3513420022C11D /* GustCollectionView.m in Sources */,
+				93CA565B1C914A90007B2B86 /* OTMWebViewProgressTracker.m in Sources */,
 				182823201AD05D1900267C41 /* Gust.xcdatamodeld in Sources */,
 				9361C28D1C4398BF00A0E625 /* NavaSearchBar.m in Sources */,
 				938BC7A21C44F25E005976F9 /* UINavigationBar+Addition.m in Sources */,
@@ -1005,6 +1135,8 @@
 				1898DDE71AC4361600C89513 /* QRCodeReaderViewController.m in Sources */,
 				183738301AAF3780009D9465 /* MGSwipeButton.m in Sources */,
 				93CE199B1BEC9B2F00DECA3E /* MyScrollView.m in Sources */,
+				93CA566F1C9151B7007B2B86 /* AHKActionSheetViewController.m in Sources */,
+				93CA56711C9151B7007B2B86 /* UIWindow+AHKAdditions.m in Sources */,
 				18CC9D641AAA025400165601 /* HomeCollectionViewCell.m in Sources */,
 				1898DDE61AC4361600C89513 /* QRCodeReaderView.m in Sources */,
 				9379499A1C523B550062F6A4 /* ArrayDataSource.m in Sources */,
@@ -1012,19 +1144,24 @@
 				187436351AA6F90800297383 /* VLDContextSheet.m in Sources */,
 				930D7B171C84939900B059F8 /* BKPasscodeInputView.m in Sources */,
 				18CF62591AD7A946001177D6 /* TopSites.m in Sources */,
+				93CA565C1C914A90007B2B86 /* OTMWebViewURLProtocol.m in Sources */,
 				187D14E51AE8E19A001A9419 /* DefaultSearchViewController.m in Sources */,
 				93CE19941BEC81FB00DECA3E /* CHKeychain.m in Sources */,
+				93CA56591C914A90007B2B86 /* OTMWebView.m in Sources */,
 				93CE19A21BEC9B3F00DECA3E /* MutiTabCollectionViewCell.m in Sources */,
 				930D7B181C84939900B059F8 /* BKPasscodeLockScreenManager.m in Sources */,
 				9326CE6F1C4D0AD400D39574 /* RevertPopAnimationTransition.m in Sources */,
 				93CE19A11BEC9B3F00DECA3E /* MultiTabView.m in Sources */,
+				93CA56701C9151B7007B2B86 /* UIImage+AHKAdditions.m in Sources */,
 				93552ED61BEA00FE004B0380 /* CustomNavigationController.m in Sources */,
 				9326CE6D1C4D0AD400D39574 /* GustRevertNavigationControllerDelegate.m in Sources */,
 				9326CE721C4D0F9900D39574 /* SettingsTableViewCell.m in Sources */,
+				93CA565A1C914A90007B2B86 /* OTMWebViewContextMenuItem.m in Sources */,
 				18EEDF181AA5FD6000033447 /* main.m in Sources */,
 				93CE191B1BEB51E400DECA3E /* SetPrivacyPasswordViewController.m in Sources */,
 				9326CE6C1C4D0AD400D39574 /* GustNavigationControllerDelegate.m in Sources */,
 				18A87A421AA83B0C00724A74 /* GustWebViewController.m in Sources */,
+				93CA566E1C9151B7007B2B86 /* AHKActionSheet.m in Sources */,
 				93F50C7C1C36A6650028EF1F /* MainTouchBaseView.m in Sources */,
 				93A190AD1C8FFD8900D6777E /* GustRefreshHeader.m in Sources */,
 				93C9E1791C8434B2006692A3 /* UIAlertController+Window.m in Sources */,
@@ -1046,12 +1183,15 @@
 				9387EFA31C4F58D400870DEF /* AllAlertView.m in Sources */,
 				937949961C520B780062F6A4 /* TodayExtentionWebSeletedViewController.m in Sources */,
 				930D7B191C84939900B059F8 /* BKPasscodeViewController.m in Sources */,
+				93CA56731C9151B7007B2B86 /* README.md in Sources */,
 				187436361AA6F90800297383 /* VLDContextSheetItem.m in Sources */,
 				187436C01AA753D400297383 /* MoreViewController.m in Sources */,
 				182823231AD05D1900267C41 /* MainTouchView.m in Sources */,
 				183080D61ADFF0D600B9D458 /* MainSearchBarTextManage.m in Sources */,
 				183738341AAF4A5E009D9465 /* HisAndBooModel.m in Sources */,
+				93CA56611C914A90007B2B86 /* README.md in Sources */,
 				182823241AD05D1900267C41 /* MainSearchBar.m in Sources */,
+				93CA56601C914A90007B2B86 /* OTMWebViewProgressBarLayer.m in Sources */,
 				930D7B1A1C84939900B059F8 /* BKShiftingView.m in Sources */,
 				18E6C36B1AA8A27600B666A2 /* GustScrollingNavBarViewController.m in Sources */,
 				18BFEB211AF7C16600D2796E /* GuideViewController.m in Sources */,

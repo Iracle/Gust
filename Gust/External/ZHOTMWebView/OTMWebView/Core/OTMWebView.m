@@ -29,6 +29,8 @@
 #import "OTMWebViewURLProtocol.h"
 #import "OTMWebViewProgressTracker.h"
 #import "AHKActionSheet.h"
+#import "Localisator.h"
+
 
 NSString *const OTMWebViewElementTagNameKey = @"tagName";
 NSString *const OTMWebViewElementHREFKey = @"href";
@@ -452,10 +454,10 @@ NSString *const kOTMWebViewURLScheme = @"OTMWebView";
             NSString *tagName = element[OTMWebViewElementTagNameKey];
             
             if ([tagName isEqualToString:@"A"]) {
-                return NSLocalizedString(@"后台打开链接", nil);
+                return LOCALIZATION(@"BackOpenLink");
             }
             else if ([tagName isEqualToString:@"IMG"]) {
-                return NSLocalizedString(@"打开图片", nil);
+                return LOCALIZATION(@"OpenImage");
             }
             
             return nil;
@@ -471,7 +473,7 @@ NSString *const kOTMWebViewURLScheme = @"OTMWebView";
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        saveImageItem = [[OTMWebViewContextMenuItem alloc]initWithTitle:NSLocalizedString(@"保存图片", nil) actionHandler: ^(OTMWebView *webView, NSDictionary *element) {
+        saveImageItem = [[OTMWebViewContextMenuItem alloc]initWithTitle: LOCALIZATION(@"SaveImage") actionHandler: ^(OTMWebView *webView, NSDictionary *element) {
             NSString *dataURL = element[OTMWebViewElementSRCKey];
             NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:dataURL]];
             UIImage *image = [[UIImage alloc]initWithData:data scale:[UIScreen mainScreen].scale];
@@ -508,10 +510,10 @@ NSString *const kOTMWebViewURLScheme = @"OTMWebView";
             NSString *tagName = element[OTMWebViewElementTagNameKey];
             
             if ([tagName isEqualToString:@"A"]) {
-                return @"复制链接";
+                return LOCALIZATION(@"CopyLink");
             }
             else if ([tagName isEqualToString:@"IMG"]) {
-                return @"复制图片链接";
+                return LOCALIZATION(@"CopyImageLink");
             }
             return nil;
         };
@@ -527,7 +529,7 @@ NSString *const kOTMWebViewURLScheme = @"OTMWebView";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-        copyImageContextMenuItem = [[OTMWebViewContextMenuItem alloc]initWithTitle:@"复制图片" actionHandler: ^(OTMWebView *webView, NSDictionary *element) {
+        copyImageContextMenuItem = [[OTMWebViewContextMenuItem alloc]initWithTitle: LOCALIZATION(@"CopyImage") actionHandler: ^(OTMWebView *webView, NSDictionary *element) {
             
             NSString *dataURL = element[OTMWebViewElementSRCKey];
             NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:dataURL]];

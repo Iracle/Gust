@@ -11,6 +11,7 @@
 #import "AHKActionSheetViewController.h"
 #import "UIImage+AHKAdditions.h"
 #import "UIWindow+AHKAdditions.h"
+#import "Localisator.h"
 
 
 static const NSTimeInterval kDefaultAnimationDuration = 0.5f;
@@ -88,7 +89,7 @@ static const CGFloat kCancelButtonShadowHeightRatio = 0.333f;
 
     if (self) {
         title = [title copy];
-        _cancelButtonTitle = @"取消";
+        _cancelButtonTitle = LOCALIZATION(@"Cancel");
     }
 
     return self;

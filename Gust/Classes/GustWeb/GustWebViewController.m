@@ -65,7 +65,6 @@
 //pull back
 @property (nonatomic, strong) GustRefreshHeader *refreshHeader;
 
-
 @end
 
 @implementation GustWebViewController
@@ -187,7 +186,7 @@
     
     self.navigationController.navigationBar.hidden = YES;
     [self getCurrentSearchEnginSave];
-    
+    [self configureViewFromLocalisation];
     self.navigationController.hidesBarsWhenVerticallyCompact = YES;
     [self.view addSubview:self.webView];
     [self gustFollowRollingScrollView: self.webView];
@@ -203,27 +202,16 @@
     self.progressBar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     self.progressBar.tintColor = [UIColor colorWithRed:0.013 green:0.763 blue:0.634 alpha:1.000];
     [self.navaSearchBar addSubview:self.progressBar];
-
-    VLDContextSheetItem *item1 = [[VLDContextSheetItem alloc] initWithTitle: [NSString stringWithFormat:@"%@/%@", LOCALIZATION(@"Bookmarks"), LOCALIZATION(@"History")]
-                                                                      image: [UIImage imageNamed: @"bookhistory"]
-                                                           highlightedImage: [UIImage imageNamed: @"bookhistory_h"]];
-    
-    
-    VLDContextSheetItem *item2 = [[VLDContextSheetItem alloc] initWithTitle: LOCALIZATION(@"ShareWeb")
-                                                                      image: [UIImage imageNamed: @"securityMode"]
-                                                           highlightedImage: [UIImage imageNamed: @"securityMode_h"]];
-    
-    VLDContextSheetItem *item3 = [[VLDContextSheetItem alloc] initWithTitle: LOCALIZATION(@"Settings")
-                                                                      image: [UIImage imageNamed: @"mainTouchSetting"]
-                                                           highlightedImage: [UIImage imageNamed: @"mainTouchSetting_h"]];
-    self.contextSheet = [[VLDContextSheet alloc] initWithItem:item1 item:item2 item:item3];
-    self.contextSheet.delegate = self;
-    [self.view setNeedsUpdateConstraints];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchBarTextChanged:) name:@"UITextFieldTextDidChangeNotification" object:_searchBar];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updataMainTouchViewLocation:) name:NotificationUpdateMainTouchViewLocation object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chooseDefautSeachEngin:) name:NotificationChangeDefautSearchEngin object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openWebPageInNewTab:) name:@"NotificationOpenPageInNewTab" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveLanguageChangedNotification:)
+                                                 name:kNotificationLanguageChanged
+                                               object:nil];
     
 }
 
@@ -689,6 +677,33 @@
 
     }];
     return @[deleteAction];
+}
+
+- (void) receiveLanguageChangedNotification:(NSNotification *) notification
+{
+    if ([notification.name isEqualToString:kNotificationLanguageChanged])
+    {
+        [self configureViewFromLocalisation];
+    }
+}
+
+- (void)configureViewFromLocalisation {
+    
+    VLDContextSheetItem *item1 = [[VLDContextSheetItem alloc] initWithTitle: [NSString stringWithFormat:@"%@/%@", LOCALIZATION(@"Bookmarks"), LOCALIZATION(@"History")]
+                                                                      image: [UIImage imageNamed: @"bookhistory"]
+                                                           highlightedImage: [UIImage imageNamed: @"bookhistory_h"]];
+    
+    
+    VLDContextSheetItem *item2 = [[VLDContextSheetItem alloc] initWithTitle: LOCALIZATION(@"ShareWeb")
+                                                                      image: [UIImage imageNamed: @"securityMode"]
+                                                           highlightedImage: [UIImage imageNamed: @"securityMode_h"]];
+    
+    VLDContextSheetItem *item3 = [[VLDContextSheetItem alloc] initWithTitle: LOCALIZATION(@"Settings")
+                                                                      image: [UIImage imageNamed: @"mainTouchSetting"]
+                                                           highlightedImage: [UIImage imageNamed: @"mainTouchSetting_h"]];
+    self.contextSheet = [[VLDContextSheet alloc] initWithItem:item1 item:item2 item:item3];
+    self.contextSheet.delegate = self;
+
 }
 
 

@@ -9,6 +9,8 @@
 #import "MultiTabView.h"
 #import "MutiTabCollectionViewCell.h"
 #import "GustConfigure.h"
+#import "Localisator.h"
+
 
 @interface MultiTabView() <UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource>
 @property (nonatomic, strong) MultiTabView *visualEffectView;
@@ -51,7 +53,7 @@
     cancelTitleLabel.font = [UIFont systemFontOfSize:14];
     cancelTitleLabel.textColor = [UIColor whiteColor];
     cancelTitleLabel.textAlignment = NSTextAlignmentCenter;
-    cancelTitleLabel.text = @"返回";
+    cancelTitleLabel.text = LOCALIZATION(@"Back");
     [_mutiTabCancelView addSubview:cancelTitleLabel];
 }
 - (void)initMutiTabCollectionView

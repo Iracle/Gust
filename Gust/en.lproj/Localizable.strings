@@ -68,6 +68,18 @@
 "QRcodeMessege"                         = "Your device does not support QR Code";
 "Sure"                                  = "OK";
 
+//OTMWebView
+"CopyImage"                             = "Copy Image";
+"BackOpenLink"                          = "Open in Background";
+"CopyImageLink"                         = "Copy Image Link";
+"CopyLink"                              = "Copy Link";
+"SaveImage"                             = "Save Image";
+"OpenImage"                             = "Open Image";
+"Cancel"                                = "Cancel";
+"Back"                                  = "Back";
+
+
+
 
 
 
