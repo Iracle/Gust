@@ -19,9 +19,9 @@
 #import "TodayExtentionWebSeletedViewController.h"
 #import "AllAlertView.h"
 #import "Localisator.h"
+#import "GustFeedbackHelper.h"
 
-
-@interface MoreViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MoreViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, strong)  NSArray<NSString *> *tableListDataArray;
 @property (nonatomic, copy)    NSArray<NSString *> *detailPageClassNames;
@@ -149,6 +149,11 @@
 
         destinationViewController = [[NSClassFromString(_detailPageClassNames[indexPath.row]) alloc] init];
     } else {
+        if (indexPath.row == 1) {
+            //send feedback email
+            [[[GustFeedbackHelper alloc] init] sendEmailAction:self];
+            return;
+        }
         destinationViewController = [[NSClassFromString(_detailPageClassNames[indexPath.row + 6]) alloc] init];
 
     }
@@ -188,6 +193,31 @@
     [self.tableView reloadData];
 
 }
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError *)error
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled: // 用户取消编辑
+            NSLog(@"Mail send canceled...");
+            break;
+        case MFMailComposeResultSaved: // 用户保存邮件
+            NSLog(@"Mail saved...");
+            break;
+        case MFMailComposeResultSent: // 用户点击发送
+            NSLog(@"Mail sent...");
+            break;
+        case MFMailComposeResultFailed: // 用户尝试保存或发送邮件失败
+            NSLog(@"Mail send errored: %@...", [error localizedDescription]);
+            break;
+    }
+    
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 
 

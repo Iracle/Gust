@@ -61,6 +61,8 @@
 "QrRemender"                            = "温馨提示";
 "QRcodeMessege"                         = "你的设备不支持扫描二维码";
 "Sure"                                  = "好";
+"NetWorkCheck"                          = "请接入移动网络或 WiFi";
+
 
 //OTMWebView
 "CopyImage"                             = "复制图片";

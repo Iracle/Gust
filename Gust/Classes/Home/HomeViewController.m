@@ -92,7 +92,7 @@
 @property (nonatomic, strong) NSString *localisatorBookhis;
 @property (nonatomic, strong) NSString *localisatorClearHis;
 @property (nonatomic, strong) UIButton *clearAllTopsiteButton;
-
+@property (nonatomic, strong) NSString *networkCheckString;
 
 @end
 
@@ -203,7 +203,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-   // [self performSelector:@selector(checkoutNetWorkState) withObject:self afterDelay:2];
+    [self performSelector:@selector(checkoutNetWorkState) withObject:self afterDelay:2];
     [self touchViewAnimtion];
     if (!_isFirstEnter) {
         [self performSelector:@selector(searchBarAnimation) withObject:nil afterDelay:0.24];
@@ -810,7 +810,7 @@
     //0 - 无网络; 1 - 2G; 2 - 3G; 3 - 4G; 5 - WIFI
     if (type == 0) {
         
-        [[AllAlertView sharedAlert] showWithTitle:@"没有网络连接" alertType:AllAlertViewAlertTypeAlert height:130.0];
+        [[AllAlertView sharedAlert] showWithTitle: self.networkCheckString  alertType:AllAlertViewAlertTypeAlert height:130.0];
     }
 }
 
@@ -959,6 +959,7 @@
     self.localisatorSettings = LOCALIZATION(@"Settings");
     self.localisatorClearHis  = LOCALIZATION(@"ClearInput");
     [_clearAllTopsiteButton setTitle:self.localisatorClearHis forState:UIControlStateNormal];
+    self.networkCheckString = LOCALIZATION(@"NetWorkCheck");
     
     VLDContextSheetItem *item1 = [[VLDContextSheetItem alloc] initWithTitle: self.localisatorBookhis
                                                                       image: [UIImage imageNamed: @"bookhistory"]

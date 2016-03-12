@@ -72,9 +72,9 @@
 - (id)initWithCancelButtonTitle:(NSString *)cancelTitle codeReader:(QRCodeReader *)codeReader
 {
   if ((self = [super init])) {
+      
     self.view.backgroundColor = [UIColor blackColor];
     self.codeReader           = codeReader;
-    
     if (cancelTitle == nil) {
       cancelTitle = LOCALIZATION(@"Cancel");
     }

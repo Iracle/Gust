@@ -75,9 +75,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 0) {
         
-        GuideViewController *guideVC = [[GuideViewController alloc] init];
-        [self presentViewController:guideVC animated:YES completion:nil];
-
+        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=247423477&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software"]];
         
     } else {
     }

@@ -67,6 +67,7 @@
 "QrRemender"                            = "Reminder";
 "QRcodeMessege"                         = "Your device does not support QR Code";
 "Sure"                                  = "OK";
+"NetWorkCheck"                          = "Please check your APN or WiFi connection";
 
 //OTMWebView
 "CopyImage"                             = "Copy Image";

@@ -66,6 +66,7 @@
 		93552ED61BEA00FE004B0380 /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93552ED51BEA00FE004B0380 /* CustomNavigationController.m */; };
 		9361C28D1C4398BF00A0E625 /* NavaSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9361C28C1C4398BF00A0E625 /* NavaSearchBar.m */; };
 		936CAD391C589A190057F3E0 /* UIButton+additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 936CAD381C589A190057F3E0 /* UIButton+additions.m */; };
+		937743FC1C94685900E9B712 /* GustFeedbackHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 937743FB1C94685900E9B712 /* GustFeedbackHelper.m */; };
 		937949961C520B780062F6A4 /* TodayExtentionWebSeletedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 937949941C520B780062F6A4 /* TodayExtentionWebSeletedViewController.m */; };
 		9379499A1C523B550062F6A4 /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 937949991C523B550062F6A4 /* ArrayDataSource.m */; };
 		9387EFA31C4F58D400870DEF /* AllAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9387EFA21C4F58D400870DEF /* AllAlertView.m */; };
@@ -259,6 +260,8 @@
 		9361C28C1C4398BF00A0E625 /* NavaSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavaSearchBar.m; sourceTree = "<group>"; };
 		936CAD371C589A190057F3E0 /* UIButton+additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+additions.h"; sourceTree = "<group>"; };
 		936CAD381C589A190057F3E0 /* UIButton+additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+additions.m"; sourceTree = "<group>"; };
+		937743FA1C94685900E9B712 /* GustFeedbackHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GustFeedbackHelper.h; sourceTree = "<group>"; };
+		937743FB1C94685900E9B712 /* GustFeedbackHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GustFeedbackHelper.m; sourceTree = "<group>"; };
 		937949931C520B780062F6A4 /* TodayExtentionWebSeletedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayExtentionWebSeletedViewController.h; sourceTree = "<group>"; };
 		937949941C520B780062F6A4 /* TodayExtentionWebSeletedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodayExtentionWebSeletedViewController.m; sourceTree = "<group>"; };
 		937949981C523B550062F6A4 /* ArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataSource.h; sourceTree = "<group>"; };
@@ -688,6 +691,8 @@
 				9344D41C1C871F6F00C78715 /* UIViewController+Visible.m */,
 				939706FF1C898107005284DD /* GustActivity.h */,
 				939707001C898107005284DD /* GustActivity.m */,
+				937743FA1C94685900E9B712 /* GustFeedbackHelper.h */,
+				937743FB1C94685900E9B712 /* GustFeedbackHelper.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1171,6 +1176,7 @@
 				18A19C6C1AE3EDDA002345AF /* TopSitesManageViewController.m in Sources */,
 				930B1DCB1C37DA5F003219D1 /* HorizontalCollectionViewLayout.m in Sources */,
 				182823211AD05D1900267C41 /* History.m in Sources */,
+				937743FC1C94685900E9B712 /* GustFeedbackHelper.m in Sources */,
 				182823251AD05D1900267C41 /* ZFModalTransitionAnimator.m in Sources */,
 				930D7B151C84939900B059F8 /* BKPasscodeDummyViewController.m in Sources */,
 				187436371AA6F90800297383 /* VLDContextSheetItemView.m in Sources */,
