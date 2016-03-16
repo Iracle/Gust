@@ -11,7 +11,6 @@
 #import "MainTouchBaseView.h"
 #import "VLDContextSheet.h"
 #import "VLDContextSheetItem.h"
-#import "MainSearchBar.h"
 #import "MoreViewController.h"
 #import "HistoryAndBookmarkViewController.h"
 #import "ZFModalTransitionAnimator.h"
@@ -40,11 +39,14 @@
 #import "UIViewController+Visible.h"
 #import "Localisator.h"
 
-@interface HomeViewController () <MainTouchViewDelegate, VLDContextSheetDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate,UIViewControllerPreviewingDelegate, QRCodeReaderDelegate>
+#import "BDVRCustomRecognitonViewController.h"
+#import "BDVoiceRecognitionClientHelper.h"
+
+
+@interface HomeViewController () <MainTouchViewDelegate, VLDContextSheetDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate,UIViewControllerPreviewingDelegate, QRCodeReaderDelegate, MainSearchBarDelegate>
 
 @property (nonatomic, assign) BOOL didSetupConstraints;
 @property (nonatomic, strong) MainTouchBaseView *touchView;
-@property (nonatomic, strong) MainSearchBar *searchBar;
 @property (strong, nonatomic) VLDContextSheet *contextSheet;
 @property (nonatomic, strong) ZFModalTransitionAnimator *animator;
 @property (strong, nonatomic) GustCollectionView *homeCollectionView;
@@ -134,6 +136,7 @@
         _searchBar.bounds = CGRectMake(0, 0, SCREEN_WIDTH - COLLECTION_CONTENT_OFFSET * 2, SearchBarHeight);
         _searchBar.center = CGPointMake(CGRectGetMidX(self.view.bounds), 102.5);
         _searchBar.delegate = self;
+        _searchBar.micDelegate = self;
     }
     return _searchBar;
 }
@@ -977,7 +980,34 @@
     self.contextSheet.delegate = self;
 }
 
+#pragma mark -- MainSearchBarDelegate
+- (void)searchBarTapepMic:(MainSearchBar *)searchBar {
+    [BDVoiceRecognitionClientHelper new];
+    // 创建语音识别界面，在其viewdidload方法中启动语音识别
+    BDVRCustomRecognitonViewController *tmpAudioViewController = [[BDVRCustomRecognitonViewController alloc] init];
+    
+    tmpAudioViewController.clientSampleViewController = self;
+        
+    [[UIApplication sharedApplication].keyWindow addSubview:tmpAudioViewController.view];
+    
+}
+
+- (void)logOutToManualResut:(NSString *)aResult {
+    
+     NSLog(@"识别结果：%@",aResult);
+    self.searchBar.text = aResult;
+}
+
+- (void)logOutToLogView:(NSString *)aLog {
+     NSLog(@"识别过程：%@",aLog);
+}
+
 @end
+
+
+
+
+
 
 
 

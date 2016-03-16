@@ -56,6 +56,29 @@
 		930D7B1B1C84939900B059F8 /* BKTouchIDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 930D7B121C84939900B059F8 /* BKTouchIDManager.m */; };
 		930D7B1C1C84939900B059F8 /* BKTouchIDSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 930D7B141C84939900B059F8 /* BKTouchIDSwitchView.m */; };
 		930D7B1F1C8493D900B059F8 /* BKCustomPasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 930D7B1E1C8493D900B059F8 /* BKCustomPasscodeViewController.m */; };
+		930F1D7A1C999F2A009D8656 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930F1D791C999F2A009D8656 /* SystemConfiguration.framework */; };
+		930F1D7C1C999F38009D8656 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930F1D7B1C999F38009D8656 /* GLKit.framework */; };
+		930F1D7E1C999F44009D8656 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930F1D7D1C999F44009D8656 /* CoreText.framework */; };
+		930F1D801C999F50009D8656 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930F1D7F1C999F50009D8656 /* CFNetwork.framework */; };
+		930F1D821C999F5E009D8656 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 930F1D811C999F5E009D8656 /* libz.1.2.5.tbd */; };
+		930F1D841C999F6B009D8656 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930F1D831C999F6B009D8656 /* Security.framework */; };
+		930F1D861C999F79009D8656 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930F1D851C999F79009D8656 /* CoreTelephony.framework */; };
+		930F1D891C99A08E009D8656 /* libBDVoiceRecognitionClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 930F1D881C99A08E009D8656 /* libBDVoiceRecognitionClient.a */; };
+		930F1DAB1C99A12C009D8656 /* CADebugMacros.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 930F1D8C1C99A12C009D8656 /* CADebugMacros.cpp */; };
+		930F1DAC1C99A12C009D8656 /* CAStreamBasicDescription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 930F1D8F1C99A12C009D8656 /* CAStreamBasicDescription.cpp */; };
+		930F1DAD1C99A12C009D8656 /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 930F1D911C99A12C009D8656 /* CAXException.cpp */; };
+		930F1DAE1C99A12C009D8656 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 930F1D951C99A12C009D8656 /* TTTAttributedLabel.m */; };
+		930F1DAF1C99A12C009D8656 /* defaultFullScreenTheme.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 930F1D981C99A12C009D8656 /* defaultFullScreenTheme.bundle */; };
+		930F1DB01C99A12C009D8656 /* defaultTheme.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 930F1D991C99A12C009D8656 /* defaultTheme.bundle */; };
+		930F1DB11C99A12C009D8656 /* record_cancel.caf in Resources */ = {isa = PBXBuildFile; fileRef = 930F1D9B1C99A12C009D8656 /* record_cancel.caf */; };
+		930F1DB21C99A12C009D8656 /* record_end.caf in Resources */ = {isa = PBXBuildFile; fileRef = 930F1D9C1C99A12C009D8656 /* record_end.caf */; };
+		930F1DB31C99A12C009D8656 /* record_fail.caf in Resources */ = {isa = PBXBuildFile; fileRef = 930F1D9D1C99A12C009D8656 /* record_fail.caf */; };
+		930F1DB41C99A12C009D8656 /* record_start.caf in Resources */ = {isa = PBXBuildFile; fileRef = 930F1D9E1C99A12C009D8656 /* record_start.caf */; };
+		930F1DB51C99A12C009D8656 /* record_success.caf in Resources */ = {isa = PBXBuildFile; fileRef = 930F1D9F1C99A12C009D8656 /* record_success.caf */; };
+		930F1DB81C99A6A6009D8656 /* BDVoiceRecognitionClientHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 930F1DB71C99A6A6009D8656 /* BDVoiceRecognitionClientHelper.m */; };
+		930F1DBC1C99A7B4009D8656 /* BDVRSConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 930F1DBB1C99A7B4009D8656 /* BDVRSConfig.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		930F1DBF1C99A85C009D8656 /* BDVRCustomRecognitonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 930F1DBE1C99A85C009D8656 /* BDVRCustomRecognitonViewController.m */; };
+		930F1DC31C99A95C009D8656 /* SCSiriWaveformView.m in Sources */ = {isa = PBXBuildFile; fileRef = 930F1DC21C99A95C009D8656 /* SCSiriWaveformView.m */; };
 		9326CE6C1C4D0AD400D39574 /* GustNavigationControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9326CE651C4D0AD400D39574 /* GustNavigationControllerDelegate.m */; };
 		9326CE6D1C4D0AD400D39574 /* GustRevertNavigationControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9326CE671C4D0AD400D39574 /* GustRevertNavigationControllerDelegate.m */; };
 		9326CE6E1C4D0AD400D39574 /* PopAnimationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9326CE691C4D0AD400D39574 /* PopAnimationTransition.m */; };
@@ -240,6 +263,48 @@
 		930D7B141C84939900B059F8 /* BKTouchIDSwitchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKTouchIDSwitchView.m; sourceTree = "<group>"; };
 		930D7B1D1C8493D900B059F8 /* BKCustomPasscodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKCustomPasscodeViewController.h; sourceTree = "<group>"; };
 		930D7B1E1C8493D900B059F8 /* BKCustomPasscodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKCustomPasscodeViewController.m; sourceTree = "<group>"; };
+		930F1D791C999F2A009D8656 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		930F1D7B1C999F38009D8656 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		930F1D7D1C999F44009D8656 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		930F1D7F1C999F50009D8656 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		930F1D811C999F5E009D8656 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		930F1D831C999F6B009D8656 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		930F1D851C999F79009D8656 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		930F1D881C99A08E009D8656 /* libBDVoiceRecognitionClient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBDVoiceRecognitionClient.a; sourceTree = "<group>"; };
+		930F1D8C1C99A12C009D8656 /* CADebugMacros.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CADebugMacros.cpp; sourceTree = "<group>"; };
+		930F1D8D1C99A12C009D8656 /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
+		930F1D8E1C99A12C009D8656 /* CAMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAMath.h; sourceTree = "<group>"; };
+		930F1D8F1C99A12C009D8656 /* CAStreamBasicDescription.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAStreamBasicDescription.cpp; sourceTree = "<group>"; };
+		930F1D901C99A12C009D8656 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
+		930F1D911C99A12C009D8656 /* CAXException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAXException.cpp; sourceTree = "<group>"; };
+		930F1D921C99A12C009D8656 /* CAXException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAXException.h; sourceTree = "<group>"; };
+		930F1D941C99A12C009D8656 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
+		930F1D951C99A12C009D8656 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
+		930F1D981C99A12C009D8656 /* defaultFullScreenTheme.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = defaultFullScreenTheme.bundle; sourceTree = "<group>"; };
+		930F1D991C99A12C009D8656 /* defaultTheme.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = defaultTheme.bundle; sourceTree = "<group>"; };
+		930F1D9B1C99A12C009D8656 /* record_cancel.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = record_cancel.caf; sourceTree = "<group>"; };
+		930F1D9C1C99A12C009D8656 /* record_end.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = record_end.caf; sourceTree = "<group>"; };
+		930F1D9D1C99A12C009D8656 /* record_fail.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = record_fail.caf; sourceTree = "<group>"; };
+		930F1D9E1C99A12C009D8656 /* record_start.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = record_start.caf; sourceTree = "<group>"; };
+		930F1D9F1C99A12C009D8656 /* record_success.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = record_success.caf; sourceTree = "<group>"; };
+		930F1DA11C99A12C009D8656 /* BDRecognizerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDRecognizerViewController.h; sourceTree = "<group>"; };
+		930F1DA21C99A12C009D8656 /* BDRecognizerViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDRecognizerViewDelegate.h; sourceTree = "<group>"; };
+		930F1DA31C99A12C009D8656 /* BDRecognizerViewParamsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDRecognizerViewParamsObject.h; sourceTree = "<group>"; };
+		930F1DA41C99A12C009D8656 /* BDTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDTheme.h; sourceTree = "<group>"; };
+		930F1DA51C99A12C009D8656 /* BDVoiceRecognitionClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDVoiceRecognitionClient.h; sourceTree = "<group>"; };
+		930F1DA61C99A12C009D8656 /* BDVRDataUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDVRDataUploader.h; sourceTree = "<group>"; };
+		930F1DA71C99A12C009D8656 /* BDVRFileRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDVRFileRecognizer.h; sourceTree = "<group>"; };
+		930F1DA81C99A12C009D8656 /* BDVRLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDVRLogger.h; sourceTree = "<group>"; };
+		930F1DA91C99A12C009D8656 /* BDVRRawDataRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDVRRawDataRecognizer.h; sourceTree = "<group>"; };
+		930F1DAA1C99A12C009D8656 /* BDVRUIPromptTextCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDVRUIPromptTextCustom.h; sourceTree = "<group>"; };
+		930F1DB61C99A6A6009D8656 /* BDVoiceRecognitionClientHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDVoiceRecognitionClientHelper.h; sourceTree = "<group>"; };
+		930F1DB71C99A6A6009D8656 /* BDVoiceRecognitionClientHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDVoiceRecognitionClientHelper.m; sourceTree = "<group>"; };
+		930F1DBA1C99A7B4009D8656 /* BDVRSConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDVRSConfig.h; sourceTree = "<group>"; };
+		930F1DBB1C99A7B4009D8656 /* BDVRSConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDVRSConfig.m; sourceTree = "<group>"; };
+		930F1DBD1C99A85C009D8656 /* BDVRCustomRecognitonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDVRCustomRecognitonViewController.h; sourceTree = "<group>"; };
+		930F1DBE1C99A85C009D8656 /* BDVRCustomRecognitonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDVRCustomRecognitonViewController.m; sourceTree = "<group>"; };
+		930F1DC11C99A95C009D8656 /* SCSiriWaveformView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSiriWaveformView.h; sourceTree = "<group>"; };
+		930F1DC21C99A95C009D8656 /* SCSiriWaveformView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSiriWaveformView.m; sourceTree = "<group>"; };
 		9326CE641C4D0AD400D39574 /* GustNavigationControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GustNavigationControllerDelegate.h; sourceTree = "<group>"; };
 		9326CE651C4D0AD400D39574 /* GustNavigationControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GustNavigationControllerDelegate.m; sourceTree = "<group>"; };
 		9326CE661C4D0AD400D39574 /* GustRevertNavigationControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GustRevertNavigationControllerDelegate.h; sourceTree = "<group>"; };
@@ -352,6 +417,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				930F1D861C999F79009D8656 /* CoreTelephony.framework in Frameworks */,
+				930F1D841C999F6B009D8656 /* Security.framework in Frameworks */,
+				930F1D821C999F5E009D8656 /* libz.1.2.5.tbd in Frameworks */,
+				930F1D801C999F50009D8656 /* CFNetwork.framework in Frameworks */,
+				930F1D7E1C999F44009D8656 /* CoreText.framework in Frameworks */,
+				930F1D7C1C999F38009D8656 /* GLKit.framework in Frameworks */,
+				930F1D7A1C999F2A009D8656 /* SystemConfiguration.framework in Frameworks */,
+				930F1D891C99A08E009D8656 /* libBDVoiceRecognitionClient.a in Frameworks */,
 				1837381F1AAF3656009D9465 /* CoreGraphics.framework in Frameworks */,
 				187436991AA7172200297383 /* Foundation.framework in Frameworks */,
 				187436981AA7171900297383 /* UIKit.framework in Frameworks */,
@@ -517,6 +590,8 @@
 		1874362D1AA6F90800297383 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				930F1DC01C99A95C009D8656 /* SCSiriWaveformView */,
+				930F1D871C99A054009D8656 /* BaiduVoiceLib */,
 				93CA56621C9151B7007B2B86 /* ZHAHKActionSheet */,
 				93CA56431C914A90007B2B86 /* ZHOTMWebView */,
 				930D7B031C84939900B059F8 /* BKPasscodeView */,
@@ -647,6 +722,13 @@
 		89F1BFF9DBF2D7901F72C03F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				930F1D851C999F79009D8656 /* CoreTelephony.framework */,
+				930F1D831C999F6B009D8656 /* Security.framework */,
+				930F1D811C999F5E009D8656 /* libz.1.2.5.tbd */,
+				930F1D7F1C999F50009D8656 /* CFNetwork.framework */,
+				930F1D7D1C999F44009D8656 /* CoreText.framework */,
+				930F1D7B1C999F38009D8656 /* GLKit.framework */,
+				930F1D791C999F2A009D8656 /* SystemConfiguration.framework */,
 				1874363C1AA6F9A700297383 /* Foundation.framework */,
 				1874363A1AA6F99D00297383 /* UIKit.framework */,
 				187436381AA6F99000297383 /* CoreGraphics.framework */,
@@ -682,6 +764,115 @@
 			path = BKPasscodeView;
 			sourceTree = "<group>";
 		};
+		930F1D871C99A054009D8656 /* BaiduVoiceLib */ = {
+			isa = PBXGroup;
+			children = (
+				930F1DB91C99A79F009D8656 /* BaiduVoiceHelp */,
+				930F1D8A1C99A12C009D8656 /* BaiduVoice_Third_Party */,
+				930F1D961C99A12C009D8656 /* BDVoiceRecognitionClientResources */,
+				930F1DA01C99A12C009D8656 /* libBDVoiceRecognitionClient */,
+				930F1D881C99A08E009D8656 /* libBDVoiceRecognitionClient.a */,
+			);
+			path = BaiduVoiceLib;
+			sourceTree = "<group>";
+		};
+		930F1D8A1C99A12C009D8656 /* BaiduVoice_Third_Party */ = {
+			isa = PBXGroup;
+			children = (
+				930F1D8B1C99A12C009D8656 /* CoreAudioUtility */,
+				930F1D931C99A12C009D8656 /* TTTAttributedLabel */,
+			);
+			path = BaiduVoice_Third_Party;
+			sourceTree = "<group>";
+		};
+		930F1D8B1C99A12C009D8656 /* CoreAudioUtility */ = {
+			isa = PBXGroup;
+			children = (
+				930F1D8C1C99A12C009D8656 /* CADebugMacros.cpp */,
+				930F1D8D1C99A12C009D8656 /* CADebugMacros.h */,
+				930F1D8E1C99A12C009D8656 /* CAMath.h */,
+				930F1D8F1C99A12C009D8656 /* CAStreamBasicDescription.cpp */,
+				930F1D901C99A12C009D8656 /* CAStreamBasicDescription.h */,
+				930F1D911C99A12C009D8656 /* CAXException.cpp */,
+				930F1D921C99A12C009D8656 /* CAXException.h */,
+			);
+			path = CoreAudioUtility;
+			sourceTree = "<group>";
+		};
+		930F1D931C99A12C009D8656 /* TTTAttributedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				930F1D941C99A12C009D8656 /* TTTAttributedLabel.h */,
+				930F1D951C99A12C009D8656 /* TTTAttributedLabel.m */,
+			);
+			path = TTTAttributedLabel;
+			sourceTree = "<group>";
+		};
+		930F1D961C99A12C009D8656 /* BDVoiceRecognitionClientResources */ = {
+			isa = PBXGroup;
+			children = (
+				930F1D971C99A12C009D8656 /* Theme */,
+				930F1D9A1C99A12C009D8656 /* Tone */,
+			);
+			path = BDVoiceRecognitionClientResources;
+			sourceTree = "<group>";
+		};
+		930F1D971C99A12C009D8656 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				930F1D981C99A12C009D8656 /* defaultFullScreenTheme.bundle */,
+				930F1D991C99A12C009D8656 /* defaultTheme.bundle */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		930F1D9A1C99A12C009D8656 /* Tone */ = {
+			isa = PBXGroup;
+			children = (
+				930F1D9B1C99A12C009D8656 /* record_cancel.caf */,
+				930F1D9C1C99A12C009D8656 /* record_end.caf */,
+				930F1D9D1C99A12C009D8656 /* record_fail.caf */,
+				930F1D9E1C99A12C009D8656 /* record_start.caf */,
+				930F1D9F1C99A12C009D8656 /* record_success.caf */,
+			);
+			path = Tone;
+			sourceTree = "<group>";
+		};
+		930F1DA01C99A12C009D8656 /* libBDVoiceRecognitionClient */ = {
+			isa = PBXGroup;
+			children = (
+				930F1DA11C99A12C009D8656 /* BDRecognizerViewController.h */,
+				930F1DA21C99A12C009D8656 /* BDRecognizerViewDelegate.h */,
+				930F1DA31C99A12C009D8656 /* BDRecognizerViewParamsObject.h */,
+				930F1DA41C99A12C009D8656 /* BDTheme.h */,
+				930F1DA51C99A12C009D8656 /* BDVoiceRecognitionClient.h */,
+				930F1DA61C99A12C009D8656 /* BDVRDataUploader.h */,
+				930F1DA71C99A12C009D8656 /* BDVRFileRecognizer.h */,
+				930F1DA81C99A12C009D8656 /* BDVRLogger.h */,
+				930F1DA91C99A12C009D8656 /* BDVRRawDataRecognizer.h */,
+				930F1DAA1C99A12C009D8656 /* BDVRUIPromptTextCustom.h */,
+			);
+			path = libBDVoiceRecognitionClient;
+			sourceTree = "<group>";
+		};
+		930F1DB91C99A79F009D8656 /* BaiduVoiceHelp */ = {
+			isa = PBXGroup;
+			children = (
+				930F1DBA1C99A7B4009D8656 /* BDVRSConfig.h */,
+				930F1DBB1C99A7B4009D8656 /* BDVRSConfig.m */,
+			);
+			path = BaiduVoiceHelp;
+			sourceTree = "<group>";
+		};
+		930F1DC01C99A95C009D8656 /* SCSiriWaveformView */ = {
+			isa = PBXGroup;
+			children = (
+				930F1DC11C99A95C009D8656 /* SCSiriWaveformView.h */,
+				930F1DC21C99A95C009D8656 /* SCSiriWaveformView.m */,
+			);
+			path = SCSiriWaveformView;
+			sourceTree = "<group>";
+		};
 		9344D4171C86C2B100C78715 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -693,6 +884,8 @@
 				939707001C898107005284DD /* GustActivity.m */,
 				937743FA1C94685900E9B712 /* GustFeedbackHelper.h */,
 				937743FB1C94685900E9B712 /* GustFeedbackHelper.m */,
+				930F1DB61C99A6A6009D8656 /* BDVoiceRecognitionClientHelper.h */,
+				930F1DB71C99A6A6009D8656 /* BDVoiceRecognitionClientHelper.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -732,6 +925,8 @@
 				93B74D631C3BAC3F0057BDBB /* GustAssistScrollView.m */,
 				93A190AB1C8FFD8900D6777E /* GustRefreshHeader.h */,
 				93A190AC1C8FFD8900D6777E /* GustRefreshHeader.m */,
+				930F1DBD1C99A85C009D8656 /* BDVRCustomRecognitonViewController.h */,
+				930F1DBE1C99A85C009D8656 /* BDVRCustomRecognitonViewController.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -991,14 +1186,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				930F1DB51C99A12C009D8656 /* record_success.caf in Resources */,
+				930F1DAF1C99A12C009D8656 /* defaultFullScreenTheme.bundle in Resources */,
+				930F1DB11C99A12C009D8656 /* record_cancel.caf in Resources */,
 				93CA565D1C914A90007B2B86 /* OTMWebView+ContextMenu.js in Resources */,
 				93CA565E1C914A90007B2B86 /* OTMWebView.js in Resources */,
+				930F1DB41C99A12C009D8656 /* record_start.caf in Resources */,
+				930F1DB01C99A12C009D8656 /* defaultTheme.bundle in Resources */,
 				93CA56721C9151B7007B2B86 /* LICENSE in Resources */,
 				939438C71C8039F3003C26CB /* Localizable.strings in Resources */,
+				930F1DB31C99A12C009D8656 /* record_fail.caf in Resources */,
 				93CE19AA1BEC9B9100DECA3E /* PrivacyPassword.xib in Resources */,
 				18EEDF261AA5FD6000033447 /* Images.xcassets in Resources */,
 				18A9C7541AFA679300436555 /* Launch Screen.xib in Resources */,
 				93CA56581C914A90007B2B86 /* LICENSE in Resources */,
+				930F1DB21C99A12C009D8656 /* record_end.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1133,6 +1335,7 @@
 				9361C28D1C4398BF00A0E625 /* NavaSearchBar.m in Sources */,
 				938BC7A21C44F25E005976F9 /* UINavigationBar+Addition.m in Sources */,
 				1828231E1AD05D1900267C41 /* Bookmark.m in Sources */,
+				930F1DC31C99A95C009D8656 /* SCSiriWaveformView.m in Sources */,
 				184AA79D1AE68DCB00E37DC5 /* InputRecord.m in Sources */,
 				9344D41D1C871F6F00C78715 /* UIViewController+Visible.m in Sources */,
 				1837382F1AAF3780009D9465 /* HistoryAndBookmarkViewController.m in Sources */,
@@ -1142,6 +1345,7 @@
 				93CE199B1BEC9B2F00DECA3E /* MyScrollView.m in Sources */,
 				93CA566F1C9151B7007B2B86 /* AHKActionSheetViewController.m in Sources */,
 				93CA56711C9151B7007B2B86 /* UIWindow+AHKAdditions.m in Sources */,
+				930F1DBC1C99A7B4009D8656 /* BDVRSConfig.m in Sources */,
 				18CC9D641AAA025400165601 /* HomeCollectionViewCell.m in Sources */,
 				1898DDE61AC4361600C89513 /* QRCodeReaderView.m in Sources */,
 				9379499A1C523B550062F6A4 /* ArrayDataSource.m in Sources */,
@@ -1149,12 +1353,14 @@
 				187436351AA6F90800297383 /* VLDContextSheet.m in Sources */,
 				930D7B171C84939900B059F8 /* BKPasscodeInputView.m in Sources */,
 				18CF62591AD7A946001177D6 /* TopSites.m in Sources */,
+				930F1DAD1C99A12C009D8656 /* CAXException.cpp in Sources */,
 				93CA565C1C914A90007B2B86 /* OTMWebViewURLProtocol.m in Sources */,
 				187D14E51AE8E19A001A9419 /* DefaultSearchViewController.m in Sources */,
 				93CE19941BEC81FB00DECA3E /* CHKeychain.m in Sources */,
 				93CA56591C914A90007B2B86 /* OTMWebView.m in Sources */,
 				93CE19A21BEC9B3F00DECA3E /* MutiTabCollectionViewCell.m in Sources */,
 				930D7B181C84939900B059F8 /* BKPasscodeLockScreenManager.m in Sources */,
+				930F1DAE1C99A12C009D8656 /* TTTAttributedLabel.m in Sources */,
 				9326CE6F1C4D0AD400D39574 /* RevertPopAnimationTransition.m in Sources */,
 				93CE19A11BEC9B3F00DECA3E /* MultiTabView.m in Sources */,
 				93CA56701C9151B7007B2B86 /* UIImage+AHKAdditions.m in Sources */,
@@ -1197,10 +1403,14 @@
 				183738341AAF4A5E009D9465 /* HisAndBooModel.m in Sources */,
 				93CA56611C914A90007B2B86 /* README.md in Sources */,
 				182823241AD05D1900267C41 /* MainSearchBar.m in Sources */,
+				930F1DAB1C99A12C009D8656 /* CADebugMacros.cpp in Sources */,
+				930F1DBF1C99A85C009D8656 /* BDVRCustomRecognitonViewController.m in Sources */,
 				93CA56601C914A90007B2B86 /* OTMWebViewProgressBarLayer.m in Sources */,
 				930D7B1A1C84939900B059F8 /* BKShiftingView.m in Sources */,
+				930F1DB81C99A6A6009D8656 /* BDVoiceRecognitionClientHelper.m in Sources */,
 				18E6C36B1AA8A27600B666A2 /* GustScrollingNavBarViewController.m in Sources */,
 				18BFEB211AF7C16600D2796E /* GuideViewController.m in Sources */,
+				930F1DAC1C99A12C009D8656 /* CAStreamBasicDescription.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1333,6 +1543,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-all_load";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1370,6 +1581,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-all_load";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1389,6 +1601,19 @@
 				INFOPLIST_FILE = Gust/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Gust/External/BaiduVoiceLib",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFViewShaker\"",
+					"-l\"OpenShare\"",
+					"-l\"c++\"",
+					"-l\"pop\"",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Iraclemei.Gust;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1409,6 +1634,19 @@
 				INFOPLIST_FILE = Gust/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Gust/External/BaiduVoiceLib",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFViewShaker\"",
+					"-l\"OpenShare\"",
+					"-l\"c++\"",
+					"-l\"pop\"",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Iraclemei.Gust;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

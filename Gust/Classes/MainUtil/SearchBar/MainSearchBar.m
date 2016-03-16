@@ -78,7 +78,10 @@
 }
 
 - (void)tapMic:(UIGestureRecognizer *)ges {
-     NSLog(@"hhh");
+    if (_micDelegate && [_micDelegate respondsToSelector:@selector(searchBarTapepMic:)]) {
+        [_micDelegate searchBarTapepMic:self];
+    }
+   
 }
 
 @end
