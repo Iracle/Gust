@@ -7,15 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HomeViewController.h"
 #import "SCSiriWaveformView.h"
+
+@class BDVRCustomRecognitonViewController;
+@protocol BDVRCustomRecognitonViewControllerDelegate <NSObject>
+
+- (void)recongnitionController:(BDVRCustomRecognitonViewController *)controller logOutToManualResut:(NSString *)aResult;
+- (void)recongnitionController:(BDVRCustomRecognitonViewController *)controller logOutToLogView:(NSString *)aLog;
+
+@end
 
 @interface BDVRCustomRecognitonViewController : UIViewController
 
-@property (nonatomic, strong) HomeViewController *clientSampleViewController;
 @property (nonatomic, strong) NSTimer *voiceLevelMeterTimer;
 @property (nonatomic, strong) SCSiriWaveformView *waveformView;
 @property (nonatomic) CGFloat voiceNumber;
 
+@property (nonatomic, assign) id<BDVRCustomRecognitonViewControllerDelegate> delegate;
 
 @end

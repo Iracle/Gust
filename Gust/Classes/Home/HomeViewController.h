@@ -15,8 +15,6 @@
 @property (nonatomic) CGRect cellPopAnimationViewRect;
 @property (nonatomic, strong) MainSearchBar *searchBar;
 
-
-//get the baidu voice rerults
-- (void)logOutToManualResut:(NSString *)aResult;
-- (void)logOutToLogView:(NSString *)aLog;
+//baidu voice debug
+@property (strong, nonatomic)  UITextView *logCatView;
 @end

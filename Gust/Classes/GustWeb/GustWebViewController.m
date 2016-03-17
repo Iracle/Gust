@@ -36,7 +36,10 @@
 #import "GustActivity.h"
 #import "Localisator.h"
 
-@interface GustWebViewController ()< OTMWebViewDelegate, MainTouchViewDelegate, UIScrollViewDelegate, VLDContextSheetDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
+#import "BDVRCustomRecognitonViewController.h"
+#import "BDVoiceRecognitionClientHelper.h"
+
+@interface GustWebViewController ()< OTMWebViewDelegate, MainTouchViewDelegate, UIScrollViewDelegate, VLDContextSheetDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, MainSearchBarDelegate, BDVRCustomRecognitonViewControllerDelegate>
 
 @property (strong, nonatomic) OTMWebView *webView;
 @property (strong, nonatomic) OTMWebViewProgressBar *progressBar;
@@ -119,6 +122,7 @@
     if (!_searchBar) {
         _searchBar = self.navaSearchBar.searchBar;
         _searchBar.delegate = self;
+        _searchBar.micDelegate = self;
     }
     return _searchBar;
 }
@@ -222,18 +226,24 @@
     if (textField.text.length == 0) {
         return NO;
     }
-    if (textField.text.length > 0) {
+    [self openNewWebWithSearchText:textField.text];
+
+    return YES;
+}
+
+- (void)openNewWebWithSearchText:(NSString *) searchText {
+    if (searchText.length > 0) {
         
         NSMutableDictionary *inputRecordDic= [NSMutableDictionary dictionary];
-        [inputRecordDic setObject:textField.text forKey:InputRecordString];
+        [inputRecordDic setObject:searchText forKey:InputRecordString];
         //if the InputRecord is exist
-        NSArray *resultsArray = [CoreDataManager searchObjectWithEntityName:[InputRecord entityName] predicateString:[NSString stringWithFormat:@"inputString = '%@'",textField.text]];
+        NSArray *resultsArray = [CoreDataManager searchObjectWithEntityName:[InputRecord entityName] predicateString:[NSString stringWithFormat:@"inputString = '%@'",searchText]];
         if (resultsArray.count < 1) {
             [CoreDataManager insertObjectWithParameter:inputRecordDic entityName:[InputRecord entityName]];}
         
     }
-        
-    NSMutableString *returnString = [MainSearchBarTextManage manageTextFieldText:textField.text];
+    
+    NSMutableString *returnString = [MainSearchBarTextManage manageTextFieldText:searchText];
     if ([returnString hasPrefix:@"s"]) {
         _currentSearchString = returnString;
         [_currentSearchString deleteCharactersInRange:NSMakeRange(0, 1)];
@@ -248,7 +258,6 @@
         [self loadWebWithUrlString:returnString];
     }
     
-    return YES;
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
@@ -706,6 +715,49 @@
 
 }
 
+#pragma mark -- MainSearchBarDelegate
+
+- (void)searchBarTapepMic:(MainSearchBar *)searchBar {
+    [self voiceSearch];
+}
+
+- (void)voiceSearch {
+    [self.view endEditing:YES];
+    [BDVoiceRecognitionClientHelper new];
+    // 创建语音识别界面，在其viewdidload方法中启动语音识别
+    BDVRCustomRecognitonViewController *tmpAudioViewController = [[BDVRCustomRecognitonViewController alloc] init];
+    
+    tmpAudioViewController.delegate = self;
+    
+    [[UIApplication sharedApplication].keyWindow addSubview:tmpAudioViewController.view];
+    
+}
+
+#pragma mark -- BDVRCustomRecognitonViewControllerDelegate
+
+- (void)recongnitionController:(BDVRCustomRecognitonViewController *)controller logOutToManualResut:(NSString *)aResult {
+    NSString *tmpString = self.searchBar.text;
+    
+    if (tmpString == nil || [tmpString isEqualToString:@""])
+    {
+        self.searchBar.text = aResult;
+    }
+    else
+    {
+        self.searchBar.text = [self.searchBar.text stringByAppendingString:aResult];
+    }
+    
+    [self openNewWebWithSearchText:self.searchBar.text];
+}
 
 
 @end
+
+
+
+
+
+
+
+
+

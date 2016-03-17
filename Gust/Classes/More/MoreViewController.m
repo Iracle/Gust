@@ -43,8 +43,8 @@
     self = [super init];
     if (self) {
         
-        _detailPageClassNames = @[@"TopSitesManageViewController", @"DefaultSearchViewController", @"SetPrivacyPasswordViewController", @"TodayExtentionWebSeletedViewController",@"ChooseLanguageViewController", @"ClearWebCacheController", @"FunctionIntroduceController", @"FeedbackController",@"AboutGustViewController"];
-        _settingIcons = @[@"settingTopsite", @"settingSearch", @"settingPrivacy", @"settingPush",@"settingsLanguage", @"settingClear", @"settingGuide", @"settingFeedback", @"settingAbout"];
+        _detailPageClassNames = @[@"TopSitesManageViewController", @"DefaultSearchViewController", @"SetPrivacyPasswordViewController", @"TodayExtentionWebSeletedViewController",@"ChooseLanguageViewController", @"BaiduVoiceSettingViewController",@"ClearWebCacheController", @"FunctionIntroduceController", @"FeedbackController",@"AboutGustViewController"];
+        _settingIcons = @[@"settingTopsite", @"settingSearch", @"settingPrivacy", @"settingPush",@"settingsLanguage", @"settingVoice", @"settingClear", @"settingGuide", @"settingFeedback", @"settingAbout"];
 
     }
     return self;
@@ -105,7 +105,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 6;
+        return 7;
         
     } else {
         return 3;
@@ -126,9 +126,9 @@
          NSLog(@"ll:%@",_tableListDataArray[indexPath.row]);
         
     } else {
-        cell.leftImage.image = IMAGENAMED(_settingIcons[indexPath.row + 6]);
-        [cell configCell:_tableListDataArray[indexPath.row + 6]];
-         NSLog(@"jj:%@",_tableListDataArray[indexPath.row + 6]);
+        cell.leftImage.image = IMAGENAMED(_settingIcons[indexPath.row + 7]);
+        [cell configCell:_tableListDataArray[indexPath.row + 7]];
+         NSLog(@"jj:%@",_tableListDataArray[indexPath.row + 7]);
     }
     
     
@@ -142,7 +142,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     UIViewController *destinationViewController;
     if (indexPath.section == 0) {
-        if (indexPath.row == 5) {
+        if (indexPath.row == 6) {
             [self clearWebCookieAndCache];
             return;
         }
@@ -154,7 +154,7 @@
             [[[GustFeedbackHelper alloc] init] sendEmailAction:self];
             return;
         }
-        destinationViewController = [[NSClassFromString(_detailPageClassNames[indexPath.row + 6]) alloc] init];
+        destinationViewController = [[NSClassFromString(_detailPageClassNames[indexPath.row + 7]) alloc] init];
 
     }
     [self.navigationController pushViewController:destinationViewController animated:YES];
@@ -189,7 +189,7 @@
 - (void)configureViewFromLocalisation {
     
     self.title = LOCALIZATION(@"Settings");
-    _tableListDataArray = @[LOCALIZATION(@"TopSites"), LOCALIZATION(@"SearchEngine"), LOCALIZATION(@"PasscodeLock"), LOCALIZATION(@"TodayExtention"), LOCALIZATION(@"Language"), LOCALIZATION(@"ClearDara"), LOCALIZATION(@"UserGuide"), LOCALIZATION(@"SendFeedback"), LOCALIZATION(@"AboutApp")];
+    _tableListDataArray = @[LOCALIZATION(@"TopSites"), LOCALIZATION(@"SearchEngine"), LOCALIZATION(@"PasscodeLock"), LOCALIZATION(@"TodayExtention"), LOCALIZATION(@"Language"),LOCALIZATION(@"VoiceSetting"), LOCALIZATION(@"ClearDara"),LOCALIZATION(@"UserGuide"), LOCALIZATION(@"SendFeedback"), LOCALIZATION(@"AboutApp")];
     [self.tableView reloadData];
 
 }

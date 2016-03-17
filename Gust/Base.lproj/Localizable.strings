@@ -5,81 +5,6 @@
   Created by Iracle Zhang on 2/26/16.
 
 */
-//Common
-"PullRelease"                           = "下拉返回上一页";
-"LooseRelease"                          = "松开返回上一页";
-
-//MoreViewController
-"Settings"                             = "设置";
-"TopSites"                             = "首页书签管理";
-"SearchEngine"                         = "默认搜索引擎";
-"PasscodeLock"                         = "密码锁定";
-"TodayExtention"                       = "通知中心快捷启动";
-"Language"                             = "语言";
-"ClearDara"                            = "清除数据";
-"UserGuide"                            = "用户使用指南";
-"SendFeedback"                         = "建议与反馈";
-"AboutApp"                             = "关于";
-"VoiceSetting"                         = "语音设置";
-
-//MoreViewController pushs
-"TopSiteDelete"                        = "删除";
-"SearchEngineBaidu"                    = "百度";
-"SearchEngineGoogle"                   = "谷歌";
-"ChangePassCode"                       = "重置密码";
-"TouchIDPasscode"                      = "密码、指纹解锁";
-"Bookmarks"                            = "书签";
-"History"                              = "历史记录";
-"CustomLink"                           = "自定义";
-
-//TodayExtentionWebSeletedViewController
-"LinkName"                             = "网站名称";
-"WebLink"                              = "网址";
-"SwipeDown"                            = "下滑取消输入";
-"TotalLink"                            = "快捷链接不能超过 4 个";
-"WebInputError"                        = "输入错误";
-"LinkExist"                            = "快捷链接已经存在";
-"DataCLeared"                          = "数据清楚成功";
-"RatingApp"                            = "应用评分";
-
-//ChooseLanguageViewController
-"DeviceLanguage"                        = "设备语言";
-"English_en"                            = "English";
-"zh-Hans"                               = "中文";
-"LocalisatorViewTitle"                  = "选择你的语言";
-
-//BaiduVoiceController
-"Speaktone"                             = "说话提示音";
-"RecognitionLanguage"                   = "识别语言";
-
-
-//HistoryAndBookmarkViewController
-"TopSiteExist"                          = "首页书签已存在";
-"TopSiteSucess"                         = "添加成功";
-
-//GustWebViewController
-"ShareWeb"                              = "分享";
-"BookmarksExist"                        = "书签已经存在";
-"ClearInput"                            = "清空输入历史";
-
-//HomeViewController
-"QrCode"                                = "二维码";
-"QrRemender"                            = "温馨提示";
-"QRcodeMessege"                         = "你的设备不支持扫描二维码";
-"Sure"                                  = "好";
-"NetWorkCheck"                          = "请接入移动网络或 WiFi";
-
-
-//OTMWebView
-"CopyImage"                             = "复制图片";
-"BackOpenLink"                          = "后台打开链接";
-"CopyImageLink"                         = "复制图片链接";
-"CopyLink"                              = "复制链接";
-"SaveImage"                             = "保存图片";
-"OpenImage"                             = "打开图片";
-"Cancel"                                = "取消";
-"Done"                                  = "完毕";
-"Back"                                  = "返回";
 
 /*Baidu Voice*/
 // 语音搜索
@@ -110,7 +35,7 @@
 "StringVoiceRecognitonNoShort" = "用户说话声太短，比如咳嗽";
 "StringVoiceRecognitonDefaultError" = "不在错误码的范围内";
 "StringVoiceRecognitonTooLong" = "用户录音超时";
-"StringVoiceRecognitonServerError" = "服务器返回错误";
+"StringVoiceRecognitonServerError" = "服务器返回错误！！";
 
 "StringAudioSearchNoAPIKEY" = "没有设置API KEY";
 "StringVoiceRecognitonNoDelegateMethods" = "没有实现语音识别代理方法";
@@ -136,7 +61,7 @@
 
 // 除自动测试外LogView中的显示内容
 "StringLogStatusNone" = "空闲";
-"StringLogStatusPlayStartTone" = "播放开始提示音";
+"StringLogStatusPlayStartTone" = "play start tone";
 "StringLogStatusPlayStartToneFinish" = "播放开始提示音完成";
 "StringLogStatusStartWorkIng" = "识别工作开始，开始采集及处理数据";
 "StringLogStatusStart" = "检测到用户开始说话";
@@ -152,6 +77,11 @@
 "StringLogStatusNetWorkStatusCancel" = "用户取消";
 "StringLogStatusNetWorkStatusDefaultErorr" = "出现异常";
 "StringLogVoiceLevel" = "获取的当前音量级别";
+
+
+
+
+
 
 
 

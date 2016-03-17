@@ -43,7 +43,7 @@
 #import "BDVoiceRecognitionClientHelper.h"
 
 
-@interface HomeViewController () <MainTouchViewDelegate, VLDContextSheetDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate,UIViewControllerPreviewingDelegate, QRCodeReaderDelegate, MainSearchBarDelegate>
+@interface HomeViewController () <MainTouchViewDelegate, VLDContextSheetDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate,UIViewControllerPreviewingDelegate, QRCodeReaderDelegate, MainSearchBarDelegate, BDVRCustomRecognitonViewControllerDelegate>
 
 @property (nonatomic, assign) BOOL didSetupConstraints;
 @property (nonatomic, strong) MainTouchBaseView *touchView;
@@ -199,6 +199,16 @@
     }
     return _assistScrollView;
 }
+
+- (UITextView *)logCatView {
+    if (!_logCatView) {
+        _logCatView = [[UITextView alloc] initWithFrame:CGRectMake(0, 150, SCREEN_WIDTH, 200)];
+        _logCatView.backgroundColor = [UIColor colorWithRed:0.0 green:1.0 blue:1.0 alpha:0.730072846283784];
+        _logCatView.editable = NO;
+        
+    }
+    return _logCatView;
+}
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self check3DTouch];
@@ -251,6 +261,12 @@
     [self.view addSubview:self.searchBar];
     [self.view addSubview:self.assistScrollView];
     [self.view addSubview:self.touchView];
+    //baidu voice debug
+#ifndef __OPTIMIZE__
+   // [[UIApplication sharedApplication].keyWindow addSubview:self.logCatView];
+#else
+    
+#endif
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTopSitesDate:) name:NotificationUpdateTopSites object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchBarTextChanged:) name:@"UITextFieldTextDidChangeNotification" object:_searchBar];
@@ -528,7 +544,7 @@
 }
 - (void)DoubleTapMainTouchView:(MainTouchView *)touchView withGesture:(UIGestureRecognizer *)gestureRecognizer
 {
-    
+     [self voiceSearch];
 }
 - (void)LongPressMainTouchView:(MainTouchView *)touchView withGesture:(UIGestureRecognizer *)gestureRecognizer
 {
@@ -568,19 +584,26 @@
     if (textField.text.length == 0) {
         return NO;
     }
+    
+    [self openNewWebWithSearchText:textField.text];
+    return YES;
+}
+
+- (void)openNewWebWithSearchText:(NSString *) searchText {
+    
     //transiotn animation position
     self.cellPopAnimationViewRect = self.view.frame;
     //if text length > 0,inputrecord should be save
-    if (textField.text.length > 0) {
+    if (searchText.length > 0) {
         NSMutableDictionary *inputRecordDic= [NSMutableDictionary dictionary];
-        [inputRecordDic setObject:textField.text forKey:InputRecordString];
+        [inputRecordDic setObject:searchText forKey:InputRecordString];
         //if the InputRecord is exist
-        NSArray *resultsArray = [CoreDataManager searchObjectWithEntityName:[InputRecord entityName] predicateString:[NSString stringWithFormat:@"inputString = '%@'",textField.text]];
+        NSArray *resultsArray = [CoreDataManager searchObjectWithEntityName:[InputRecord entityName] predicateString:[NSString stringWithFormat:@"inputString = '%@'",searchText]];
         if (resultsArray.count < 1) {
             [CoreDataManager insertObjectWithParameter:inputRecordDic entityName:[InputRecord entityName]];
-            }
+        }
     }
-    NSMutableString *returnString = [MainSearchBarTextManage manageTextFieldText:textField.text];
+    NSMutableString *returnString = [MainSearchBarTextManage manageTextFieldText:searchText];
     if ([returnString hasPrefix:@"s"]) {
         _willSearchString = returnString;
         if ([_currentSearchEnginString isEqualToString:SearchEnginBaidu]) {
@@ -588,11 +611,10 @@
         } else {
             [self loadWebWithUrlString:GoogleWebsite];
         }
-
+        
     } else {
         [self loadWebWithUrlString:returnString];
     }
-    return YES;
 }
 
 - (void)loadWebWithUrlString:(NSString *)urlString
@@ -982,24 +1004,56 @@
 
 #pragma mark -- MainSearchBarDelegate
 - (void)searchBarTapepMic:(MainSearchBar *)searchBar {
+    
+    [self voiceSearch];
+}
+
+- (void)voiceSearch {
+    [self clean];
+    [self.view endEditing:YES];
     [BDVoiceRecognitionClientHelper new];
     // 创建语音识别界面，在其viewdidload方法中启动语音识别
     BDVRCustomRecognitonViewController *tmpAudioViewController = [[BDVRCustomRecognitonViewController alloc] init];
     
-    tmpAudioViewController.clientSampleViewController = self;
-        
+    tmpAudioViewController.delegate = self;
+    
     [[UIApplication sharedApplication].keyWindow addSubview:tmpAudioViewController.view];
     
 }
 
-- (void)logOutToManualResut:(NSString *)aResult {
-    
-     NSLog(@"识别结果：%@",aResult);
-    self.searchBar.text = aResult;
+- (void)clean
+{
+    _logCatView.text = nil; //  清除logview，避免打印过慢，影响UI
 }
 
-- (void)logOutToLogView:(NSString *)aLog {
-     NSLog(@"识别过程：%@",aLog);
+#pragma mark -- BDVRCustomRecognitonViewControllerDelegate
+
+- (void)recongnitionController:(BDVRCustomRecognitonViewController *)controller logOutToManualResut:(NSString *)aResult {
+    NSString *tmpString = self.searchBar.text;
+    
+    if (tmpString == nil || [tmpString isEqualToString:@""])
+    {
+        self.searchBar.text = aResult;
+    }
+    else
+    {
+        self.searchBar.text = [self.searchBar.text stringByAppendingString:aResult];
+    }
+    
+    [self openNewWebWithSearchText:self.searchBar.text];
+}
+
+- (void)recongnitionController:(BDVRCustomRecognitonViewController *)controller logOutToLogView:(NSString *)aLog {
+    NSString *tmpString = _logCatView.text;
+    
+    if (tmpString == nil || [tmpString isEqualToString:@""])
+    {
+        _logCatView.text = aLog;
+    }
+    else
+    {
+        _logCatView.text = [_logCatView.text stringByAppendingFormat:@"\r\n%@", aLog];
+    }
 }
 
 @end

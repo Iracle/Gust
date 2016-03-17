@@ -68,22 +68,17 @@
 		930F1DAC1C99A12C009D8656 /* CAStreamBasicDescription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 930F1D8F1C99A12C009D8656 /* CAStreamBasicDescription.cpp */; };
 		930F1DAD1C99A12C009D8656 /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 930F1D911C99A12C009D8656 /* CAXException.cpp */; };
 		930F1DAE1C99A12C009D8656 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 930F1D951C99A12C009D8656 /* TTTAttributedLabel.m */; };
-		930F1DAF1C99A12C009D8656 /* defaultFullScreenTheme.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 930F1D981C99A12C009D8656 /* defaultFullScreenTheme.bundle */; };
-		930F1DB01C99A12C009D8656 /* defaultTheme.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 930F1D991C99A12C009D8656 /* defaultTheme.bundle */; };
-		930F1DB11C99A12C009D8656 /* record_cancel.caf in Resources */ = {isa = PBXBuildFile; fileRef = 930F1D9B1C99A12C009D8656 /* record_cancel.caf */; };
-		930F1DB21C99A12C009D8656 /* record_end.caf in Resources */ = {isa = PBXBuildFile; fileRef = 930F1D9C1C99A12C009D8656 /* record_end.caf */; };
-		930F1DB31C99A12C009D8656 /* record_fail.caf in Resources */ = {isa = PBXBuildFile; fileRef = 930F1D9D1C99A12C009D8656 /* record_fail.caf */; };
-		930F1DB41C99A12C009D8656 /* record_start.caf in Resources */ = {isa = PBXBuildFile; fileRef = 930F1D9E1C99A12C009D8656 /* record_start.caf */; };
-		930F1DB51C99A12C009D8656 /* record_success.caf in Resources */ = {isa = PBXBuildFile; fileRef = 930F1D9F1C99A12C009D8656 /* record_success.caf */; };
 		930F1DB81C99A6A6009D8656 /* BDVoiceRecognitionClientHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 930F1DB71C99A6A6009D8656 /* BDVoiceRecognitionClientHelper.m */; };
 		930F1DBC1C99A7B4009D8656 /* BDVRSConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 930F1DBB1C99A7B4009D8656 /* BDVRSConfig.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		930F1DBF1C99A85C009D8656 /* BDVRCustomRecognitonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 930F1DBE1C99A85C009D8656 /* BDVRCustomRecognitonViewController.m */; };
+		930F1DBF1C99A85C009D8656 /* BDVRCustomRecognitonViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 930F1DBE1C99A85C009D8656 /* BDVRCustomRecognitonViewController.mm */; };
 		930F1DC31C99A95C009D8656 /* SCSiriWaveformView.m in Sources */ = {isa = PBXBuildFile; fileRef = 930F1DC21C99A95C009D8656 /* SCSiriWaveformView.m */; };
 		9326CE6C1C4D0AD400D39574 /* GustNavigationControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9326CE651C4D0AD400D39574 /* GustNavigationControllerDelegate.m */; };
 		9326CE6D1C4D0AD400D39574 /* GustRevertNavigationControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9326CE671C4D0AD400D39574 /* GustRevertNavigationControllerDelegate.m */; };
 		9326CE6E1C4D0AD400D39574 /* PopAnimationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9326CE691C4D0AD400D39574 /* PopAnimationTransition.m */; };
 		9326CE6F1C4D0AD400D39574 /* RevertPopAnimationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9326CE6B1C4D0AD400D39574 /* RevertPopAnimationTransition.m */; };
 		9326CE721C4D0F9900D39574 /* SettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9326CE711C4D0F9900D39574 /* SettingsTableViewCell.m */; };
+		933C6B541C9A98400003490F /* BDVoiceRecognitionClientResources in Resources */ = {isa = PBXBuildFile; fileRef = 933C6B531C9A98400003490F /* BDVoiceRecognitionClientResources */; };
+		933C6B571C9A9A330003490F /* BaiduVoiceSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933C6B561C9A9A330003490F /* BaiduVoiceSettingViewController.m */; };
 		9344D41A1C86C2B100C78715 /* GustBKPasscodeDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344D4191C86C2B100C78715 /* GustBKPasscodeDelegate.m */; };
 		9344D41D1C871F6F00C78715 /* UIViewController+Visible.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344D41C1C871F6F00C78715 /* UIViewController+Visible.m */; };
 		93552ED61BEA00FE004B0380 /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93552ED51BEA00FE004B0380 /* CustomNavigationController.m */; };
@@ -280,13 +275,6 @@
 		930F1D921C99A12C009D8656 /* CAXException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAXException.h; sourceTree = "<group>"; };
 		930F1D941C99A12C009D8656 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		930F1D951C99A12C009D8656 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
-		930F1D981C99A12C009D8656 /* defaultFullScreenTheme.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = defaultFullScreenTheme.bundle; sourceTree = "<group>"; };
-		930F1D991C99A12C009D8656 /* defaultTheme.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = defaultTheme.bundle; sourceTree = "<group>"; };
-		930F1D9B1C99A12C009D8656 /* record_cancel.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = record_cancel.caf; sourceTree = "<group>"; };
-		930F1D9C1C99A12C009D8656 /* record_end.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = record_end.caf; sourceTree = "<group>"; };
-		930F1D9D1C99A12C009D8656 /* record_fail.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = record_fail.caf; sourceTree = "<group>"; };
-		930F1D9E1C99A12C009D8656 /* record_start.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = record_start.caf; sourceTree = "<group>"; };
-		930F1D9F1C99A12C009D8656 /* record_success.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = record_success.caf; sourceTree = "<group>"; };
 		930F1DA11C99A12C009D8656 /* BDRecognizerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDRecognizerViewController.h; sourceTree = "<group>"; };
 		930F1DA21C99A12C009D8656 /* BDRecognizerViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDRecognizerViewDelegate.h; sourceTree = "<group>"; };
 		930F1DA31C99A12C009D8656 /* BDRecognizerViewParamsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDRecognizerViewParamsObject.h; sourceTree = "<group>"; };
@@ -302,7 +290,7 @@
 		930F1DBA1C99A7B4009D8656 /* BDVRSConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDVRSConfig.h; sourceTree = "<group>"; };
 		930F1DBB1C99A7B4009D8656 /* BDVRSConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDVRSConfig.m; sourceTree = "<group>"; };
 		930F1DBD1C99A85C009D8656 /* BDVRCustomRecognitonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDVRCustomRecognitonViewController.h; sourceTree = "<group>"; };
-		930F1DBE1C99A85C009D8656 /* BDVRCustomRecognitonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDVRCustomRecognitonViewController.m; sourceTree = "<group>"; };
+		930F1DBE1C99A85C009D8656 /* BDVRCustomRecognitonViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BDVRCustomRecognitonViewController.mm; sourceTree = "<group>"; };
 		930F1DC11C99A95C009D8656 /* SCSiriWaveformView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSiriWaveformView.h; sourceTree = "<group>"; };
 		930F1DC21C99A95C009D8656 /* SCSiriWaveformView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSiriWaveformView.m; sourceTree = "<group>"; };
 		9326CE641C4D0AD400D39574 /* GustNavigationControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GustNavigationControllerDelegate.h; sourceTree = "<group>"; };
@@ -315,6 +303,10 @@
 		9326CE6B1C4D0AD400D39574 /* RevertPopAnimationTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RevertPopAnimationTransition.m; sourceTree = "<group>"; };
 		9326CE701C4D0F9900D39574 /* SettingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewCell.h; sourceTree = "<group>"; };
 		9326CE711C4D0F9900D39574 /* SettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewCell.m; sourceTree = "<group>"; };
+		933C6B521C9A498E0003490F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		933C6B531C9A98400003490F /* BDVoiceRecognitionClientResources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BDVoiceRecognitionClientResources; path = ../../../../../Desktop/BDVoiceRecognitionClientResources; sourceTree = "<group>"; };
+		933C6B551C9A9A330003490F /* BaiduVoiceSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduVoiceSettingViewController.h; sourceTree = "<group>"; };
+		933C6B561C9A9A330003490F /* BaiduVoiceSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaiduVoiceSettingViewController.m; sourceTree = "<group>"; };
 		9344D4181C86C2B100C78715 /* GustBKPasscodeDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GustBKPasscodeDelegate.h; sourceTree = "<group>"; };
 		9344D4191C86C2B100C78715 /* GustBKPasscodeDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GustBKPasscodeDelegate.m; sourceTree = "<group>"; };
 		9344D41B1C871F6F00C78715 /* UIViewController+Visible.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Visible.h"; sourceTree = "<group>"; };
@@ -632,6 +624,8 @@
 				93CE19191BEB51E400DECA3E /* SetPrivacyPasswordViewController.m */,
 				93CA22831C8D69B6000A614B /* ChooseLanguageViewController.h */,
 				93CA22841C8D69B6000A614B /* ChooseLanguageViewController.m */,
+				933C6B551C9A9A330003490F /* BaiduVoiceSettingViewController.h */,
+				933C6B561C9A9A330003490F /* BaiduVoiceSettingViewController.m */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -767,9 +761,9 @@
 		930F1D871C99A054009D8656 /* BaiduVoiceLib */ = {
 			isa = PBXGroup;
 			children = (
+				933C6B531C9A98400003490F /* BDVoiceRecognitionClientResources */,
 				930F1DB91C99A79F009D8656 /* BaiduVoiceHelp */,
 				930F1D8A1C99A12C009D8656 /* BaiduVoice_Third_Party */,
-				930F1D961C99A12C009D8656 /* BDVoiceRecognitionClientResources */,
 				930F1DA01C99A12C009D8656 /* libBDVoiceRecognitionClient */,
 				930F1D881C99A08E009D8656 /* libBDVoiceRecognitionClient.a */,
 			);
@@ -806,36 +800,6 @@
 				930F1D951C99A12C009D8656 /* TTTAttributedLabel.m */,
 			);
 			path = TTTAttributedLabel;
-			sourceTree = "<group>";
-		};
-		930F1D961C99A12C009D8656 /* BDVoiceRecognitionClientResources */ = {
-			isa = PBXGroup;
-			children = (
-				930F1D971C99A12C009D8656 /* Theme */,
-				930F1D9A1C99A12C009D8656 /* Tone */,
-			);
-			path = BDVoiceRecognitionClientResources;
-			sourceTree = "<group>";
-		};
-		930F1D971C99A12C009D8656 /* Theme */ = {
-			isa = PBXGroup;
-			children = (
-				930F1D981C99A12C009D8656 /* defaultFullScreenTheme.bundle */,
-				930F1D991C99A12C009D8656 /* defaultTheme.bundle */,
-			);
-			path = Theme;
-			sourceTree = "<group>";
-		};
-		930F1D9A1C99A12C009D8656 /* Tone */ = {
-			isa = PBXGroup;
-			children = (
-				930F1D9B1C99A12C009D8656 /* record_cancel.caf */,
-				930F1D9C1C99A12C009D8656 /* record_end.caf */,
-				930F1D9D1C99A12C009D8656 /* record_fail.caf */,
-				930F1D9E1C99A12C009D8656 /* record_start.caf */,
-				930F1D9F1C99A12C009D8656 /* record_success.caf */,
-			);
-			path = Tone;
 			sourceTree = "<group>";
 		};
 		930F1DA01C99A12C009D8656 /* libBDVoiceRecognitionClient */ = {
@@ -926,7 +890,7 @@
 				93A190AB1C8FFD8900D6777E /* GustRefreshHeader.h */,
 				93A190AC1C8FFD8900D6777E /* GustRefreshHeader.m */,
 				930F1DBD1C99A85C009D8656 /* BDVRCustomRecognitonViewController.h */,
-				930F1DBE1C99A85C009D8656 /* BDVRCustomRecognitonViewController.m */,
+				930F1DBE1C99A85C009D8656 /* BDVRCustomRecognitonViewController.mm */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1186,21 +1150,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				930F1DB51C99A12C009D8656 /* record_success.caf in Resources */,
-				930F1DAF1C99A12C009D8656 /* defaultFullScreenTheme.bundle in Resources */,
-				930F1DB11C99A12C009D8656 /* record_cancel.caf in Resources */,
 				93CA565D1C914A90007B2B86 /* OTMWebView+ContextMenu.js in Resources */,
+				933C6B541C9A98400003490F /* BDVoiceRecognitionClientResources in Resources */,
 				93CA565E1C914A90007B2B86 /* OTMWebView.js in Resources */,
-				930F1DB41C99A12C009D8656 /* record_start.caf in Resources */,
-				930F1DB01C99A12C009D8656 /* defaultTheme.bundle in Resources */,
 				93CA56721C9151B7007B2B86 /* LICENSE in Resources */,
 				939438C71C8039F3003C26CB /* Localizable.strings in Resources */,
-				930F1DB31C99A12C009D8656 /* record_fail.caf in Resources */,
 				93CE19AA1BEC9B9100DECA3E /* PrivacyPassword.xib in Resources */,
 				18EEDF261AA5FD6000033447 /* Images.xcassets in Resources */,
 				18A9C7541AFA679300436555 /* Launch Screen.xib in Resources */,
 				93CA56581C914A90007B2B86 /* LICENSE in Resources */,
-				930F1DB21C99A12C009D8656 /* record_end.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1332,6 +1290,7 @@
 				93A2C5571C3513420022C11D /* GustCollectionView.m in Sources */,
 				93CA565B1C914A90007B2B86 /* OTMWebViewProgressTracker.m in Sources */,
 				182823201AD05D1900267C41 /* Gust.xcdatamodeld in Sources */,
+				933C6B571C9A9A330003490F /* BaiduVoiceSettingViewController.m in Sources */,
 				9361C28D1C4398BF00A0E625 /* NavaSearchBar.m in Sources */,
 				938BC7A21C44F25E005976F9 /* UINavigationBar+Addition.m in Sources */,
 				1828231E1AD05D1900267C41 /* Bookmark.m in Sources */,
@@ -1404,7 +1363,7 @@
 				93CA56611C914A90007B2B86 /* README.md in Sources */,
 				182823241AD05D1900267C41 /* MainSearchBar.m in Sources */,
 				930F1DAB1C99A12C009D8656 /* CADebugMacros.cpp in Sources */,
-				930F1DBF1C99A85C009D8656 /* BDVRCustomRecognitonViewController.m in Sources */,
+				930F1DBF1C99A85C009D8656 /* BDVRCustomRecognitonViewController.mm in Sources */,
 				93CA56601C914A90007B2B86 /* OTMWebViewProgressBarLayer.m in Sources */,
 				930D7B1A1C84939900B059F8 /* BKShiftingView.m in Sources */,
 				930F1DB81C99A6A6009D8656 /* BDVoiceRecognitionClientHelper.m in Sources */,
@@ -1446,6 +1405,7 @@
 			children = (
 				939438C81C8039F3003C26CB /* en */,
 				939438CA1C8039F7003C26CB /* zh-Hans */,
+				933C6B521C9A498E0003490F /* Base */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

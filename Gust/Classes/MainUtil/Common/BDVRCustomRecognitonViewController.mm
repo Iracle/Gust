@@ -9,11 +9,17 @@
 #import "BDVRCustomRecognitonViewController.h"
 #import "BDVoiceRecognitionClient.h"
 #import "BDVRSConfig.h"
+#import "Localisator.h"
+#import "GustConfigure.h"
 
-static const CGFloat kDefaultAmplitude          = 0.0f ;
+static const CGFloat kDefaultAmplitude          =  0.0f ;
 #define VOICE_LEVEL_INTERVAL 0.1 // 音量监听频率为1秒中10次
 
 @interface BDVRCustomRecognitonViewController () <MVoiceRecognitionClientDelegate>
+
+@property (nonatomic, strong) UIVisualEffectView *bgVisualEffectView;
+@property (nonatomic, strong) UILabel *continusManualResutLabel;
+
 
 - (void)createInitView; // 创建初始化界面，播放提示音时会用到
 - (void)createRecordView;  // 创建录音界面
@@ -34,19 +40,48 @@ static const CGFloat kDefaultAmplitude          = 0.0f ;
 }
 
 
+- (UIVisualEffectView *)bgVisualEffectView {
+    if (!_bgVisualEffectView) {
+        _bgVisualEffectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
+        _bgVisualEffectView.frame = [UIScreen mainScreen].bounds;
+        _bgVisualEffectView.alpha = 0.9;
+    }
+    return _bgVisualEffectView;
+}
+
+- (UILabel *)continusManualResutLabel {
+    if (!_continusManualResutLabel) {
+        _continusManualResutLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 50, SCREEN_WIDTH - 40, 50)];
+        _continusManualResutLabel.textAlignment = NSTextAlignmentCenter;
+        _continusManualResutLabel.font = [UIFont systemFontOfSize:23 weight:UIFontWeightLight];
+        _continusManualResutLabel.textColor = [UIColor colorWithRed:0.2553 green:0.2553 blue:0.2553 alpha:1.0];
+        
+    }
+    return _continusManualResutLabel;
+}
+
+- (void)dealloc
+{
+    [displaylink invalidate];
+    displaylink = nil;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //初始化
-    self.voiceNumber = kDefaultAmplitude;
+    [self.view addSubview:self.bgVisualEffectView];
+    [self.bgVisualEffectView addSubview:self.continusManualResutLabel];
+    [self showCustomVoicePanAnimation];
     
-    _waveformView = [[SCSiriWaveformView alloc] initWithFrame:CGRectMake(0, 100, 375, 400)];
+    self.voiceNumber = kDefaultAmplitude;
+    _waveformView = [[SCSiriWaveformView alloc] initWithFrame:CGRectMake(0, 100, SCREEN_WIDTH, 400)];
     _waveformView.backgroundColor = [UIColor clearColor];
     [_waveformView setPrimaryWaveLineWidth:3.0f];
     [_waveformView setSecondaryWaveLineWidth:1.0];
-    [self.view addSubview:_waveformView];
+    [_waveformView setWaveColor:[UIColor clearColor]];
+    [self.bgVisualEffectView addSubview:_waveformView];
     
-    displaylink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateMeters)];
+     displaylink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateMeters)];
     [displaylink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
     
     // 开始语音识别功能，之前必须实现MVoiceRecognitionClientDelegate协议中的VoiceRecognitionClientWorkStatus:obj方法
@@ -69,15 +104,12 @@ static const CGFloat kDefaultAmplitude          = 0.0f ;
         [self createRecordView];
     }
     
-    self.view.alpha = 0.0f;
-    
-    [UIView beginAnimations:@"show" context:nil];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
-    [UIView setAnimationDuration:0.3];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    self.view.alpha = 1.5f;
-    [UIView commitAnimations];
+}
+- (void)showCustomVoicePanAnimation {
+    self.view.alpha = 0.0;
+    [UIView animateWithDuration:0.35 delay:0 options:0 animations:^{
+        self.view.alpha = 1.0;
+    } completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -93,20 +125,13 @@ static const CGFloat kDefaultAmplitude          = 0.0f ;
 - (void)finishRecord:(id)sender
 {
     [[BDVoiceRecognitionClient sharedInstance] speakFinish];
-    [displaylink invalidate];
-    displaylink = nil;
+
 }
 
 - (void)cancel:(id)sender
 {
     [[BDVoiceRecognitionClient sharedInstance] stopVoiceRecognition];
-    
-    if (self.view.superview)
-    {
-        [self.view removeFromSuperview];
-        [displaylink invalidate];
-        displaylink = nil;
-    }
+    [self removeCustomVoicePan];
 }
 #pragma mark - MVoiceRecognitionClientDelegate
 
@@ -127,6 +152,7 @@ static const CGFloat kDefaultAmplitude          = 0.0f ;
             if ([text length] > 0)
             {
                 //iracle: 连续上屏中间结果
+                [self logOutToContinusManualResut:text];
             }
             
             break;
@@ -148,27 +174,25 @@ static const CGFloat kDefaultAmplitude          = 0.0f ;
                 NSMutableArray *audioResultData = (NSMutableArray *)aObj;
                 NSMutableString *tmpString = [[NSMutableString alloc] initWithString:@""];
                 
-                for (int i=0; i < [audioResultData count]; i++)
+                for (int i = 0; i < [audioResultData count]; i++)
                 {
-                    [tmpString appendFormat:@"%@\r\n",[audioResultData objectAtIndex:i]];
+                    //只取返回结果数组的第一个元素
+                    if (i == 0) {
+                        [tmpString appendString:audioResultData[i]];
+                    }
+                    
                 }
-                
-                self.clientSampleViewController.searchBar.text = nil;
-                [self.clientSampleViewController logOutToManualResut:tmpString];
+                if (self.delegate && [self.delegate respondsToSelector:@selector(recongnitionController:logOutToManualResut:)]) {
+                    [self.delegate recongnitionController:self logOutToManualResut:tmpString];
+                }
             }
             else
             {
                 NSString *tmpString = [[BDVRSConfig sharedInstance] composeInputModeResult:aObj];
                 //iracle: 连续上屏中间结果
-//                [self.clientSampleViewController logOutToContinusManualResut:tmpString];
+                [self logOutToContinusManualResut:tmpString];
             }
-            
-            if (self.view.superview)
-            {
-                [self.view removeFromSuperview];
-                [displaylink invalidate];
-                displaylink = nil;
-            }
+            [self removeCustomVoicePan];
             
             break;
         }
@@ -194,7 +218,7 @@ static const CGFloat kDefaultAmplitude          = 0.0f ;
             
             NSString *tmpString = [[BDVRSConfig sharedInstance] composeInputModeResult:aObj];
              //iracle: 连续上屏中间结果
-//            [self.clientSampleViewController logOutToContinusManualResut:tmpString];
+            [self logOutToContinusManualResut:tmpString];
             
             break;
         }
@@ -220,13 +244,7 @@ static const CGFloat kDefaultAmplitude          = 0.0f ;
             }
             
             [self createRunLogWithStatus:aStatus];
-            
-            if (self.view.superview)
-            {
-                [self.view removeFromSuperview];
-                [displaylink invalidate];
-                displaylink = nil;
-            }
+            [self removeCustomVoicePan];
             break;
         }
         case EVoiceRecognitionClientWorkStatusStartWorkIng: // 识别库开始识别工作，用户可以说话
@@ -271,12 +289,6 @@ static const CGFloat kDefaultAmplitude          = 0.0f ;
             {
                 [self freeVoiceLevelMeterTimerTimer];
             }
-            if (self.view.superview)
-            {
-                [self.view removeFromSuperview];
-                [displaylink invalidate];
-                displaylink = nil;
-            }
             
             break;
         }
@@ -307,12 +319,6 @@ static const CGFloat kDefaultAmplitude          = 0.0f ;
 
 - (void)firstStartError:(NSString *)statusString
 {
-    if (self.view.superview)
-    {
-        [self.view removeFromSuperview];
-        [displaylink invalidate];
-        displaylink = nil;
-    }
     
     [self createErrorViewWithErrorType:[statusString intValue]];
 }
@@ -423,7 +429,22 @@ static const CGFloat kDefaultAmplitude          = 0.0f ;
     }
     
     //iracle: 打印错误信息
-    [self.clientSampleViewController logOutToManualResut:errorMsg];
+     self.continusManualResutLabel.text =  errorMsg;
+    [self performSelector:@selector(removeCustomVoicePan) withObject:nil afterDelay:1.0];
+}
+
+- (void)removeCustomVoicePan {
+    
+    [UIView animateWithDuration:0.15 delay:0 options:0 animations:^{
+        self.view.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        if (self.view.superview)
+        {
+            [self.view removeFromSuperview];
+            [displaylink invalidate];
+            displaylink = nil;
+        }
+    }];
 }
 
 #pragma mark - voice search log
@@ -512,16 +533,11 @@ static const CGFloat kDefaultAmplitude          = 0.0f ;
     
     if (statusMsg)
     {
-        //iracle：搜索打印
-//        NSString *logString = self.clientSampleViewController.logCatView.text;
-//        if (logString && [logString isEqualToString:@""] == NO)
-//        {
-//            self.clientSampleViewController.logCatView.text = [logString stringByAppendingFormat:@"\r\n%@", statusMsg];
-//        }
-//        else
-//        {
-//            self.clientSampleViewController.logCatView.text = statusMsg;
-//        }
+       // iracle：搜索打印
+        if (self.delegate && [self.delegate respondsToSelector:@selector(recongnitionController:logOutToLogView:)]) {
+            [self.delegate recongnitionController:self logOutToLogView:statusMsg];
+        }
+  
     }
 }
 //iracle:语音音量监听
@@ -549,17 +565,7 @@ static const CGFloat kDefaultAmplitude          = 0.0f ;
 {
     //iracle: 获取语音音量级别
     int voiceLevel = [[BDVoiceRecognitionClient sharedInstance] getCurrentDBLevelMeter];
-    self.voiceNumber = (CGFloat)voiceLevel / 100;
-    
-    NSString *statusMsg = [NSLocalizedString(@"StringLogVoiceLevel", nil) stringByAppendingFormat:@": %d", voiceLevel];
-    //    [clientSampleViewController logOutToLogView:statusMsg];
-}
-
-#pragma mark - animation finish
-
-- (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
-{
-    //
+    self.voiceNumber = (CGFloat)voiceLevel / 120;
 }
 
 - (void)updateMeters {
@@ -578,29 +584,34 @@ static const CGFloat kDefaultAmplitude          = 0.0f ;
 
 - (void)createRecordView
 {
-    
-    
     //完成，取消
+    UIButton *sureButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    sureButton.frame = CGRectMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT - SCREEN_WIDTH / 2, SCREEN_WIDTH / 2, SCREEN_WIDTH / 2);
+    sureButton.titleEdgeInsets = UIEdgeInsetsMake(25.0, 0, 0.0, 5);
+    [sureButton setTitle: LOCALIZATION(@"Done") forState:UIControlStateNormal];
+    sureButton.titleLabel.font = [UIFont systemFontOfSize:31.0 weight:UIFontWeightThin];
+    [sureButton setTitleColor:[UIColor colorWithRed:93 / 255.0 green:148 / 255.0 blue:140 / 255.0 alpha:1.0] forState:UIControlStateNormal];
+    [sureButton addTarget:self action:@selector(finishRecord:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:sureButton];
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-    button.frame = CGRectMake(50, 500, 80, 30);
-    [button setTitle:@"完毕" forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(finishRecord:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
-    
-    UIButton *button1 = [UIButton buttonWithType:UIButtonTypeSystem];
-    button1.frame = CGRectMake(280, 500, 80, 30);
-    [button1 setTitle:@"取消" forState:UIControlStateNormal];
-    [button1 addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button1];
-    
-    
-    
+    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    cancelButton.frame = CGRectMake(0, SCREEN_HEIGHT - SCREEN_WIDTH / 2, SCREEN_WIDTH / 2, SCREEN_WIDTH / 2);
+    cancelButton.titleEdgeInsets = UIEdgeInsetsMake(25.0, 0, 0.0, 5);
+    [cancelButton setTitle: LOCALIZATION(@"Cancel") forState:UIControlStateNormal];
+    cancelButton.titleLabel.font = [UIFont systemFontOfSize:31.0 weight:UIFontWeightThin];
+    [cancelButton setTitleColor:[UIColor colorWithRed:93 / 255.0 green:148 / 255.0 blue:140 / 255.0 alpha:1.0] forState:UIControlStateNormal];
+    [cancelButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:cancelButton];
 }
 
 - (void)createRecognitionView
 {
     
+}
+
+- (void)logOutToContinusManualResut:(NSString *)result {
+    
+    self.continusManualResutLabel.text = result;
 }
 
 
