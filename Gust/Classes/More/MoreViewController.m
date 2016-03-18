@@ -69,21 +69,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.view addSubview:self.tableView];
 
-    
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configureViewFromLocalisation];
     
-    UINavigationBar *navigationBar = self.navigationController.navigationBar;
-    [navigationBar hideBottomHairline];
-    navigationBar.barTintColor = [UIColor whiteColor];
-    navigationBar.tintColor = [UIColor whiteColor];
-    [navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.3107 green:0.3107 blue:0.3107 alpha:1.0]}];
-    self.view.backgroundColor = [UIColor colorWithRed:250 / 255.0 green:250 / 255.0 blue:250 / 255.0 alpha:1.0];
-    
+     [self.view addSubview:self.tableView];
     _refreshHeader = [[GustRefreshHeader alloc] init];
     _refreshHeader.scrollView = self.tableView;
     [_refreshHeader addHeadView];
@@ -97,6 +90,13 @@
         });
         
     };
+    
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    [navigationBar hideBottomHairline];
+    navigationBar.barTintColor = [UIColor whiteColor];
+    navigationBar.tintColor = [UIColor whiteColor];
+    [navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.3107 green:0.3107 blue:0.3107 alpha:1.0]}];
+    self.view.backgroundColor = [UIColor colorWithRed:250 / 255.0 green:250 / 255.0 blue:250 / 255.0 alpha:1.0];
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self
