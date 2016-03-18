@@ -50,6 +50,29 @@
     return self;
 }
 
+- (UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+        _tableView.backgroundColor = [UIColor clearColor];
+        _tableView.rowHeight = 54.0;
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.tableFooterView = [UIView new];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.showsVerticalScrollIndicator = NO;
+        _tableView.separatorColor = [UIColor clearColor];
+        _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _tableView.bounds.size.width, 0.01f)];
+
+    }
+    return _tableView;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.view addSubview:self.tableView];
+
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self configureViewFromLocalisation];
@@ -60,18 +83,6 @@
     navigationBar.tintColor = [UIColor whiteColor];
     [navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.3107 green:0.3107 blue:0.3107 alpha:1.0]}];
     self.view.backgroundColor = [UIColor colorWithRed:250 / 255.0 green:250 / 255.0 blue:250 / 255.0 alpha:1.0];
-    
-    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-    _tableView.backgroundColor = [UIColor clearColor];
-    _tableView.rowHeight = 54.0;
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    _tableView.tableFooterView = [UIView new];
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _tableView.showsVerticalScrollIndicator = NO;
-    _tableView.separatorColor = [UIColor clearColor];
-    _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _tableView.bounds.size.width, 0.01f)];
-    [self.view addSubview:_tableView];
     
     _refreshHeader = [[GustRefreshHeader alloc] init];
     _refreshHeader.scrollView = self.tableView;

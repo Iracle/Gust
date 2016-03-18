@@ -16,6 +16,7 @@
 "StringConform" = "确定";
 "StringCancel" = "取消";
 "StringFinish" = "完成";
+“”
 
 // 错误码信息
 "StringVoiceRecognitonCantRecord" = "没有检测到麦克风";

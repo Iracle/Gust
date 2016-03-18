@@ -82,6 +82,13 @@
 "Back"                                  = "返回";
 
 /*Baidu Voice*/
+
+//BDVoiceRecognitionClientHelper
+"PleaseSpeak"                           = "请说活";
+"Putonghua"                             = "普通话";
+"Yueyu"                                 = "粤语";
+"SichuanHua"                            = "四川话";
+
 // 语音搜索
 "StringVoiceRecognitonInit" = "正在初始化";
 "StringVoiceRecognitonPleaseSpeak" = "请说话";

@@ -88,13 +88,20 @@
 
 
 /*Baidu Voice*/
+
+//BDVoiceRecognitionClientHelper
+"PleaseSpeak"                           = "Please speak";
+"Putonghua"                             = "Putonghua";
+"Yueyu"                                 = "Pantonese";
+"SichuanHua"                            = "Sichuan dialect";
+
 // 语音搜索
 "StringVoiceRecognitonInit" = "正在初始化";
 "StringVoiceRecognitonPleaseSpeak" = "请说话";
 "StringVoiceRecognitonIdentify" = "正在识别";
 "StringVoiceRecognitonSpeakAgain" = "重试";
 "StringVoiceRecognitonRecordFinish" = "完毕";
-"StringConform" = "确定";
+"StringConform" = "Done";
 "StringCancel" = "取消";
 "StringFinish" = "完成";
 

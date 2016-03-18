@@ -55,6 +55,7 @@ static const CGFloat kDefaultAmplitude          =  0.0f ;
         _continusManualResutLabel.textAlignment = NSTextAlignmentCenter;
         _continusManualResutLabel.font = [UIFont systemFontOfSize:23 weight:UIFontWeightLight];
         _continusManualResutLabel.textColor = [UIColor colorWithRed:0.2553 green:0.2553 blue:0.2553 alpha:1.0];
+        _continusManualResutLabel.text = LOCALIZATION(@"PleaseSpeak");
         
     }
     return _continusManualResutLabel;
