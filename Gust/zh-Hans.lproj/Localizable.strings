@@ -81,6 +81,18 @@
 "Done"                                  = "完毕";
 "Back"                                  = "返回";
 
+//BKPasscodeViewController
+"EnterPassCode"                         = "请输入锁定密码";
+"ReEnterPassCode"                       = "重新输入锁定密码";
+"PasscodeMatch"                         = "两次输入的锁定密码不匹配\n请重新输入";
+"TouchIauth"                            = "你希望使用 Touch ID 解锁码?";
+"EnableTouchID"                         = "使用 Touch ID";
+"UnlockPasscode"                        = "解除锁定";
+"PasscodeErrorOne"                      = "1 次密码输入错误";
+"PasscodeError %d"                      = "%d 次密码输入错误";
+
+
+
 /*Baidu Voice*/
 
 //BDVoiceRecognitionClientHelper

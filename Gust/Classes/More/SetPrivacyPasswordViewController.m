@@ -70,7 +70,7 @@
     [self.view addSubview:self.tableView];
     
     NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
-    BOOL privicyBool = [privacyDefaults objectForKey:IsGustPrivacy];
+    BOOL privicyBool = [privacyDefaults boolForKey:IsGustPrivacy];
     self.openPasscodeSwitch.on = privicyBool;
 
 }

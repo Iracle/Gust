@@ -7,6 +7,7 @@
 //
 
 #import "BKTouchIDSwitchView.h"
+#import "Localisator.h"
 
 @implementation BKTouchIDSwitchView
 
@@ -40,12 +41,12 @@
     self.messageLabel.numberOfLines = 0;
     self.messageLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.messageLabel.textAlignment = NSTextAlignmentCenter;
-    self.messageLabel.text = NSLocalizedStringFromTable(@"Do you want to use Touch ID for authentication?", @"BKPasscodeView", @"Touch ID를 사용하시겠습니까?");
+    self.messageLabel.text = LOCALIZATION(@"TouchIauth");
     self.messageLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     [self addSubview:self.messageLabel];
     
     self.titleLabel = [[UILabel alloc] init];
-    self.titleLabel.text = NSLocalizedStringFromTable(@"Enable Touch ID", @"BKPasscodeView", @"Touch ID 사용");
+    self.titleLabel.text = LOCALIZATION(@"EnableTouchID");
     self.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [self addSubview:self.titleLabel];
     
@@ -53,8 +54,9 @@
     [self addSubview:self.touchIDSwitch];
     
     self.doneButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.doneButton.backgroundColor = [UIColor lightGrayColor];
     [self.doneButton.titleLabel setFont:[UIFont systemFontOfSize:20.f]];
-    [self.doneButton setTitle:NSLocalizedStringFromTable(@"Done", @"BKPasscodeView", @"확인") forState:UIControlStateNormal];
+    [self.doneButton setTitle: LOCALIZATION(@"Done") forState:UIControlStateNormal];
     [self.doneButton addTarget:self action:@selector(doneButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.doneButton];
 }
@@ -79,7 +81,7 @@
                              CGRectGetHeight(self.touchIDSwitch.frame) + verticalSpaces[1] +
                              CGRectGetHeight(self.doneButton.frame));
     
-    CGFloat offsetY = floorf((CGRectGetHeight(self.frame) - contentHeight) * 0.5f);
+    CGFloat offsetY = floorf((CGRectGetHeight(self.frame) - contentHeight) * 0.3f);
     
     CGRect rect;
     
@@ -102,11 +104,12 @@
     offsetY += CGRectGetHeight(rect) + verticalSpaces[1];
     
     rect = self.doneButton.frame;
-    rect.size.width += 10;
-    rect.size.height += 10;
+    rect.size.width += 40;
+    rect.size.height += 40;
     rect.origin.x = floorf((CGRectGetWidth(self.frame) - CGRectGetWidth(rect)) * 0.5f);
-    rect.origin.y = offsetY;
+    rect.origin.y = offsetY + 60 ;
     self.doneButton.frame = rect;
+    self.doneButton.layer.cornerRadius = CGRectGetWidth(self.doneButton.bounds) / 2;
     
     self.switchBackgroundView.frame = CGRectMake(-1,
                                                  CGRectGetMinY(self.touchIDSwitch.frame) - 12,

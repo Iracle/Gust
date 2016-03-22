@@ -214,7 +214,6 @@
     //privacy mode
     NSUserDefaults *privacyDefaults = [NSUserDefaults standardUserDefaults];
     BOOL privicyBool = [privacyDefaults boolForKey:IsGustPrivacy];
-     NSLog(@"zh: %d",privicyBool);
     if (privicyBool) {
         return YES;
     } else {

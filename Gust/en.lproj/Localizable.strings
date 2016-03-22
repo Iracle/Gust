@@ -86,6 +86,16 @@
 "Done"                                  = "Done";
 "Back"                                  = "Back";
 
+//BKPasscodeViewController
+"EnterPassCode"                         = "Enter a passcode";
+"ReEnterPassCode"                       = "Re-enter your passcode";
+"PasscodeMatch"                         = "Passcodes did not match\nTry again";
+"TouchIauth"                            = "Do you want to use Touch ID for authentication?";
+"EnableTouchID"                         = "Enable Touch ID";
+"UnlockPasscode"                        = "Unlock";
+"PasscodeErrorOne"                      = "1 Failed Passcode Attempt";
+"PasscodeError %d"                      = "%d Failed Passcode Attempt";
+
 
 /*Baidu Voice*/
 

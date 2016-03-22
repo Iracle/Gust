@@ -10,6 +10,9 @@
 #import "BKShiftingView.h"
 #import "AFViewShaker.h"
 #import "BKPasscodeUtils.h"
+#import "Localisator.h"
+#import "UINavigationBar+Addition.h"
+
 
 typedef enum : NSUInteger {
     BKPasscodeViewControllerStateUnknown,
@@ -42,7 +45,7 @@ typedef enum : NSUInteger {
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"设置密码";
+        self.title = LOCALIZATION(@"UnlockPasscode");
         // init state
         _type = BKPasscodeViewControllerNewPasscodeType;
         _currentState = BKPasscodeViewControllerStateInputPassword;
@@ -117,6 +120,12 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    [navigationBar hideBottomHairline];
+    navigationBar.barTintColor = [UIColor whiteColor];
+    navigationBar.tintColor = [UIColor whiteColor];
+    [navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.3107 green:0.3107 blue:0.3107 alpha:1.0]}];
     
     [self.view setBackgroundColor:[UIColor colorWithRed:0.94 green:0.94 blue:0.96 alpha:1]];
    
@@ -315,20 +324,20 @@ typedef enum : NSUInteger {
             if (self.type == BKPasscodeViewControllerChangePasscodeType) {
                 passcodeInputView.title = NSLocalizedStringFromTable(@"Enter your old passcode", @"BKPasscodeView", @"기존 암호 입력");
             } else {
-                passcodeInputView.title = NSLocalizedStringFromTable(@"Enter your passcode", @"BKPasscodeView", @"암호 입력");
+                passcodeInputView.title = LOCALIZATION(@"EnterPassCode");
             }
             break;
             
         case BKPasscodeViewControllerStateInputPassword:
             if (self.type == BKPasscodeViewControllerChangePasscodeType) {
-                passcodeInputView.title = NSLocalizedStringFromTable(@"Enter your new passcode", @"BKPasscodeView", @"새로운 암호 입력");
+                passcodeInputView.title = LOCALIZATION(@"EnterPassCode");
             } else {
-                passcodeInputView.title = NSLocalizedStringFromTable(@"Enter a passcode", @"BKPasscodeView", @"암호 입력");
+                passcodeInputView.title = LOCALIZATION(@"EnterPassCode");
             }
             break;
             
         case BKPasscodeViewControllerStateReinputPassword:
-            passcodeInputView.title = NSLocalizedStringFromTable(@"Re-enter your passcode", @"BKPasscodeView", @"암호 재입력");
+            passcodeInputView.title = LOCALIZATION(@"ReEnterPassCode");
             break;
             
         default:
@@ -341,9 +350,9 @@ typedef enum : NSUInteger {
     if (failCount == 0) {
         aInputView.errorMessage = NSLocalizedStringFromTable(@"Invalid Passcode", @"BKPasscodeView", @"잘못된 암호");
     } else if (failCount == 1) {
-        aInputView.errorMessage = NSLocalizedStringFromTable(@"1 Failed Passcode Attempt", @"BKPasscodeView", @"1번의 암호 입력 시도 실패");
+        aInputView.errorMessage = LOCALIZATION(@"PasscodeErrorOne");
     } else {
-        aInputView.errorMessage = [NSString stringWithFormat:NSLocalizedStringFromTable(@"%d Failed Passcode Attempts", @"BKPasscodeView", @"%d번의 암호 입력 시도 실패"), failCount];
+        aInputView.errorMessage = [NSString stringWithFormat: LOCALIZATION(@"PasscodeError %d" ), failCount];
     }
 }
 
@@ -497,7 +506,7 @@ typedef enum : NSUInteger {
                 
                 [self updatePasscodeInputViewTitle:newPasscodeInputView];
                 
-                newPasscodeInputView.message = NSLocalizedStringFromTable(@"Passcodes did not match.\nTry again.", @"BKPasscodeView", @"암호가 일치하지 않습니다.\n다시 시도하십시오.");
+                newPasscodeInputView.message = LOCALIZATION(@"PasscodeMatch");
                 
                 [self.shiftingView showView:newPasscodeInputView withDirection:BKShiftingDirectionBackward];
                 
