@@ -128,6 +128,7 @@
     viewController.touchIDManager = touchIDManager;
     
     if (isPush) {
+        viewController.title = LOCALIZATION(@"ChangePassCode");
         [self.navigationController pushViewController:viewController animated:YES];
     } else {
         [self presentViewController:viewController animated:YES completion:nil];

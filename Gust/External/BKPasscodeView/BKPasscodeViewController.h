@@ -11,7 +11,6 @@
 #import "BKTouchIDSwitchView.h"
 #import "BKTouchIDManager.h"
 
-
 typedef enum : NSUInteger {
     BKPasscodeViewControllerNewPasscodeType,
     BKPasscodeViewControllerChangePasscodeType,

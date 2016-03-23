@@ -12,6 +12,7 @@
 #import "BKPasscodeUtils.h"
 #import "Localisator.h"
 #import "UINavigationBar+Addition.h"
+#import "UIColor+Gust.h"
 
 
 typedef enum : NSUInteger {
@@ -45,7 +46,6 @@ typedef enum : NSUInteger {
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = LOCALIZATION(@"UnlockPasscode");
         // init state
         _type = BKPasscodeViewControllerNewPasscodeType;
         _currentState = BKPasscodeViewControllerStateInputPassword;
@@ -127,7 +127,7 @@ typedef enum : NSUInteger {
     navigationBar.tintColor = [UIColor whiteColor];
     [navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.3107 green:0.3107 blue:0.3107 alpha:1.0]}];
     
-    [self.view setBackgroundColor:[UIColor colorWithRed:0.94 green:0.94 blue:0.96 alpha:1]];
+    [self.view setBackgroundColor: [UIColor baseBackgroudColor]];
    
     [self updatePasscodeInputViewTitle:self.passcodeInputView];
     

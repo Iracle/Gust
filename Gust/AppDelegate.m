@@ -12,6 +12,7 @@
 #import "GuideViewController.h"
 #import "GustBKPasscodeDelegate.h"
 #import "OpenShareHeader.h"
+#import "Localisator.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong) GustBKPasscodeDelegate *gustBKPasscodeDelegate;
@@ -229,7 +230,7 @@
     
     viewController.touchIDManager = [[BKTouchIDManager alloc] initWithKeychainServiceName:@"BKPasscodeSampleService"];
     viewController.touchIDManager.promptText = @"Scan fingerprint to unlock";
-    
+    viewController.title = LOCALIZATION(@"UnlockPasscode");
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
     return navController;
 }

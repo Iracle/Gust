@@ -20,6 +20,7 @@
 #import "AllAlertView.h"
 #import "Localisator.h"
 #import "GustFeedbackHelper.h"
+#import "UIColor+Gust.h"
 
 @interface MoreViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
@@ -104,7 +105,7 @@
     navigationBar.tintColor = [UIColor whiteColor];
     [navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.3107 green:0.3107 blue:0.3107 alpha:1.0]}];
     
-    self.view.backgroundColor = [UIColor colorWithRed:250 / 255.0 green:250 / 255.0 blue:250 / 255.0 alpha:1.0];
+    self.view.backgroundColor = [UIColor baseBackgroudColor];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receiveLanguageChangedNotification:)

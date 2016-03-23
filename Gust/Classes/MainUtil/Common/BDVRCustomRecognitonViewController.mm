@@ -11,7 +11,7 @@
 #import "BDVRSConfig.h"
 #import "Localisator.h"
 #import "GustConfigure.h"
-
+#import "UIColor+Gust.h"
 static const CGFloat kDefaultAmplitude          =  0.0f ;
 #define VOICE_LEVEL_INTERVAL 0.1 // 音量监听频率为1秒中10次
 
@@ -77,8 +77,8 @@ static const CGFloat kDefaultAmplitude          =  0.0f ;
     self.voiceNumber = kDefaultAmplitude;
     _waveformView = [[SCSiriWaveformView alloc] initWithFrame:CGRectMake(0, 100, SCREEN_WIDTH, 400)];
     _waveformView.backgroundColor = [UIColor clearColor];
-    [_waveformView setPrimaryWaveLineWidth:3.0f];
-    [_waveformView setSecondaryWaveLineWidth:1.0];
+    [_waveformView setPrimaryWaveLineWidth:2.0];
+    [_waveformView setSecondaryWaveLineWidth:0.7];
     [_waveformView setWaveColor:[UIColor clearColor]];
     [self.bgVisualEffectView addSubview:_waveformView];
     
@@ -566,7 +566,7 @@ static const CGFloat kDefaultAmplitude          =  0.0f ;
 {
     //iracle: 获取语音音量级别
     int voiceLevel = [[BDVoiceRecognitionClient sharedInstance] getCurrentDBLevelMeter];
-    self.voiceNumber = (CGFloat)voiceLevel / 120;
+    self.voiceNumber = (CGFloat)voiceLevel / 140;
 }
 
 - (void)updateMeters {
@@ -591,7 +591,7 @@ static const CGFloat kDefaultAmplitude          =  0.0f ;
     sureButton.titleEdgeInsets = UIEdgeInsetsMake(25.0, 0, 0.0, 5);
     [sureButton setTitle: LOCALIZATION(@"Done") forState:UIControlStateNormal];
     sureButton.titleLabel.font = [UIFont systemFontOfSize:31.0 weight:UIFontWeightThin];
-    [sureButton setTitleColor:[UIColor colorWithRed:93 / 255.0 green:148 / 255.0 blue:140 / 255.0 alpha:1.0] forState:UIControlStateNormal];
+    [sureButton setTitleColor:[UIColor fontBrightColor] forState:UIControlStateNormal];
     [sureButton addTarget:self action:@selector(finishRecord:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:sureButton];
     
@@ -600,7 +600,7 @@ static const CGFloat kDefaultAmplitude          =  0.0f ;
     cancelButton.titleEdgeInsets = UIEdgeInsetsMake(25.0, 0, 0.0, 5);
     [cancelButton setTitle: LOCALIZATION(@"Cancel") forState:UIControlStateNormal];
     cancelButton.titleLabel.font = [UIFont systemFontOfSize:31.0 weight:UIFontWeightThin];
-    [cancelButton setTitleColor:[UIColor colorWithRed:93 / 255.0 green:148 / 255.0 blue:140 / 255.0 alpha:1.0] forState:UIControlStateNormal];
+    [cancelButton setTitleColor:[UIColor fontBrightColor] forState:UIControlStateNormal];
     [cancelButton addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:cancelButton];
 }

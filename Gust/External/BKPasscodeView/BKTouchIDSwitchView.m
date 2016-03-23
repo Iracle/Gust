@@ -8,6 +8,7 @@
 
 #import "BKTouchIDSwitchView.h"
 #import "Localisator.h"
+#import "UIColor+Gust.h"
 
 @implementation BKTouchIDSwitchView
 
@@ -54,8 +55,8 @@
     [self addSubview:self.touchIDSwitch];
     
     self.doneButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    self.doneButton.backgroundColor = [UIColor lightGrayColor];
-    [self.doneButton.titleLabel setFont:[UIFont systemFontOfSize:20.f]];
+    [self.doneButton setTintColor:[UIColor fontBrightColor]];
+    [self.doneButton.titleLabel setFont: [UIFont systemFontOfSize:37.0 weight:UIFontWeightLight]];
     [self.doneButton setTitle: LOCALIZATION(@"Done") forState:UIControlStateNormal];
     [self.doneButton addTarget:self action:@selector(doneButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.doneButton];
@@ -107,14 +108,14 @@
     rect.size.width += 40;
     rect.size.height += 40;
     rect.origin.x = floorf((CGRectGetWidth(self.frame) - CGRectGetWidth(rect)) * 0.5f);
-    rect.origin.y = offsetY + 60 ;
+    rect.origin.y = offsetY + 70 ;
     self.doneButton.frame = rect;
-    self.doneButton.layer.cornerRadius = CGRectGetWidth(self.doneButton.bounds) / 2;
     
     self.switchBackgroundView.frame = CGRectMake(-1,
                                                  CGRectGetMinY(self.touchIDSwitch.frame) - 12,
                                                  CGRectGetWidth(self.frame) + 2,
                                                  CGRectGetHeight(self.touchIDSwitch.frame) + 24);
+    
     
 }
 
