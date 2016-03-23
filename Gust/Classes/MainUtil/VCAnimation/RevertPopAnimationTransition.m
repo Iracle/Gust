@@ -18,6 +18,10 @@
     UIImageView *scaleView;
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext{
     return  0.24;
@@ -69,6 +73,11 @@
     UIImage *image= UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return image;
+}
+
+- (void)animationEnded:(BOOL)transitionCompleted {
+    [[NSNotificationCenter defaultCenter] postNotificationName:NotificationRevertPopAnimation object:nil];
+    
 }
 
 

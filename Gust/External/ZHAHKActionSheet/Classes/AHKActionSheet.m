@@ -12,7 +12,7 @@
 #import "UIImage+AHKAdditions.h"
 #import "UIWindow+AHKAdditions.h"
 #import "Localisator.h"
-
+#import "UIColor+Gust.h"
 
 static const NSTimeInterval kDefaultAnimationDuration = 0.5f;
 // Length of the range at which the blurred background is being hidden when the user scrolls the tableView to the top.
@@ -140,8 +140,10 @@ static const CGFloat kCancelButtonShadowHeightRatio = 0.333f;
             NSCAssert(NO, @"Shouldn't be reached");
             break;
     }
+    NSMutableDictionary *arrDic = [NSMutableDictionary dictionaryWithDictionary:attributes];
+    [arrDic setObject:[UIColor ahkActionSheetTableTitleColor] forKey:NSForegroundColorAttributeName];
 
-    NSAttributedString *attrTitle = [[NSAttributedString alloc] initWithString:item.title attributes:attributes];
+    NSAttributedString *attrTitle = [[NSAttributedString alloc] initWithString:item.title attributes:arrDic];
     cell.textLabel.attributedText = attrTitle;
     cell.textLabel.textAlignment = [self.buttonTextCenteringEnabled boolValue] ? NSTextAlignmentCenter : NSTextAlignmentLeft;
 
@@ -462,7 +464,7 @@ static const CGFloat kCancelButtonShadowHeightRatio = 0.333f;
     [self insertSubview:tableView aboveSubview:self.blurredBackgroundView];
     // move the content below the screen, ready to be animated in -show
     tableView.contentInset = UIEdgeInsetsMake(CGRectGetHeight(self.bounds), 0, 0, 0);
-
+    tableView.separatorColor = [UIColor colorWithRed:0.7322 green:0.7322 blue:0.7322 alpha:1.0];
     self.tableView = tableView;
 
     [self setUpTableViewHeader];

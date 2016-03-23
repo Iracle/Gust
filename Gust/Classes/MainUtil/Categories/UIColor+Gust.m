@@ -18,4 +18,8 @@
     return [UIColor colorWithRed:93 / 255.0 green:148 / 255.0 blue:140 / 255.0 alpha:1.0];
 }
 
++ (UIColor *)ahkActionSheetTableTitleColor {
+    return [UIColor colorWithRed:0.1716 green:0.1716 blue:0.1716 alpha:1.0];
+}
+
 @end

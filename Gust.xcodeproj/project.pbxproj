@@ -77,8 +77,13 @@
 		9326CE6E1C4D0AD400D39574 /* PopAnimationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9326CE691C4D0AD400D39574 /* PopAnimationTransition.m */; };
 		9326CE6F1C4D0AD400D39574 /* RevertPopAnimationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9326CE6B1C4D0AD400D39574 /* RevertPopAnimationTransition.m */; };
 		9326CE721C4D0F9900D39574 /* SettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9326CE711C4D0F9900D39574 /* SettingsTableViewCell.m */; };
-		933C6B541C9A98400003490F /* BDVoiceRecognitionClientResources in Resources */ = {isa = PBXBuildFile; fileRef = 933C6B531C9A98400003490F /* BDVoiceRecognitionClientResources */; };
 		933C6B571C9A9A330003490F /* BaiduVoiceSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933C6B561C9A9A330003490F /* BaiduVoiceSettingViewController.m */; };
+		933FFB2A1CA2C7DB00FBDD33 /* record_cancel.caf in Resources */ = {isa = PBXBuildFile; fileRef = 933FFB251CA2C7DB00FBDD33 /* record_cancel.caf */; };
+		933FFB2B1CA2C7DB00FBDD33 /* record_end.caf in Resources */ = {isa = PBXBuildFile; fileRef = 933FFB261CA2C7DB00FBDD33 /* record_end.caf */; };
+		933FFB2C1CA2C7DB00FBDD33 /* record_fail.caf in Resources */ = {isa = PBXBuildFile; fileRef = 933FFB271CA2C7DB00FBDD33 /* record_fail.caf */; };
+		933FFB2D1CA2C7DB00FBDD33 /* record_start.caf in Resources */ = {isa = PBXBuildFile; fileRef = 933FFB281CA2C7DB00FBDD33 /* record_start.caf */; };
+		933FFB2E1CA2C7DB00FBDD33 /* record_success.caf in Resources */ = {isa = PBXBuildFile; fileRef = 933FFB291CA2C7DB00FBDD33 /* record_success.caf */; };
+		933FFB301CA2C90600FBDD33 /* BDVoiceRecognitionClientResources in Resources */ = {isa = PBXBuildFile; fileRef = 933FFB2F1CA2C90600FBDD33 /* BDVoiceRecognitionClientResources */; };
 		9344D41A1C86C2B100C78715 /* GustBKPasscodeDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9344D4191C86C2B100C78715 /* GustBKPasscodeDelegate.m */; };
 		934748A41CA14448005F162B /* UIAlertController+Window.m in Sources */ = {isa = PBXBuildFile; fileRef = 9347489F1CA14448005F162B /* UIAlertController+Window.m */; };
 		934748A51CA14448005F162B /* UINavigationBar+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 934748A11CA14448005F162B /* UINavigationBar+Addition.m */; };
@@ -303,9 +308,14 @@
 		9326CE701C4D0F9900D39574 /* SettingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewCell.h; sourceTree = "<group>"; };
 		9326CE711C4D0F9900D39574 /* SettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewCell.m; sourceTree = "<group>"; };
 		933C6B521C9A498E0003490F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		933C6B531C9A98400003490F /* BDVoiceRecognitionClientResources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BDVoiceRecognitionClientResources; path = ../../../../../Desktop/BDVoiceRecognitionClientResources; sourceTree = "<group>"; };
 		933C6B551C9A9A330003490F /* BaiduVoiceSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduVoiceSettingViewController.h; sourceTree = "<group>"; };
 		933C6B561C9A9A330003490F /* BaiduVoiceSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaiduVoiceSettingViewController.m; sourceTree = "<group>"; };
+		933FFB251CA2C7DB00FBDD33 /* record_cancel.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = record_cancel.caf; sourceTree = "<group>"; };
+		933FFB261CA2C7DB00FBDD33 /* record_end.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = record_end.caf; sourceTree = "<group>"; };
+		933FFB271CA2C7DB00FBDD33 /* record_fail.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = record_fail.caf; sourceTree = "<group>"; };
+		933FFB281CA2C7DB00FBDD33 /* record_start.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = record_start.caf; sourceTree = "<group>"; };
+		933FFB291CA2C7DB00FBDD33 /* record_success.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = record_success.caf; sourceTree = "<group>"; };
+		933FFB2F1CA2C90600FBDD33 /* BDVoiceRecognitionClientResources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BDVoiceRecognitionClientResources; sourceTree = "<group>"; };
 		9344D4181C86C2B100C78715 /* GustBKPasscodeDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GustBKPasscodeDelegate.h; sourceTree = "<group>"; };
 		9344D4191C86C2B100C78715 /* GustBKPasscodeDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GustBKPasscodeDelegate.m; sourceTree = "<group>"; };
 		9347489E1CA14448005F162B /* UIAlertController+Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Window.h"; sourceTree = "<group>"; };
@@ -763,7 +773,8 @@
 		930F1D871C99A054009D8656 /* BaiduVoiceLib */ = {
 			isa = PBXGroup;
 			children = (
-				933C6B531C9A98400003490F /* BDVoiceRecognitionClientResources */,
+				933FFB2F1CA2C90600FBDD33 /* BDVoiceRecognitionClientResources */,
+				933FFB231CA2C7DB00FBDD33 /* BDVoiceRecognitionClientResources */,
 				930F1DB91C99A79F009D8656 /* BaiduVoiceHelp */,
 				930F1D8A1C99A12C009D8656 /* BaiduVoice_Third_Party */,
 				930F1DA01C99A12C009D8656 /* libBDVoiceRecognitionClient */,
@@ -837,6 +848,26 @@
 				930F1DC21C99A95C009D8656 /* SCSiriWaveformView.m */,
 			);
 			path = SCSiriWaveformView;
+			sourceTree = "<group>";
+		};
+		933FFB231CA2C7DB00FBDD33 /* BDVoiceRecognitionClientResources */ = {
+			isa = PBXGroup;
+			children = (
+				933FFB241CA2C7DB00FBDD33 /* Tone */,
+			);
+			path = BDVoiceRecognitionClientResources;
+			sourceTree = "<group>";
+		};
+		933FFB241CA2C7DB00FBDD33 /* Tone */ = {
+			isa = PBXGroup;
+			children = (
+				933FFB251CA2C7DB00FBDD33 /* record_cancel.caf */,
+				933FFB261CA2C7DB00FBDD33 /* record_end.caf */,
+				933FFB271CA2C7DB00FBDD33 /* record_fail.caf */,
+				933FFB281CA2C7DB00FBDD33 /* record_start.caf */,
+				933FFB291CA2C7DB00FBDD33 /* record_success.caf */,
+			);
+			path = Tone;
 			sourceTree = "<group>";
 		};
 		9344D4171C86C2B100C78715 /* Helpers */ = {
@@ -1162,14 +1193,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				93CA565D1C914A90007B2B86 /* OTMWebView+ContextMenu.js in Resources */,
-				933C6B541C9A98400003490F /* BDVoiceRecognitionClientResources in Resources */,
+				933FFB2C1CA2C7DB00FBDD33 /* record_fail.caf in Resources */,
+				933FFB2B1CA2C7DB00FBDD33 /* record_end.caf in Resources */,
 				93CA565E1C914A90007B2B86 /* OTMWebView.js in Resources */,
 				93CA56721C9151B7007B2B86 /* LICENSE in Resources */,
 				939438C71C8039F3003C26CB /* Localizable.strings in Resources */,
+				933FFB2E1CA2C7DB00FBDD33 /* record_success.caf in Resources */,
 				93CE19AA1BEC9B9100DECA3E /* PrivacyPassword.xib in Resources */,
+				933FFB301CA2C90600FBDD33 /* BDVoiceRecognitionClientResources in Resources */,
 				18EEDF261AA5FD6000033447 /* Images.xcassets in Resources */,
+				933FFB2D1CA2C7DB00FBDD33 /* record_start.caf in Resources */,
 				18A9C7541AFA679300436555 /* Launch Screen.xib in Resources */,
 				93CA56581C914A90007B2B86 /* LICENSE in Resources */,
+				933FFB2A1CA2C7DB00FBDD33 /* record_cancel.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

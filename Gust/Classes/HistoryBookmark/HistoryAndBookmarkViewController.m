@@ -55,6 +55,7 @@
         _tableView.tableFooterView = [UIView new];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsVerticalScrollIndicator = NO;
+        _tableView.scrollsToTop = YES;
         _tableView.separatorColor = [UIColor clearColor];
     }
     

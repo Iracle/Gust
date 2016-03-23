@@ -95,6 +95,7 @@
 {
     if (!_webView) {
         _webView = [[OTMWebView alloc] initWithFrame:CGRectMake(0, 40.0, SCREEN_WIDTH, SCREEN_HEIGHT- 40.0)];
+        _webView.scrollView.scrollsToTop = YES;
         _webView.delegate = self;
         _webView.scalesPageToFit = YES;
     }
@@ -237,9 +238,18 @@
         NSMutableDictionary *inputRecordDic= [NSMutableDictionary dictionary];
         [inputRecordDic setObject:searchText forKey:InputRecordString];
         //if the InputRecord is exist
-        NSArray *resultsArray = [CoreDataManager searchObjectWithEntityName:[InputRecord entityName] predicateString:[NSString stringWithFormat:@"inputString = '%@'",searchText]];
-        if (resultsArray.count < 1) {
-            [CoreDataManager insertObjectWithParameter:inputRecordDic entityName:[InputRecord entityName]];}
+        NSArray *allHisInput = [CoreDataManager searchObjectWithEntityName:[InputRecord entityName] predicateString: nil];
+        if (allHisInput.count == 9) {
+            NSManagedObject *obj = [allHisInput objectAtIndex: 0];
+            NSString *deleteInput = [obj valueForKey:InputRecordString];
+            [CoreDataManager removeObjectWithEntityName:[InputRecord entityName] predicateString:[NSString stringWithFormat:@"inputString = '%@'",deleteInput]];
+        }
+        if (allHisInput.count < 10) {
+            NSArray *resultsArray = [CoreDataManager searchObjectWithEntityName:[InputRecord entityName] predicateString:[NSString stringWithFormat:@"inputString = '%@'",searchText]];
+            if (resultsArray.count < 1) {
+                [CoreDataManager insertObjectWithParameter:inputRecordDic entityName:[InputRecord entityName]];
+            }
+        }
         
     }
     
@@ -355,6 +365,7 @@
         NSManagedObject *obj = [resultsArray objectAtIndex:i];
         [_inputRecordArray addObject:[obj valueForKey:InputRecordString]];
     }
+   _inputRecordArray =  [[[_inputRecordArray reverseObjectEnumerator] allObjects] mutableCopy];
     
     [self.inputHistorisTableView reloadData];
 }
@@ -704,8 +715,8 @@
     
     
     VLDContextSheetItem *item2 = [[VLDContextSheetItem alloc] initWithTitle: LOCALIZATION(@"ShareWeb")
-                                                                      image: [UIImage imageNamed: @"securityMode"]
-                                                           highlightedImage: [UIImage imageNamed: @"securityMode_h"]];
+                                                                      image: [UIImage imageNamed: @"MainTouchShare"]
+                                                           highlightedImage: [UIImage imageNamed: @"MainTouchShare_h"]];
     
     VLDContextSheetItem *item3 = [[VLDContextSheetItem alloc] initWithTitle: LOCALIZATION(@"Settings")
                                                                       image: [UIImage imageNamed: @"mainTouchSetting"]

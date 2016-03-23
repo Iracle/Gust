@@ -33,7 +33,7 @@
 @property (strong, nonatomic) QRCodeReaderView     *cameraView;
 @property (strong, nonatomic) UIButton             *cancelButton;
 @property (strong, nonatomic) QRCodeReader         *codeReader;
-
+@property (nonatomic) NSString *cancelButtonTitle;
 @property (copy, nonatomic) void (^completionBlock) (NSString *);
 
 @end
@@ -75,10 +75,10 @@
       
     self.view.backgroundColor = [UIColor blackColor];
     self.codeReader           = codeReader;
-    if (cancelTitle == nil) {
-      cancelTitle = LOCALIZATION(@"Cancel");
-    }
-    
+      
+      if (cancelTitle == nil) {
+          cancelTitle = LOCALIZATION(@"Cancel");
+      }
     [self setupUIComponentsWithCancelButtonTitle:cancelTitle];
     [self setupAutoLayoutConstraints];
     
@@ -124,6 +124,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
+    [_cancelButton setTitle:LOCALIZATION(@"Cancel") forState:UIControlStateNormal];
   
   [_codeReader startScanning];
 }

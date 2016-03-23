@@ -96,6 +96,8 @@
 @property (nonatomic, strong) UIButton *clearAllTopsiteButton;
 @property (nonatomic, strong) NSString *networkCheckString;
 
+@property (nonatomic) BOOL isFirstIn;
+
 @end
 
 @implementation HomeViewController
@@ -149,6 +151,7 @@
         _inputHistorisTableView.alpha = 0.0;
         _inputHistorisTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _inputHistorisTableView.separatorColor = [UIColor clearColor];
+        _inputHistorisTableView.contentInset = UIEdgeInsetsMake(0, 0, 300, 0);
         
         self.refreshHeader = [[GustRefreshHeader alloc] init];
         self.refreshHeader.scrollView = _inputHistorisTableView;
@@ -184,7 +187,7 @@
         [_homeCollectionView  registerClass:[HomeCollectionViewCell class] forCellWithReuseIdentifier:@"HOMECELL"];
         _homeCollectionView .delegate = self;
         _homeCollectionView.dataSource = self;
-        _homeCollectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+//        _homeCollectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     }
     return _homeCollectionView;
 }
@@ -211,13 +214,18 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.touchView.hidden = YES;
     [self check3DTouch];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    if (!self.isFirstIn) {
+        [self performSelector:@selector(touchViewAnimtion) withObject:nil afterDelay:0.5];
+        self.isFirstIn = YES;
+    }
     [self performSelector:@selector(checkoutNetWorkState) withObject:self afterDelay:2];
-    [self touchViewAnimtion];
+//    [self touchViewAnimtion];
     if (!_isFirstEnter) {
         [self performSelector:@selector(searchBarAnimation) withObject:nil afterDelay:0.24];
         //get Visible collection cell
@@ -280,6 +288,9 @@
 
     //applicationWillResignActive
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
+
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backToHomeAnimationComplete:) name:NotificationRevertPopAnimation object:nil];
     
     [self setupTopSitsData];
     
@@ -459,6 +470,10 @@
     
 }
 
+- (void)backToHomeAnimationComplete:(NSNotification *)notification {
+    [self touchViewAnimtion];
+}
+
 - (void)getCurrentSearchEnginSave {
     NSUserDefaults *searchDefaut = [NSUserDefaults standardUserDefaults];
     if ([[searchDefaut objectForKey:DefautSearchEngin] isEqualToString:SearchEnginBaidu]) {
@@ -598,9 +613,17 @@
         NSMutableDictionary *inputRecordDic= [NSMutableDictionary dictionary];
         [inputRecordDic setObject:searchText forKey:InputRecordString];
         //if the InputRecord is exist
-        NSArray *resultsArray = [CoreDataManager searchObjectWithEntityName:[InputRecord entityName] predicateString:[NSString stringWithFormat:@"inputString = '%@'",searchText]];
-        if (resultsArray.count < 1) {
-            [CoreDataManager insertObjectWithParameter:inputRecordDic entityName:[InputRecord entityName]];
+        NSArray *allHisInput = [CoreDataManager searchObjectWithEntityName:[InputRecord entityName] predicateString: nil];
+        if (allHisInput.count == 9) {
+            NSManagedObject *obj = [allHisInput objectAtIndex: 0];
+            NSString *deleteInput = [obj valueForKey:InputRecordString];
+            [CoreDataManager removeObjectWithEntityName:[InputRecord entityName] predicateString:[NSString stringWithFormat:@"inputString = '%@'",deleteInput]];
+        }
+        if (allHisInput.count < 10) {
+            NSArray *resultsArray = [CoreDataManager searchObjectWithEntityName:[InputRecord entityName] predicateString:[NSString stringWithFormat:@"inputString = '%@'",searchText]];
+            if (resultsArray.count < 1) {
+                [CoreDataManager insertObjectWithParameter:inputRecordDic entityName:[InputRecord entityName]];
+            }
         }
     }
     NSMutableString *returnString = [MainSearchBarTextManage manageTextFieldText:searchText];
@@ -713,6 +736,7 @@
         NSManagedObject *obj = [resultsArray objectAtIndex:i];
         [_inputRecordArray addObject:[obj valueForKey:InputRecordString]];
     }
+    _inputRecordArray =  [[[_inputRecordArray reverseObjectEnumerator] allObjects] mutableCopy];
 
     [self.inputHistorisTableView reloadData];
 }
@@ -786,6 +810,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.searchBar becomeFirstResponder];
     UITableViewCell *cell = (UITableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     _searchBar.text = cell.textLabel.text;
 }
@@ -890,14 +915,15 @@
 
 #pragma mark -- animation
 - (void)touchViewAnimtion {
-    
+    self.touchView.hidden = NO;
     self.touchView.transform = CGAffineTransformMakeScale(0.0001, 0.0001);
     POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
-    animation.beginTime = CACurrentMediaTime() + 0.5;
+    animation.beginTime = CACurrentMediaTime();
     animation.toValue = [NSValue valueWithCGPoint:CGPointMake(1.0, 1.0)];
     animation.springBounciness = 10.0;
     animation.springSpeed = 10.0;
     [self.touchView.layer pop_addAnimation:animation forKey:@"spring"];
+    
 }
 
 - (void)searchBarAnimation {
@@ -940,6 +966,7 @@
 
 }
 
+
 - (void)showMycellWithAnimation:(HomeCollectionViewCell *)cell withDaly:(NSTimeInterval)dely {
     [self performSelector:@selector(showCurrentCell:) withObject:cell afterDelay:dely];
 }
@@ -959,6 +986,7 @@
     [self dismissViewControllerAnimated:NO completion:^{
         
         GustWebViewController *gustWebVC = [[GustWebViewController alloc] init];
+        self.cellPopAnimationViewRect = self.view.frame;
         gustWebVC.webURL = result;
         [self.navigationController pushViewController:gustWebVC animated:YES];
     }];
@@ -966,7 +994,9 @@
 
 - (void)readerDidCancel:(QRCodeReaderViewController *)reader
 {
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self touchViewAnimtion];
+    }];
 }
 
 - (void)receiveLanguageChangedNotification:(NSNotification *) notification
@@ -1057,11 +1087,4 @@
 }
 
 @end
-
-
-
-
-
-
-
 

@@ -10,10 +10,12 @@
 
 @interface UIColor (Gust)
 
+//View color
 + (UIColor *)baseBackgroudColor;
 
 
-
+//Font color
 + (UIColor *)fontBrightColor;
++ (UIColor *)ahkActionSheetTableTitleColor;
 
 @end

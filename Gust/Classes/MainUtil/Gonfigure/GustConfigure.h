@@ -63,6 +63,8 @@ static const CGFloat SearchBarHeight = 45;
 //defuat guide
 #define GuideIsShow @"guideIsShow"
 
+#define AppVersion @"appVersion"
+
 const static float HomePageCancelButtonAlpha = 0.9999999;
 
 //notification
@@ -74,6 +76,7 @@ const static float HomePageCancelButtonAlpha = 0.9999999;
 #define NotificationReminderMe                    @"notificationReminderMe"
 #define NotificationOpenTodayUrl                  @"notificationOpenTodayUrl"
 #define NotificationAddNewWeb                     @"notificationAddNewWeb"
+#define NotificationRevertPopAnimation            @"notificationRevertPopAnimation"
 
 
 #define ShareText @"我在Gust浏览器发现了一个好网站，快来看看吧："

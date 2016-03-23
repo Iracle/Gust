@@ -57,17 +57,15 @@
     //register Weichat share
     [OpenShare connectWeixinWithAppId:@"wx98e8def97c8002f0"];
     
-    /*
-    NSUserDefaults *userDetaults = [NSUserDefaults standardUserDefaults];
-    if (![userDetaults objectForKey:@"Guide"]) {
+    //First Open App
+    NSString *currentAppVersion = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
+     NSLog(@"version: %@",currentAppVersion);
+    NSString *appVersion =  [[NSUserDefaults standardUserDefaults] objectForKey:AppVersion];
+    if (appVersion == nil || currentAppVersion != appVersion) {
+        
         GuideViewController *guideVC = [[GuideViewController alloc] init];
-        [nav presentViewController:guideVC animated:NO completion:nil];
+        self.window.rootViewController = guideVC;
     }
-     */
-
-//    GuideViewController *guideVC = [[GuideViewController alloc] init];
-//    [nav presentViewController:guideVC animated:NO completion:nil];
-    
 
     return YES;
 }
@@ -83,6 +81,7 @@
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
