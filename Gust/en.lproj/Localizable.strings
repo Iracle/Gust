@@ -85,6 +85,7 @@
 "Cancel"                                = "Cancel";
 "Done"                                  = "Done";
 "Back"                                  = "Back";
+"NetworkError"                          = "Network Errors";
 
 //BKPasscodeViewController
 "EnterPassCode"                         = "Enter a passcode";
@@ -122,7 +123,7 @@
 "StringVoiceRecognitonInterruptRecord" = "录音中断";
 "StringVoiceRecognitonCantIdentify" = "无法识别您说的内容";
 "StringVoiceRecognitonNetWorkError" = "网络连接错误, 请重试";
-"StringVoiceRecognitonNoNetWork" = "没有网络连接";
+"StringVoiceRecognitonNoNetWork" = "Network Unavailable";
 "StringVoiceRecognitonNetWorkTimeOut" = "网络超时";
 "StringVoiceRecognitonParseError" = "服务器数据解析错误";
 

@@ -14,8 +14,11 @@
 #import "FBShimmeringView.h"
 
 #define ANIMATIONVIEW_H (SCREEN_WIDTH - 60)/4
+#define ANIMATIONVIEW_RH (SCREEN_WIDTH - 85)/4
+
 #define ANIMATIONVIEW_Y (SCREEN_HEIGHT/2 - ANIMATIONVIEW_H)
-#define ANIMATIONVIEW_FY (SCREEN_HEIGHT/2 - ANIMATIONVIEW_H * 2)
+#define ANIMATIONVIEW_FY (SCREEN_HEIGHT/2 - ANIMATIONVIEW_RH * 2)
+
 
 @interface GuideViewController ()
 
@@ -41,7 +44,7 @@
         _gGhimmeringView = [[FBShimmeringView alloc] init];
         _gGhimmeringView.bounds = CGRectMake(0, 0, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
         _gGhimmeringView.center = CGPointMake(SCREEN_WIDTH / 2, ANIMATIONVIEW_Y);
-        _gGhimmeringView.backgroundColor = [UIColor blackColor];
+        _gGhimmeringView.backgroundColor = [UIColor colorWithRed:0.1447 green:0.1447 blue:0.1447 alpha:1.0];
         _gGhimmeringView.shimmeringBeginFadeDuration = 0.25;
         _gGhimmeringView.shimmeringOpacity = 0.9;
         _gGhimmeringView.layer.cornerRadius = 1.5;
@@ -67,7 +70,7 @@
         _sGhimmeringView = [[FBShimmeringView alloc] init];
         _sGhimmeringView.bounds = CGRectMake(0, 0, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
         _sGhimmeringView.center = CGPointMake(SCREEN_WIDTH / 2, ANIMATIONVIEW_Y);
-        _sGhimmeringView.backgroundColor = [UIColor blackColor];
+        _sGhimmeringView.backgroundColor = [UIColor colorWithRed:0.1447 green:0.1447 blue:0.1447 alpha:1.0];
         _sGhimmeringView.shimmeringBeginFadeDuration = 0.75;
         _sGhimmeringView.shimmeringOpacity = 0.9;
         _sGhimmeringView.layer.cornerRadius = 1.5;
@@ -95,7 +98,7 @@
         _gLabel = [[UILabel alloc] initWithFrame:self.gGhimmeringView.bounds];
         _gLabel.backgroundColor = [UIColor clearColor];
         _gLabel.textColor = [UIColor whiteColor];
-        _gLabel.font = [UIFont fontWithName:@"avenir" size:50.0];
+        _gLabel.font = [UIFont fontWithName:@"avenir" size:47.0];
         _gLabel.textAlignment = NSTextAlignmentCenter;
         _gLabel.text = @"G";
     }
@@ -109,7 +112,7 @@
         _uLabel.textColor = [UIColor whiteColor];
         _uLabel.textAlignment = NSTextAlignmentCenter;
         _uLabel.text = @"U";
-        _uLabel.font = [UIFont fontWithName:@"avenir" size:50.0];
+        _uLabel.font = [UIFont fontWithName:@"avenir" size:47.0];
     }
     return _uLabel;
 }
@@ -119,7 +122,7 @@
         _sLabel = [[UILabel alloc] initWithFrame:self.sGhimmeringView.bounds];
         _sLabel.backgroundColor = [UIColor clearColor];
         _sLabel.textColor = [UIColor whiteColor];
-        _sLabel.font = [UIFont fontWithName:@"avenir" size:50.0];
+        _sLabel.font = [UIFont fontWithName:@"avenir" size:47.0];
         _sLabel.textAlignment = NSTextAlignmentCenter;
         _sLabel.text = @"S";
     }
@@ -131,7 +134,7 @@
         _tLabel = [[UILabel alloc] initWithFrame:self.tGhimmeringView.bounds];
         _tLabel.backgroundColor = [UIColor clearColor];
         _tLabel.textColor = [UIColor whiteColor];
-        _tLabel.font = [UIFont fontWithName:@"avenir" size:50.0];
+        _tLabel.font = [UIFont fontWithName:@"avenir" size:47.0];
         _tLabel.textAlignment = NSTextAlignmentCenter;
         _tLabel.text = @"T";
     }
@@ -310,10 +313,10 @@
 
     [UIView animateWithDuration:0.5 animations:^{
 
-        self.gGhimmeringView.frame = CGRectMake(15.0, ANIMATIONVIEW_FY, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
-        self.uGhimmeringView.frame = CGRectMake(CGRectGetMaxX(self.gGhimmeringView.frame) + 10.0, ANIMATIONVIEW_FY, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
-        self.sGhimmeringView.frame = CGRectMake(CGRectGetMaxX(self.uGhimmeringView.frame) + 10.0, ANIMATIONVIEW_FY, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
-        self.tGhimmeringView.frame = CGRectMake(CGRectGetMaxX(self.sGhimmeringView.frame) + 10.0, ANIMATIONVIEW_FY, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
+        self.gGhimmeringView.frame = CGRectMake(20.0, ANIMATIONVIEW_FY, ANIMATIONVIEW_RH, ANIMATIONVIEW_RH);
+        self.uGhimmeringView.frame = CGRectMake(CGRectGetMaxX(self.gGhimmeringView.frame) + 15.0, ANIMATIONVIEW_FY, ANIMATIONVIEW_RH, ANIMATIONVIEW_RH);
+        self.sGhimmeringView.frame = CGRectMake(CGRectGetMaxX(self.uGhimmeringView.frame) + 15.0, ANIMATIONVIEW_FY, ANIMATIONVIEW_RH, ANIMATIONVIEW_RH);
+        self.tGhimmeringView.frame = CGRectMake(CGRectGetMaxX(self.sGhimmeringView.frame) + 15.0, ANIMATIONVIEW_FY, ANIMATIONVIEW_RH, ANIMATIONVIEW_RH);
         
     } completion:^(BOOL finished) {
         
@@ -334,7 +337,7 @@
         
     } completion:^(BOOL finished) {
         
-        [weakSelf performSelector:@selector(backToHomepage) withObject:nil afterDelay:1.5];
+//        [weakSelf performSelector:@selector(backToHomepage) withObject:nil afterDelay:1.5];
     }];
 }
 

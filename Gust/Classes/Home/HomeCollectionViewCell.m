@@ -8,6 +8,7 @@
 
 #import "HomeCollectionViewCell.h"
 #import "GustConfigure.h"
+#import "GustStringHandle.h"
 
 @implementation HomeCollectionViewCell
 
@@ -42,41 +43,10 @@
     _pageUrlString = dic[PageUrl];
     _pageNames = dic[PageName];
     NSString *webTitle =[dic[PageName] copy];
-    webTitle = [webTitle stringByReplacingOccurrencesOfString:@"【" withString:@""];
-    webTitle = [webTitle stringByReplacingOccurrencesOfString:@"】" withString:@""];
-    webTitle = [webTitle stringByReplacingOccurrencesOfString:@"《" withString:@""];
-    webTitle = [webTitle stringByReplacingOccurrencesOfString:@"》" withString:@""];
-    webTitle = [webTitle stringByReplacingOccurrencesOfString:@" " withString:@""];
-    if ([self convertToInt:webTitle] > 10) {
-        if ([self convertToInt:webTitle] > webTitle.length) {
-            NSString *resultTitle = [NSString stringWithFormat:@"%@%@",[webTitle substringToIndex:5], @"..."];
-            _pageNameLabel.text = resultTitle;
-        } else {
-            NSString *resultTitle = [NSString stringWithFormat:@"%@%@",[webTitle substringToIndex:10], @"..."];
-            _pageNameLabel.text = resultTitle;
-        }
-    } else {
-        _pageNameLabel.text = webTitle;
-    }
+    _pageNameLabel.text =  [[GustStringHandle new] getTheCurrentWebName:webTitle];
                     
 }
 
-- (int)convertToInt:(NSString*)strtemp
-{
-    int strlength = 0;
-    char* p = (char*)[strtemp cStringUsingEncoding:NSUnicodeStringEncoding];
-    for (int i=0 ; i<[strtemp lengthOfBytesUsingEncoding:NSUnicodeStringEncoding] ;i++) {
-        if (*p) {
-            p++;
-            strlength++;
-        }
-        else {
-            p++;
-        }
-        
-    }
-    return strlength;
-}
 
 
 @end

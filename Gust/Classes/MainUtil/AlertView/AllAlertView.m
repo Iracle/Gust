@@ -110,7 +110,7 @@ static const CGFloat AlertImageHeight = 50.0;
         weakSelf.transform = CGAffineTransformMakeTranslation(0, height);
         
     } completion:^(BOOL finished) {
-        [weakSelf performSelector:@selector(hideAlertView) withObject:nil afterDelay:1.3];
+        [weakSelf performSelector:@selector(hideAlertView) withObject:nil afterDelay:1.0];
     }];
 }
 

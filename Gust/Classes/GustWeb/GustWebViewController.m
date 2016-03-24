@@ -390,6 +390,12 @@
     [self.searchBar resignFirstResponder];
 }
 
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    self.navaSearchBar.webTitle.text = LOCALIZATION(@"NetworkError");
+    [self performSelector:@selector(checkoutNetWorkState) withObject:self afterDelay:1.3];
+
+}
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     NSString *currentDocumentTitle = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
@@ -759,6 +765,23 @@
     }
     
     [self openNewWebWithSearchText:self.searchBar.text];
+}
+
+- (void)checkoutNetWorkState {
+    
+    UIApplication *app = [UIApplication sharedApplication];
+    NSArray *children = [[[app valueForKeyPath:@"statusBar"] valueForKeyPath:@"foregroundView"] subviews];
+    int type = 0;
+    for (id child in children) {
+        if ([child isKindOfClass:NSClassFromString(@"UIStatusBarDataNetworkItemView")]) {
+            type = [[child valueForKeyPath:@"dataNetworkType"] intValue];
+        }
+    }
+    //0 - 无网络; 1 - 2G; 2 - 3G; 3 - 4G; 5 - WIFI
+    if (type == 0) {
+        
+        [[AllAlertView sharedAlert] showWithTitle: LOCALIZATION(@"NetWorkCheck") alertType:AllAlertViewAlertTypeAlert height:100.0];
+    }
 }
 
 

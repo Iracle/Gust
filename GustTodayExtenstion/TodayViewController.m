@@ -10,6 +10,7 @@
 #import <NotificationCenter/NotificationCenter.h>
 #import "GustConfigure.h"
 #import "UIButton+additions.h"
+#import "GustStringHandle.h"
 
 #define WEBITEM_BASETAG 2000
 
@@ -45,7 +46,7 @@
         UIButton *addButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
         addButton.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.1];
         addButton.layer.borderColor = [UIColor colorWithRed:0.7549 green:0.7549 blue:0.7549 alpha:1.0].CGColor;
-        addButton.layer.borderWidth = 1.5;
+        addButton.layer.borderWidth = 1;
         [addButton setTintColor:[UIColor whiteColor]];
         addButton.titleLabel.font = [UIFont systemFontOfSize:14.0 weight:UIFontWeightThin];
         [addButton addTarget:self action:@selector(addButtonTaped:) forControlEvents:UIControlEventTouchUpInside];
@@ -58,12 +59,12 @@
         webItem.tag = WEBITEM_BASETAG + index;
         webItem.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.1];
         webItem.layer.borderColor = [UIColor colorWithRed:0.7549 green:0.7549 blue:0.7549 alpha:1.0].CGColor;
-        webItem.layer.borderWidth = 1.5;
+        webItem.layer.borderWidth = 1;
         [webItem setTintColor:[UIColor whiteColor]];
         webItem.titleLabel.font = [UIFont systemFontOfSize:14.0 weight:UIFontWeightThin];
         [webItem addTarget:self action:@selector(webItemButtonTaped:) forControlEvents:UIControlEventTouchUpInside];
-        NSString *titleString =[self.todayWebs[index][PageName] substringToIndex:4];
-        [ webItem setTitle:titleString forState:UIControlStateNormal];
+        NSString *titleString =self.todayWebs[index][PageName];
+        [ webItem setTitle:[[[GustStringHandle alloc] init] getTheCurrentWebName:titleString] forState:UIControlStateNormal];
         webItem.str = self.todayWebs[index][PageUrl];
         [stackView addArrangedSubview:webItem];
         

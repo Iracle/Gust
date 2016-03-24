@@ -94,7 +94,6 @@
 @property (nonatomic, strong) NSString *localisatorBookhis;
 @property (nonatomic, strong) NSString *localisatorClearHis;
 @property (nonatomic, strong) UIButton *clearAllTopsiteButton;
-@property (nonatomic, strong) NSString *networkCheckString;
 
 @property (nonatomic) BOOL isFirstIn;
 
@@ -224,8 +223,6 @@
         [self performSelector:@selector(touchViewAnimtion) withObject:nil afterDelay:0.5];
         self.isFirstIn = YES;
     }
-    [self performSelector:@selector(checkoutNetWorkState) withObject:self afterDelay:2];
-//    [self touchViewAnimtion];
     if (!_isFirstEnter) {
         [self performSelector:@selector(searchBarAnimation) withObject:nil afterDelay:0.24];
         //get Visible collection cell
@@ -847,23 +844,6 @@
     [_searchBar resignFirstResponder];
 }
 
-- (void)checkoutNetWorkState {
-    
-    UIApplication *app = [UIApplication sharedApplication];
-    NSArray *children = [[[app valueForKeyPath:@"statusBar"] valueForKeyPath:@"foregroundView"] subviews];
-    int type = 0;
-    for (id child in children) {
-        if ([child isKindOfClass:NSClassFromString(@"UIStatusBarDataNetworkItemView")]) {
-            type = [[child valueForKeyPath:@"dataNetworkType"] intValue];
-        }
-    }
-    //0 - 无网络; 1 - 2G; 2 - 3G; 3 - 4G; 5 - WIFI
-    if (type == 0) {
-        
-        [[AllAlertView sharedAlert] showWithTitle: self.networkCheckString  alertType:AllAlertViewAlertTypeAlert height:130.0];
-    }
-}
-
 #pragma mark -- Add 3D Touch
 - (void)check3DTouch {
     if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
@@ -1014,7 +994,6 @@
     self.localisatorSettings = LOCALIZATION(@"Settings");
     self.localisatorClearHis  = LOCALIZATION(@"ClearInput");
     [_clearAllTopsiteButton setTitle:self.localisatorClearHis forState:UIControlStateNormal];
-    self.networkCheckString = LOCALIZATION(@"NetWorkCheck");
     
     VLDContextSheetItem *item1 = [[VLDContextSheetItem alloc] initWithTitle: self.localisatorBookhis
                                                                       image: [UIImage imageNamed: @"bookhistory"]

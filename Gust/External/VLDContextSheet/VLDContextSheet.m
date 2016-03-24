@@ -103,7 +103,7 @@ static CGRect VLDOrientedScreenBounds() {
     _centerView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, sampleItemView.frame.size.width, sampleItemView.frame.size.width)];
     _centerView.layer.cornerRadius = 25;
     _centerView.layer.borderWidth = 2;
-    _centerView.layer.borderColor = [UIColor grayColor].CGColor;
+    _centerView.layer.borderColor = [UIColor clearColor].CGColor;
     [self addSubview: _centerView];
 
 }
@@ -115,7 +115,7 @@ static CGRect VLDOrientedScreenBounds() {
 }
 
 - (void) setCenterViewHighlighted: (BOOL) highlighted {
-    _centerView.backgroundColor = highlighted ? [UIColor colorWithWhite: 0.5 alpha: 0.4] : nil;
+    _centerView.backgroundColor = highlighted ? [UIColor clearColor] : nil;
 }
 
 - (void) createZones {

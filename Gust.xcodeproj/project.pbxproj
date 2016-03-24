@@ -88,6 +88,8 @@
 		934748A41CA14448005F162B /* UIAlertController+Window.m in Sources */ = {isa = PBXBuildFile; fileRef = 9347489F1CA14448005F162B /* UIAlertController+Window.m */; };
 		934748A51CA14448005F162B /* UINavigationBar+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 934748A11CA14448005F162B /* UINavigationBar+Addition.m */; };
 		934748A61CA14448005F162B /* UIViewController+Visible.m in Sources */ = {isa = PBXBuildFile; fileRef = 934748A31CA14448005F162B /* UIViewController+Visible.m */; };
+		934C19351CA42F5500AD04DF /* GustStringHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 934C19341CA42F5500AD04DF /* GustStringHandle.m */; };
+		934C19361CA4310000AD04DF /* GustStringHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 934C19341CA42F5500AD04DF /* GustStringHandle.m */; };
 		93552ED61BEA00FE004B0380 /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93552ED51BEA00FE004B0380 /* CustomNavigationController.m */; };
 		935A008D1CA2F01F0017A4CE /* bg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 935A008C1CA2F01F0017A4CE /* bg.jpeg */; };
 		9361C28D1C4398BF00A0E625 /* NavaSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9361C28C1C4398BF00A0E625 /* NavaSearchBar.m */; };
@@ -325,6 +327,8 @@
 		934748A11CA14448005F162B /* UINavigationBar+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Addition.m"; sourceTree = "<group>"; };
 		934748A21CA14448005F162B /* UIViewController+Visible.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Visible.h"; sourceTree = "<group>"; };
 		934748A31CA14448005F162B /* UIViewController+Visible.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Visible.m"; sourceTree = "<group>"; };
+		934C19331CA42F5500AD04DF /* GustStringHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GustStringHandle.h; sourceTree = "<group>"; };
+		934C19341CA42F5500AD04DF /* GustStringHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GustStringHandle.m; sourceTree = "<group>"; };
 		93552ED41BEA00FE004B0380 /* CustomNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationController.h; sourceTree = "<group>"; };
 		93552ED51BEA00FE004B0380 /* CustomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationController.m; sourceTree = "<group>"; };
 		935A008C1CA2F01F0017A4CE /* bg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpeg; sourceTree = "<group>"; };
@@ -884,6 +888,8 @@
 				937743FB1C94685900E9B712 /* GustFeedbackHelper.m */,
 				930F1DB61C99A6A6009D8656 /* BDVoiceRecognitionClientHelper.h */,
 				930F1DB71C99A6A6009D8656 /* BDVoiceRecognitionClientHelper.m */,
+				934C19331CA42F5500AD04DF /* GustStringHandle.h */,
+				934C19341CA42F5500AD04DF /* GustStringHandle.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1371,6 +1377,7 @@
 				93CE19A21BEC9B3F00DECA3E /* MutiTabCollectionViewCell.m in Sources */,
 				930D7B181C84939900B059F8 /* BKPasscodeLockScreenManager.m in Sources */,
 				930F1DAE1C99A12C009D8656 /* TTTAttributedLabel.m in Sources */,
+				934C19351CA42F5500AD04DF /* GustStringHandle.m in Sources */,
 				9326CE6F1C4D0AD400D39574 /* RevertPopAnimationTransition.m in Sources */,
 				93CE19A11BEC9B3F00DECA3E /* MultiTabView.m in Sources */,
 				93CA56701C9151B7007B2B86 /* UIImage+AHKAdditions.m in Sources */,
@@ -1428,6 +1435,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				934C19361CA4310000AD04DF /* GustStringHandle.m in Sources */,
 				93CE7AB21C50C2B400A5BEE5 /* TodayViewController.m in Sources */,
 				936CAD391C589A190057F3E0 /* UIButton+additions.m in Sources */,
 				939438D11C803ABC003C26CB /* Localisator.m in Sources */,

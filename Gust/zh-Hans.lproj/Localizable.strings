@@ -80,6 +80,7 @@
 "Cancel"                                = "取消";
 "Done"                                  = "完毕";
 "Back"                                  = "返回";
+"NetworkError"                          = "网络错误";
 
 //BKPasscodeViewController
 "EnterPassCode"                         = "请输入锁定密码";
