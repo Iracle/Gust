@@ -2,15 +2,18 @@ PODS:
   - AFViewShaker (0.0.2)
   - OpenShare (0.0.1)
   - pop (1.0.9)
+  - Shimmer (1.0.2)
 
 DEPENDENCIES:
   - AFViewShaker (~> 0.0)
   - OpenShare
   - pop
+  - Shimmer
 
 SPEC CHECKSUMS:
   AFViewShaker: 7e4bc215ca3e92347b78da436fca74e1730b52e8
   OpenShare: a560580dbb729d5c0c3cc1ee84cd6aa4a07e94c6
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
 
 COCOAPODS: 0.39.0

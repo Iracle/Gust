@@ -10,9 +10,12 @@
 #import "HomeViewController.h"
 #import "GustConfigure.h"
 #import <POP/POP.h>
+#import "FBShimmering.h"
+#import "FBShimmeringView.h"
 
 #define ANIMATIONVIEW_H (SCREEN_WIDTH - 60)/4
 #define ANIMATIONVIEW_Y (SCREEN_HEIGHT/2 - ANIMATIONVIEW_H)
+#define ANIMATIONVIEW_FY (SCREEN_HEIGHT/2 - ANIMATIONVIEW_H * 2)
 
 @interface GuideViewController ()
 
@@ -21,18 +24,78 @@
 @property (nonatomic, strong) UILabel *sLabel;
 @property (nonatomic, strong) UILabel *tLabel;
 
+@property (nonatomic, strong) FBShimmeringView *gGhimmeringView;
+@property (nonatomic, strong) FBShimmeringView *uGhimmeringView;
+@property (nonatomic, strong) FBShimmeringView *sGhimmeringView;
+@property (nonatomic, strong) FBShimmeringView *tGhimmeringView;
+
+
+@property (nonatomic, strong) UILabel *displayLabel;
+
 @end
 
 @implementation GuideViewController
 
+- (FBShimmeringView *)gGhimmeringView {
+    if (!_gGhimmeringView) {
+        _gGhimmeringView = [[FBShimmeringView alloc] init];
+        _gGhimmeringView.bounds = CGRectMake(0, 0, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
+        _gGhimmeringView.center = CGPointMake(SCREEN_WIDTH / 2, ANIMATIONVIEW_Y);
+        _gGhimmeringView.backgroundColor = [UIColor blackColor];
+        _gGhimmeringView.shimmeringBeginFadeDuration = 0.25;
+        _gGhimmeringView.shimmeringOpacity = 0.9;
+        _gGhimmeringView.layer.cornerRadius = 1.5;
+//        _gGhimmeringView.shimmeringSpeed = 350.0;
+    }
+    return _gGhimmeringView;
+}
+
+- (FBShimmeringView *)uGhimmeringView {
+    if (!_uGhimmeringView) {
+        _uGhimmeringView = [[FBShimmeringView alloc] init];
+        _uGhimmeringView.bounds = CGRectMake(0, 0, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
+        _uGhimmeringView.center = CGPointMake(SCREEN_WIDTH / 2, ANIMATIONVIEW_Y);
+        _uGhimmeringView.backgroundColor = [UIColor blackColor];
+        _uGhimmeringView.shimmeringBeginFadeDuration = 0.5;
+        _uGhimmeringView.shimmeringOpacity = 0.9;
+        _uGhimmeringView.layer.cornerRadius = 1.5;
+    }
+    return _uGhimmeringView;
+}
+- (FBShimmeringView *)sGhimmeringView {
+    if (!_sGhimmeringView) {
+        _sGhimmeringView = [[FBShimmeringView alloc] init];
+        _sGhimmeringView.bounds = CGRectMake(0, 0, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
+        _sGhimmeringView.center = CGPointMake(SCREEN_WIDTH / 2, ANIMATIONVIEW_Y);
+        _sGhimmeringView.backgroundColor = [UIColor blackColor];
+        _sGhimmeringView.shimmeringBeginFadeDuration = 0.75;
+        _sGhimmeringView.shimmeringOpacity = 0.9;
+        _sGhimmeringView.layer.cornerRadius = 1.5;
+
+    }
+    return _sGhimmeringView;
+}
+- (FBShimmeringView *)tGhimmeringView {
+    if (!_tGhimmeringView) {
+        _tGhimmeringView = [[FBShimmeringView alloc] init];
+        _tGhimmeringView.bounds = CGRectMake(0, 0, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
+        _tGhimmeringView.center = CGPointMake(SCREEN_WIDTH / 2, ANIMATIONVIEW_Y);
+        _tGhimmeringView.backgroundColor = [UIColor blackColor];
+        _tGhimmeringView.shimmeringBeginFadeDuration = 1.0;
+        _tGhimmeringView.shimmeringOpacity = 0.9;
+        _tGhimmeringView.layer.cornerRadius = 1.5;
+
+    }
+    return _tGhimmeringView;
+}
+
+
 - (UILabel *)gLabel {
     if (!_gLabel) {
-        _gLabel = [[UILabel alloc] init];
-        _gLabel.bounds = CGRectMake(0, 0, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
-        _gLabel.center = CGPointMake(SCREEN_WIDTH / 2, ANIMATIONVIEW_Y);
-        _gLabel.backgroundColor = [UIColor blackColor];
+        _gLabel = [[UILabel alloc] initWithFrame:self.gGhimmeringView.bounds];
+        _gLabel.backgroundColor = [UIColor clearColor];
         _gLabel.textColor = [UIColor whiteColor];
-        _gLabel.font = [UIFont systemFontOfSize:47.0 weight:UIFontWeightMedium];
+        _gLabel.font = [UIFont systemFontOfSize:50.0 weight:UIFontWeightRegular];
         _gLabel.textAlignment = NSTextAlignmentCenter;
         _gLabel.text = @"G";
     }
@@ -41,12 +104,10 @@
 
 - (UILabel *)uLabel {
     if (!_uLabel) {
-        _uLabel = [[UILabel alloc] init];
-        _uLabel.bounds = CGRectMake(0, 0, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
-        _uLabel.center = CGPointMake(SCREEN_WIDTH / 2, ANIMATIONVIEW_Y);
-        _uLabel.backgroundColor = [UIColor blackColor];
+        _uLabel = [[UILabel alloc] initWithFrame:self.uGhimmeringView.bounds];
+        _uLabel.backgroundColor = [UIColor clearColor];
         _uLabel.textColor = [UIColor whiteColor];
-        _uLabel.font = [UIFont systemFontOfSize:47.0 weight:UIFontWeightMedium];
+        _uLabel.font = [UIFont systemFontOfSize:50.0 weight:UIFontWeightRegular];
         _uLabel.textAlignment = NSTextAlignmentCenter;
         _uLabel.text = @"U";
     }
@@ -55,12 +116,10 @@
 
 - (UILabel *)sLabel {
     if (!_sLabel) {
-        _sLabel = [[UILabel alloc] init];
-        _sLabel.bounds = CGRectMake(0, 0, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
-        _sLabel.center = CGPointMake(SCREEN_WIDTH / 2, ANIMATIONVIEW_Y);
-        _sLabel.backgroundColor = [UIColor blackColor];
+        _sLabel = [[UILabel alloc] initWithFrame:self.sGhimmeringView.bounds];
+        _sLabel.backgroundColor = [UIColor clearColor];
         _sLabel.textColor = [UIColor whiteColor];
-        _sLabel.font = [UIFont systemFontOfSize:47.0 weight:UIFontWeightMedium];
+        _sLabel.font = [UIFont systemFontOfSize:50.0 weight:UIFontWeightRegular];
         _sLabel.textAlignment = NSTextAlignmentCenter;
         _sLabel.text = @"S";
     }
@@ -69,113 +128,220 @@
 
 - (UILabel *)tLabel {
     if (!_tLabel) {
-        _tLabel = [[UILabel alloc] init];
-        _tLabel.bounds = CGRectMake(0, 0, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
-        _tLabel.center = CGPointMake(SCREEN_WIDTH / 2, ANIMATIONVIEW_Y);
-        _tLabel.backgroundColor = [UIColor blackColor];
+        _tLabel = [[UILabel alloc] initWithFrame:self.tGhimmeringView.bounds];
+        _tLabel.backgroundColor = [UIColor clearColor];
         _tLabel.textColor = [UIColor whiteColor];
-        _tLabel.font = [UIFont systemFontOfSize:47.0 weight:UIFontWeightMedium];
+        _tLabel.font = [UIFont systemFontOfSize:50.0 weight:UIFontWeightRegular];
         _tLabel.textAlignment = NSTextAlignmentCenter;
         _tLabel.text = @"T";
     }
     return _tLabel;
 }
 
+- (UILabel *)displayLabel {
+    if (!_displayLabel) {
+        _displayLabel = [[UILabel alloc] init];
+        _displayLabel.bounds = CGRectMake(0, 0, SCREEN_WIDTH * 0.7, 30.0);
+        _displayLabel.center = CGPointMake(SCREEN_MID_X, SCREEN_MID_Y - 15.0);
+        _displayLabel.text = @"我不是人,我是禽兽";
+        _displayLabel.textAlignment = NSTextAlignmentCenter;
+        _displayLabel.textColor = [UIColor colorWithRed:0.0752 green:0.0752 blue:0.0752 alpha:1.0];
+        _displayLabel.font = [UIFont systemFontOfSize:17.0 weight:UIFontWeightLight];
+        
+    }
+    
+    return _displayLabel;
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.gLabel.alpha = 0.01;
-    self.uLabel.alpha = 0.01;
-    self.sLabel.alpha = 0.01;
-    self.tLabel.alpha = 0.01;
+    
+    self.gGhimmeringView.alpha = 0.0;
+    self.uGhimmeringView.alpha = 0.0;
+    self.sGhimmeringView.alpha = 0.0;
+    self.tGhimmeringView.alpha = 0.0;
+    
+    self.gGhimmeringView.transform = CGAffineTransformMakeScale(0.8, 0.8);
+    self.uGhimmeringView.transform = CGAffineTransformMakeScale(0.8, 0.8);
+    self.sGhimmeringView.transform = CGAffineTransformMakeScale(0.8, 0.8);
+    self.tGhimmeringView.transform = CGAffineTransformMakeScale(0.8, 0.8);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
     __weak typeof(self) weakSelf = self;
-    [UIView animateWithDuration:1.0 animations:^{
-        self.gLabel.alpha = 1.0;
-    } completion:^(BOOL finished) {
-        self.gLabel.hidden = YES;
-        [UIView animateWithDuration:0.5 animations:^{
-            self.uLabel.alpha = 1.0;
-        } completion:^(BOOL finished) {
-            self.uLabel.hidden = YES;
-            [UIView animateWithDuration:0.5 animations:^{
-                self.sLabel.alpha = 1.0;
-            } completion:^(BOOL finished) {
-                self.sLabel.hidden = YES;
-                [UIView animateWithDuration:0.5 animations:^{
-                    self.tLabel.alpha = 1.0;
-                } completion:^(BOOL finished) {
-                    self.tLabel.hidden = YES;
-                    [weakSelf showAllAnimationView];
-                    
-                }];
-            }];
-            
-        }];
+    
+    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+    animation.beginTime = CACurrentMediaTime() + 0.5;
+    animation.springBounciness = 5;
+    animation.springSpeed = 20;
+    animation.fromValue = [NSValue valueWithCGPoint:CGPointMake(0, 0)];
+    animation.toValue = [NSValue valueWithCGPoint:CGPointMake(1.0, 1.0)];
+    
+    POPBasicAnimation *opacityAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
+    opacityAnimation.beginTime = CACurrentMediaTime() + 0.5;
+    opacityAnimation.duration = 0.5;
+    opacityAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    opacityAnimation.fromValue = @(0.0);
+    opacityAnimation.toValue = @(1.0);
+    opacityAnimation.completionBlock = ^(POPAnimation *anim, BOOL finished) {
         
-    }];
+        [weakSelf startuLabelAnimation];
+    };
+    
+    [self.gGhimmeringView.layer pop_addAnimation:animation forKey:@"animationscale"];
+    [self.gGhimmeringView.layer pop_addAnimation:opacityAnimation forKey:@"animationopacity"];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:self.gLabel];
-    [self.view addSubview:self.uLabel];
-    [self.view addSubview:self.sLabel];
-    [self.view addSubview:self.tLabel];
+    
+    [self.view addSubview:self.gGhimmeringView];
+    [self.view addSubview:self.uGhimmeringView];
+    [self.view addSubview:self.sGhimmeringView];
+    [self.view addSubview:self.tGhimmeringView];
+    
+    self.gGhimmeringView.contentView = self.gLabel;
+    self.uGhimmeringView.contentView = self.uLabel;
+    self.sGhimmeringView.contentView = self.sLabel;
+    self.tGhimmeringView.contentView = self.tLabel;
+    
+    UIView *pointView = [[UIView alloc] init];
+    pointView.center = self.view.center;
+    pointView.bounds = CGRectMake(0, 0, 5, 5);
+    pointView.backgroundColor = [UIColor redColor];
+//    [self.view addSubview:pointView];
 
 }
 
-- (void)showAllAnimationView {
-    self.gLabel.frame = CGRectMake(15.0, ANIMATIONVIEW_Y, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
-    self.uLabel.frame = CGRectMake(CGRectGetMaxX(self.gLabel.frame) + 10.0, ANIMATIONVIEW_Y, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
-    self.sLabel.frame = CGRectMake(CGRectGetMaxX(self.uLabel.frame) + 10.0, ANIMATIONVIEW_Y, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
-    self.tLabel.frame = CGRectMake(CGRectGetMaxX(self.sLabel.frame) + 10.0, ANIMATIONVIEW_Y, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
+- (void)startuLabelAnimation {
+    self.gGhimmeringView.hidden = YES;
     
-    self.gLabel.hidden = NO;
-    self.uLabel.hidden = NO;
-    self.sLabel.hidden = NO;
-    self.tLabel.hidden = NO;
+    __weak typeof(self) weakSelf = self;
     
-    self.gLabel.transform = CGAffineTransformMakeScale(0.8, 0.8);
-    self.uLabel.transform = CGAffineTransformMakeScale(0.8, 0.8);
-    self.sLabel.transform = CGAffineTransformMakeScale(0.8, 0.8);
-    self.tLabel.transform = CGAffineTransformMakeScale(0.8, 0.8);
+    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+    animation.beginTime = CACurrentMediaTime() + 0.0;
+    animation.springBounciness = 5;
+    animation.springSpeed = 20;
+    animation.fromValue = [NSValue valueWithCGPoint:CGPointMake(0, 0)];
+    animation.toValue = [NSValue valueWithCGPoint:CGPointMake(1.0, 1.0)];
     
-//    [UIView animateWithDuration:10 animations:^{
-//        self.gLabel.transform = CGAffineTransformIdentity;
-//        self.uLabel.transform = CGAffineTransformIdentity;
-//        self.sLabel.transform = CGAffineTransformIdentity;
-//        self.tLabel.transform = CGAffineTransformIdentity;
-//    } completion:^(BOOL finished) {
-//        
-//    }];
+    POPBasicAnimation *opacityAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
+    opacityAnimation.beginTime = CACurrentMediaTime() + 0.0;
+    opacityAnimation.duration = 0.5;
+    opacityAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    opacityAnimation.fromValue = @(0.0);
+    opacityAnimation.toValue = @(1.0);
+    opacityAnimation.completionBlock = ^(POPAnimation *anim, BOOL finished) {
+        
+        [weakSelf startsLabelAnimation];
+    };
     
-        POPBasicAnimation *animation1 = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
-        animation1.beginTime = CACurrentMediaTime() + 0.0;
-        animation1.duration = 25.0;
-        animation1.toValue = [NSValue valueWithCGPoint:CGPointMake(1.0, 1.0)];
-        animation1.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-        [self.gLabel.layer pop_addAnimation:animation1 forKey:@"decay"];
-        [self.uLabel.layer pop_addAnimation:animation1 forKey:@"decay"];
-        [self.sLabel.layer pop_addAnimation:animation1 forKey:@"decay"];
-        [self.tLabel.layer pop_addAnimation:animation1 forKey:@"decay"];
+    [self.uGhimmeringView.layer pop_addAnimation:animation forKey:@"animationscale"];
+    [self.uGhimmeringView.layer pop_addAnimation:opacityAnimation forKey:@"animationopacity"];
     
-    //    POPDecayAnimation *animation = [POPDecayAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
-//    animation.velocity = [NSValue valueWithCGSize:CGSizeMake(0.42, 0.42)];
-//    animation.deceleration = 0.998;
-//    animation.completionBlock = ^(POPAnimation *anim, BOOL finished) {
-//        if (finished) {
-//            
-//        }
-//    };
-//    [self.gLabel.layer pop_addAnimation:animation forKey:@"decay"];
-//    [self.uLabel.layer pop_addAnimation:animation forKey:@"decay"];
-//    [self.sLabel.layer pop_addAnimation:animation forKey:@"decay"];
-//    [self.tLabel.layer pop_addAnimation:animation forKey:@"decay"];
+}
 
+- (void)startsLabelAnimation {
+    self.uGhimmeringView.hidden = YES;
+    
+    __weak typeof(self) weakSelf = self;
+    
+    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+    animation.beginTime = CACurrentMediaTime() + 0.0;
+    animation.springBounciness = 5;
+    animation.springSpeed = 20;
+    animation.fromValue = [NSValue valueWithCGPoint:CGPointMake(0, 0)];
+    animation.toValue = [NSValue valueWithCGPoint:CGPointMake(1.0, 1.0)];
+    
+    POPBasicAnimation *opacityAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
+    opacityAnimation.beginTime = CACurrentMediaTime() + 0.0;
+    opacityAnimation.duration = 0.5;
+    opacityAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    opacityAnimation.fromValue = @(0.0);
+    opacityAnimation.toValue = @(1.0);
+    opacityAnimation.completionBlock = ^(POPAnimation *anim, BOOL finished) {
+        
+        [weakSelf starttLabelAnimation];
+    };
+    
+    [self.sGhimmeringView.layer pop_addAnimation:animation forKey:@"animationscale"];
+    [self.sGhimmeringView.layer pop_addAnimation:opacityAnimation forKey:@"animationopacity"];
+    
+}
+
+- (void)starttLabelAnimation {
+    self.sGhimmeringView.hidden = YES;
+    
+    __weak typeof(self) weakSelf = self;
+    
+    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+    animation.beginTime = CACurrentMediaTime() + 0.0;
+    animation.springBounciness = 5;
+    animation.springSpeed = 20;
+    animation.fromValue = [NSValue valueWithCGPoint:CGPointMake(0, 0)];
+    animation.toValue = [NSValue valueWithCGPoint:CGPointMake(1.0, 1.0)];
+    
+    POPBasicAnimation *opacityAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
+    opacityAnimation.beginTime = CACurrentMediaTime() + 0.0;
+    opacityAnimation.duration = 0.5;
+    opacityAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    opacityAnimation.fromValue = @(0.0);
+    opacityAnimation.toValue = @(1.0);
+    opacityAnimation.completionBlock = ^(POPAnimation *anim, BOOL finished) {
+        
+        self.tGhimmeringView.hidden = YES;
+        [weakSelf showAllAnimationView];
+    };
+    
+    [self.tGhimmeringView.layer pop_addAnimation:animation forKey:@"animationscale"];
+    [self.tGhimmeringView.layer pop_addAnimation:opacityAnimation forKey:@"animationopacity"];
+    
+}
+
+- (void)showAllAnimationView {
+    
+    self.gGhimmeringView.hidden = NO;
+    self.uGhimmeringView.hidden = NO;
+    self.sGhimmeringView.hidden = NO;
+    self.tGhimmeringView.hidden = NO;
+
+    [UIView animateWithDuration:0.5 animations:^{
+
+        self.gGhimmeringView.frame = CGRectMake(15.0, ANIMATIONVIEW_FY, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
+        self.uGhimmeringView.frame = CGRectMake(CGRectGetMaxX(self.gGhimmeringView.frame) + 10.0, ANIMATIONVIEW_FY, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
+        self.sGhimmeringView.frame = CGRectMake(CGRectGetMaxX(self.uGhimmeringView.frame) + 10.0, ANIMATIONVIEW_FY, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
+        self.tGhimmeringView.frame = CGRectMake(CGRectGetMaxX(self.sGhimmeringView.frame) + 10.0, ANIMATIONVIEW_FY, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
+        
+    } completion:^(BOOL finished) {
+        
+        self.gGhimmeringView.shimmering = YES;
+        self.uGhimmeringView.shimmering = YES;
+        self.sGhimmeringView.shimmering = YES;
+        self.tGhimmeringView.shimmering = YES;
+
+    }];
+    
+    //display snogan label
+    [self.view addSubview:self.displayLabel];
+    self.displayLabel.alpha = 0.0;
+    
+     __weak typeof(self) weakSelf = self;
+    [UIView animateWithDuration:0.5 animations:^{
+        self.displayLabel.alpha = 1.0;
+        
+    } completion:^(BOOL finished) {
+        
+//        [weakSelf performSelector:@selector(backToHomepage) withObject:nil afterDelay:1.5];
+    }];
+}
+
+- (void)backToHomepage {
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[HomeViewController alloc] init]];
+    nav.navigationBar.hidden = YES;
+    [UIApplication sharedApplication].keyWindow.rootViewController = nav;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

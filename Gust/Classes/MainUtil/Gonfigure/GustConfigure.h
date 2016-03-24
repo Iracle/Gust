@@ -21,7 +21,8 @@
 //size
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
-
+#define SCREEN_MID_X ([UIScreen mainScreen].bounds.size.width / 2)
+#define SCREEN_MID_Y ([UIScreen mainScreen].bounds.size.height / 2)
 //custom define
 static const CGFloat MainTouchViewRadius = 57.5;
 static const CGFloat SearchBarHeight = 45;
