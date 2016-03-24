@@ -13,6 +13,7 @@
 #import "GustBKPasscodeDelegate.h"
 #import "OpenShareHeader.h"
 #import "Localisator.h"
+#import "BDVRSConfig.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong) GustBKPasscodeDelegate *gustBKPasscodeDelegate;
@@ -31,6 +32,13 @@
     self.gustBKPasscodeDelegate = [[GustBKPasscodeDelegate alloc] init];
     [[BKPasscodeLockScreenManager sharedManager] setDelegate:self];
     [[BKPasscodeLockScreenManager sharedManager] showLockScreen:NO];
+    
+    //open the baidu voice tone
+    BOOL showTone = [[NSUserDefaults standardUserDefaults] boolForKey:BaiduVoice];
+    if (!showTone) {
+        [BDVRSConfig sharedInstance].playStartMusicSwitch = YES;
+        [BDVRSConfig sharedInstance].playEndMusicSwitch = YES;
+    }
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor blackColor];

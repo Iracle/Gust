@@ -66,6 +66,8 @@ static const CGFloat SearchBarHeight = 45;
 
 #define AppVersion @"appVersion"
 
+#define BaiduVoice @"baiduVoice"
+
 const static float HomePageCancelButtonAlpha = 0.9999999;
 
 //notification

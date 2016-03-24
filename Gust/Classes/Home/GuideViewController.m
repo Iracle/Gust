@@ -95,7 +95,7 @@
         _gLabel = [[UILabel alloc] initWithFrame:self.gGhimmeringView.bounds];
         _gLabel.backgroundColor = [UIColor clearColor];
         _gLabel.textColor = [UIColor whiteColor];
-        _gLabel.font = [UIFont systemFontOfSize:50.0 weight:UIFontWeightRegular];
+        _gLabel.font = [UIFont fontWithName:@"avenir" size:50.0];
         _gLabel.textAlignment = NSTextAlignmentCenter;
         _gLabel.text = @"G";
     }
@@ -107,9 +107,9 @@
         _uLabel = [[UILabel alloc] initWithFrame:self.uGhimmeringView.bounds];
         _uLabel.backgroundColor = [UIColor clearColor];
         _uLabel.textColor = [UIColor whiteColor];
-        _uLabel.font = [UIFont systemFontOfSize:50.0 weight:UIFontWeightRegular];
         _uLabel.textAlignment = NSTextAlignmentCenter;
         _uLabel.text = @"U";
+        _uLabel.font = [UIFont fontWithName:@"avenir" size:50.0];
     }
     return _uLabel;
 }
@@ -119,7 +119,7 @@
         _sLabel = [[UILabel alloc] initWithFrame:self.sGhimmeringView.bounds];
         _sLabel.backgroundColor = [UIColor clearColor];
         _sLabel.textColor = [UIColor whiteColor];
-        _sLabel.font = [UIFont systemFontOfSize:50.0 weight:UIFontWeightRegular];
+        _sLabel.font = [UIFont fontWithName:@"avenir" size:50.0];
         _sLabel.textAlignment = NSTextAlignmentCenter;
         _sLabel.text = @"S";
     }
@@ -131,7 +131,7 @@
         _tLabel = [[UILabel alloc] initWithFrame:self.tGhimmeringView.bounds];
         _tLabel.backgroundColor = [UIColor clearColor];
         _tLabel.textColor = [UIColor whiteColor];
-        _tLabel.font = [UIFont systemFontOfSize:50.0 weight:UIFontWeightRegular];
+        _tLabel.font = [UIFont fontWithName:@"avenir" size:50.0];
         _tLabel.textAlignment = NSTextAlignmentCenter;
         _tLabel.text = @"T";
     }
@@ -143,10 +143,10 @@
         _displayLabel = [[UILabel alloc] init];
         _displayLabel.bounds = CGRectMake(0, 0, SCREEN_WIDTH * 0.7, 30.0);
         _displayLabel.center = CGPointMake(SCREEN_MID_X, SCREEN_MID_Y - 15.0);
-        _displayLabel.text = @"我不是人,我是禽兽";
+        _displayLabel.text = @"The Garden Of Sinners";
         _displayLabel.textAlignment = NSTextAlignmentCenter;
         _displayLabel.textColor = [UIColor colorWithRed:0.0752 green:0.0752 blue:0.0752 alpha:1.0];
-        _displayLabel.font = [UIFont systemFontOfSize:17.0 weight:UIFontWeightLight];
+        _displayLabel.font = [UIFont fontWithName:@"Bangla Sangam MN" size:17.0];
         
     }
     
@@ -334,7 +334,7 @@
         
     } completion:^(BOOL finished) {
         
-//        [weakSelf performSelector:@selector(backToHomepage) withObject:nil afterDelay:1.5];
+        [weakSelf performSelector:@selector(backToHomepage) withObject:nil afterDelay:1.5];
     }];
 }
 
@@ -351,3 +351,9 @@
 }
 
 @end
+
+
+
+
+
+

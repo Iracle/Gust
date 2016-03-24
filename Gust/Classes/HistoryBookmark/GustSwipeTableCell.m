@@ -44,7 +44,7 @@
 }
 
 - (void)configCell:(NSString *)webTitle {
-    _webTitle.text = webTitle;
+    _webTitle.text = [webTitle stringByReplacingOccurrencesOfString:@" " withString:@""];
 }
 
 - (void)isBookmarks:(BOOL)isBook {

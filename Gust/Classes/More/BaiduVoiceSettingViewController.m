@@ -114,7 +114,10 @@ static const CGFloat bgPanHeight = 260.0;
     
     [self loadDataSource];
     
-     NSLog(@"当前语言：%d",[BDVRSConfig sharedInstance].recognitionLanguage);
+    BOOL showTone = [[NSUserDefaults standardUserDefaults] boolForKey:BaiduVoice];
+    if (!showTone) {
+        self.speakToneSwitch.on = YES;
+    }
 }
 
 #pragma mark UITableViewDataSource
@@ -182,9 +185,18 @@ static const CGFloat bgPanHeight = 260.0;
 
 - (void)speakToneSwitchAction:(UISwitch *)sender {
     
-    [BDVRSConfig sharedInstance].playStartMusicSwitch = sender.on;
-    [BDVRSConfig sharedInstance].playEndMusicSwitch = sender.on;
-    
+    if (sender.on) {
+        [BDVRSConfig sharedInstance].playStartMusicSwitch = YES;
+        [BDVRSConfig sharedInstance].playEndMusicSwitch = YES;
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:BaiduVoice];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+
+    } else {
+        [BDVRSConfig sharedInstance].playStartMusicSwitch = NO;
+        [BDVRSConfig sharedInstance].playEndMusicSwitch = NO;
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:BaiduVoice];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 
 - (void)hiddenBgPan:(UIButton *)sender {
