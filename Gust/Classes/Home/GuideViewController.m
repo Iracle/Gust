@@ -44,7 +44,7 @@
         _gGhimmeringView = [[FBShimmeringView alloc] init];
         _gGhimmeringView.bounds = CGRectMake(0, 0, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
         _gGhimmeringView.center = CGPointMake(SCREEN_WIDTH / 2, ANIMATIONVIEW_Y);
-        _gGhimmeringView.backgroundColor = [UIColor colorWithRed:0.1447 green:0.1447 blue:0.1447 alpha:1.0];
+        _gGhimmeringView.backgroundColor = [UIColor blackColor];
         _gGhimmeringView.shimmeringBeginFadeDuration = 0.25;
         _gGhimmeringView.shimmeringOpacity = 0.9;
         _gGhimmeringView.layer.cornerRadius = 1.5;
@@ -70,7 +70,7 @@
         _sGhimmeringView = [[FBShimmeringView alloc] init];
         _sGhimmeringView.bounds = CGRectMake(0, 0, ANIMATIONVIEW_H, ANIMATIONVIEW_H);
         _sGhimmeringView.center = CGPointMake(SCREEN_WIDTH / 2, ANIMATIONVIEW_Y);
-        _sGhimmeringView.backgroundColor = [UIColor colorWithRed:0.1447 green:0.1447 blue:0.1447 alpha:1.0];
+        _sGhimmeringView.backgroundColor = [UIColor blackColor];
         _sGhimmeringView.shimmeringBeginFadeDuration = 0.75;
         _sGhimmeringView.shimmeringOpacity = 0.9;
         _sGhimmeringView.layer.cornerRadius = 1.5;
@@ -146,9 +146,9 @@
         _displayLabel = [[UILabel alloc] init];
         _displayLabel.bounds = CGRectMake(0, 0, SCREEN_WIDTH * 0.7, 30.0);
         _displayLabel.center = CGPointMake(SCREEN_MID_X, SCREEN_MID_Y - 15.0);
-        _displayLabel.text = @"The Garden Of Sinners";
+        _displayLabel.text = @"The White Garden Of Sinners";
         _displayLabel.textAlignment = NSTextAlignmentCenter;
-        _displayLabel.textColor = [UIColor colorWithRed:0.0752 green:0.0752 blue:0.0752 alpha:1.0];
+        _displayLabel.textColor = [UIColor colorWithRed:0.1684 green:0.1684 blue:0.1684 alpha:1.0];
         _displayLabel.font = [UIFont fontWithName:@"Bangla Sangam MN" size:17.0];
         
     }
@@ -311,7 +311,7 @@
     self.sGhimmeringView.hidden = NO;
     self.tGhimmeringView.hidden = NO;
 
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.35 animations:^{
 
         self.gGhimmeringView.frame = CGRectMake(20.0, ANIMATIONVIEW_FY, ANIMATIONVIEW_RH, ANIMATIONVIEW_RH);
         self.uGhimmeringView.frame = CGRectMake(CGRectGetMaxX(self.gGhimmeringView.frame) + 15.0, ANIMATIONVIEW_FY, ANIMATIONVIEW_RH, ANIMATIONVIEW_RH);
@@ -337,7 +337,7 @@
         
     } completion:^(BOOL finished) {
         
-//        [weakSelf performSelector:@selector(backToHomepage) withObject:nil afterDelay:1.5];
+        [weakSelf performSelector:@selector(backToHomepage) withObject:nil afterDelay:1.7];
     }];
 }
 

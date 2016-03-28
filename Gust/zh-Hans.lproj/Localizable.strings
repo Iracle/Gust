@@ -11,7 +11,7 @@
 
 //MoreViewController
 "Settings"                             = "设置";
-"TopSites"                             = "首页书签管理";
+"TopSites"                             = "首页书签";
 "SearchEngine"                         = "默认搜索引擎";
 "PasscodeLock"                         = "密码锁定";
 "TodayExtention"                       = "通知中心快捷启动";
@@ -20,7 +20,7 @@
 "UserGuide"                            = "用户使用指南";
 "SendFeedback"                         = "建议与反馈";
 "AboutApp"                             = "关于";
-"VoiceSetting"                         = "语音设置";
+"VoiceSetting"                         = "语音";
 
 //MoreViewController pushs
 "TopSiteDelete"                        = "删除";
@@ -81,6 +81,7 @@
 "Done"                                  = "完毕";
 "Back"                                  = "返回";
 "NetworkError"                          = "网络错误";
+"ShareText"                             = "我在 Gust Browser 发现了一个好网站，快来看看吧:";
 
 //BKPasscodeViewController
 "EnterPassCode"                         = "请输入锁定密码";
@@ -172,17 +173,3 @@
 "StringLogStatusNetWorkStatusCancel" = "用户取消";
 "StringLogStatusNetWorkStatusDefaultErorr" = "出现异常";
 "StringLogVoiceLevel" = "获取的当前音量级别";
-
-
-
-
-
-
-
-
-
-
-
-
-
-

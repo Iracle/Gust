@@ -297,6 +297,7 @@
                                                  name:kNotificationLanguageChanged
                                                object:nil];
 
+
 }
 
 - (void)setupTopSitsData

@@ -124,14 +124,14 @@
 {
     NSInteger index = segment.selectedSegmentIndex;
     if (index == 0) {
-        self.title = @"书签";
+        self.title = LOCALIZATION(@"Bookmarks");
         self.navigationItem.rightBarButtonItem = nil;
         self.isBookmark = YES;
         self.bookmarkArray = [NSArray arrayWithArray:[HisAndBooModel getDataWithType:@"Bookmark"]];
         self.currentDataArray = [NSMutableArray arrayWithArray:self.bookmarkArray];
         [self.tableView reloadData];
     } else {
-        self.title = @"历史";
+        self.title = LOCALIZATION(@"History");
         self.navigationItem.rightBarButtonItem = _clearHistoryButton;
         self.isBookmark = NO;
         self.historyArray = [NSArray arrayWithArray:[HisAndBooModel getDataWithType:@"History"]];
@@ -226,7 +226,6 @@
             [CoreDataManager insertObjectWithParameter:saveDic entityName:[TopSites entityName]];
             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUpdateTopSites object:self];
             [[AllAlertView sharedAlert] showWithTitle: LOCALIZATION(@"TopSiteSucess") alertType:AllAlertViewAlertTypeDone height:100.0];
-
             
         } else {
             
@@ -246,22 +245,6 @@
 - (void)changeBackHomeTimeNotification {
     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationResetTransitionDuration object:nil];
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

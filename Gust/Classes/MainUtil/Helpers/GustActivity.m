@@ -57,14 +57,15 @@
     if(nil == _title) {
         return;
     }
+    
+     NSLog(@"get share data: %@",_getShareArray);
     OSMessage *msg=[[OSMessage alloc]init];
-    msg.title=@"Gust";
-    msg.desc = @"hhhhddd";
-//    msg.image = _getShareArray[1];
-//    msg.link = _getShareArray[2];
-//    
-    NSLog(@"要分享的内容-----%@",_getShareArray);
-    NSLog(@"分享的类型------ %@",_title);
+    
+    NSString *url = [[NSString alloc] initWithFormat:@"%@", _getShareArray[2]];
+    msg.title = @"Gust Browser";
+    msg.desc = _getShareArray[0];
+    msg.image = UIImagePNGRepresentation([UIImage imageNamed:@"AboutAppIcon"]);
+    msg.link = url;
     
     if([_title isEqualToString:@"WeChat"]){
         [OpenShare shareToWeixinSession:msg Success:^(OSMessage *message) {

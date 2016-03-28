@@ -16,7 +16,7 @@
 
 //MoreViewController
 "Settings"                              = "Settings";
-"TopSites"                              = "Top Sites Manager";
+"TopSites"                              = "Top Sites";
 "SearchEngine"                          = "Search Engine";
 "PasscodeLock"                          = "Passcode Lock";
 "TodayExtention"                        = "Today Extention Quick Link";
@@ -25,7 +25,7 @@
 "UserGuide"                             = "User Guide";
 "SendFeedback"                          = "Send Feedback";
 "AboutApp"                              = "About";
-"VoiceSetting"                          = "Voice Settings";
+"VoiceSetting"                          = "Voice";
 
 "TopSiteDelete"                         = "Delete";
 "SearchEngineBaidu"                     = "Baidu";
@@ -86,6 +86,8 @@
 "Done"                                  = "Done";
 "Back"                                  = "Back";
 "NetworkError"                          = "Network Errors";
+"ShareText"                             = "I found a good site on Gust Browser, Check it out:";
+
 
 //BKPasscodeViewController
 "EnterPassCode"                         = "Enter a passcode";

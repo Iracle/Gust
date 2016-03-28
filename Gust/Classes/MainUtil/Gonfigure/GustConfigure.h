@@ -82,7 +82,6 @@ const static float HomePageCancelButtonAlpha = 0.9999999;
 #define NotificationRevertPopAnimation            @"notificationRevertPopAnimation"
 
 
-#define ShareText @"我在Gust浏览器发现了一个好网站，快来看看吧："
 #define BaiduWebsite @"http://www.baidu.com"
 #define GoogleWebsite @"http://www.google.com.tw"
 

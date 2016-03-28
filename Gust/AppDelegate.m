@@ -69,11 +69,11 @@
     NSString *currentAppVersion = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
      NSLog(@"version: %@",currentAppVersion);
     NSString *appVersion =  [[NSUserDefaults standardUserDefaults] objectForKey:AppVersion];
-    if (appVersion == nil || currentAppVersion != appVersion) {
-        
-        GuideViewController *guideVC = [[GuideViewController alloc] init];
-        self.window.rootViewController = guideVC;
-    }
+//    if (appVersion == nil || currentAppVersion != appVersion) {
+//        
+//        GuideViewController *guideVC = [[GuideViewController alloc] init];
+//        self.window.rootViewController = guideVC;
+//    }
 
     return YES;
 }

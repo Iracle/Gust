@@ -525,13 +525,13 @@
             return;
         }
         
-        NSString *textToShare = [NSString stringWithFormat:@"%@%@",ShareText,self.historyDic[PageName]];
+        NSString *textToShare = [NSString stringWithFormat:@"%@%@",LOCALIZATION(@"ShareText"),self.historyDic[PageName]];
         UIImage *imageToShare = [self getCurrentViewShotImage];
         NSURL *urlToShare = [NSURL URLWithString:self.historyDic[PageUrl]];
         
         NSArray *activityItems = @[textToShare,imageToShare, urlToShare];
         
-        GustActivity *actWeichat = [[GustActivity alloc]initWithImage:[UIImage imageNamed:@"wechat_session"] atURL:@"" atTitle:@"WeChat" atShareContentArray:activityItems];
+        GustActivity *actWeichat = [[GustActivity alloc]initWithImage:[UIImage imageNamed:@"wechat_session"] atURL: @"" atTitle:@"WeChat" atShareContentArray:activityItems];
         
         GustActivity *actWeiCircle = [[GustActivity alloc]initWithImage:[UIImage imageNamed:@"wechat_timeline"] atURL:@"" atTitle:@"Moments" atShareContentArray:activityItems];
         
