@@ -1143,11 +1143,12 @@
 				TargetAttributes = {
 					187436831AA7076B00297383 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = F54DPCE32X;
 						TestTargetID = 18EEDF111AA5FD6000033447;
 					};
 					18EEDF111AA5FD6000033447 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 8KR9XW3F3W;
+						DevelopmentTeam = F54DPCE32X;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -1156,7 +1157,7 @@
 					};
 					93CE7AAB1C50C2B400A5BEE5 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 8KR9XW3F3W;
+						DevelopmentTeam = F54DPCE32X;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -1481,6 +1482,8 @@
 			baseConfigurationReference = E099BCDEE40684383A57D605 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1494,6 +1497,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Iracle.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gust.app/Gust";
 			};
 			name = Debug;
@@ -1503,6 +1507,8 @@
 			baseConfigurationReference = 91A9A21B571F77B5BC370D44 /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1512,6 +1518,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Iracle.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gust.app/Gust";
 			};
 			name = Release;
@@ -1533,7 +1540,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hao Zhang (F54DPCE32X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hao Zhang (F54DPCE32X)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1558,6 +1566,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
+				PROVISIONING_PROFILE = "6456850e-9f28-4c47-94f8-ac194426c05e";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1579,7 +1588,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hao Zhang (F54DPCE32X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hao Zhang (F54DPCE32X)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1596,6 +1606,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-all_load";
+				PROVISIONING_PROFILE = "6456850e-9f28-4c47-94f8-ac194426c05e";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1628,7 +1639,7 @@
 					"-l\"pop\"",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Iraclemei.Gust;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Iracle.Gust;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1661,7 +1672,7 @@
 					"-l\"pop\"",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Iraclemei.Gust;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Iracle.Gust;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1679,7 +1690,7 @@
 				INFOPLIST_FILE = GustTodayExtenstion/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Iraclemei.Gust.GustTodayExtenstion;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Iracle.Gust.GustTodayExtenstion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -1699,7 +1710,7 @@
 				INFOPLIST_FILE = GustTodayExtenstion/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Iraclemei.Gust.GustTodayExtenstion;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Iracle.Gust.GustTodayExtenstion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;

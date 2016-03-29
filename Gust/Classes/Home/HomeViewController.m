@@ -412,7 +412,7 @@
      *  sure open the today extention quick open webPage from homeviewcontroller
      */
     self.cellPopAnimationViewRect = self.view.frame;
-    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.localNotificationSharedDefaults"];
+    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.gustNotificationSharedDefaults"];
     
     if (self.currentHistoryAndBookmarkVC.isVisibe) {
         [self.currentHistoryAndBookmarkVC.presentingViewController dismissViewControllerAnimated:YES completion:^{

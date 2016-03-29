@@ -367,14 +367,14 @@
 
 - (void)saveWebInfoToUserDefaults{
     
-    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.localNotificationSharedDefaults"];
+    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.gustNotificationSharedDefaults"];
     [shared setObject:self.todayWebs forKey:@"todayWeb"];
     [shared synchronize];
     
 }
 
 - (NSArray *)getWebInfoFromUserDefaults {
-    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.localNotificationSharedDefaults"];
+    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.gustNotificationSharedDefaults"];
     NSArray *results = [NSArray arrayWithArray:[shared objectForKey:@"todayWeb"]];
     return results;
 }

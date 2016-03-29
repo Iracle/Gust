@@ -32,7 +32,7 @@
     self.preferredContentSize = CGSizeMake(0, 145);
      NSLog(@"%@",NSStringFromCGRect(self.view.frame));
     
-    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.localNotificationSharedDefaults"];
+    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.gustNotificationSharedDefaults"];
     self.todayWebs = [shared valueForKey:@"todayWeb"];
     
     NSLog(@"%@",self.todayWebs);
@@ -100,7 +100,7 @@
 }
 
 - (void)webItemButtonTaped:(UIButton *) sender{
-    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.localNotificationSharedDefaults"];
+    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.gustNotificationSharedDefaults"];
     [shared setObject:sender.str forKey:@"openUrl"];
     [shared synchronize];
     [self.extensionContext openURL:[NSURL URLWithString:@"LocalNotification://finished"] completionHandler:^(BOOL success) {
