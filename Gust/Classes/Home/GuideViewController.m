@@ -347,11 +347,6 @@
     [UIApplication sharedApplication].keyWindow.rootViewController = nav;
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[HomeViewController alloc] init]];
-    nav.navigationBar.hidden = YES;
-    [UIApplication sharedApplication].keyWindow.rootViewController = nav;
-}
 
 @end
 

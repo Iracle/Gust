@@ -197,7 +197,7 @@
     }
 }
 
--(BOOL) swipeTableCell:(MGSwipeTableCell*) cell tappedButtonAtIndex:(NSInteger) index direction:(MGSwipeDirection)direction fromExpansion:(BOOL) fromExpansion
+-(BOOL)swipeTableCell:(MGSwipeTableCell*) cell tappedButtonAtIndex:(NSInteger) index direction:(MGSwipeDirection)direction fromExpansion:(BOOL) fromExpansion
 {
     NSIndexPath * indexPath = [_tableView indexPathForCell:cell];
     NSManagedObject *obj = [self.currentDataArray objectAtIndex:indexPath.row];
@@ -222,7 +222,7 @@
 
         if (resultsArray.count < 1) {
             
-            NSDictionary *saveDic = @{PageName:pageName, PageUrl: [obj valueForKey:PageUrl], ImageUrl:  [obj valueForKey:ImageUrl]};
+            NSDictionary *saveDic = @{PageName:pageName, PageUrl: [obj valueForKey:PageUrl]};
             [CoreDataManager insertObjectWithParameter:saveDic entityName:[TopSites entityName]];
             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUpdateTopSites object:self];
             [[AllAlertView sharedAlert] showWithTitle: LOCALIZATION(@"TopSiteSucess") alertType:AllAlertViewAlertTypeDone height:100.0];

@@ -14,6 +14,8 @@
 #import "OpenShareHeader.h"
 #import "Localisator.h"
 #import "BDVRSConfig.h"
+#import "CoreDataManager.h"
+#import "TopSites.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong) GustBKPasscodeDelegate *gustBKPasscodeDelegate;
@@ -67,16 +69,20 @@
     
     //First Open App
     NSString *currentAppVersion = [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
-     NSLog(@"version: %@",currentAppVersion);
     NSString *appVersion =  [[NSUserDefaults standardUserDefaults] objectForKey:AppVersion];
-//    if (appVersion == nil || currentAppVersion != appVersion) {
-//        
-//        GuideViewController *guideVC = [[GuideViewController alloc] init];
-//        self.window.rootViewController = guideVC;
-//    }
+    if (appVersion == nil || currentAppVersion != appVersion) {
+        [[NSUserDefaults standardUserDefaults] setObject:currentAppVersion forKey:AppVersion];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        GuideViewController *guideVC = [[GuideViewController alloc] init];
+        self.window.rootViewController = guideVC;
+        [self loadSomeTopSite];
+        
+    }
+    
 
     return YES;
 }
+
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
     //第二步：添加回调
     if ([OpenShare handleOpenURL:url]) {
@@ -242,4 +248,32 @@
     return navController;
 }
 
+- (void)loadSomeTopSite {
+    
+    NSDictionary *saveDic = @{PageName:@"Yahoo", PageUrl: @"https://www.yahoo.com/"};
+    NSDictionary *saveDic1 = @{PageName:@"一点资讯", PageUrl: @"http://www.yidianzixun.com/"};
+    NSDictionary *saveDic2 = @{PageName:@"果壳网移动版", PageUrl: @"http://m.guokr.com/"};
+    NSDictionary *saveDic3 = @{PageName:@"豆瓣东西", PageUrl: @"https://dongxi.douban.com/"};
+    
+    NSArray *array = @[saveDic, saveDic1, saveDic2, saveDic3];
+    
+    for (NSInteger index = 0; index < array.count; index ++) {
+        [CoreDataManager insertObjectWithParameter:array[index] entityName:[TopSites entityName]];
+    }
+
+    
+}
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+

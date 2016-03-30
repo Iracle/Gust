@@ -346,7 +346,7 @@
             
             NSManagedObject *obj = [resultsArray objectAtIndex:0];
             
-            NSDictionary *saveDic = @{PageName:[obj valueForKey:PageName], PageUrl: [obj valueForKey:PageUrl], ImageUrl:  [obj valueForKey:ImageUrl]};
+            NSDictionary *saveDic = @{PageName:[obj valueForKey:PageName], PageUrl: [obj valueForKey:PageUrl]};
             [_topSitesSortArray addObject:saveDic];
 
             
