@@ -16,6 +16,7 @@
 #import "BDVRSConfig.h"
 #import "CoreDataManager.h"
 #import "TopSites.h"
+#import <Bugtags/Bugtags.h>
 
 @interface AppDelegate ()
 @property (nonatomic, strong) GustBKPasscodeDelegate *gustBKPasscodeDelegate;
@@ -78,6 +79,9 @@
         [self loadSomeTopSite];
         
     }
+    
+    //degbug
+    [Bugtags startWithAppKey:@"e2e75f419487ce335b89bd8f6dc09fff" invocationEvent:BTGInvocationEventShake];
     
 
     return YES;
