@@ -128,6 +128,9 @@
     viewController.touchIDManager = touchIDManager;
     
     if (isPush) {
+        //let navigation title in navigation bar ceneter
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];
+
         viewController.title = LOCALIZATION(@"ChangePassCode");
         [self.navigationController pushViewController:viewController animated:YES];
     } else {

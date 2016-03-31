@@ -138,16 +138,21 @@
     SettingsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
         cell = [[SettingsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     if (indexPath.section == 0) {
+        if (indexPath.row == 6) {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
         cell.leftImage.image = IMAGENAMED(_settingIcons[indexPath.row]);
         [cell configCell:_tableListDataArray[indexPath.row]];
-         NSLog(@"ll:%@",_tableListDataArray[indexPath.row]);
         
     } else {
+        if (indexPath.row == 1) {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
         cell.leftImage.image = IMAGENAMED(_settingIcons[indexPath.row + 7]);
         [cell configCell:_tableListDataArray[indexPath.row + 7]];
-         NSLog(@"jj:%@",_tableListDataArray[indexPath.row + 7]);
     }
     
     
@@ -181,6 +186,7 @@
 
 #pragma mark -- Web Cache
 - (void)clearWebCookieAndCache {
+    
     NSHTTPCookie *cookie;
     NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     for (cookie in [storage cookies])
@@ -189,7 +195,7 @@
     }
     
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
-    NSURLCache * cache = [NSURLCache sharedURLCache];
+     NSURLCache * cache = [NSURLCache sharedURLCache];
     [cache removeAllCachedResponses];
     [cache setDiskCapacity:0];
     [cache setMemoryCapacity:0];
@@ -197,6 +203,7 @@
     [[AllAlertView sharedAlert] showWithTitle: LOCALIZATION(@"DataCLeared") alertType:AllAlertViewAlertTypeDone height:100.0];
 
 }
+
 - (void) receiveLanguageChangedNotification:(NSNotification *) notification
 {
     if ([notification.name isEqualToString:kNotificationLanguageChanged])

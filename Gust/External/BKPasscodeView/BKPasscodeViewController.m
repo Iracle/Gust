@@ -126,7 +126,7 @@ typedef enum : NSUInteger {
     navigationBar.barTintColor = [UIColor whiteColor];
     navigationBar.tintColor = [UIColor whiteColor];
     [navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.3107 green:0.3107 blue:0.3107 alpha:1.0]}];
-    
+        
     [self.view setBackgroundColor: [UIColor baseBackgroudColor]];
    
     [self updatePasscodeInputViewTitle:self.passcodeInputView];

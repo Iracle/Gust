@@ -21,9 +21,10 @@
 "PasscodeLock"                          = "Passcode Lock";
 "TodayExtention"                        = "Today Extention Quick Link";
 "Language"                              = "Language";
-"ClearDara"                             = "Clear Data";
+"ClearDara"                             = "Clear Cookies & Caches";
 "UserGuide"                             = "User Guide";
 "SendFeedback"                          = "Send Feedback";
+"Feedback"                              = "Feedback";
 "AboutApp"                              = "About";
 "VoiceSetting"                          = "Voice";
 
@@ -43,9 +44,10 @@
 "TotalLink"                            = "Quick links can't be more than 4";
 "WebInputError"                        = "Input error";
 "LinkExist"                            = "Quick link already exists";
-
 "DataCLeared"                          = "Data Cleared";
 "RatingApp"                            = "Rating";
+"ShareToFriend"                        = "Share to Friends";
+
 
 //ChooseLanguageViewController
 "DeviceLanguage"                        = "Device Language";
@@ -125,14 +127,14 @@
 "StringVoiceRecognitonInterruptRecord" = "录音中断";
 "StringVoiceRecognitonCantIdentify" = "无法识别您说的内容";
 "StringVoiceRecognitonNetWorkError" = "网络连接错误, 请重试";
-"StringVoiceRecognitonNoNetWork" = "Network Unavailable";
+"StringVoiceRecognitonNoNetWork" = "Network unavailable";
 "StringVoiceRecognitonNetWorkTimeOut" = "网络超时";
 "StringVoiceRecognitonParseError" = "服务器数据解析错误";
 
 "StringVoiceRecognitonStatusError" = "一般错误";
 "StringVoiceRecognitonChangeNotAvailable" = "麦克风临时被占用";
 "StringVoiceRecognitonException" = "前端库出现异常";
-"StringVoiceRecognitonNoSpeech" = "用户没有说话";
+"StringVoiceRecognitonNoSpeech" = "You did not speak";
 "StringVoiceRecognitonNoShort" = "用户说话声太短，比如咳嗽";
 "StringVoiceRecognitonDefaultError" = "不在错误码的范围内";
 "StringVoiceRecognitonTooLong" = "用户录音超时";

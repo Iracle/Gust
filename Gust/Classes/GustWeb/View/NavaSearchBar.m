@@ -52,7 +52,7 @@ static const CGFloat NavaSearchBarHeight = 40.0;
 
 - (UILabel *)webTitle {
     if (!_webTitle) {
-        _webTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 20)];
+        _webTitle = [[UILabel alloc] initWithFrame:CGRectMake(35, 20, SCREEN_WIDTH - 70, 20)];
         _webTitle.textAlignment = NSTextAlignmentCenter;
         _webTitle.font = [UIFont systemFontOfSize:12];
         _webTitle.textColor = [UIColor colorWithRed:0.6503 green:0.6503 blue:0.6503 alpha:1.0];

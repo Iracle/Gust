@@ -57,7 +57,7 @@
     self.view.backgroundColor = [UIColor colorWithRed:250 / 255.0 green:250 / 255.0 blue:250 / 255.0 alpha:1.0];
     //get all localized language
     self.arrayOfLanguages = [[[Localisator sharedInstance] availableLanguagesArray] copy];
-     NSLog(@"ll:%@",self.arrayOfLanguages);
+     NSLog(@"all language:%@",self.arrayOfLanguages);
     
     [self.view addSubview:self.tableView];
     [self loadCurrentLanguage];
@@ -111,6 +111,8 @@
     self.title = LOCALIZATION(@"LocalisatorViewTitle");
     //get current lauguage
     self.currentLanguage = [[Localisator sharedInstance] currentLanguage];
+    
+     NSLog(@"current language:%@",self.currentLanguage);
     [_tableView reloadData];
 }
 
@@ -124,9 +126,9 @@
 
 -(void)GotoSettingslaugageWithIndex:(NSInteger)index
 {
-     NSLog(@"%@",self.arrayOfLanguages[index]);
     if ([[Localisator sharedInstance] setLanguage:self.arrayOfLanguages[index]])
     {
+        
     }else{
         NSLog(@"您选择的语言为当前语言!");
     }

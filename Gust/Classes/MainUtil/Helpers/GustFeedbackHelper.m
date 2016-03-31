@@ -7,6 +7,7 @@
 //
 
 #import "GustFeedbackHelper.h"
+#import "Localisator.h"
 
 @implementation GustFeedbackHelper 
 
@@ -29,14 +30,14 @@
     [mailCompose setMailComposeDelegate:self.rootViewController];
     
     // 设置邮件主题
-    [mailCompose setSubject:@"我是邮件主题"];
+    [mailCompose setSubject: LOCALIZATION(@"Feedback")];
     
     // 设置收件人
-    [mailCompose setToRecipients:@[@"邮箱号码"]];
-    // 设置抄送人
-    [mailCompose setCcRecipients:@[@"邮箱号码"]];
-    // 设置密抄送
-    [mailCompose setBccRecipients:@[@"邮箱号码"]];
+    [mailCompose setToRecipients:@[@"iracle.zhang@gmail.com"]];
+//    // 设置抄送人
+//    [mailCompose setCcRecipients:@[@"邮箱号码"]];
+//    // 设置密抄送
+//    [mailCompose setBccRecipients:@[@"邮箱号码"]];
     
     /**
      *  设置邮件的正文内容
@@ -45,7 +46,7 @@
     // 是否为HTML格式
     //    [mailCompose setMessageBody:emailContent isHTML:NO];
     // 如使用HTML格式，则为以下代码
-    [mailCompose setMessageBody:@"<html><body><p>Hello</p><p>World！</p></body></html>" isHTML:YES];
+//    [mailCompose setMessageBody:@"<html><body><p>Hello</p><p>World！</p></body></html>" isHTML:YES];
     
     /**
      *  添加附件

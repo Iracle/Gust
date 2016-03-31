@@ -90,7 +90,7 @@
     self = [super init];
     if (self) {
         self.title = LOCALIZATION(@"AboutApp");
-        _aboutGustDataArray = @[LOCALIZATION(@"RatingApp")];
+        _aboutGustDataArray = @[LOCALIZATION(@"RatingApp"), LOCALIZATION(@"ShareToFriend")];
     }
     return self;
 }
@@ -156,9 +156,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 0) {
         
-        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=247423477&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software"]];
+        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1097706441&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software"]];
         
     } else {
+        
     }
 }
 

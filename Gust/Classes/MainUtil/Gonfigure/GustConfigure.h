@@ -38,11 +38,6 @@ static const CGFloat SearchBarHeight = 45;
 //userDefaults
 #define TopSits @"topSitsData"
 
-//the location of mainTouchView
-#define MainTouchViewIsLocation @"mainTouchViewIsLocation"
-#define MainTouchViewLocationLeft @"mainTouchViewLocationLeft"
-#define MainTouchViewLocationRight @"mainTouchViewLocationRight"
-
 //defualt search engin
 #define DefautSearchEngin @"DefautSearchEngin"
 #define SearchEnginBaidu @"SearchEnginBaidu"

@@ -16,11 +16,13 @@
 "PasscodeLock"                         = "密码锁定";
 "TodayExtention"                       = "通知中心快捷启动";
 "Language"                             = "语言";
-"ClearDara"                            = "清除数据";
+"ClearDara"                            = "清除缓存、Cookies";
 "UserGuide"                            = "用户使用指南";
 "SendFeedback"                         = "建议与反馈";
+"Feedback"                             = "反馈";
 "AboutApp"                             = "关于";
 "VoiceSetting"                         = "语音";
+
 
 //MoreViewController pushs
 "TopSiteDelete"                        = "删除";
@@ -41,6 +43,7 @@
 "LinkExist"                            = "快捷链接已经存在";
 "DataCLeared"                          = "数据清楚成功";
 "RatingApp"                            = "应用评分";
+"ShareToFriend"                        = "推荐给朋友";
 
 //ChooseLanguageViewController
 "DeviceLanguage"                        = "设备语言";

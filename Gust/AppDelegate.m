@@ -51,13 +51,6 @@
     nav.navigationBar.hidden = YES;
     self.window.rootViewController = nav;
     
-    //mainTouchView initialize location is left
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (![defaults objectForKey:MainTouchViewIsLocation]) {
-        [defaults setObject:MainTouchViewLocationLeft forKey:MainTouchViewIsLocation];
-        [defaults synchronize];
-    }
-    
     //defaut search engin is baidu.com
     NSUserDefaults *searcDefaults = [NSUserDefaults standardUserDefaults];
     if (![searcDefaults objectForKey:DefautSearchEngin]) {
@@ -206,7 +199,7 @@
     if (!coordinator) {
         return nil;
     }
-    _managedObjectContext = [[NSManagedObjectContext alloc] init];
+    _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     return _managedObjectContext;
 }
@@ -256,7 +249,7 @@
     
     NSDictionary *saveDic = @{PageName:@"Yahoo", PageUrl: @"https://www.yahoo.com/"};
     NSDictionary *saveDic1 = @{PageName:@"一点资讯", PageUrl: @"http://www.yidianzixun.com/"};
-    NSDictionary *saveDic2 = @{PageName:@"果壳网移动版", PageUrl: @"http://m.guokr.com/"};
+    NSDictionary *saveDic2 = @{PageName:@"Wikipedia", PageUrl: @"https://www.wikipedia.org"};
     NSDictionary *saveDic3 = @{PageName:@"豆瓣东西", PageUrl: @"https://dongxi.douban.com/"};
     
     NSArray *array = @[saveDic, saveDic1, saveDic2, saveDic3];
