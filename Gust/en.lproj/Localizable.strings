@@ -44,7 +44,7 @@
 "TotalLink"                            = "Quick links can't be more than 4";
 "WebInputError"                        = "Input error";
 "LinkExist"                            = "Quick link already exists";
-"DataCLeared"                          = "Data Cleared";
+"DataCLeared"                          = "Data cleared";
 "RatingApp"                            = "Rating";
 "ShareToFriend"                        = "Share to Friends";
 
@@ -164,7 +164,7 @@
 
 // 除自动测试外LogView中的显示内容
 "StringLogStatusNone" = "空闲";
-"StringLogStatusPlayStartTone" = "play start tone";
+"StringLogStatusPlayStartTone" = "Play start tone";
 "StringLogStatusPlayStartToneFinish" = "播放开始提示音完成";
 "StringLogStatusStartWorkIng" = "识别工作开始，开始采集及处理数据";
 "StringLogStatusStart" = "检测到用户开始说话";

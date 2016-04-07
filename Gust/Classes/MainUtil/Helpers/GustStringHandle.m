@@ -18,6 +18,7 @@
     webTitle = [webTitle stringByReplacingOccurrencesOfString:@"《" withString:@""];
     webTitle = [webTitle stringByReplacingOccurrencesOfString:@"》" withString:@""];
     webTitle = [webTitle stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
     if ([self convertToInt:webTitle] > 10) {
         if ([self convertToInt:webTitle] > webTitle.length) {
             NSString *resultTitle = [NSString stringWithFormat:@"%@%@",[webTitle substringToIndex:5], @"..."];

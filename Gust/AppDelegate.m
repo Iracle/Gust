@@ -251,8 +251,8 @@
     NSDictionary *saveDic1 = @{PageName:@"一点资讯", PageUrl: @"http://www.yidianzixun.com/"};
     NSDictionary *saveDic2 = @{PageName:@"Wikipedia", PageUrl: @"https://www.wikipedia.org"};
     NSDictionary *saveDic3 = @{PageName:@"豆瓣东西", PageUrl: @"https://dongxi.douban.com/"};
-    
-    NSArray *array = @[saveDic, saveDic1, saveDic2, saveDic3];
+    NSDictionary *saveDic4 = @{PageName:@"Amazon.com", PageUrl: @"http://www.amazon.com"};
+    NSArray *array = @[saveDic, saveDic1, saveDic2, saveDic3, saveDic4];
     
     for (NSInteger index = 0; index < array.count; index ++) {
         [CoreDataManager insertObjectWithParameter:array[index] entityName:[TopSites entityName]];
