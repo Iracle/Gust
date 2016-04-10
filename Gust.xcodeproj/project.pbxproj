@@ -133,6 +133,7 @@
 		93CE7AB21C50C2B400A5BEE5 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93CE7AB11C50C2B400A5BEE5 /* TodayViewController.m */; };
 		93CE7AB51C50C2B400A5BEE5 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93CE7AB31C50C2B400A5BEE5 /* MainInterface.storyboard */; };
 		93CE7AB91C50C2B400A5BEE5 /* GustTodayExtenstion.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 93CE7AAC1C50C2B400A5BEE5 /* GustTodayExtenstion.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		93D676D01CBA9395006E707E /* UserGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D676CF1CBA9395006E707E /* UserGuideViewController.m */; };
 		93DDA8DF1CA23673005BAC4E /* UIColor+Gust.m in Sources */ = {isa = PBXBuildFile; fileRef = 93DDA8DE1CA23673005BAC4E /* UIColor+Gust.m */; };
 		93F50C7C1C36A6650028EF1F /* MainTouchBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F50C7B1C36A6650028EF1F /* MainTouchBaseView.m */; };
 /* End PBXBuildFile section */
@@ -404,6 +405,8 @@
 		93CE7AB61C50C2B400A5BEE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93CE7ABE1C50C47200A5BEE5 /* Gust.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Gust.entitlements; sourceTree = "<group>"; };
 		93CE7ABF1C50C57800A5BEE5 /* GustTodayExtenstion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GustTodayExtenstion.entitlements; sourceTree = "<group>"; };
+		93D676CE1CBA9395006E707E /* UserGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserGuideViewController.h; sourceTree = "<group>"; };
+		93D676CF1CBA9395006E707E /* UserGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserGuideViewController.m; sourceTree = "<group>"; };
 		93DDA8DD1CA23673005BAC4E /* UIColor+Gust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Gust.h"; sourceTree = "<group>"; };
 		93DDA8DE1CA23673005BAC4E /* UIColor+Gust.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Gust.m"; sourceTree = "<group>"; };
 		93F50C7A1C36A6650028EF1F /* MainTouchBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTouchBaseView.h; sourceTree = "<group>"; };
@@ -642,6 +645,8 @@
 				93CA22841C8D69B6000A614B /* ChooseLanguageViewController.m */,
 				933C6B551C9A9A330003490F /* BaiduVoiceSettingViewController.h */,
 				933C6B561C9A9A330003490F /* BaiduVoiceSettingViewController.m */,
+				93D676CE1CBA9395006E707E /* UserGuideViewController.h */,
+				93D676CF1CBA9395006E707E /* UserGuideViewController.m */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -1356,6 +1361,7 @@
 				93CE199B1BEC9B2F00DECA3E /* MyScrollView.m in Sources */,
 				93CA566F1C9151B7007B2B86 /* AHKActionSheetViewController.m in Sources */,
 				934748A51CA14448005F162B /* UINavigationBar+Addition.m in Sources */,
+				93D676D01CBA9395006E707E /* UserGuideViewController.m in Sources */,
 				93CA56711C9151B7007B2B86 /* UIWindow+AHKAdditions.m in Sources */,
 				930F1DBC1C99A7B4009D8656 /* BDVRSConfig.m in Sources */,
 				18CC9D641AAA025400165601 /* HomeCollectionViewCell.m in Sources */,

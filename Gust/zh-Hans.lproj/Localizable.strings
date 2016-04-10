@@ -8,6 +8,7 @@
 //Common
 "PullRelease"                           = "下拉返回上一页";
 "LooseRelease"                          = "松开返回上一页";
+"userGuideme"                           = "使用帮助";
 
 //MoreViewController
 "Settings"                             = "设置";
@@ -17,7 +18,7 @@
 "TodayExtention"                       = "通知中心快捷启动";
 "Language"                             = "语言";
 "ClearDara"                            = "清除缓存、Cookies";
-"UserGuide"                            = "用户使用指南";
+"UserGuide"                            = "使用帮助";
 "SendFeedback"                         = "建议与反馈";
 "Feedback"                             = "反馈";
 "AboutApp"                             = "关于";
@@ -85,6 +86,8 @@
 "Back"                                  = "返回";
 "NetworkError"                          = "网络错误";
 "ShareText"                             = "我在 Gust Browser 发现了一个好网站，快来看看吧:";
+"ShareTextAPP"                          = "推荐你使用一款令人惊讶的 APP - Gust Browser";
+
 
 //BKPasscodeViewController
 "EnterPassCode"                         = "请输入锁定密码";

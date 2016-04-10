@@ -13,6 +13,8 @@
 //Common
 "PullRelease"                           = "Pull down to release";
 "LooseRelease"                          = "Loose could release";
+"userGuideme"                           = "User Guide";
+
 
 //MoreViewController
 "Settings"                              = "Settings";
@@ -89,6 +91,8 @@
 "Back"                                  = "Back";
 "NetworkError"                          = "Network Errors";
 "ShareText"                             = "I found a good site on Gust Browser, Check it out:";
+"ShareTextAPP"                          = "I found an amazing app - Gust Browser";
+
 
 
 //BKPasscodeViewController
@@ -106,39 +110,39 @@
 
 //BDVoiceRecognitionClientHelper
 "PleaseSpeak"                           = "Please speak";
-"Putonghua"                             = "Putonghua";
+"Putonghua"                             = "Mandarin";
 "Yueyu"                                 = "Pantonese";
 "SichuanHua"                            = "Sichuan dialect";
 
 // 语音搜索
-"StringVoiceRecognitonInit" = "正在初始化";
-"StringVoiceRecognitonPleaseSpeak" = "请说话";
-"StringVoiceRecognitonIdentify" = "正在识别";
-"StringVoiceRecognitonSpeakAgain" = "重试";
-"StringVoiceRecognitonRecordFinish" = "完毕";
+"StringVoiceRecognitonInit" = "Initializing";
+"StringVoiceRecognitonPleaseSpeak" = "Please speak";
+"StringVoiceRecognitonIdentify" = "It is recognition";
+"StringVoiceRecognitonSpeakAgain" = "Retry";
+"StringVoiceRecognitonRecordFinish" = "Done";
 "StringConform" = "Done";
-"StringCancel" = "取消";
-"StringFinish" = "完成";
+"StringCancel" = "Cancel";
+"StringFinish" = "Done";
 
 // 错误码信息
-"StringVoiceRecognitonCantRecord" = "没有检测到麦克风";
-"StringAudioSearchGetTokenFailed" = "获取token出现错误";
-"StringAudioSearchNOMicrophonePermission" = "没有麦克风使用权限，请在系统“设置”→“隐私”→“麦克风”中打开开关";
-"StringVoiceRecognitonInterruptRecord" = "录音中断";
-"StringVoiceRecognitonCantIdentify" = "无法识别您说的内容";
-"StringVoiceRecognitonNetWorkError" = "网络连接错误, 请重试";
+"StringVoiceRecognitonCantRecord" = "No microphone detected";
+"StringAudioSearchGetTokenFailed" = "Get token errors";
+"StringAudioSearchNOMicrophonePermission" = "No microphone access in the system 'Settings' → 'Privacy → 'Microphone' in the opening switch";
+"StringVoiceRecognitonInterruptRecord" = "Recording is interrupted";
+"StringVoiceRecognitonCantIdentify" = "You say that the content is not recognized";
+"StringVoiceRecognitonNetWorkError" = "Network connection error, please try again";
 "StringVoiceRecognitonNoNetWork" = "Network unavailable";
-"StringVoiceRecognitonNetWorkTimeOut" = "网络超时";
-"StringVoiceRecognitonParseError" = "服务器数据解析错误";
+"StringVoiceRecognitonNetWorkTimeOut" = "Network timeout";
+"StringVoiceRecognitonParseError" = "Server data parsing error";
 
-"StringVoiceRecognitonStatusError" = "一般错误";
-"StringVoiceRecognitonChangeNotAvailable" = "麦克风临时被占用";
-"StringVoiceRecognitonException" = "前端库出现异常";
+"StringVoiceRecognitonStatusError" = "General error";
+"StringVoiceRecognitonChangeNotAvailable" = "Microphone temporarily occupied";
+"StringVoiceRecognitonException" = "Front-end library exception";
 "StringVoiceRecognitonNoSpeech" = "You did not speak";
-"StringVoiceRecognitonNoShort" = "用户说话声太短，比如咳嗽";
-"StringVoiceRecognitonDefaultError" = "不在错误码的范围内";
-"StringVoiceRecognitonTooLong" = "用户录音超时";
-"StringVoiceRecognitonServerError" = "服务器返回错误！！";
+"StringVoiceRecognitonNoShort" = "User voice is too short, such as cough";
+"StringVoiceRecognitonDefaultError" = "Outside the scope of error codes";
+"StringVoiceRecognitonTooLong" = "User recording timeout";
+"StringVoiceRecognitonServerError" = "Server returned an error";
 
 "StringAudioSearchNoAPIKEY" = "没有设置API KEY";
 "StringVoiceRecognitonNoDelegateMethods" = "没有实现语音识别代理方法";

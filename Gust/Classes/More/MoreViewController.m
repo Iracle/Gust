@@ -21,6 +21,8 @@
 #import "Localisator.h"
 #import "GustFeedbackHelper.h"
 #import "UIColor+Gust.h"
+#import "UserGuideViewController.h"
+
 
 @interface MoreViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
@@ -44,7 +46,7 @@
     self = [super init];
     if (self) {
         
-        _detailPageClassNames = @[@"TopSitesManageViewController", @"DefaultSearchViewController", @"SetPrivacyPasswordViewController", @"TodayExtentionWebSeletedViewController",@"ChooseLanguageViewController", @"BaiduVoiceSettingViewController",@"ClearWebCacheController", @"FunctionIntroduceController", @"FeedbackController",@"AboutGustViewController"];
+        _detailPageClassNames = @[@"TopSitesManageViewController", @"DefaultSearchViewController", @"SetPrivacyPasswordViewController", @"TodayExtentionWebSeletedViewController",@"ChooseLanguageViewController", @"BaiduVoiceSettingViewController",@"ClearWebCacheController", @"UserGuideViewController", @"FeedbackController",@"AboutGustViewController"];
         _settingIcons = @[@"settingTopsite", @"settingSearch", @"settingPrivacy", @"settingPush",@"settingsLanguage", @"settingVoice", @"settingClear", @"settingGuide", @"settingFeedback", @"settingAbout"];
 
     }
@@ -102,7 +104,8 @@
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
     [navigationBar hideBottomHairline];
     navigationBar.barTintColor = [UIColor whiteColor];
-    navigationBar.tintColor = [UIColor whiteColor];
+    navigationBar.tintColor = [UIColor colorWithRed:0.3107 green:0.3107 blue:0.3107 alpha:1.0];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     [navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:0.3107 green:0.3107 blue:0.3107 alpha:1.0]}];
     
     self.view.backgroundColor = [UIColor baseBackgroudColor];

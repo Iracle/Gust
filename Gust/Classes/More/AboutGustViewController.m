@@ -11,6 +11,7 @@
 #import "SettingsTableViewCell.h"
 #import "Localisator.h"
 #import "GustConfigure.h"
+#import "GustActivity.h"
 
 @interface AboutGustViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -159,6 +160,27 @@
         [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1097706441&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software"]];
         
     } else {
+        
+        NSString *textToShare = LOCALIZATION(@"ShareTextAPP");
+        UIImage *imageToShare = [UIImage imageNamed:@"launchexplore"];
+        NSURL *urlToShare = [NSURL URLWithString:@"http://iracleme.com/works/"];
+        
+        NSArray *activityItems = @[textToShare,imageToShare, urlToShare];
+        
+        GustActivity *actWeichat = [[GustActivity alloc]initWithImage:[UIImage imageNamed:@"wechat_session"] atURL: @"" atTitle:@"WeChat" atShareContentArray:activityItems];
+        
+        GustActivity *actWeiCircle = [[GustActivity alloc]initWithImage:[UIImage imageNamed:@"wechat_timeline"] atURL:@"" atTitle:@"Moments" atShareContentArray:activityItems];
+        
+        NSArray *shareApps = @[actWeichat, actWeiCircle];
+        
+        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:shareApps];
+        activityVC.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *activityError) {
+
+        };
+        
+        activityVC.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard,UIActivityTypeAssignToContact];
+        [self presentViewController:activityVC animated:YES completion:nil];
+
         
     }
 }
